@@ -4,13 +4,14 @@ import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
 import 'package:matchangoo/core/ui/theme/theme_controller.dart';
 
 class ThemeManagerCubit extends Cubit<ThemeData> {
-  ThemeManagerCubit() : super(ThemeController.getTheme(ThemeType.LIGHT));
+  final ThemeController themeController;
+  ThemeManagerCubit(this.themeController) : super(themeController.getTheme(ThemeType.LIGHT));
 
   void changeTheme() {
     if (state.brightness == Brightness.light) {
-      emit(ThemeController.getTheme(ThemeType.DARK));
+      emit(themeController.getTheme(ThemeType.DARK));
     } else {
-      emit(ThemeController.getTheme(ThemeType.LIGHT));
+      emit(themeController.getTheme(ThemeType.LIGHT));
     }
   }
 }

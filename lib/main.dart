@@ -7,6 +7,7 @@ import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
 import 'package:matchangoo/core/ui/theme/theme_controller.dart';
 
 import 'core/constants/app_constants.dart';
+import 'core/init/get_them_all/get_it_container.dart';
 import 'core/structure/navigation/navigation_router.dart';
 import 'features/login/presentation/pages/login_main.dart';
 import 'core/init/get_them_all/get_it_container.dart' as inject;
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       lazy: true,
-      create: (context) => ThemeManagerCubit(),
+      create: (context) => sl.get<ThemeManagerCubit>(),
       child: BlocBuilder<ThemeManagerCubit, ThemeData>(
         builder: (context, state) {
           return MaterialApp(

@@ -5,7 +5,7 @@ import 'dark_theme.dart';
 import 'light_theme.dart';
 
 class ThemeController {
-  static ThemeData getTheme(ThemeType type) {
+  ThemeData getTheme(ThemeType type) {
     switch (type) {
       case ThemeType.LIGHT:
         return lightTheme;

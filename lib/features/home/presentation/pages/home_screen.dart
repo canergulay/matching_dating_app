@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/init/theme_manager/theme_manager_cubit.dart';
 import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
 
@@ -18,9 +19,12 @@ class HomeScreen extends StatelessWidget {
             Text(arguements),
             TextButton(
                 onPressed: () {
-                  context.read<ThemeManagerCubit>().changeTheme();
+                  sl.get<ThemeManagerCubit>().changeTheme();
                 },
-                child: Text('sasaa'))
+                child: Text(
+                  'change the current theme',
+                  style: Theme.of(context).textTheme.headline5!.copyWith(color: Colors.cyan),
+                ))
           ],
         ),
       ),
