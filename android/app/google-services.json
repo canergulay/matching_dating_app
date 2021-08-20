@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1072172406721",
+    "project_id": "matchango-471d8",
+    "storage_bucket": "matchango-471d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072172406721:android:0d28a36f5d4914394a4140",
+        "android_client_info": {
+          "package_name": "com.matchango.social"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072172406721-2jttv56q83hags8ks6onijhbqp4c51ra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLgJiOsbnrBXVDA1YoajV1mLDiysVzr0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072172406721-2jttv56q83hags8ks6onijhbqp4c51ra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
+
+import 'dark_theme.dart';
+import 'light_theme.dart';
+
+class ThemeController {
+  static ThemeData getTheme(ThemeType type) {
+    switch (type) {
+      case ThemeType.LIGHT:
+        return lightTheme;
+      case ThemeType.DARK:
+        return darkTheme;
+    }
+  }
+}
