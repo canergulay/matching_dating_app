@@ -36,10 +36,12 @@ class LoginMain extends StatelessWidget {
                 AnimatedButton(
                     title: 'sign in with your phone',
                     onPressed: () {
-                      LocationManager _locationManager = sl.get<LocationManager>();
+                      NavigationManager.instance.navigateToPage(path: '/identification', arguments: 'nothing');
+                      /*
+                       LocationManager _locationManager = sl.get<LocationManager>();
                       _locationManager.location.requestPermission();
                       _locationManager.location.hasPermission().then((value) => print(value));
-                      _locationManager.location.getLocation().then((value) => print('location is ' + value.toString()));
+                      _locationManager.location.getLocation().then((value) => print('location is ' + value.toString()));*/
                       print('phone.');
                     }),
               ],

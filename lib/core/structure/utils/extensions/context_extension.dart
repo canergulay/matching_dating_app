@@ -36,5 +36,5 @@ extension DynamicSizeExtenson on BuildContext {
 
 extension SizeUnitExtension on BuildContext {
   double get heightUnit => dynamicHeight / 100;
-  double get widthUnit => dynamicHeight / 100;
+  double get widthUnit => dynamicWidth / 100;
 }
