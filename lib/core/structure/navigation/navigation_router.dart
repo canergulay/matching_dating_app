@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/bloc/identification_bloc.dart';
+
 import 'package:matchangoo/features/Identification/presentation/pages/identification.dart';
+import 'package:matchangoo/features/authentication/register/presentation/pages/phone_verification.dart';
+import 'package:matchangoo/features/authentication/login/presentation/pages/login_main.dart';
+
 import '../../constants/navigation/navigation_constants.dart';
 import '../../../features/home/presentation/pages/home_screen.dart';
-import '../../../features/login/presentation/pages/login_main.dart';
 
 class NavigationRouter {
   static NavigationRouter _instace = NavigationRouter._init();
@@ -24,6 +25,9 @@ class NavigationRouter {
         }
       case NavigationConstants.IDENTIFICATION:
         return normalNavigate(Identification());
+      case NavigationConstants.PHONEVERIFICATION:
+        print('BU DORU!');
+        return normalNavigate(PhoneVerification());
 
       default:
         return normalNavigate(LoginMain());

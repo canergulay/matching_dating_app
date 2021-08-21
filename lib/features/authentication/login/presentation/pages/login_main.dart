@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/components/buttons/animated_button.dart';
+import 'package:matchangoo/core/constants/app_constants.dart';
 import 'package:matchangoo/core/init/geolocation/location_manager.dart';
 import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/structure/navigation/navigation_manager.dart';
-
-import '../../../../core/components/buttons/animated_button.dart';
-import '../../../../core/constants/app_constants.dart';
 
 class LoginMain extends StatelessWidget {
   const LoginMain({Key? key}) : super(key: key);
@@ -29,7 +28,7 @@ class LoginMain extends StatelessWidget {
                 AnimatedButton(
                   title: 'login with your gmail',
                   onPressed: () {
-                    NavigationManager.instance.navigateToPage(path: '/home', arguments: 'this is just an arguement.');
+                    NavigationManager.instance.navigateToPage(path: '/phoneverification', arguments: 'nothing');
                     print('gmail');
                   },
                 ),
