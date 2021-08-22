@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:matchangoo/core/components/buttons/animated_button.dart';
+import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
 import 'package:matchangoo/core/constants/app_constants.dart';
 import 'package:matchangoo/core/init/geolocation/location_manager.dart';
 import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
