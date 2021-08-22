@@ -27,22 +27,18 @@ class LoginMain extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AnimatedButton(
-                  title: 'login with your gmail',
+                  title: 'Create Account',
                   onPressed: () {
                     NavigationManager.instance.navigateToPage(path: '/phoneverification', arguments: 'nothing');
                     print('gmail');
                   },
                 ),
                 AnimatedButton(
-                    title: 'sign in with your phone',
+                    title: 'Sign In',
                     onPressed: () {
-                      NavigationManager.instance.navigateToPage(path: '/identification', arguments: 'nothing');
-                      /*
-                       LocationManager _locationManager = sl.get<LocationManager>();
-                      _locationManager.location.requestPermission();
-                      _locationManager.location.hasPermission().then((value) => print(value));
-                      _locationManager.location.getLocation().then((value) => print('location is ' + value.toString()));*/
-                      print('phone.');
+                      Future.delayed(Duration(milliseconds: 150), () {
+                        NavigationManager.instance.navigateToPage(path: '/identification', arguments: 'nothing');
+                      });
                     }),
               ],
             ),

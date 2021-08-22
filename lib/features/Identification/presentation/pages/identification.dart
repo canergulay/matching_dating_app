@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
 import 'package:matchangoo/core/constants/app_constants.dart';
 import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
+import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/ui_configs.dart';
@@ -66,10 +67,13 @@ class _IdentificationState extends State<Identification> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [upperAnimatedContainer(context), greyContainer()],
-            ),
             backButton(context, context.read<IdentificationCubit>().pageKeepTrack),
+            Container(
+              padding: EdgeInsets.only(left: context.widthUnit * 3, right: context.widthUnit * 3),
+              child: Row(
+                children: [upperAnimatedContainer(context), greyContainer()],
+              ),
+            ),
           ],
         );
       },
@@ -77,14 +81,25 @@ class _IdentificationState extends State<Identification> {
   }
 
   Container backButton(BuildContext context, int page) {
-    return Container(
-        child: page != 0
-            ? IconButton(
+    return page != 0
+        ? Container(
+            child: IconButton(
                 onPressed: () {
                   context.read<IdentificationCubit>().getPrevious();
                 },
-                icon: Icon(Icons.arrow_back_ios))
-            : Container());
+                icon: Icon(Icons.arrow_back_ios)),
+          )
+        : Container(
+            padding: EdgeInsets.only(left: context.widthUnit * 1.5),
+            child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'cancel registration',
+                  style: Theme.of(context).textTheme.headline6,
+                )),
+          );
   }
 
   Expanded greyContainer() {

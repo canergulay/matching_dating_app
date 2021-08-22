@@ -39,5 +39,5 @@ class IdentificationCubit extends Cubit<int> {
     }
   }
 
-  double containerWidth(BuildContext context) => context.width / identificationPages(context).length * (state + 1);
+  double containerWidth(BuildContext context) => (context.width - context.widthUnit * 6) / identificationPages(context).length * (state + 1);
 }
