@@ -31,18 +31,15 @@ class _IdentificationState extends State<Identification> {
     return SafeArea(
       child: BlocProvider(
           create: (context) => IdentificationCubit(),
-          child: BlocBuilder<IdentificationCubit, int>(
-            builder: (context, identificationState) {
-              return Scaffold(
-                  body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  animatedRowTop(context),
-                  identificationPageView(context),
-                ],
-              ));
-            },
-          )),
+          child: Builder(
+              builder: (context) => Scaffold(
+                      body: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      animatedRowTop(context),
+                      identificationPageView(context),
+                    ],
+                  )))),
     );
   }
 
@@ -51,7 +48,7 @@ class _IdentificationState extends State<Identification> {
       child: PageView.builder(
         physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
         reverse: false,
-        controller: _pageController,
+        controller: context.read<IdentificationCubit>().pageController,
         onPageChanged: (int page) {
           context.read<IdentificationCubit>().onPageChanged(page);
         },
@@ -63,10 +60,31 @@ class _IdentificationState extends State<Identification> {
     );
   }
 
-  Row animatedRowTop(BuildContext context) {
-    return Row(
-      children: [upperAnimatedContainer(context), greyContainer()],
+  BlocBuilder animatedRowTop(BuildContext context) {
+    return BlocBuilder<IdentificationCubit, int>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [upperAnimatedContainer(context), greyContainer()],
+            ),
+            backButton(context, context.read<IdentificationCubit>().pageKeepTrack),
+          ],
+        );
+      },
     );
+  }
+
+  Container backButton(BuildContext context, int page) {
+    return Container(
+        child: page != 0
+            ? IconButton(
+                onPressed: () {
+                  context.read<IdentificationCubit>().getPrevious();
+                },
+                icon: Icon(Icons.arrow_back_ios))
+            : Container());
   }
 
   Expanded greyContainer() {

@@ -7,6 +7,8 @@ import 'package:matchangoo/features/Identification/presentation/widgets/keep_ali
 class IdentificationCubit extends Cubit<int> {
   IdentificationCubit() : super(0);
 
+  final PageController pageController = PageController(initialPage: 0);
+
   List<Widget> identificationPages(BuildContext context) {
     return [
       KeepAlivePage(child: firstSection(context)),
@@ -29,6 +31,12 @@ class IdentificationCubit extends Cubit<int> {
 
   void goToPrevious() {
     emit(state - 1);
+  }
+
+  void getPrevious() {
+    if (state != 0) {
+      pageController.animateToPage(state - 1, duration: Duration(milliseconds: 450), curve: Curves.easeInOutBack);
+    }
   }
 
   double containerWidth(BuildContext context) => context.width / identificationPages(context).length * (state + 1);
