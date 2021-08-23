@@ -1,18 +1,20 @@
+import 'package:matchangoo/core/result_error/errors/custom_error.dart';
+import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 import 'package:matchangoo/features/authentication/register/domain/entities/verification_control.dart';
 
 abstract class IVerificationEmailDataSource {
-  Future<bool> sendVerificationEmail(String email);
-  Future<bool> checkVerificationCode(VerificationControl verificationControl);
+  Future<Result> sendVerificationEmail(String email);
+  Future<Result> checkVerificationCode(VerificationControl verificationControl);
 }
 
 class VerificationEmailDataSource extends IVerificationEmailDataSource {
   @override
-  Future<bool> checkVerificationCode(VerificationControl verificationControl) {
-    return Future.value(true);
+  Future<Result<bool>> checkVerificationCode(VerificationControl verificationControl) async {
+    return await Future.value(Result.success(true));
   }
 
   @override
-  Future<bool> sendVerificationEmail(String email) {
-    return Future.value(true);
+  Future<Result<bool>> sendVerificationEmail(String email) {
+    return Future.value(Result.error(CustomError(message: 'Bir problem ile karşılaştık ve bu problemi biz kendimiz YARATTIK.')));
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/check_verification_code.dart';
@@ -31,7 +32,12 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     }
   }
 
-  void sendVerificationCode() {
-    print(emailAdress);
+  void sendVerificationCode() async {
+    Result<bool> sonuc = await sendVerificationEmail.call(emailAdress);
+    sonuc.when(success: (value) {
+      print(value);
+    }, error: (error) {
+      print(error.message);
+    });
   }
 }
