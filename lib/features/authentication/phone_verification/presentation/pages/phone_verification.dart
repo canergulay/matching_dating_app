@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:matchangoo/core/components/buttons/animated_button.dart';
+import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/verify_send_sms.dart';
 import 'package:matchangoo/features/authentication/register/presentation/bloc/phone_verification_cubit.dart';
 
 class PhoneVerification extends StatelessWidget {
@@ -12,7 +14,7 @@ class PhoneVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PhoneVerificationCubit(PhoneVerificationState(countryCode: "TR", isButtonActive: false)),
+      create: (context) => PhoneVerificationCubit(sendVerificationSMS: sl.get<SendVerificationSMS>(), verifySMSCode: sl.get<VerifySMSCode>()),
       child: BlocBuilder<PhoneVerificationCubit, PhoneVerificationState>(
         builder: (context, state) {
           return Scaffold(

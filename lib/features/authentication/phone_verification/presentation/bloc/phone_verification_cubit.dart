@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/verify_send_sms.dart';
 
 class PhoneVerificationCubit extends Cubit<PhoneVerificationState> {
-  PhoneVerificationCubit(PhoneVerificationState initial) : super(initial);
+  final SendVerificationSMS sendVerificationSMS;
+  final VerifySMSCode verifySMSCode;
+
+  PhoneVerificationCubit({required this.sendVerificationSMS, required this.verifySMSCode})
+      : super(PhoneVerificationState(countryCode: "TR", isButtonActive: false));
   final FocusNode focusNode = FocusNode();
   void changeCountryCode(PhoneVerificationState state) {
     emit(state);
@@ -15,9 +20,9 @@ class PhoneVerificationCubit extends Cubit<PhoneVerificationState> {
   }
 
   void sendMessage(BuildContext context) {
-    print('sendid!');
     focusNode.unfocus();
     ProgressIndicator.instance.showLoadingIndicator(context);
+
     Future.delayed(Duration(seconds: 1), () {
       Navigator.of(context).pop();
     });
