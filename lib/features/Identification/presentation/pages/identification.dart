@@ -28,20 +28,21 @@ class _IdentificationState extends State<Identification> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        animatedRowTop(context),
-        identificationPageView(context),
-      ],
-    )));
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          animatedRowTop(context),
+          identificationPageView(context),
+        ],
+      ),
+    );
   }
 
   Expanded identificationPageView(BuildContext context) {
     return Expanded(
       child: PageView.builder(
-        physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+        physics: NeverScrollableScrollPhysics(),
         reverse: false,
         controller: context.read<IdentificationCubit>().pageController,
         onPageChanged: (int page) {

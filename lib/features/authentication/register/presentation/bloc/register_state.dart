@@ -8,3 +8,5 @@ class RegisterInitial extends RegisterState {}
 class RegisterEmailAdressTyped extends RegisterState {}
 
 class RegisterWithEmailVerified extends RegisterState {}
+
+class RegisterWithEmailError extends RegisterState {}

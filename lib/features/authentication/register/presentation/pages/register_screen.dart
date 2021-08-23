@@ -16,21 +16,19 @@ class RegisterScreen extends StatelessWidget {
         BlocProvider(create: (_) => sl.get<RegisterBloc>()),
         BlocProvider(create: (_) => sl.get<RegisterBloc>().identificationCubit),
       ],
-      child: Scaffold(
-          body: Center(
-        child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-          child: BlocBuilder<RegisterBloc, RegisterState>(
-            builder: (context, state) {
-              if (state is RegisterInitial) {
-                return emailVerifyContainer(context, false);
-              } else if (state is RegisterEmailAdressTyped) {
-                return emailVerifyContainer(context, true);
-              } else {
-                return Identification();
-              }
-            },
-          ),
+      child: Scaffold(body: Center(
+        child: BlocBuilder<RegisterBloc, RegisterState>(
+          builder: (context, state) {
+            if (state is RegisterInitial) {
+              return emailVerifyContainer(context, false);
+            } else if (state is RegisterEmailAdressTyped) {
+              return emailVerifyContainer(context, true);
+            } else if (state is RegisterWithEmailVerified) {
+              return Identification();
+            } else {
+              return Identification();
+            }
+          },
         ),
       )),
     );

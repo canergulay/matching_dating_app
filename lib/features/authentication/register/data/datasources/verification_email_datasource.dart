@@ -15,6 +15,6 @@ class VerificationEmailDataSource extends IVerificationEmailDataSource {
 
   @override
   Future<Result<bool>> sendVerificationEmail(String email) {
-    return Future.value(Result.error(CustomError(message: 'Bir problem ile karşılaştık ve bu problemi biz kendimiz YARATTIK.')));
+    return Future.value(Result.success(true));
   }
 }

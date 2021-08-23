@@ -57,7 +57,9 @@ Container activeButton(BuildContext context) => Container(
       margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
       child: AnimatedButton(
         title: 'send code',
-        onPressed: context.read<RegisterBloc>().sendVerificationCode,
+        onPressed: () {
+          context.read<RegisterBloc>().add(EmailVerifyWaiting());
+        },
         buttonRadius: 5,
       ),
     );

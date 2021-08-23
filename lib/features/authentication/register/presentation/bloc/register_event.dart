@@ -8,4 +8,6 @@ class EmailAdressTyped extends RegisterEvent {
   EmailAdressTyped({required this.emailAdressChanged});
 }
 
+class EmailVerifyWaiting extends RegisterEvent {}
+
 class EmailVerified extends RegisterEvent {}

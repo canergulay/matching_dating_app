@@ -39,6 +39,12 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 80,
