@@ -1,5 +1,5 @@
-import 'package:matchangoo/features/authentication/phone_verification/data/models/verify_response_config.dart';
-import 'package:matchangoo/features/authentication/phone_verification/data/repositories/sms_verify_repositary.dart';
+import '../../data/models/verify_response_config.dart';
+import '../../data/repositories/sms_verify_repositary.dart';
 
 class SendVerificationSMS {
   final SMSVerifyRepositary smsVerifyRepositary;

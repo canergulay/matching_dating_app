@@ -1,12 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
-import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
-import 'package:matchangoo/core/init/geolocation/location_manager.dart';
-import 'package:matchangoo/core/init/theme_manager/theme_manager_cubit.dart';
-import 'package:matchangoo/core/ui/theme/theme_controller.dart';
-import 'package:matchangoo/features/authentication/register/data/datasources/register_remote_datasource.dart';
-import 'package:matchangoo/features/authentication/register/data/repositories/sms_verify_repositary.dart';
-import 'package:matchangoo/features/authentication/register/domain/usecases/verify_send_sms.dart';
+import '../../components/utils/adaptive_dialoger.dart';
+import '../geolocation/location_manager.dart';
+import '../theme_manager/theme_manager_cubit.dart';
+import '../../ui/theme/theme_controller.dart';
+import '../../../features/authentication/phone_verification/data/datasources/register_remote_datasource.dart';
+import '../../../features/authentication/phone_verification/data/repositories/sms_verify_repositary.dart';
+import '../../../features/authentication/phone_verification/domain/usecases/verify_send_sms.dart';
 
 final sl = GetIt.instance;
 

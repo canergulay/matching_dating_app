@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
-import 'package:matchangoo/core/constants/app_constants.dart';
-import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../../core/components/utils/adaptive_dialoger.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/init/get_them_all/get_it_container.dart';
+import '../../../../core/structure/utils/extensions/context_extension.dart';
 
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/ui_configs.dart';
+import '../cubit/identification_cubit.dart';
+import '../ui_configs.dart';
 
 class Identification extends StatefulWidget {
   Identification({Key? key}) : super(key: key);

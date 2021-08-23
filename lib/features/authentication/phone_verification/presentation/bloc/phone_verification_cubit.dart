@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
-import 'package:matchangoo/features/authentication/register/domain/usecases/verify_send_sms.dart';
+import '../../../../../core/components/utils/loading_dialoger.dart';
+import '../../domain/usecases/verify_send_sms.dart';
 
 class PhoneVerificationCubit extends Cubit<PhoneVerificationState> {
   final SendVerificationSMS sendVerificationSMS;

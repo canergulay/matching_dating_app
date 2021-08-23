@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/structure/navigation/transitions/fade_route.dart';
-import 'package:matchangoo/core/structure/navigation/transitions/scale_route.dart';
-import 'package:matchangoo/core/structure/navigation/transitions/size_route.dart';
-import 'package:matchangoo/core/structure/navigation/transitions/slide_route.dart';
 
-import 'package:matchangoo/features/Identification/presentation/pages/identification.dart';
-import 'package:matchangoo/features/authentication/register/presentation/pages/phone_verification.dart';
-import 'package:matchangoo/features/authentication/login/presentation/pages/login_main.dart';
-
-import '../../constants/navigation/navigation_constants.dart';
+import '../../../features/Identification/presentation/pages/identification.dart';
+import '../../../features/authentication/login/presentation/pages/login_main.dart';
+import '../../../features/authentication/phone_verification/presentation/pages/phone_verification.dart';
 import '../../../features/home/presentation/pages/home_screen.dart';
+import '../../constants/navigation/navigation_constants.dart';
+import 'transitions/fade_route.dart';
+import 'transitions/scale_route.dart';
+import 'transitions/size_route.dart';
+import 'transitions/slide_route.dart';
 
 class NavigationRouter {
   static NavigationRouter _instace = NavigationRouter._init();
@@ -29,7 +28,8 @@ class NavigationRouter {
         }
       case NavigationConstants.IDENTIFICATION:
         return sizeRoute(Identification(), args);
-      case NavigationConstants.PHONEVERIFICATION:
+
+      case NavigationConstants.REGISTER:
         print('BU DORU!');
         return normalNavigate(PhoneVerification());
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/components/buttons/animated_button.dart';
-import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
-import 'package:matchangoo/core/constants/app_constants.dart';
-import 'package:matchangoo/core/init/geolocation/location_manager.dart';
-import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
-import 'package:matchangoo/core/structure/navigation/navigation_manager.dart';
+import '../../../../../core/components/buttons/animated_button.dart';
+import '../../../../../core/components/utils/adaptive_dialoger.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/init/geolocation/location_manager.dart';
+import '../../../../../core/init/get_them_all/get_it_container.dart';
+import '../../../../../core/structure/navigation/navigation_manager.dart';
 
 class LoginMain extends StatelessWidget {
   const LoginMain({Key? key}) : super(key: key);

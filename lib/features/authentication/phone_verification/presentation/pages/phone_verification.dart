@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:matchangoo/core/components/buttons/animated_button.dart';
-import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/features/authentication/register/domain/usecases/verify_send_sms.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/phone_verification_cubit.dart';
+import '../../../../../core/components/buttons/animated_button.dart';
+import '../../../../../core/init/get_them_all/get_it_container.dart';
+import '../../../../../core/structure/utils/extensions/context_extension.dart';
+
+import '../../domain/usecases/verify_send_sms.dart';
+import '../bloc/phone_verification_cubit.dart';
 
 class PhoneVerification extends StatelessWidget {
   const PhoneVerification({Key? key}) : super(key: key);

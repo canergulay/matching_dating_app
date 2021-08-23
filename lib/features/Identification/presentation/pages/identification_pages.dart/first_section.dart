@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:matchangoo/core/constants/design_constants.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/gender_button.dart';
+import '../../../../../core/constants/design_constants.dart';
+import '../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../widgets/gender_button.dart';
 
 Container firstSection(BuildContext context) => Container(
       child: Column(

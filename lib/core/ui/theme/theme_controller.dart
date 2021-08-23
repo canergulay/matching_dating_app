@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
+import '../../structure/utils/enums/theme_types.dart';
 
 import 'dark_theme.dart';
 import 'light_theme.dart';

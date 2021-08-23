@@ -1,6 +1,6 @@
-import 'package:matchangoo/features/authentication/register/data/datasources/register_remote_datasource.dart';
-import 'package:matchangoo/features/authentication/register/data/models/verify_response_config.dart';
-import 'package:matchangoo/features/authentication/register/domain/repositories/sms_verify_repositary_contract.dart';
+import '../datasources/register_remote_datasource.dart';
+import '../models/verify_response_config.dart';
+import '../../domain/repositories/sms_verify_repositary_contract.dart';
 
 class SMSVerifyRepositary extends SMSVerifyRepositaryContract {
   final SMSVerifyRemoteDataSource smsVerifyRemoteDataSource;

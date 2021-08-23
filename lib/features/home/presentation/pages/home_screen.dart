@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
-import 'package:matchangoo/core/init/theme_manager/theme_manager_cubit.dart';
-import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
+import '../../../../core/init/get_them_all/get_it_container.dart';
+import '../../../../core/init/theme_manager/theme_manager_cubit.dart';
+import '../../../../core/structure/utils/enums/theme_types.dart';
 
 class HomeScreen extends StatelessWidget {
   final String arguements;

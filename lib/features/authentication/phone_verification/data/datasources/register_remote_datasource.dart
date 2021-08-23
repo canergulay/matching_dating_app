@@ -1,4 +1,4 @@
-import 'package:matchangoo/features/authentication/register/data/models/verify_response_config.dart';
+import '../models/verify_response_config.dart';
 
 abstract class SMSVerifyRemoteDSContract {
   Future<SendResponse> sendSMS(final String phoneNumber);

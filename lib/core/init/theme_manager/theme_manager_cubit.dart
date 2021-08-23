@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
-import 'package:matchangoo/core/ui/theme/theme_controller.dart';
+import '../../structure/utils/enums/theme_types.dart';
+import '../../ui/theme/theme_controller.dart';
 
 class ThemeManagerCubit extends Cubit<ThemeData> {
   final ThemeController themeController;

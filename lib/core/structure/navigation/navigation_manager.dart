@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:matchangoo/core/structure/navigation/INavigationContract.dart';
+import 'INavigationContract.dart';
 
 class NavigationManager implements NavigationContract {
   static NavigationManager _instace = NavigationManager._init();

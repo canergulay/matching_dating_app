@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/design_constants.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
+import '../../../../core/constants/design_constants.dart';
+import '../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../../core/ui/theme/palette.dart';
 
 class GenderButton extends StatefulWidget {
   final String image;

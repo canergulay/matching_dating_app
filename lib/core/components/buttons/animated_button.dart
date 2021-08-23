@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../structure/utils/extensions/context_extension.dart';
 
 import '../../ui/theme/palette.dart';
 

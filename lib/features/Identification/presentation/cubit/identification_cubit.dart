@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/first_section.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/keep_alive.dart';
+import '../../../../core/structure/utils/extensions/context_extension.dart';
+import '../pages/identification_pages.dart/first_section.dart';
+import '../widgets/keep_alive.dart';
 
 class IdentificationCubit extends Cubit<int> {
   IdentificationCubit() : super(0);
