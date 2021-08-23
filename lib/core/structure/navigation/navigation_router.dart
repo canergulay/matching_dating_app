@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:matchangoo/features/authentication/register/presentation/pages/register_screen.dart';
 
 import '../../../features/Identification/presentation/pages/identification.dart';
 import '../../../features/authentication/login/presentation/pages/login_main.dart';
@@ -30,8 +31,7 @@ class NavigationRouter {
         return sizeRoute(Identification(), args);
 
       case NavigationConstants.REGISTER:
-        print('BU DORU!');
-        return normalNavigate(PhoneVerification());
+        return normalNavigate(RegisterScreen());
 
       default:
         return normalNavigate(LoginMain());

@@ -17,8 +17,6 @@ class Identification extends StatefulWidget {
 }
 
 class _IdentificationState extends State<Identification> {
-  final PageController _pageController = PageController(initialPage: 0);
-
   @override
   void initState() {
     AdaptiveDialoger dialogcu = sl.get<AdaptiveDialoger>();
@@ -30,18 +28,14 @@ class _IdentificationState extends State<Identification> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider(
-          create: (context) => IdentificationCubit(),
-          child: Builder(
-              builder: (context) => Scaffold(
-                      body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      animatedRowTop(context),
-                      identificationPageView(context),
-                    ],
-                  )))),
-    );
+        child: Scaffold(
+            body: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        animatedRowTop(context),
+        identificationPageView(context),
+      ],
+    )));
   }
 
   Expanded identificationPageView(BuildContext context) {

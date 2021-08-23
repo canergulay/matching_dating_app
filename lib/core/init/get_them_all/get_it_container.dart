@@ -1,5 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
+import 'package:matchangoo/features/authentication/register/data/datasources/verification_email_datasource.dart';
+import 'package:matchangoo/features/authentication/register/data/repositories/verification_email_repositary.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/check_verification_code.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/send_verification_email.dart';
+import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../components/utils/adaptive_dialoger.dart';
 import '../geolocation/location_manager.dart';
 import '../theme_manager/theme_manager_cubit.dart';
@@ -24,6 +30,9 @@ Future<void> init() async {
 
   //SENDSMSDEPENDENCIES
   registerSMSVerificationModul();
+
+  //REGISTER FEATURE
+  registerModule();
 }
 
 void registerSMSVerificationModul() {
@@ -31,4 +40,13 @@ void registerSMSVerificationModul() {
   sl.registerFactory<VerifySMSCode>(() => VerifySMSCode(smsVerifyRepositary: sl()));
   sl.registerFactory<SMSVerifyRepositary>(() => SMSVerifyRepositary(smsVerifyRemoteDataSource: sl()));
   sl.registerFactory<SMSVerifyRemoteDataSource>(() => SMSVerifyRemoteDataSource());
+}
+
+void registerModule() {
+  sl.registerFactory<RegisterBloc>(() => RegisterBloc(identificationCubit: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl()));
+  sl.registerFactory<IdentificationCubit>(() => IdentificationCubit());
+  sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
+  sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
+  sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
+  sl.registerFactory<VerificationEmailDataSource>(() => VerificationEmailDataSource());
 }

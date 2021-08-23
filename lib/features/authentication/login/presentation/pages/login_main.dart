@@ -29,7 +29,7 @@ class LoginMain extends StatelessWidget {
                 AnimatedButton(
                   title: 'Create Account',
                   onPressed: () {
-                    NavigationManager.instance.navigateToPage(path: '/phoneverification', arguments: 'nothing');
+                    NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
                     print('gmail');
                   },
                 ),
