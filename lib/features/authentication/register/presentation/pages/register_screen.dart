@@ -4,6 +4,8 @@ import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/pages/identification.dart';
 import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
+import 'package:matchangoo/features/authentication/register/presentation/widgets/email_verification_code.dart';
+import 'package:matchangoo/features/authentication/register/presentation/widgets/email_verification_error.dart';
 import 'package:matchangoo/features/authentication/register/presentation/widgets/email_verification_form.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -23,10 +25,12 @@ class RegisterScreen extends StatelessWidget {
               return emailVerifyContainer(context, false);
             } else if (state is RegisterEmailAdressTyped) {
               return emailVerifyContainer(context, true);
+            } else if (state is RegisterWithEmailSent) {
+              return emailCodeVerificationCodeEnter(context);
             } else if (state is RegisterWithEmailVerified) {
               return Identification();
             } else {
-              return Identification();
+              return emailCouldNotBeVerified(context);
             }
           },
         ),

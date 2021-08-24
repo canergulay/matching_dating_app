@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/animated_button.dart';
+
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
 
 import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
+import 'package:matchangoo/features/authentication/register/presentation/widgets/activatable_button.dart';
 
 final String TITLE_TEXT = "Please verify your email adress.";
 final String EXPLANATION_TEXT = "* We will send you a verification code to pair your e-mail adress within your account.";
@@ -21,7 +22,9 @@ Container emailVerifyContainer(BuildContext context, bool typed) {
           style: Theme.of(context).textTheme.headline5,
         ),
         textFieldContainer(context),
-        getAnimatedButton(typed, context),
+        getAnimatedButton(typed, context, () {
+          context.read<RegisterBloc>().add(EmailVerifyWaiting());
+        }),
         SizedBox().heightSpacer(context, 3),
         Text(EXPLANATION_TEXT),
         SizedBox().heightSpacer(context, 1),
@@ -48,29 +51,3 @@ Container textFieldContainer(BuildContext context) {
         )),
   );
 }
-
-Widget getAnimatedButton(bool typed, BuildContext context) {
-  return typed ? activeButton(context) : passiveButton(context);
-}
-
-Container activeButton(BuildContext context) => Container(
-      margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
-      child: AnimatedButton(
-        title: 'send code',
-        onPressed: () {
-          context.read<RegisterBloc>().add(EmailVerifyWaiting());
-        },
-        buttonRadius: 5,
-      ),
-    );
-
-Container passiveButton(BuildContext context) => Container(
-      margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
-      child: AnimatedButton(
-        title: 'send code',
-        onPressed: () {},
-        titleColor: Colors.black,
-        buttonColor: Colors.grey.shade300,
-        buttonRadius: 0,
-      ),
-    );

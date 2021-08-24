@@ -4,7 +4,7 @@ import 'package:matchangoo/features/authentication/register/presentation/pages/r
 
 import '../../../features/Identification/presentation/pages/identification.dart';
 import '../../../features/authentication/login/presentation/pages/login_main.dart';
-import '../../../features/authentication/phone_verification/presentation/pages/phone_verification.dart';
+
 import '../../../features/home/presentation/pages/home_screen.dart';
 import '../../constants/navigation/navigation_constants.dart';
 import 'transitions/fade_route.dart';

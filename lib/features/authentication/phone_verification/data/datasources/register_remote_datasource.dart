@@ -9,7 +9,6 @@ class SMSVerifyRemoteDataSource implements SMSVerifyRemoteDSContract {
   @override
   Future<SendResponse> sendSMS(String phoneNumber) {
     try {
-      // TODO BURADA APİYE İSTEK ATIP KONTROL EDECEK
       return Future.value(SendResponse.SENT);
     } catch (e) {
       return Future.value(SendResponse.ERROR);
@@ -19,7 +18,6 @@ class SMSVerifyRemoteDataSource implements SMSVerifyRemoteDSContract {
   @override
   Future<VerifyResponse> verifySMS(String verificationCode, String phoneNumber) {
     try {
-      // TODO BURADA APİYE İSTEK ATIP KONTROL EDECEK
       return Future.value(VerifyResponse.ACCEPTED);
     } catch (e) {
       return Future.value(VerifyResponse.PROBLEM);

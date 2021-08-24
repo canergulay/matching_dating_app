@@ -5,10 +5,17 @@ class NetworkManager {
   static NetworkManager _instace = NetworkManager._init();
   static NetworkManager get instance => _instace;
 
-  Dio? dioInstance;
+  late Dio dio;
 
   NetworkManager._init() {
-    BaseOptions dioBaseOptions = BaseOptions(baseUrl: AppConstants.BASE_URL);
-    dioInstance = Dio(dioBaseOptions);
+    BaseOptions dioBaseOptions = BaseOptions(
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      baseUrl: AppConstants.BASE_URL,
+      connectTimeout: 5000,
+      receiveTimeout: 5000,
+    );
+    dio = Dio(dioBaseOptions);
   }
 }
