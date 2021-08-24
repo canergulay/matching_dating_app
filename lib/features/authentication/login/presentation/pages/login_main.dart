@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/components/buttons/animated_button.dart';
 
 import '../../../../../core/constants/app_constants.dart';
+import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
 
 import '../../../../../core/structure/navigation/navigation_manager.dart';
 
@@ -17,7 +19,7 @@ class LoginMain extends StatelessWidget {
             child: Center(
               child: Text(
                 AppConstants.APP_NAME,
-                style: Theme.of(context).textTheme.headline3,
+                style: Theme.of(context).textTheme.headline3?.dynamicText(size: 10, widthUnit: context.widthUnit),
               ),
             ),
           ),
