@@ -32,7 +32,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         yield (RegisterEmailAdressTyped());
       }
     } else if (event is EmailVerifyWaiting) {
-      print('geldi');
       yield* _sendVerificationCode();
     } else if (event is EmailVerified) {
       yield RegisterWithEmailVerified();
@@ -40,9 +39,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Stream<RegisterState> _sendVerificationCode() async* {
-    print('geldi 2');
     Result<bool> sonuc = await sendVerificationEmail(emailAdress);
-    print('geldi 3');
+
     yield sonuc.when(success: (bool result) {
       if (result) {
         return RegisterWithEmailSent();
@@ -56,26 +54,22 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     });
   }
 
-  void setCode(String code) {
-    verificationCode = code;
-  }
-
   void verifyCodeAndMail() async {
-    print('this is email : $emailAdress and this is code : $verificationCode');
     VerificationControl verificationCredentials = VerificationControl(verificationCode: verificationCode, verificationEmail: emailAdress);
     Result<bool> verificationResult = await checkVerificationEmail(verificationCredentials);
-    print('bekledik geldi');
+
     verificationResult.when(success: (success) {
       if (success) {
-        print('succes');
         emit(RegisterWithEmailVerified());
       } else {
-        print('false gelmiş');
         emit(RegisterWithEmailError());
       }
     }, error: (error) {
-      print('problematic');
       emit(RegisterWithEmailError());
     });
+  }
+
+  void setCode(String code) {
+    verificationCode = code;
   }
 }
