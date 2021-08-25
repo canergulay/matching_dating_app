@@ -23,6 +23,7 @@ class VerificationEmailRepositary extends IVerificationEmailRepositary {
     try {
       return await verificationEmailDataSource.checkVerificationCode(verificationControl);
     } catch (error) {
+      print('deneme');
       return Result.error(CustomError(isException: true));
     }
   }
