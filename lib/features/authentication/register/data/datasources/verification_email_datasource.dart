@@ -15,37 +15,27 @@ abstract class IVerificationEmailDataSource {
 class VerificationEmailDataSource extends IVerificationEmailDataSource {
   @override
   Future<Result<bool>> checkVerificationCode(VerificationControl verificationControl) async {
-    try {
-      final response = await NetworkManager.instance.dio.post(
-        "/auth/verifymail",
-        data: {"email": verificationControl.verificationEmail, "code": verificationControl.verificationCode},
-      );
-      if (response.statusCode == HttpStatus.ok) {
-        return Result.success(true);
-      } else {
-        return Result.success(false);
-      }
-    } catch (e) {
-      print(e);
-      return Result.error(CustomError(message: 'An unexpected error has appeared'));
+    final response = await NetworkManager.instance.dio.post(
+      "/auth/verifymail",
+      data: {"email": verificationControl.verificationEmail, "code": verificationControl.verificationCode},
+    );
+    if (response.statusCode == HttpStatus.ok) {
+      return Result.success(true);
+    } else {
+      return Result.success(false);
     }
   }
 
   @override
   Future<Result<bool>> sendVerificationEmail(String email) async {
-    try {
-      final response = await NetworkManager.instance.dio.post(
-        "/auth/sendmail",
-        data: {"email": email},
-      );
-      if (response.statusCode == HttpStatus.ok && response.data == "success") {
-        return Result.success(true);
-      } else {
-        return Result.error(CustomError(message: 'We have an error with code ${response.statusCode} and the message is "${response.data}"'));
-      }
-    } catch (e) {
-      print(e);
-      return Result.error(CustomError(message: 'An unexpected error has appeared'));
+    final response = await NetworkManager.instance.dio.post(
+      "/auth/sendmail",
+      data: {"email": email},
+    );
+    if (response.statusCode == HttpStatus.ok && response.data == "success") {
+      return Result.success(true);
+    } else {
+      return Result.error(CustomError(message: 'We have an error with code ${response.statusCode} and the message is "${response.data}"'));
     }
   }
 }

@@ -2,7 +2,7 @@ class CustomError {
   final String message;
   final bool isException;
   CustomError({
-    required this.message,
+    this.message = 'An unexpected error has occured',
     this.isException = false,
   });
 }

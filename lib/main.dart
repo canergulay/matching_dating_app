@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
       lazy: true,
       create: (context) => sl.get<ThemeManagerCubit>(),
       child: BlocBuilder<ThemeManagerCubit, ThemeData>(
-        builder: (context, state) {
+        builder: (context, themeState) {
           return MaterialApp(
-            theme: state,
+            theme: themeState,
             title: AppConstants.APP_NAME,
             home: LoginMain(),
             navigatorKey: NavigationManager.instance.navigatorKey,
