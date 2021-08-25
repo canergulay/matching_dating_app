@@ -46,7 +46,7 @@ class _IdentificationState extends State<Identification> {
         reverse: false,
         controller: context.read<IdentificationCubit>().pageController,
         onPageChanged: (int page) {
-          context.read<IdentificationCubit>().onPageChanged(page);
+          //   context.read<IdentificationCubit>().onPageChanged(page);
         },
         itemBuilder: (contexta, index) {
           return context.read<IdentificationCubit>().identificationPages(context)[index];
@@ -62,7 +62,7 @@ class _IdentificationState extends State<Identification> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            backButton(context, context.read<IdentificationCubit>().pageKeepTrack),
+            backButton(context, context.read<IdentificationCubit>().state),
             Container(
               padding: EdgeInsets.only(left: context.widthUnit * 3, right: context.widthUnit * 3),
               child: Row(

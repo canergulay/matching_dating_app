@@ -9,14 +9,15 @@ class AnimatedButton extends StatefulWidget {
   final Color titleColor;
   final Color buttonColor;
   final double buttonRadius;
-  const AnimatedButton(
-      {Key? key,
-      required this.title,
-      required this.onPressed,
-      this.titleColor = Colors.white,
-      this.buttonColor = Palette.buttonRed,
-      this.buttonRadius = 30})
-      : super(key: key);
+
+  const AnimatedButton({
+    Key? key,
+    required this.title,
+    required this.onPressed,
+    this.titleColor = Colors.white,
+    this.buttonColor = Palette.buttonRed,
+    this.buttonRadius = 30,
+  }) : super(key: key);
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();
@@ -47,6 +48,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: 80,
       child: GestureDetector(
         onTap: _onButtonTapController,
@@ -60,7 +62,8 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
             ) {
               return Container(
                 margin: EdgeInsets.only(
-                    top: 20 + _animationController.value * _animationMultiplier,
+                    top: 2 + _animationController.value * _animationMultiplier,
+                    bottom: 15 + _animationController.value * _animationMultiplier,
                     right: 15 + _animationController.value * _animationMultiplier,
                     left: 15 + _animationController.value * _animationMultiplier),
                 decoration: BoxDecoration(color: widget.buttonColor, borderRadius: BorderRadius.circular(widget.buttonRadius)),

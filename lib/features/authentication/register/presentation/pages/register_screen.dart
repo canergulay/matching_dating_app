@@ -22,7 +22,8 @@ class RegisterScreen extends StatelessWidget {
         child: BlocBuilder<RegisterBloc, RegisterState>(
           builder: (context, state) {
             if (state is RegisterInitial) {
-              return emailVerifyContainer(context, false);
+              return Identification();
+              // return emailVerifyContainer(context, false);
             } else if (state is RegisterEmailAdressTyped) {
               return emailVerifyContainer(context, true);
             } else if (state is RegisterWithEmailSent) {

@@ -10,7 +10,7 @@ Container emailCouldNotBeVerified(BuildContext context) => Container(
         children: [
           Text(
             'EMAIL CANT BE VERIFIED!',
-            style: Theme.of(context).textTheme.headline5?.dynamicText(size: 6, widthUnit: context.widthUnit),
+            style: Theme.of(context).textTheme.headline5?.dynamicText(size: 6, context: context),
           ),
         ],
       ),

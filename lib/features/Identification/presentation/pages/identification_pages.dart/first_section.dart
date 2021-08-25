@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import '../../../../../core/constants/design_constants.dart';
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../widgets/gender_button.dart';
 
-Container firstSection(BuildContext context) => Container(
+class FirstSection extends StatelessWidget {
+  const FirstSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'I am a ',
-            style: Theme.of(context).textTheme.headline3,
+          GestureDetector(
+            onTap: () {
+              BlocProvider.of<IdentificationCubit>(context).goToNextPage();
+            },
+            child: Text(
+              'I am a ',
+              style: Theme.of(context).textTheme.headline3,
+            ),
           ),
           iamA(context),
           Text(
@@ -21,6 +33,8 @@ Container firstSection(BuildContext context) => Container(
         ],
       ),
     );
+  }
+}
 
 Container iamA(BuildContext context) {
   return Container(

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-Container secondSection(BuildContext context) => Container(
+class SecondSection extends StatelessWidget {
+  const SecondSection({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
       child: Column(
-        children: [],
+        children: [Text('THİS CONFESSION HAS MEANT NOTHING !')],
       ),
     );
+  }
+}

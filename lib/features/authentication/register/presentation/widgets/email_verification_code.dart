@@ -25,13 +25,13 @@ Container emailCodeVerificationCodeEnter(BuildContext contextOld) => Container(
                         onChanged: (code) {
                           if (code.length == 5) {
                             BlocProvider.of<OnOffCubit>(context).on();
-                            BlocProvider.of<RegisterBloc>(contextOld).setCode(code);
-                            BlocProvider.of<RegisterBloc>(contextOld).verifyCodeAndMail();
+                            BlocProvider.of<RegisterBloc>(contextOld).setCode = code;
+                            BlocProvider.of<RegisterBloc>(contextOld).verifyCodeAndMail(context);
                           }
                         },
                         onSubmit: (code) {
                           BlocProvider.of<OnOffCubit>(context).on();
-                          BlocProvider.of<RegisterBloc>(contextOld).setCode(code);
+                          BlocProvider.of<RegisterBloc>(contextOld).setCode = code;
                         },
                         keyboardType: TextInputType.number,
                       ),
@@ -39,7 +39,7 @@ Container emailCodeVerificationCodeEnter(BuildContext contextOld) => Container(
                     BlocBuilder<OnOffCubit, bool>(
                       builder: (contexta, state) {
                         return getAnimatedButton(state, context, () {
-                          BlocProvider.of<RegisterBloc>(contextOld).verifyCodeAndMail();
+                          BlocProvider.of<RegisterBloc>(contextOld).verifyCodeAndMail(context);
                         });
                       },
                     ),

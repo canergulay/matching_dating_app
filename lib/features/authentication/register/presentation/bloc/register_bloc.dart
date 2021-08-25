@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
 import 'package:matchangoo/core/result_error/errors/custom_error.dart';
 import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 
@@ -54,10 +56,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     });
   }
 
-  void verifyCodeAndMail() async {
+  void verifyCodeAndMail(BuildContext context) async {
     VerificationControl verificationCredentials = VerificationControl(verificationCode: verificationCode, verificationEmail: emailAdress);
+    ProgressIndicator.instance.showLoadingIndicator(context);
     Result<bool> verificationResult = await checkVerificationEmail(verificationCredentials);
-
+    await Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pop();
+    });
     verificationResult.when(success: (success) {
       if (success) {
         emit(RegisterWithEmailVerified());
@@ -69,7 +74,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     });
   }
 
-  void setCode(String code) {
+  set setCode(String code) {
     verificationCode = code;
   }
 }
