@@ -7,6 +7,7 @@ import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.da
 import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
+import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
 
 class WhatIsYourName extends StatelessWidget {
   const WhatIsYourName({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class WhatIsYourName extends StatelessWidget {
   Widget build(BuildContext context) {
     FocusNode _focusNode = FocusNode();
     final String whatIsYourName = 'What is your name ?';
-    final String explanation = 'This will be shown to other users and you will not be allowed to change.';
+    final String explanation = '* This will be shown to other users and you will not be allowed to change.';
     return BlocProvider(
         create: (context) => OnOffCubit(),
         child: SingleChildScrollView(
@@ -68,19 +69,3 @@ class WhatIsYourName extends StatelessWidget {
         ));
   }
 }
-
-Widget activatableButton({required VoidCallback onPressed}) => BlocBuilder<OnOffCubit, bool>(
-      builder: (context, state) {
-        if (!state) {
-          return Center(
-              child: Column(
-            children: [
-              SizedBox().heightSpacer(context, 2),
-              Container(child: headLineThree(context, 'continue')),
-            ],
-          ));
-        } else {
-          return AnimatedButton(title: 'continue', onPressed: onPressed);
-        }
-      },
-    );

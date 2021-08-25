@@ -10,9 +10,10 @@ import '../widgets/keep_alive.dart';
 
 class IdentificationCubit extends Cubit<int> {
   IdentificationCubit() : super(0);
-
+  ////UTILS
   final PageController pageController = PageController(initialPage: 0);
   final RegistrationEntity registrationEntity = RegistrationEntity();
+  bool isTwo = false;
 
   ///IDENTIFICATION PAGE
   List<Widget> identificationPages(BuildContext context) {
@@ -60,6 +61,14 @@ class IdentificationCubit extends Cubit<int> {
 
   void getValue() {
     print(registrationEntity.name);
+  }
+
+  void yesItIsTwo() {
+    isTwo = true;
+  }
+
+  void noItIsNotTwo() {
+    isTwo = false;
   }
 
   double containerWidth(BuildContext context) => (context.width - context.widthUnit * 6) / identificationPages(context).length * (state + 1);

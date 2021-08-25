@@ -8,4 +8,8 @@ extension FocusNext on BuildContext {
   void finishAndUnfocus() {
     FocusScope.of(this).unfocus();
   }
+
+  void getPreviousFocus() {
+    FocusScope.of(this).previousFocus();
+  }
 }
