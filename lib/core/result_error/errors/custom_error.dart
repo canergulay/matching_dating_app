@@ -1,8 +1,8 @@
 class CustomError {
   final String message;
-  final bool isException;
+  final int errorCode;
   CustomError({
     this.message = 'An unexpected error has occured',
-    this.isException = false,
+    this.errorCode = 000,
   });
 }

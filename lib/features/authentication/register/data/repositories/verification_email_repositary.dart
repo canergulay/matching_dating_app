@@ -14,7 +14,7 @@ class VerificationEmailRepositary extends IVerificationEmailRepositary {
     try {
       return await verificationEmailDataSource.sendVerificationEmail(verificationEmail);
     } catch (error) {
-      return Result.error(CustomError(isException: true));
+      return Result.error(CustomError());
     }
   }
 
@@ -23,7 +23,7 @@ class VerificationEmailRepositary extends IVerificationEmailRepositary {
     try {
       return await verificationEmailDataSource.checkVerificationCode(verificationControl);
     } catch (error) {
-      return Result.error(CustomError(isException: true));
+      return Result.error(CustomError());
     }
   }
 }
