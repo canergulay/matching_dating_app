@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/components/buttons/animated_button.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../../../core/components/buttons/animated_button.dart';
+import '../../../../../core/structure/utils/extensions/context_extension.dart';
 
 Widget getAnimatedButton(bool typed, BuildContext context, VoidCallback onPressed) {
   return typed ? activeButton(context, onPressed) : passiveButton(context);

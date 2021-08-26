@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/activatable_button.dart';
+import '../../../../../core/components/utils/on_off_cubit.dart';
+import '../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../bloc/register_bloc.dart';
+import 'activatable_button.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:flutter/material.dart';
 

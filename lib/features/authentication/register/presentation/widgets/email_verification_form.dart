@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/activatable_button.dart';
+import '../bloc/register_bloc.dart';
+import 'activatable_button.dart';
 
 final String TITLE_TEXT = "Please verify your email adress.";
 final String EXPLANATION_TEXT = "* We will send you a verification code to pair your e-mail adress within your account.";

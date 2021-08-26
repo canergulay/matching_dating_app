@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/animated_button.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
-import 'package:matchangoo/core/ui/components/headlines.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
+import '../../../../../../core/components/buttons/animated_button.dart';
+import '../../../../../../core/components/utils/on_off_cubit.dart';
+import '../../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/structure/utils/extensions/textstyle_extension.dart';
+import '../../../../../../core/ui/components/headlines.dart';
+import '../../../cubit/identification_cubit.dart';
+import '../../../widgets/activatable_button.dart';
 
 class WhatIsYourName extends StatelessWidget {
   const WhatIsYourName({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class WhatIsYourName extends StatelessWidget {
                       onChanged: (name) {
                         if (name.length > 2) {
                           BlocProvider.of<OnOffCubit>(context).on();
-                          BlocProvider.of<IdentificationCubit>(context).setName(name);
+                          BlocProvider.of<IdentificationCubit>(context).registrationEntity.name = name;
                         } else {
                           BlocProvider.of<OnOffCubit>(context).off();
                         }

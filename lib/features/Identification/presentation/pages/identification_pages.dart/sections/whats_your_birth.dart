@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
-import 'package:matchangoo/core/constants/controllers/date_validator_controller.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/focus_passer_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/core/ui/components/headlines.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
+import '../../../../../../core/components/utils/on_off_cubit.dart';
+import '../../../../../../core/constants/controllers/date_validator_controller.dart';
+import '../../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../../../../core/structure/utils/extensions/focus_passer_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/ui/components/headlines.dart';
+import '../../../cubit/identification_cubit.dart';
+import '../utils/bool_checkers.dart';
+import '../../../widgets/activatable_button.dart';
 
 class WhenIsYourBirthday extends StatelessWidget {
   const WhenIsYourBirthday({Key? key}) : super(key: key);
@@ -111,68 +112,42 @@ class WhenIsYourBirthday extends StatelessWidget {
   Expanded digitTextField(int field, BuildContext context, String hint, RegExp regexp) {
     return Expanded(
         flex: 5,
-        child: TextField(
-          style: Theme.of(context).textTheme.headline5,
-          autofocus: true,
-          textAlign: TextAlign.center,
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38),
-          ),
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(1),
-            FilteringTextInputFormatter.allow(regexp),
-          ],
-          keyboardType: TextInputType.number,
-          onChanged: (string) {
-            if (string.isNotEmpty) {
-              if (shouldGoNextField(field, string)) {
-                context.nextEditableTextFocus();
-              }
-              if (field == 7) {
-                context.finishAndUnfocus();
-                context.read<OnOffCubit>().on();
-              }
+        child: RawKeyboardListener(
+          focusNode: FocusNode(),
+          onKey: (event) {
+            if (event.logicalKey == LogicalKeyboardKey.backspace && field != 0) {
+              print(field.toString() + 'deneme');
+              // here you can check if textfield is focused
+              // context.read<IdentificationCubit>().focusNoder.myFocus(field).unfocus();
+              context.read<IdentificationCubit>().focusNoder.previousFocus(field).requestFocus();
             }
           },
+          child: TextField(
+            focusNode: context.read<IdentificationCubit>().focusNoder.myFocus(field),
+            style: Theme.of(context).textTheme.headline5,
+            autofocus: true,
+            textAlign: TextAlign.center,
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38),
+            ),
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(1),
+              FilteringTextInputFormatter.allow(regexp),
+            ],
+            keyboardType: TextInputType.number,
+            onChanged: (string) {
+              if (string.isNotEmpty) {
+                if (shouldGoNextField(field, string)) {
+                  context.read<IdentificationCubit>().focusNoder.nextFocus(field).requestFocus();
+                }
+                if (field == 7) {
+                  context.read<IdentificationCubit>().focusNoder.nextFocus(7).unfocus();
+                  context.read<OnOffCubit>().on();
+                }
+              } else {}
+            },
+          ),
         ));
   }
-}
-
-bool shouldGoNextField(int field, String value) {
-  print('HERE IS THE VALUE ' + value);
-  switch (field) {
-    case 0:
-      return kontrolForZero(int.parse(value));
-    case 2:
-      return kontrolForSecond(int.parse(value));
-    case 3:
-      return kontrolForThird(int.parse(value));
-    case 4:
-      return kontrolForForth(int.parse(value));
-    case 5:
-      return kontrolForFifth(int.parse(value));
-    default:
-      return true;
-  }
-}
-
-bool kontrolForZero(int value) {
-  return value <= 3;
-}
-
-bool kontrolForSecond(int value) {
-  return value == 0 || value == 1;
-}
-
-bool kontrolForThird(int value) {
-  return value < 3;
-}
-
-bool kontrolForForth(int value) {
-  return value == 1 || value == 2;
-}
-
-bool kontrolForFifth(int value) {
-  return value == 8 || value == 9 || value == 0;
 }

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:matchangoo/core/constants/app_constants.dart';
+import '../../constants/app_constants.dart';
 
 class NetworkManager {
   static NetworkManager _instace = NetworkManager._init();

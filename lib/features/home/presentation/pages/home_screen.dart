@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
+import '../../../../core/structure/utils/extensions/textstyle_extension.dart';
 
 import '../../../../core/init/get_them_all/get_it_container.dart';
 import '../../../../core/init/theme_manager/theme_manager_cubit.dart';

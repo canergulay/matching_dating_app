@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import '../../../../../core/constants/design_constants.dart';
-import '../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../widgets/gender_button.dart';
+import '../../../cubit/identification_cubit.dart';
+import '../../../../../../core/constants/design_constants.dart';
+import '../../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../widgets/gender_button.dart';
 
 class FirstSection extends StatelessWidget {
   const FirstSection({Key? key}) : super(key: key);

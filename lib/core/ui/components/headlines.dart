@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../structure/utils/extensions/context_extension.dart';
 
-import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
+import '../../structure/utils/extensions/textstyle_extension.dart';
 
 Text headLineOne(BuildContext context, String text) =>
     Text(text, style: Theme.of(context).textTheme.headline1?.dynamicText(context: context, size: 10));

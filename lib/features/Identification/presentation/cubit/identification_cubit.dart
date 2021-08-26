@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/second_section.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/whats_your_birth.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/whats_your_name.dart';
-import 'package:matchangoo/features/Identification/domain/entities/registration_entity.dart';
+import '../pages/identification_pages.dart/sections/second_section.dart';
+import '../pages/identification_pages.dart/utils/focusnode_supplier.dart';
+import '../pages/identification_pages.dart/sections/whats_your_birth.dart';
+import '../pages/identification_pages.dart/sections/whats_your_name.dart';
+import '../../domain/entities/registration_entity.dart';
 import '../../../../core/structure/utils/extensions/context_extension.dart';
-import '../pages/identification_pages.dart/first_section.dart';
+import '../pages/identification_pages.dart/sections/first_section.dart';
 import '../widgets/keep_alive.dart';
 
 class IdentificationCubit extends Cubit<int> {
@@ -13,6 +14,7 @@ class IdentificationCubit extends Cubit<int> {
   ////UTILS
   final PageController pageController = PageController(initialPage: 0);
   final RegistrationEntity registrationEntity = RegistrationEntity();
+  final FocusNoder focusNoder = FocusNoder();
   bool isTwo = false;
 
   ///IDENTIFICATION PAGE
@@ -25,16 +27,6 @@ class IdentificationCubit extends Cubit<int> {
     ];
   }
 
-/*
-  void onPageChanged(int page) {
-    
-    page > pageKeepTrack ? goToNext() : goToPrevious();
-    page > pageKeepTrack ? pageKeepTrack++ : pageKeepTrack--;
-  }
-
-  void goToNext() {
-    emit(state + 1);
-  }*/
   /// PAGE LOGIC ///////
   void goToNextPage() {
     emit(state + 1);
@@ -55,13 +47,6 @@ class IdentificationCubit extends Cubit<int> {
 /////////////
 
 ///// IDENTIFICATION CONFIGURATIONS
-  void setName(String uname) {
-    registrationEntity.name = uname;
-  }
-
-  void getValue() {
-    print(registrationEntity.name);
-  }
 
   void yesItIsTwo() {
     isTwo = true;

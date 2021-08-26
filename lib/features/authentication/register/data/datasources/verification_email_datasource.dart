@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:matchangoo/core/constants/networkpath.dart';
-import 'package:matchangoo/core/init/network/network_manager.dart';
-import 'package:matchangoo/core/result_error/errors/custom_error.dart';
-import 'package:matchangoo/core/result_error/result_freezed/result.dart';
-import 'package:matchangoo/features/authentication/register/domain/entities/verification_control.dart';
+import '../../../../../core/constants/networkpath.dart';
+import '../../../../../core/init/network/network_manager.dart';
+import '../../../../../core/result_error/errors/custom_error.dart';
+import '../../../../../core/result_error/result_freezed/result.dart';
+import '../../domain/entities/verification_control.dart';
 
 abstract class IVerificationEmailDataSource {
   Future<Result> sendVerificationEmail(String email);

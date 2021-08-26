@@ -1,8 +1,8 @@
-import 'package:matchangoo/core/result_error/errors/custom_error.dart';
-import 'package:matchangoo/core/result_error/result_freezed/result.dart';
-import 'package:matchangoo/features/authentication/register/data/datasources/verification_email_datasource.dart';
-import 'package:matchangoo/features/authentication/register/domain/entities/verification_control.dart';
-import 'package:matchangoo/features/authentication/register/domain/repositories/verification_email_repositary_contract.dart';
+import '../../../../../core/result_error/errors/custom_error.dart';
+import '../../../../../core/result_error/result_freezed/result.dart';
+import '../datasources/verification_email_datasource.dart';
+import '../../domain/entities/verification_control.dart';
+import '../../domain/repositories/verification_email_repositary_contract.dart';
 
 class VerificationEmailRepositary extends IVerificationEmailRepositary {
   final VerificationEmailDataSource verificationEmailDataSource;

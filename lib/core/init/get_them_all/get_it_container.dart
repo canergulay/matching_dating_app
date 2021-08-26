@@ -1,11 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/authentication/register/data/datasources/verification_email_datasource.dart';
-import 'package:matchangoo/features/authentication/register/data/repositories/verification_email_repositary.dart';
-import 'package:matchangoo/features/authentication/register/domain/usecases/check_verification_code.dart';
-import 'package:matchangoo/features/authentication/register/domain/usecases/send_verification_email.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
+import '../../../features/Identification/presentation/cubit/identification_cubit.dart';
+import '../../../features/authentication/register/data/datasources/verification_email_datasource.dart';
+import '../../../features/authentication/register/data/repositories/verification_email_repositary.dart';
+import '../../../features/authentication/register/domain/usecases/check_verification_code.dart';
+import '../../../features/authentication/register/domain/usecases/send_verification_email.dart';
+import '../../../features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../components/utils/adaptive_dialoger.dart';
 import '../geolocation/location_manager.dart';
 import '../theme_manager/theme_manager_cubit.dart';

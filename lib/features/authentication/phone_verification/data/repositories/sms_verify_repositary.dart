@@ -1,6 +1,6 @@
+import '../../domain/repositories/sms_verify_repositary_contract.dart';
 import '../datasources/register_remote_datasource.dart';
 import '../models/verify_response_config.dart';
-import '../../domain/repositories/sms_verify_repositary_contract.dart';
 
 class SMSVerifyRepositary extends SMSVerifyRepositaryContract {
   final SMSVerifyRemoteDataSource smsVerifyRemoteDataSource;

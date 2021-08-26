@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:matchangoo/core/result_error/errors/custom_error.dart';
+import '../errors/custom_error.dart';
 
 part 'result.freezed.dart';
 
