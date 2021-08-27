@@ -16,8 +16,7 @@ class LoginMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: backGroundContainerWithLogo(
-        context: context,
+      body: BackGroundContainerWithLogo(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
