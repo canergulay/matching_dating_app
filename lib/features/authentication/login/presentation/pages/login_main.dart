@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/components/buttons/animated_button.dart';
 
 import '../../../../../core/constants/app_constants.dart';
-import '../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../core/structure/utils/extensions/textstyle_extension.dart';
 
 import '../../../../../core/structure/navigation/navigation_manager.dart';

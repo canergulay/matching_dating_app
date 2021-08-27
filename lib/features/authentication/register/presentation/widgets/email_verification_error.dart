@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 import '../../../../../core/structure/utils/extensions/textstyle_extension.dart';
 
 Container emailCouldNotBeVerified(BuildContext context) => Container(

@@ -49,9 +49,9 @@ class _IdentificationState extends State<Identification> {
           //   context.read<IdentificationCubit>().onPageChanged(page);
         },
         itemBuilder: (contexta, index) {
-          return context.read<IdentificationCubit>().identificationPages(context)[index];
+          return context.read<IdentificationCubit>().identificationRepo.identificationPages()[index];
         },
-        itemCount: context.read<IdentificationCubit>().identificationPages(context).length,
+        itemCount: context.read<IdentificationCubit>().identificationRepo.identificationPages().length,
       ),
     );
   }

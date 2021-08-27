@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/constants/controllers/date_validator_controller.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../../../../core/structure/utils/extensions/focus_passer_extension.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 import '../../../../../../core/ui/components/headlines.dart';
 import '../../../cubit/identification_cubit.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../core/components/buttons/animated_button.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';

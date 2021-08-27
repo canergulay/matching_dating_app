@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/init/get_them_all/get_it_container.dart';
-import '../../../../Identification/presentation/cubit/identification_cubit.dart';
 import '../../../../Identification/presentation/pages/identification.dart';
 import '../bloc/register_bloc.dart';
 import '../widgets/email_verification_code.dart';
@@ -22,8 +21,8 @@ class RegisterScreen extends StatelessWidget {
         child: BlocBuilder<RegisterBloc, RegisterState>(
           builder: (context, state) {
             if (state is RegisterInitial) {
-              return Identification();
-              //return emailVerifyContainer(context, false);
+              // return Identification();
+              return emailVerifyContainer(context, false);
             } else if (state is RegisterEmailAdressTyped) {
               return emailVerifyContainer(context, true);
             } else if (state is RegisterWithEmailSent) {

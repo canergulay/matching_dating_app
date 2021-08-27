@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
-import '../../../../../core/constants/networkpath.dart';
 import '../../../../../core/init/network/network_manager.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';
 import '../../../../../core/result_error/result_freezed/result.dart';
