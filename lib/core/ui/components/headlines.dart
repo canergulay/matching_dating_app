@@ -8,5 +8,9 @@ Text headLineOne(BuildContext context, String text) =>
 Text headLineTwo(BuildContext context, String text) =>
     Text(text, style: Theme.of(context).textTheme.headline2?.dynamicText(context: context, size: 10));
 
-Text headLineThree(BuildContext context, String text) =>
+Text headLineThree(BuildContext context, String text) => Text(text,
+    textAlign: TextAlign.center,
+    style: Theme.of(context).textTheme.headline2?.dynamicText(context: context, size: 5).copyWith(color: Colors.black38));
+
+Text headLineFour(BuildContext context, String text) =>
     Text(text, style: Theme.of(context).textTheme.headline2?.dynamicText(context: context, size: 5).copyWith(color: Colors.black38));

@@ -49,7 +49,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 80,
+      height: 90,
       child: GestureDetector(
         onTap: _onButtonTapController,
         onLongPressStart: _onLongPressStart,
@@ -63,10 +63,17 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
               return Container(
                 margin: EdgeInsets.only(
                     top: 2 + _animationController.value * _animationMultiplier,
-                    bottom: 15 + _animationController.value * _animationMultiplier,
-                    right: 15 + _animationController.value * _animationMultiplier,
-                    left: 15 + _animationController.value * _animationMultiplier),
-                decoration: BoxDecoration(color: widget.buttonColor, borderRadius: BorderRadius.circular(widget.buttonRadius)),
+                    bottom: 2 + _animationController.value * _animationMultiplier,
+                    right: 2 + _animationController.value * _animationMultiplier,
+                    left: 2 + _animationController.value * _animationMultiplier),
+                decoration: BoxDecoration(color: widget.buttonColor, borderRadius: BorderRadius.circular(widget.buttonRadius), boxShadow: [
+                  BoxShadow(
+                    color: Colors.pink.withOpacity(0.2),
+                    spreadRadius: 10,
+                    blurRadius: 10,
+                    offset: Offset(0, 3),
+                  )
+                ]),
                 width: double.infinity,
                 child: Center(
                     child: Text(widget.title,

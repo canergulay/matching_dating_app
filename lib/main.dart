@@ -12,7 +12,7 @@ import 'features/authentication/login/presentation/pages/login_main.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   await inject.init();
   runApp(MyApp());
 }

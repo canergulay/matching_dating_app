@@ -43,6 +43,7 @@ dependencies:
   email_validator: ^2.0.1
   dio: ^4.0.0
   pinput: ^1.2.0
+  google_sign_in: ^5.0.7
 
 dev_dependencies:
   change_app_package_name: ^0.1.3
@@ -60,16 +61,33 @@ flutter:
     - assets/lang/   
     - assets/images/icons/man.png
     - assets/images/icons/woman.png
+    - assets/images/icons/google_sign_in.png
+    - assets/images/uicomponents/backbutton.png
+    - assets/images/uicomponents/background.jpg
+    - assets/images/uicomponents/mlogo.png
+    - assets/images/uicomponents/mvector.png
+
   fonts:
     - family: Poppins
       fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Bold.ttf
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Poppins-Italic.ttf
+        - asset: assets/fonts/poppins/Poppins-Italic.ttf
           style: italic
-        - asset: assets/fonts/Poppins-Thin.ttf
+        - asset: assets/fonts/poppins/Poppins-Thin.ttf
+          weight: 200
+          
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/montserrat/Montserrat-Italic.ttf
+          style: italic
+        - asset: assets/fonts/montserrat/Montserrat-Thin.ttf
           weight: 200                    
+                          
   
   uses-material-design: true
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/constants/asset_paths.dart';
 
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
@@ -13,23 +14,35 @@ final String SECOND_EXPLANATION = "* You will also have the opportunity to save 
 
 Container emailVerifyContainer(BuildContext context, bool typed) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 3, vertical: context.heightUnit * 15),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(
-          TITLE_TEXT,
-          style: Theme.of(context).textTheme.headline5,
-        ),
-        textFieldContainer(context),
-        getAnimatedButton(typed, context, () {
-          context.read<RegisterBloc>().add(EmailVerifyWaiting());
-        }),
-        SizedBox().heightSpacer(context, 3),
-        Text(EXPLANATION_TEXT),
-        SizedBox().heightSpacer(context, 1),
-        Text(SECOND_EXPLANATION)
-      ],
+    padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 3, vertical: context.heightUnit * 0),
+    child: SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            TITLE_TEXT,
+            style: Theme.of(context).textTheme.headline5,
+          ),
+          textFieldContainer(context),
+          getAnimatedButton(typed, context, () {
+            context.read<RegisterBloc>().add(EmailVerifyWaiting());
+          }),
+          SizedBox().heightSpacer(context, 3),
+          Text(EXPLANATION_TEXT),
+          SizedBox().heightSpacer(context, 1),
+          Text(SECOND_EXPLANATION),
+          SizedBox().heightSpacer(context, 1),
+          GestureDetector(
+            onTap: () async {
+              await context.read<RegisterBloc>().googleSignInRepo.login();
+            },
+            child: Image.asset(
+              AssetPaths.GOOGLE_SIGN_IN,
+              scale: 1.4,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }

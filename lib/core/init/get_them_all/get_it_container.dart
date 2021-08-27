@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
+import 'package:matchangoo/core/functionality/google_sign_in.dart';
 import 'package:matchangoo/features/Identification/domain/entities/registration_entity.dart';
 import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/identification_page.dart';
 import '../../../features/Identification/presentation/cubit/identification_cubit.dart';
@@ -45,10 +46,12 @@ void registerSMSVerificationModul() {
 }
 
 void registerModule() {
-  sl.registerFactory<RegisterBloc>(() => RegisterBloc(identificationCubit: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl()));
+  sl.registerFactory<RegisterBloc>(
+      () => RegisterBloc(identificationCubit: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl(), googleSignInRepo: sl()));
   sl.registerFactory<IdentificationCubit>(() => IdentificationCubit(registrationEntity: sl(), identificationRepo: sl()));
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
+  sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo());
   sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
   sl.registerFactory<VerificationEmailDataSource>(() => VerificationEmailDataSource());
   sl.registerFactory<IdentificationRepo>(() => IdentificationRepo());
