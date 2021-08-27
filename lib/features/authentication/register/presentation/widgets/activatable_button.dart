@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
 import '../../../../../core/components/buttons/animated_button.dart';
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
 
@@ -9,19 +10,21 @@ Widget getAnimatedButton(bool typed, BuildContext context, VoidCallback onPresse
 Container activeButton(BuildContext context, VoidCallback onPressed) => Container(
       margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
       child: AnimatedButton(
-        title: 'send code',
+        title: 'verify',
         onPressed: onPressed,
-        buttonRadius: 5,
+        titleColor: Colors.white,
+        buttonColor: Palette.BUTTONACTIVE,
+        buttonRadius: 20,
       ),
     );
 
 Container passiveButton(BuildContext context) => Container(
       margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
       child: AnimatedButton(
-        title: 'send code',
+        title: 'verify',
         onPressed: () {},
-        titleColor: Colors.black,
-        buttonColor: Colors.grey.shade300,
-        buttonRadius: 0,
+        titleColor: Colors.white,
+        buttonColor: Palette.BUTTONINACTIVE,
+        buttonRadius: 20,
       ),
     );

@@ -27,15 +27,13 @@ class _IdentificationState extends State<Identification> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          animatedRowTop(context),
-          identificationPageView(context),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        animatedRowTop(context),
+        identificationPageView(context),
+      ],
     );
   }
 

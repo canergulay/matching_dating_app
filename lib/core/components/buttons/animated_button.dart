@@ -69,9 +69,9 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                 decoration: BoxDecoration(color: widget.buttonColor, borderRadius: BorderRadius.circular(widget.buttonRadius), boxShadow: [
                   BoxShadow(
                     color: Colors.pink.withOpacity(0.2),
-                    spreadRadius: 10,
-                    blurRadius: 10,
-                    offset: Offset(0, 3),
+                    spreadRadius: 2,
+                    blurRadius: 25,
+                    offset: Offset(3, 3),
                   )
                 ]),
                 width: double.infinity,

@@ -32,7 +32,7 @@ dependencies:
   equatable: ^2.0.3
   firebase_auth: ^3.0.1
   firebase_core: ^1.4.0
-  auto_size_text: ^2.1.0
+  auto_size_text: ^3.0.0-nullsafety.0
   adaptive_dialog: ^1.1.0
   sms_autofill: ^2.0.1  
   get_it: ^7.2.0
@@ -87,6 +87,10 @@ flutter:
           style: italic
         - asset: assets/fonts/montserrat/Montserrat-Thin.ttf
           weight: 200                    
+        - asset: assets/fonts/montserrat/Montserrat-Medium.ttf
+          weight: 300                    
+        - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
+          weight: 400                    
                           
   
   uses-material-design: true

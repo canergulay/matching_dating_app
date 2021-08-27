@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matchangoo/core/constants/app_constants.dart';
 import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
+import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import '../../../../../core/components/buttons/animated_button.dart';
@@ -20,6 +21,7 @@ class LoginMain extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            matchifyLogo(context),
             firstSectionMethod(context),
             SizedBox().heightSpacer(context, 2),
             secondShit(context),
