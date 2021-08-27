@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/buttons/animated_button.dart';
 import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
