@@ -3,10 +3,10 @@ import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 
-class BackGroundContainerWithLogo extends StatelessWidget {
+class BackGroundContainerWithOutLogo extends StatelessWidget {
   final Widget child;
 
-  const BackGroundContainerWithLogo({
+  const BackGroundContainerWithOutLogo({
     Key? key,
     required this.child,
   }) : super(key: key);
@@ -15,8 +15,9 @@ class BackGroundContainerWithLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.width,
+      height: context.height,
       child: child,
-      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: AssetImage(AssetPaths.BACKGROUND))),
+      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AssetPaths.BACKGROUND))),
     );
   }
 }

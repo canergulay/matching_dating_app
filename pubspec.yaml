@@ -66,6 +66,9 @@ flutter:
     - assets/images/uicomponents/background.jpg
     - assets/images/uicomponents/mlogo.png
     - assets/images/uicomponents/mvector.png
+    - assets/images/icons/previous.png
+    - assets/images/icons/current.png
+    - assets/images/icons/future.png
 
   fonts:
     - family: Poppins

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/structure/navigation/navigation_manager.dart';
 import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
 import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
+import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
 import '../../../../../core/init/get_them_all/get_it_container.dart';
 import '../../../../Identification/presentation/pages/identification.dart';
 import '../bloc/register_bloc.dart';
@@ -23,34 +24,32 @@ class RegisterScreen extends StatelessWidget {
       ],
       child: SafeArea(
         child: Scaffold(
-            resizeToAvoidBottomInset: false,
             body: SingleChildScrollView(
-              child: BackGroundContainerWithLogo(
-                child: BlocBuilder<RegisterBloc, RegisterState>(
+          child: BackGroundContainerWithOutLogo(
+            child: Column(
+              children: [
+                matchifyLogoWithBackButton(context),
+                BlocBuilder<RegisterBloc, RegisterState>(
                   builder: (context, state) {
                     if (state is RegisterInitial) {
-                      // return Identification();
-                      return columnSuplier(context: context, child: emailVerifyContainer(context, false));
+                      return Expanded(child: WhiteContainerWPinkShadow(child: Identification()));
+                      // return columnSuplier(context: context, child: emailVerifyContainer(context, false));
                     } else if (state is RegisterEmailAdressTyped) {
-                      return columnSuplier(context: context, child: emailVerifyContainer(context, true));
+                      return emailVerifyContainer(context, true);
                     } else if (state is RegisterWithEmailSent) {
-                      return columnSuplier(context: context, child: emailCodeVerificationCodeEnter(context));
+                      return emailCodeVerificationCodeEnter(context);
                     } else if (state is RegisterWithEmailVerified) {
-                      return Container(height: context.height, child: Identification());
+                      return Expanded(child: WhiteContainerWPinkShadow(child: identificationPageView(context)));
                     } else {
-                      return columnSuplier(context: context, child: emailCouldNotBeVerified(context));
+                      return emailCouldNotBeVerified(context);
                     }
                   },
                 ),
-              ),
-            )),
+              ],
+            ),
+          ),
+        )),
       ),
     );
   }
-}
-
-Column columnSuplier({required BuildContext context, required Widget child}) {
-  return Column(
-    children: [matchifyLogoWithBackButton(context), child],
-  );
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
+import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
 import '../../../../core/components/utils/adaptive_dialoger.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/init/get_them_all/get_it_container.dart';
@@ -28,29 +30,10 @@ class _IdentificationState extends State<Identification> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         animatedRowTop(context),
-        identificationPageView(context),
+        Expanded(child: identificationPageView(context)),
       ],
-    );
-  }
-
-  Expanded identificationPageView(BuildContext context) {
-    return Expanded(
-      child: PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        reverse: false,
-        controller: context.read<IdentificationCubit>().pageController,
-        onPageChanged: (int page) {
-          //   context.read<IdentificationCubit>().onPageChanged(page);
-        },
-        itemBuilder: (contexta, index) {
-          return context.read<IdentificationCubit>().identificationRepo.identificationPages()[index];
-        },
-        itemCount: context.read<IdentificationCubit>().identificationRepo.identificationPages().length,
-      ),
     );
   }
 
@@ -113,4 +96,19 @@ class _IdentificationState extends State<Identification> {
         width: context.read<IdentificationCubit>().containerWidth(context),
         color: UiConfigs.containerColor);
   }
+}
+
+PageView identificationPageView(BuildContext context) {
+  return PageView.builder(
+    physics: NeverScrollableScrollPhysics(),
+    reverse: false,
+    controller: context.read<IdentificationCubit>().pageController,
+    onPageChanged: (int page) {
+      //   context.read<IdentificationCubit>().onPageChanged(page);
+    },
+    itemBuilder: (contexta, index) {
+      return context.read<IdentificationCubit>().identificationRepo.identificationPages()[index];
+    },
+    itemCount: context.read<IdentificationCubit>().identificationRepo.identificationPages().length,
+  );
 }

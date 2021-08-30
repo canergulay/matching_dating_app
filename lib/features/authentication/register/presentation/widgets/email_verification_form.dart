@@ -19,10 +19,9 @@ final String TITLE_TEXT2 = "Email ID";
 
 final String EXPLANATION_TEXT = "* We will send you a verification code to pair your e-mail adress within your account.";
 final String SECOND_EXPLANATION = "* You will also have the opportunity to save your account in case you forget the password.";
-Container emailVerifyContainer(BuildContext context, bool typed) {
-  return whiteContainerWPinkShadow(
-    context,
-    Column(
+WhiteContainerWPinkShadow emailVerifyContainer(BuildContext context, bool typed) {
+  return WhiteContainerWPinkShadow(
+    child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox().heightSpacer(context, 1),

@@ -15,9 +15,8 @@ Container emailCodeVerificationCodeEnter(BuildContext contextOld) => Container(
       child: BlocProvider(
         create: (context) => OnOffCubit(),
         child: Builder(
-            builder: (context) => whiteContainerWPinkShadow(
-                  context,
-                  Column(
+            builder: (context) => WhiteContainerWPinkShadow(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
