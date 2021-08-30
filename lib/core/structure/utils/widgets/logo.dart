@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../constants/asset_paths.dart';
+import '../extensions/sizedBox_extension.dart';
+import '../extensions/textstyle_extension.dart';
+import '../../../ui/theme/palette.dart';
+import '../extensions/context_extension.dart';
 
 Column matchifyLogo(BuildContext context) => Column(
       children: [
@@ -34,7 +34,7 @@ Row matchifyLogoWithBackButton(BuildContext context) => Row(
         ),
         Column(
           children: [
-            SizedBox().heightSpacer(context, 8),
+            SizedBox().heightSpacer(context, 3),
             Image.asset(
               AssetPaths.LOGO,
               scale: 2,
@@ -53,8 +53,8 @@ Row matchifyLogoWithBackButton(BuildContext context) => Row(
 RichText matchify(BuildContext context) => RichText(
     text: TextSpan(
         text: 'matchi',
-        children: [TextSpan(text: 'fy', style: logoTextStyle(context, Palette.MPINK))],
-        style: logoTextStyle(context, Palette.MBLUE)));
+        children: [TextSpan(text: 'fy', style: logoTextStyle(context, Palette.MBLUE))],
+        style: logoTextStyle(context, Palette.MPINK)));
 
 TextStyle logoTextStyle(BuildContext context, Color color) =>
     Theme.of(context).textTheme.headline4?.dynamicText(context: context, size: 7).copyWith(color: color) ?? TextStyle();

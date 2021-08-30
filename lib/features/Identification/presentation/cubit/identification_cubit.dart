@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/identification_page.dart';
+import '../pages/identification_pages.dart/repo/identification_page.dart';
 import '../pages/identification_pages.dart/utils/focusnode_supplier.dart';
 import '../../domain/entities/registration_entity.dart';
 import '../../../../core/structure/utils/extensions/context_extension.dart';

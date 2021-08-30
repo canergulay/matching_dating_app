@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
+import '../../../../../core/ui/theme/palette.dart';
+import 'white_containerwpinkshadow.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import '../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../core/structure/utils/extensions/context_extension.dart';

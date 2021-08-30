@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/structure/navigation/navigation_manager.dart';
-import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
-import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
+
 import '../../../../../core/init/get_them_all/get_it_container.dart';
+import '../../../../../core/structure/utils/widgets/background_widget_wlogo.dart';
+import '../../../../../core/structure/utils/widgets/logo.dart';
 import '../../../../Identification/presentation/pages/identification.dart';
 import '../bloc/register_bloc.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import '../widgets/email_verification_code.dart';
 import '../widgets/email_verification_error.dart';
 import '../widgets/email_verification_form.dart';
+import '../widgets/white_containerwpinkshadow.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);

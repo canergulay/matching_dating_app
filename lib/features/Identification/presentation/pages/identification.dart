@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
+
 import '../../../../core/components/utils/adaptive_dialoger.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/init/get_them_all/get_it_container.dart';
 import '../../../../core/structure/utils/extensions/context_extension.dart';
-
 import '../cubit/identification_cubit.dart';
 import '../ui_configs.dart';
+import '../widgets/ara_line.dart';
+import '../widgets/status_icon.dart';
 
 class Identification extends StatefulWidget {
   Identification({Key? key}) : super(key: key);
@@ -40,17 +40,32 @@ class _IdentificationState extends State<Identification> {
   BlocBuilder animatedRowTop(BuildContext context) {
     return BlocBuilder<IdentificationCubit, int>(
       builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            backButton(context, context.read<IdentificationCubit>().state),
-            Container(
-              padding: EdgeInsets.only(left: context.widthUnit * 3, right: context.widthUnit * 3),
-              child: Row(
-                children: [upperAnimatedContainer(context), greyContainer()],
-              ),
-            ),
-          ],
+        return Container(
+          height: context.heightUnit * 3,
+          padding: EdgeInsets.only(left: context.widthUnit * 1.5, right: context.widthUnit * 1.5),
+          child: Row(
+            children: [
+              statusIcon(0, state),
+              Expanded(
+                  child: araLine(
+                myIndex: 0,
+                stateIndex: state,
+              )),
+              statusIcon(1, state),
+              Expanded(
+                  child: araLine(
+                myIndex: 1,
+                stateIndex: state,
+              )),
+              statusIcon(2, state),
+              Expanded(
+                  child: araLine(
+                myIndex: 2,
+                stateIndex: state,
+              )),
+              statusIcon(3, state)
+            ],
+          ),
         );
       },
     );

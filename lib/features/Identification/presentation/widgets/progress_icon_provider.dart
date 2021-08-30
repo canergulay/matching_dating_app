@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
+import '../../../../core/constants/asset_paths.dart';
 
 enum ProgresStatus { PREVIUS, CURRENT, FUTURE }
 
 Image progressIcon(ProgresStatus status) {
   switch (status) {
     case ProgresStatus.PREVIUS:
-      return Image.asset(AssetPaths.STATUS_CURRENT);
+      return Image.asset(AssetPaths.STATUS_PREVIOUS);
     case ProgresStatus.CURRENT:
       return Image.asset(AssetPaths.STATUS_CURRENT);
     case ProgresStatus.FUTURE:

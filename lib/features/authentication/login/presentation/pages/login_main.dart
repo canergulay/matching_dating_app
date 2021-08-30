@@ -1,15 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/app_constants.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
-import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
-import 'package:matchangoo/core/ui/components/headlines.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/constants/asset_paths.dart';
+import '../../../../../core/structure/utils/widgets/background_widget_wlogo.dart';
+import '../../../../../core/structure/utils/widgets/logo.dart';
+import '../../../../../core/ui/components/headlines.dart';
+import '../../../../../core/ui/theme/palette.dart';
 import '../../../../../core/components/buttons/animated_button.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../core/structure/navigation/navigation_manager.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 
 class LoginMain extends StatelessWidget {
   const LoginMain({Key? key}) : super(key: key);

@@ -1,12 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/animated_button.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
-import 'package:matchangoo/core/ui/components/headlines.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
+
+import '../../../../../core/ui/theme/palette.dart';
+import 'white_containerwpinkshadow.dart';
 
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
