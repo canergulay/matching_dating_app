@@ -9,15 +9,17 @@ class AnimatedButton extends StatefulWidget {
   final Color titleColor;
   final Color buttonColor;
   final double buttonRadius;
+  final Widget? child;
 
-  const AnimatedButton({
-    Key? key,
-    required this.title,
-    required this.onPressed,
-    this.titleColor = Colors.white,
-    this.buttonColor = Palette.buttonRed,
-    this.buttonRadius = 30,
-  }) : super(key: key);
+  const AnimatedButton(
+      {Key? key,
+      required this.title,
+      required this.onPressed,
+      this.titleColor = Colors.white,
+      this.buttonColor = Palette.buttonRed,
+      this.buttonRadius = 30,
+      this.child})
+      : super(key: key);
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();
@@ -49,7 +51,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 90,
+      height: 70,
       child: GestureDetector(
         onTap: _onButtonTapController,
         onLongPressStart: _onLongPressStart,
@@ -82,11 +84,17 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                 ]),
                 width: double.infinity,
                 child: Center(
-                    child: Text(widget.title,
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(widget.title,
                         style: Theme.of(context)
                             .textTheme
                             .headline5
-                            ?.copyWith(color: widget.titleColor, fontSize: context.heightUnit * 3 - _animationController.value))),
+                            ?.copyWith(color: widget.titleColor, fontSize: context.heightUnit * 3 - _animationController.value)),
+                    widget.child ?? Container()
+                  ],
+                )),
               );
             }),
       ),

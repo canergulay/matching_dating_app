@@ -63,7 +63,19 @@ class _IdentificationState extends State<Identification> {
                 myIndex: 2,
                 stateIndex: state,
               )),
-              statusIcon(3, state)
+              statusIcon(3, state),
+              Expanded(
+                  child: araLine(
+                myIndex: 3,
+                stateIndex: state,
+              )),
+              statusIcon(4, state),
+              Expanded(
+                  child: araLine(
+                myIndex: 4,
+                stateIndex: state,
+              )),
+              statusIcon(4, state)
             ],
           ),
         );

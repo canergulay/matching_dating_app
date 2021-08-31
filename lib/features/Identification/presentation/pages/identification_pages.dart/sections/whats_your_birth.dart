@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
+import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/constants/controllers/date_validator_controller.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
@@ -9,12 +11,13 @@ import '../../../../../../core/ui/components/headlines.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../utils/bool_checkers.dart';
 import '../../../widgets/activatable_button.dart';
+import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
 
 class WhenIsYourBirthday extends StatelessWidget {
   const WhenIsYourBirthday({Key? key}) : super(key: key);
 
   static const WhatIsYourBD = "What is your Birthday ?";
-  static const explanation = "* This will be visible to other users , and used for matching purposes.";
+  static const explanation = "This will be visible to other users , and used for matching purposes.";
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +26,59 @@ class WhenIsYourBirthday extends StatelessWidget {
       child: SingleChildScrollView(child: Builder(
         builder: (context) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 8, vertical: context.heightUnit * 3),
+            padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 3, vertical: context.heightUnit * 1.5),
+
             //padding: EdgeInsets.only(left: context.widthUnit * 4, right: context.widthUnit * 4),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                headLineTwo(context, WhatIsYourBD),
+                onBoardText(WhatIsYourBD, context),
+                SizedBox().heightSpacer(context, 2),
                 Text(
                   explanation,
                   style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black45),
                 ),
                 SizedBox().heightSpacer(context, 2),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: textFieldContainer(
+                        context: context,
+                        autoFocus: true,
+                        hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38) ?? TextStyle(),
+                        textInputType: TextInputType.number,
+                        hintText: 'DD',
+                        onChanged: (name) {},
+                      ),
+                    ),
+                    SizedBox().widthSpacer(context, 2),
+                    Expanded(
+                      flex: 1,
+                      child: textFieldContainer(
+                        context: context,
+                        autoFocus: true,
+                        hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38) ?? TextStyle(),
+                        textInputType: TextInputType.number,
+                        hintText: 'MM',
+                        onChanged: (name) {},
+                      ),
+                    ),
+                    SizedBox().widthSpacer(context, 2),
+                    Expanded(
+                      flex: 2,
+                      child: textFieldContainer(
+                        context: context,
+                        autoFocus: true,
+                        hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38) ?? TextStyle(),
+                        textInputType: TextInputType.number,
+                        hintText: 'YYYY',
+                        onChanged: (name) {},
+                      ),
+                    ),
+                  ],
+                ),
                 wholeTextField(context),
                 SizedBox().heightSpacer(context, 2),
                 activatableButton(onPressed: () {

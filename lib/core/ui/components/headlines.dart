@@ -14,3 +14,6 @@ Text headLineThree(BuildContext context, String text, {double size = 5}) => Text
 
 Text headLineFour(BuildContext context, String text) =>
     Text(text, style: Theme.of(context).textTheme.headline2?.dynamicText(context: context, size: 5).copyWith(color: Colors.black38));
+
+Text headLineFive(BuildContext context, String text) =>
+    Text(text, style: Theme.of(context).textTheme.headline3?.dynamicText(context: context, size: 7));

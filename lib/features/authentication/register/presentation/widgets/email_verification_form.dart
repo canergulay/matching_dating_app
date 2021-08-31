@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
 
 import '../../../../../core/ui/theme/palette.dart';
 import 'white_containerwpinkshadow.dart';
@@ -24,7 +25,11 @@ WhiteContainerWPinkShadow emailVerifyContainer(BuildContext context, bool typed)
         SizedBox().heightSpacer(context, 1),
         titleOne(context),
         titleTwo(context),
-        textFieldContainer(context),
+        textFieldContainerWithPrefix(
+            context: context,
+            textInputType: TextInputType.emailAddress,
+            hintText: 'example@mail.com',
+            onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
         SizedBox().heightSpacer(context, 2),
         getAnimatedButton(typed, context, () {
           context.read<RegisterBloc>().add(EmailVerifyWaiting());
@@ -49,37 +54,5 @@ AutoSizeText titleOne(BuildContext context) {
   return AutoSizeText(
     TITLE_TEXT,
     style: Theme.of(context).textTheme.headline4?.copyWith(fontSize: context.widthUnit * 6, color: Palette.BIZIMBLACK, fontWeight: FontWeight.bold),
-  );
-}
-
-Container textFieldContainer(BuildContext context) {
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Palette.TEXTFIELDGREY,
-    ),
-    margin: EdgeInsets.only(top: context.heightUnit * 4),
-    child: TextField(
-        style:
-            Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
-        onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text)),
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: context.widthUnit * 3.99999),
-          hintText: 'example@email.com',
-          alignLabelWithHint: false,
-          prefixIcon: Icon(
-            Icons.mail_outline_outlined,
-            color: Colors.black45,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
-          ),
-        )),
   );
 }

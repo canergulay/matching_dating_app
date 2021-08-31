@@ -1,5 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
+import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
@@ -7,6 +10,7 @@ import '../../../../../../core/structure/utils/extensions/textstyle_extension.da
 import '../../../../../../core/ui/components/headlines.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../../../widgets/activatable_button.dart';
+import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
 
 class WhatIsYourName extends StatelessWidget {
   const WhatIsYourName({Key? key}) : super(key: key);
@@ -15,47 +19,39 @@ class WhatIsYourName extends StatelessWidget {
   Widget build(BuildContext context) {
     FocusNode _focusNode = FocusNode();
     final String whatIsYourName = 'What is your name ?';
-    final String explanation = '* This will be shown to other users and you will not be allowed to change.';
+    final String explanation = 'Your name will be visible to other users.';
     return BlocProvider(
         create: (context) => OnOffCubit(),
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 8, vertical: context.heightUnit * 3),
+            padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 3, vertical: context.heightUnit * 1.5),
             child: Builder(
               builder: (context) => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox().heightSpacer(context, 2),
-                  headLineTwo(context, whatIsYourName),
-                  SizedBox().heightSpacer(context, 1),
+                  onBoardText(whatIsYourName, context),
+                  SizedBox().heightSpacer(context, 2),
                   Text(
                     explanation,
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black54),
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.black54),
                   ),
                   SizedBox().heightSpacer(context, 2),
-                  TextField(
-                      focusNode: _focusNode,
-                      onChanged: (name) {
-                        if (name.length > 2) {
-                          BlocProvider.of<OnOffCubit>(context).on();
-                          BlocProvider.of<IdentificationCubit>(context).registrationEntity.name = name;
-                        } else {
-                          BlocProvider.of<OnOffCubit>(context).off();
-                        }
-                      },
-                      autofocus: true,
-                      style: Theme.of(context).textTheme.headline3?.dynamicText(size: 7, context: context),
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelStyle: Theme.of(context).textTheme.headline3!.dynamicText(size: 3, context: context),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black38),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black38),
-                        ),
-                      )),
+                  textFieldContainer(
+                    context: context,
+                    autoFocus: true,
+                    textInputType: TextInputType.emailAddress,
+                    hintText: 'Enter your full name',
+                    onChanged: (name) {
+                      if (name.length > 2) {
+                        BlocProvider.of<OnOffCubit>(context).on();
+                        BlocProvider.of<IdentificationCubit>(context).registrationEntity.name = name;
+                      } else {
+                        BlocProvider.of<OnOffCubit>(context).off();
+                      }
+                    },
+                  ),
                   SizedBox().heightSpacer(context, 2),
                   activatableButton(onPressed: () {
                     _focusNode.unfocus();

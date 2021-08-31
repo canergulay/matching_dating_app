@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
 import '../../../../core/components/buttons/animated_button.dart';
 import '../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../core/structure/utils/extensions/sizedBox_extension.dart';
@@ -10,14 +11,25 @@ Widget activatableButton({required VoidCallback onPressed}) => BlocBuilder<OnOff
       builder: (context, state) {
         if (!state) {
           return Center(
-              child: Column(
-            children: [
-              SizedBox().heightSpacer(context, 2),
-              Container(child: headLineThree(context, 'continue')),
-            ],
+              child: AnimatedButton(
+            title: 'next',
+            onPressed: onPressed,
+            buttonColor: Palette.BUTTONINACTIVE,
+            child: Icon(
+              Icons.navigate_next,
+              color: Colors.white,
+            ),
           ));
         } else {
-          return AnimatedButton(title: 'continue', onPressed: onPressed);
+          return AnimatedButton(
+            title: 'next',
+            onPressed: onPressed,
+            buttonColor: Palette.MPINK,
+            child: Icon(
+              Icons.navigate_next,
+              color: Colors.white,
+            ),
+          );
         }
       },
     );
