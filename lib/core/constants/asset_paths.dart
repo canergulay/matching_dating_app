@@ -5,7 +5,7 @@ class AssetPaths {
   static const LOGO = 'assets/images/uicomponents/mlogo.png';
   static const MAINVECTOR = 'assets/images/uicomponents/mvector.png';
 
-  static const STATUS_PREVIOUS = 'assets/images/icons/previous.png';
-  static const STATUS_CURRENT = 'assets/images/icons/current.png';
-  static const STATUS_FUTURE = 'assets/images/icons/future.png';
+  static const STATUS_PREVIOUS = 'assets/images/icons/previous';
+  static const STATUS_CURRENT = 'assets/images/icons/current';
+  static const STATUS_FUTURE = 'assets/images/icons/future';
 }

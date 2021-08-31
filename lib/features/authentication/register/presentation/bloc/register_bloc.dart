@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../../../core/functionality/google_sign_in.dart';
+import 'package:matchangoo/core/functionality/google_sign_in.dart';
 import '../../../../../core/components/utils/loading_dialoger.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';
 import '../../../../../core/result_error/result_freezed/result.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/ui/theme/palette.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
 import '../../../../../core/components/buttons/animated_button.dart';
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
 

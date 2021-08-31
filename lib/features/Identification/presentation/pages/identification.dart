@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
+import 'package:matchangoo/features/Identification/presentation/widgets/grey_line.dart';
+import 'package:matchangoo/features/Identification/presentation/widgets/progress_widget.dart';
+import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
 import '../../../../core/components/utils/adaptive_dialoger.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/init/get_them_all/get_it_container.dart';
 import '../../../../core/structure/utils/extensions/context_extension.dart';
+
 import '../cubit/identification_cubit.dart';
 import '../ui_configs.dart';
-import '../widgets/ara_line.dart';
-import '../widgets/status_icon.dart';
 
 class Identification extends StatefulWidget {
   Identification({Key? key}) : super(key: key);
