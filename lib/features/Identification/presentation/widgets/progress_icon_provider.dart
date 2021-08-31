@@ -6,7 +6,7 @@ enum ProgresStatus { PREVIUS, CURRENT, FUTURE }
 Image progressIcon(ProgresStatus status) {
   switch (status) {
     case ProgresStatus.PREVIUS:
-      return Image.asset(AssetPaths.STATUS_CURRENT);
+      return Image.asset(AssetPaths.STATUS_PREVIOUS);
     case ProgresStatus.CURRENT:
       return Image.asset(AssetPaths.STATUS_CURRENT);
     case ProgresStatus.FUTURE:
