@@ -17,3 +17,7 @@ Text headLineFour(BuildContext context, String text) =>
 
 Text headLineFive(BuildContext context, String text) =>
     Text(text, style: Theme.of(context).textTheme.headline3?.dynamicText(context: context, size: 7));
+
+Text headLineSix(BuildContext context, String text, {double size = 4}) => Text(text,
+    textAlign: TextAlign.center,
+    style: Theme.of(context).textTheme.headline3?.dynamicText(context: context, size: size).copyWith(color: Colors.black));

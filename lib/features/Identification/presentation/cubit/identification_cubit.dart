@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/gender_cubit.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/interested_cubit.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/profession_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/identification_page.dart';
 import '../pages/identification_pages.dart/utils/focusnode_supplier.dart';
 import '../../domain/entities/registration_entity.dart';
@@ -8,7 +11,16 @@ import '../../../../core/structure/utils/extensions/context_extension.dart';
 class IdentificationCubit extends Cubit<int> {
   final IdentificationRepo identificationRepo;
   final RegistrationEntity registrationEntity;
-  IdentificationCubit({required this.identificationRepo, required this.registrationEntity}) : super(0);
+  final GenderCubit genderCubit;
+  final InterestedInCubit interestedInCubit;
+  final ProfessionCubit professionCubit;
+  IdentificationCubit(
+      {required this.professionCubit,
+      required this.interestedInCubit,
+      required this.genderCubit,
+      required this.identificationRepo,
+      required this.registrationEntity})
+      : super(0);
   ////UTILS
 
   final PageController pageController = PageController(initialPage: 0);

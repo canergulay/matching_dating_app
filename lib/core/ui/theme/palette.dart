@@ -10,4 +10,7 @@ class Palette {
   static const TEXTFIELDGREY = Color(0xFFF7FBFE);
   static const BUTTONINACTIVE = Color(0xFFFEB4D9);
   static const BUTTONACTIVE = Color(0xFFFD69B5);
+
+  static const GENDERBUTTONACTIVE = Color(0xFFE7F3);
+  static const GENDERBUTTONINACTIVE = Color(0xFFF7FBFE);
 }

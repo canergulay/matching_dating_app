@@ -33,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
                   builder: (context, state) {
                     if (state is RegisterInitial) {
                       return Expanded(child: WhiteContainerWPinkShadow(child: Identification()));
-                      // return columnSuplier(context: context, child: emailVerifyContainer(context, false));
+                      // return emailVerifyContainer(context, false);
                     } else if (state is RegisterEmailAdressTyped) {
                       return emailVerifyContainer(context, true);
                     } else if (state is RegisterWithEmailSent) {

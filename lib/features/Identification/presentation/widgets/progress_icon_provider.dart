@@ -11,7 +11,6 @@ Image progressIcon(ProgresStatus status) {
       return Image.asset(AssetPaths.STATUS_CURRENT);
     case ProgresStatus.FUTURE:
       return Image.asset(AssetPaths.STATUS_FUTURE);
-
     default:
       return Image.asset(AssetPaths.STATUS_CURRENT);
   }

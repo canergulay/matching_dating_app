@@ -40,7 +40,9 @@ class WhatIsYourName extends StatelessWidget {
                   SizedBox().heightSpacer(context, 2),
                   textFieldContainer(
                     context: context,
+                    focusNode: FocusNode(),
                     autoFocus: true,
+                    textAlign: TextAlign.left,
                     textInputType: TextInputType.emailAddress,
                     hintText: 'Enter your full name',
                     onChanged: (name) {

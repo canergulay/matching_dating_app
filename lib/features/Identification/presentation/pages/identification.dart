@@ -32,6 +32,7 @@ class _IdentificationState extends State<Identification> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         animatedRowTop(context),
         Expanded(child: identificationPageView(context)),
@@ -77,7 +78,7 @@ class _IdentificationState extends State<Identification> {
                 myIndex: 4,
                 stateIndex: state,
               )),
-              statusIcon(4, state)
+              statusIcon(5, state)
             ],
           ),
         );

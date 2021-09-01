@@ -13,7 +13,7 @@ Widget activatableButton({required VoidCallback onPressed}) => BlocBuilder<OnOff
           return Center(
               child: AnimatedButton(
             title: 'next',
-            onPressed: onPressed,
+            onPressed: () {},
             buttonColor: Palette.BUTTONINACTIVE,
             child: Icon(
               Icons.navigate_next,

@@ -8,4 +8,7 @@ class AssetPaths {
   static const STATUS_PREVIOUS = 'assets/images/icons/previous.png';
   static const STATUS_CURRENT = 'assets/images/icons/current.png';
   static const STATUS_FUTURE = 'assets/images/icons/future.png';
+
+  static const MAN = 'assets/images/icons/man.png';
+  static const WOMAN = 'assets/images/icons/woman.png';
 }
