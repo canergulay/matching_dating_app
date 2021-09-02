@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
+import '../../../../core/ui/theme/palette.dart';
 
 Container araLine({required int myIndex, required int stateIndex}) {
   return Container(

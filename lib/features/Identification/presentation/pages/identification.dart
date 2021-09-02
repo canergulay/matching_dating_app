@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/grey_line.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/progress_widget.dart';
-import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
+import '../widgets/grey_line.dart';
+import '../widgets/progress_widget.dart';
 import '../../../../core/components/utils/adaptive_dialoger.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/init/get_them_all/get_it_container.dart';
@@ -32,9 +30,13 @@ class _IdentificationState extends State<Identification> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         animatedRowTop(context),
+        /*TabBarView(
+          
+          controller: TabController(length: length, vsync: vsync),
+          children: context.read<IdentificationCubit>().identificationRepo.identificationPages(),
+        ),*/
         Expanded(child: identificationPageView(context)),
       ],
     );
@@ -129,16 +131,13 @@ class _IdentificationState extends State<Identification> {
 }
 
 PageView identificationPageView(BuildContext context) {
-  return PageView.builder(
+  return PageView(
     physics: NeverScrollableScrollPhysics(),
     reverse: false,
     controller: context.read<IdentificationCubit>().pageController,
     onPageChanged: (int page) {
       //   context.read<IdentificationCubit>().onPageChanged(page);
     },
-    itemBuilder: (contexta, index) {
-      return context.read<IdentificationCubit>().identificationRepo.identificationPages()[index];
-    },
-    itemCount: context.read<IdentificationCubit>().identificationRepo.identificationPages().length,
+    children: context.read<IdentificationCubit>().identificationRepo.identificationPages(),
   );
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../constants/asset_paths.dart';
+import '../extensions/sizedBox_extension.dart';
+import '../extensions/textstyle_extension.dart';
+import '../../../ui/theme/palette.dart';
+import '../extensions/context_extension.dart';
 
 Column matchifyLogo(BuildContext context) => Column(
       children: [

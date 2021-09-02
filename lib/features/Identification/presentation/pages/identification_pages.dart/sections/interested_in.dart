@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/grey_button.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/interested_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/onboard_text.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
+import '../../../../../../core/components/buttons/grey_button.dart';
+import '../../../../../../core/components/utils/on_off_cubit.dart';
+import '../../../../../../core/constants/asset_paths.dart';
+import '../../../../../../core/ui/theme/palette.dart';
+import '../../../cubit/identification_cubit.dart';
+import '../../../cubit/interested_cubit.dart';
+import '../utils/onboard_text.dart';
+import '../../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../widgets/activatable_button.dart';
 
 class SecondSection extends StatelessWidget {
   const SecondSection({Key? key}) : super(key: key);

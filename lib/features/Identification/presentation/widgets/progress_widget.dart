@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/progress_icon_provider.dart';
+import 'progress_icon_provider.dart';
 
 Image statusIcon(int myIndex, int stateIndex) {
   if (myIndex < stateIndex)

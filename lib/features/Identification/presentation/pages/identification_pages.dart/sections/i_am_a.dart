@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/gender_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/onboard_text.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/gender_grey_button.dart';
+import '../../../../../../core/components/utils/on_off_cubit.dart';
+import '../../../../../../core/constants/asset_paths.dart';
+import '../../../cubit/gender_cubit.dart';
+import '../../../cubit/identification_cubit.dart';
+import '../utils/onboard_text.dart';
+import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../widgets/activatable_button.dart';
+import '../../../widgets/gender_grey_button.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 
 class FirstSection extends StatelessWidget {

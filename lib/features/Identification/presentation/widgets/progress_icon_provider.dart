@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
+import '../../../../core/constants/asset_paths.dart';
 
 enum ProgresStatus { PREVIUS, CURRENT, FUTURE }
 

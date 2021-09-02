@@ -1,16 +1,12 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/onboard_text.dart';
+import '../../../../../../core/components/buttons/grey_textfield.dart';
+import '../utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
-import '../../../../../../core/structure/utils/extensions/textstyle_extension.dart';
-import '../../../../../../core/ui/components/headlines.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../../../widgets/activatable_button.dart';
-import 'package:matchangoo/core/structure/utils/extensions/textstyle_extension.dart';
 
 class WhatIsYourName extends StatelessWidget {
   const WhatIsYourName({Key? key}) : super(key: key);
@@ -40,7 +36,6 @@ class WhatIsYourName extends StatelessWidget {
                   SizedBox().heightSpacer(context, 2),
                   textFieldContainer(
                     context: context,
-                    focusNode: FocusNode(),
                     autoFocus: true,
                     textAlign: TextAlign.left,
                     textInputType: TextInputType.emailAddress,

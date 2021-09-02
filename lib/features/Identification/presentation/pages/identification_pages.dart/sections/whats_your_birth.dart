@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/focusnode_supplier.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/utils/onboard_text.dart';
+import '../../../../../../core/components/buttons/grey_textfield.dart';
+import '../utils/focusnode_supplier.dart';
+import '../utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
-import '../../../../../../core/constants/controllers/date_validator_controller.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
-import '../../../../../../core/ui/components/headlines.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../utils/bool_checkers.dart';
 import '../../../widgets/activatable_button.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
 
 class WhenIsYourBirthday extends StatelessWidget {
   final FocusNoder focusNoder;
@@ -43,6 +40,7 @@ class WhenIsYourBirthday extends StatelessWidget {
                 birthdayTextFields(context),
                 SizedBox().heightSpacer(context, 2),
                 activatableButton(onPressed: () {
+                  FocusScope.of(context).unfocus();
                   context.read<IdentificationCubit>().goToNextPage();
                 })
               ],
@@ -79,7 +77,7 @@ class WhenIsYourBirthday extends StatelessWidget {
       context: context,
       maxLength: hint == "YYYY" ? 4 : 2,
       autoFocus: hint == "DD" ? true : false,
-      focusNode: focusNoder.myFocus(field),
+      // focusNode: focusNoder.myFocus(field),
       hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38) ?? TextStyle(),
       textInputType: TextInputType.number,
       hintText: hint,

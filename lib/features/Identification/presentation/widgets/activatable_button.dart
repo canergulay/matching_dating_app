@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
+import '../../../../core/ui/theme/palette.dart';
 import '../../../../core/components/buttons/animated_button.dart';
 import '../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../core/structure/utils/extensions/sizedBox_extension.dart';

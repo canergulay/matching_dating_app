@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
+import '../../ui/theme/palette.dart';
 
 Container greyContainer({
   required Color color,

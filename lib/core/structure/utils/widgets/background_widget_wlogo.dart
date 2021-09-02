@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../constants/asset_paths.dart';
+import 'logo.dart';
+import '../extensions/context_extension.dart';
 
 class BackGroundContainerWithOutLogo extends StatelessWidget {
   final Widget child;
@@ -14,8 +14,8 @@ class BackGroundContainerWithOutLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.width,
       height: context.height,
+      width: context.width,
       child: child,
       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AssetPaths.BACKGROUND))),
     );

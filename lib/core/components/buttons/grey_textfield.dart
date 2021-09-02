@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../ui/theme/palette.dart';
+import '../../structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 
 Container textFieldContainerWithPrefix(
@@ -41,7 +41,6 @@ Container textFieldContainer(
     {required BuildContext context,
     required bool autoFocus,
     required String hintText,
-    required FocusNode focusNode,
     int maxLength = 999999,
     TextAlign textAlign = TextAlign.center,
     TextStyle hintStyle = const TextStyle(),
