@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
 import '../../../../../../core/components/buttons/grey_textfield.dart';
 import '../utils/focusnode_supplier.dart';
 import '../utils/onboard_text.dart';
@@ -24,28 +25,21 @@ class WhenIsYourBirthday extends StatelessWidget {
       create: (context) => OnOffCubit(),
       child: SingleChildScrollView(child: Builder(
         builder: (context) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 3, vertical: context.heightUnit * 4),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                onBoardText(WhatIsYourBD, context),
-                SizedBox().heightSpacer(context, 2),
-                Text(
-                  explanation,
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black45),
-                ),
-                SizedBox().heightSpacer(context, 2),
-                birthdayTextFields(context),
-                SizedBox().heightSpacer(context, 2),
-                activatableButton(onPressed: () {
-                  FocusScope.of(context).unfocus();
-                  context.read<IdentificationCubit>().goToNextPage();
-                })
-              ],
+          return onboardContainerColumn(context: context, children: [
+            onBoardText(WhatIsYourBD, context),
+            SizedBox().heightSpacer(context, 2),
+            Text(
+              explanation,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black45),
             ),
-          );
+            SizedBox().heightSpacer(context, 2),
+            birthdayTextFields(context),
+            SizedBox().heightSpacer(context, 2),
+            activatableButton(onPressed: () {
+              FocusScope.of(context).unfocus();
+              context.read<IdentificationCubit>().goToNextPage();
+            })
+          ]);
         },
       )),
     );
@@ -76,22 +70,26 @@ class WhenIsYourBirthday extends StatelessWidget {
     return textFieldContainer(
       context: context,
       maxLength: hint == "YYYY" ? 4 : 2,
-      autoFocus: hint == "DD" ? true : false,
-      // focusNode: focusNoder.myFocus(field),
+      autoFocus: field == 0 ? true : false,
+      focusNode: focusNoder.myFocus(field),
       hintStyle: Theme.of(context).textTheme.headline5?.copyWith(color: Colors.black38) ?? TextStyle(),
       textInputType: TextInputType.number,
       hintText: hint,
       onChanged: (string) {
         if (string.isNotEmpty) {
           if (shouldGoNextField(field, string)) {
-            focusNoder.nextFocus(field).requestFocus();
+            // FIRSTLY, WE WILL CHECK IF WE SHOULD PASS THIS FIELD,
+            // WHETHER IT HOLDS THE RULES OF THE FORMAT.
+            if (field < 2) {
+              // IF IT IS THE ZER0TH OR FIRST FIELD, WE WILL SWITCH TO THE FOLLOWING TEXTFIELD
+              FocusScope.of(context).nextFocus();
+            } else {
+              // IF IT IS THE LAST FIELD , WE WILL UNFOCUS AND ACTIVATE THE NEXT BUTTON
+              FocusScope.of(context).unfocus();
+              context.read<OnOffCubit>().on();
+            }
           }
-          if (field == 2) {
-            print('evet field 2');
-            focusNoder.myFocus(2).unfocus();
-            context.read<OnOffCubit>().on();
-          }
-        } else {}
+        }
       },
     );
   }

@@ -35,7 +35,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
     _animationController = AnimationController(
       reverseDuration: Duration(milliseconds: 150),
       vsync: this,
-      duration: Duration(milliseconds: 75),
+      duration: Duration(milliseconds: 25),
       lowerBound: 3,
       upperBound: 6,
     );

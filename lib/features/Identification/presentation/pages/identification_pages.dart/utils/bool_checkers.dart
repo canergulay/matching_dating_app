@@ -2,26 +2,27 @@ bool shouldGoNextField(int field, String value) {
   print('HERE IS THE VALUE ' + value);
   switch (field) {
     case 0:
-      return kontrolForZero(int.parse(value));
+      return kontrolForZero(value);
     case 1:
-      return kontrolForSecond(int.parse(value));
+      return kontrolForSecond(value);
     case 2:
-      return kontrolForThird(int.parse(value));
+      return kontrolForThird(value);
     default:
       return true;
   }
 }
 
-bool kontrolForZero(int value) {
+bool kontrolForZero(String value) {
   print('evet geçebiliriz');
-  return value <= 31;
+  return int.parse(value) <= 31 && value.length > 1;
 }
 
-bool kontrolForSecond(int value) {
+bool kontrolForSecond(String value) {
   print('evet geçebiliriz2');
-  return value <= 12;
+
+  return int.parse(value) <= 12 && value.length > 1;
 }
 
-bool kontrolForThird(int value) {
-  return value < 2010 && value > 1910;
+bool kontrolForThird(String value) {
+  return int.parse(value) < 2010 && int.parse(value) > 1910;
 }

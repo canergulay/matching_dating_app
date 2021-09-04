@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/constants/asset_paths.dart';
@@ -21,23 +22,16 @@ class SecondSection extends StatelessWidget {
         BlocProvider(create: (context) => OnOffCubit()),
         BlocProvider(create: (context) => context.read<IdentificationCubit>().interestedInCubit)
       ],
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 3, vertical: context.heightUnit * 4),
-        child: BlocBuilder<InterestedInCubit, InterestedState>(
-          builder: (context, state) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                onBoardText('Interested in?', context),
-                SizedBox().heightSpacer(context, 3),
-                buttonsRow(context, state),
-                SizedBox().heightSpacer(context, 3),
-                activatableButton(onPressed: () => context.read<IdentificationCubit>().goToNextPage())
-              ],
-            );
-          },
-        ),
+      child: BlocBuilder<InterestedInCubit, InterestedState>(
+        builder: (context, state) {
+          return onboardContainerColumn(context: context, children: [
+            onBoardText('Interested in?', context),
+            SizedBox().heightSpacer(context, 3),
+            buttonsRow(context, state),
+            SizedBox().heightSpacer(context, 3),
+            activatableButton(onPressed: () => context.read<IdentificationCubit>().goToNextPage())
+          ]);
+        },
       ),
     );
   }

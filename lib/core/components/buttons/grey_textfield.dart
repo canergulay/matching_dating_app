@@ -39,8 +39,9 @@ Container textFieldContainerWithPrefix(
 
 Container textFieldContainer(
     {required BuildContext context,
-    required bool autoFocus,
+    bool autoFocus = false,
     required String hintText,
+    required FocusNode focusNode,
     int maxLength = 999999,
     TextAlign textAlign = TextAlign.center,
     TextStyle hintStyle = const TextStyle(),
@@ -53,9 +54,11 @@ Container textFieldContainer(
     ),
     margin: EdgeInsets.only(top: context.heightUnit * 1),
     child: TextField(
+        autofocus: autoFocus,
         buildCounter: (_, {required currentLength, maxLength, required isFocused}) => null,
         maxLength: maxLength,
         textAlign: textAlign,
+        focusNode: focusNode,
         style:
             Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
         onChanged: onChanged,
