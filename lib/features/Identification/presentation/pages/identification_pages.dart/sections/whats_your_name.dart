@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
@@ -24,6 +25,7 @@ class WhatIsYourName extends StatelessWidget {
           builder: (context) => onboardContainerColumn(context: context, children: [
             onBoardText(whatIsYourName, context),
             SizedBox().heightSpacer(context, 2),
+            Text('first_string').tr(),
             Text(
               explanation,
               style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.black54),

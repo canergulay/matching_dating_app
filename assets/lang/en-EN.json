@@ -1,0 +1,11 @@
+{
+    "first_string":"just trying",
+    
+    "MAIN_SCREEN":{
+        "TITLE":"'Join {appname} and find your partner on a common criteria!'",
+        "CREATE_ACCOUNT":"Create an account",
+        "DO_YOU_HAVE_AN_ACC":"Do you have an account?",
+        "SIGN_IN":" Sign In"
+    }
+    
+}

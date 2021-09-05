@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/constants/app_constants.dart';
@@ -49,13 +50,13 @@ Expanded secondShit(BuildContext context) {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 6, vertical: context.heightUnit * 1.5),
-          child: headLineThree(context, 'Join ${AppConstants.APP_NAME} and find your partner on a common criteria!'),
+          child: headLineThree(context, 'MAIN_SCREEN.TITLE'.tr(namedArgs: {'appname': AppConstants.APP_NAME})),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 5, vertical: context.heightUnit * 1.5),
           child: AnimatedButton(
             buttonRadius: 15,
-            title: 'Create an account',
+            title: 'MAIN_SCREEN.CREATE_ACCOUNT'.tr(),
             buttonColor: Color(0xFFFD69B7),
             onPressed: () {
               NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
@@ -75,9 +76,9 @@ Expanded secondShit(BuildContext context) {
 TextStyle doYouTextStyle() => TextStyle();
 
 RichText doYouHaveAnAccount(BuildContext context) => RichText(
-        text: TextSpan(text: 'Do you have an account ?', style: Theme.of(context).textTheme.headline6, children: [
+        text: TextSpan(text: 'MAIN_SCREEN.DO_YOU_HAVE_AN_ACC'.tr(), style: Theme.of(context).textTheme.headline6, children: [
       TextSpan(
-          text: ' Sign In',
+          text: 'MAIN_SCREEN.SIGN_IN'.tr(),
           style: Theme.of(context).textTheme.headline6?.copyWith(color: Palette.MBLUE),
           recognizer: TapGestureRecognizer()..onTap = () {}),
     ]));
