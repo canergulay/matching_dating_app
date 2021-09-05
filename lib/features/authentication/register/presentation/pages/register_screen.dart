@@ -79,6 +79,8 @@ Column columnSupplierWbBUTTON(RegisterState state, BuildContext context, Widget 
                     getOutOfHere(context);
                   }
                 }
+              } else if (state is RegisterInitial) {
+                getOutOfHere(context);
               } else {
                 // IF WE ARE STILL IN THE MAIL VERIFICATON PROCESS, WE WILL AGAIN KILL THE PROCESS
                 OkCancelResult result = await AdaptiveDialoger.showSimpleOkCancel(
