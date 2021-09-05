@@ -20,14 +20,6 @@ class Identification extends StatefulWidget {
 
 class _IdentificationState extends State<Identification> {
   @override
-  void initState() {
-    AdaptiveDialoger dialogcu = sl.get<AdaptiveDialoger>();
-    SchedulerBinding.instance!
-        .addPostFrameCallback((_) => dialogcu.showBasicAdaptiveAlert(context, AppConstants.DIALOGTITLE, AppConstants.DIALOGMESSAGE));
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [

@@ -7,9 +7,9 @@ import '../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/ui/components/headlines.dart';
 
-Widget activatableButton({required VoidCallback onPressed}) => BlocBuilder<OnOffCubit, bool>(
+Widget activatableButton({required VoidCallback onPressed, bool shouldBeActive = false}) => BlocBuilder<OnOffCubit, bool>(
       builder: (context, state) {
-        if (!state) {
+        if (!state && !shouldBeActive) {
           return Center(
               child: AnimatedButton(
             title: 'next',

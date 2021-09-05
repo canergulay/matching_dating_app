@@ -1,10 +1,10 @@
 import '../../data/models/interests/interests.dart';
 
 class RegistrationEntity {
-  late String email;
-  late String name;
-  late int birthday;
-  late List<Interests> interests;
+  String? email;
+  String? name;
+  int? birthday;
+  List<Interests?>? interests;
 
   set setName(String name) {
     this.name = name;
@@ -17,4 +17,7 @@ class RegistrationEntity {
   set setBirthday(int birthday) {
     this.birthday = birthday;
   }
+
+  String get getNameIfNotEmpty => name ?? '';
+  String get getEmailIfNotEmpty => email ?? '';
 }

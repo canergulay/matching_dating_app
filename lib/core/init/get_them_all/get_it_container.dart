@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
+import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
 import '../../functionality/google_sign_in.dart';
 import '../../../features/Identification/data/datasources/interest_datasource.dart';
 import '../../../features/Identification/data/repositories/interest_repositary_impl.dart';
@@ -52,14 +53,15 @@ void registerSMSVerificationModul() {
 }
 
 void registerModule() {
-  sl.registerFactory<RegisterBloc>(
-      () => RegisterBloc(identificationCubit: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl(), googleSignInRepo: sl()));
+  sl.registerFactory<RegisterBloc>(() => RegisterBloc(
+      identificationCubit: sl(), facebookSignIn: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl(), googleSignInRepo: sl()));
   sl.registerFactory<IdentificationCubit>(() => IdentificationCubit(
       getAllInterests: sl(), professionCubit: sl(), interestedInCubit: sl(), genderCubit: sl(), registrationEntity: sl(), identificationRepo: sl()));
 
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo());
+  sl.registerLazySingleton<FacebookSignIn>(() => FacebookSignIn());
   sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
   sl.registerFactory<VerificationEmailDataSource>(() => VerificationEmailDataSource());
   sl.registerFactory<IdentificationRepo>(() => IdentificationRepo());

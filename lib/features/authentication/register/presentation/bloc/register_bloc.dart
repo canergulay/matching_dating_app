@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
 import '../../../../../core/functionality/google_sign_in.dart';
 import '../../../../../core/components/utils/loading_dialoger.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';
@@ -20,8 +21,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   IdentificationCubit identificationCubit;
   SendVerificationEmail sendVerificationEmail;
   CheckVerificationEmail checkVerificationEmail;
+  FacebookSignIn facebookSignIn;
   RegisterBloc(
-      {required this.googleSignInRepo, required this.identificationCubit, required this.sendVerificationEmail, required this.checkVerificationEmail})
+      {required this.googleSignInRepo,
+      required this.identificationCubit,
+      required this.sendVerificationEmail,
+      required this.facebookSignIn,
+      required this.checkVerificationEmail})
       : super(RegisterInitial());
   late String emailAdress;
   late String verificationCode;
@@ -79,5 +85,26 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   set setCode(String code) {
     verificationCode = code;
+  }
+
+  Future<void> signInViaFacebook() async {
+    Result<Map<String, dynamic>> facebookLoginResult = await facebookSignIn.signIn();
+    facebookLoginResult.when(success: (userCredentials) {
+      identificationCubit.registrationEntity.setName = userCredentials['name'];
+      identificationCubit.registrationEntity.setEmail = userCredentials['email'];
+      emit(RegisterWithEmailVerified());
+    }, error: (CustomError error) {
+      switch (error.errorCode) {
+        case 10:
+          print('no credentials');
+          //TODO : ADD DIALOG : UNEXPECTED ERROR,
+          break;
+        case 20:
+          //TODO : ADD DIALOG : COULDN'T LOGIN
+          print('cant login');
+          break;
+        default:
+      }
+    });
   }
 }

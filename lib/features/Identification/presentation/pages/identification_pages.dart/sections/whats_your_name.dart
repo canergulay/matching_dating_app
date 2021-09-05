@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
+import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../../../../../core/components/buttons/grey_textfield.dart';
 import '../utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
@@ -28,8 +29,9 @@ class WhatIsYourName extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.black54),
             ),
             SizedBox().heightSpacer(context, 2),
-            textFieldContainer(
+            textFieldContainerWController(
               context: context,
+              controller: TextEditingController(text: context.read<IdentificationCubit>().registrationEntity.getNameIfNotEmpty),
               autoFocus: true,
               focusNode: FocusNode(),
               textAlign: TextAlign.left,
@@ -45,10 +47,12 @@ class WhatIsYourName extends StatelessWidget {
               },
             ),
             SizedBox().heightSpacer(context, 2),
-            activatableButton(onPressed: () {
-              FocusScope.of(context).unfocus();
-              context.read<IdentificationCubit>().goToNextPage();
-            })
+            activatableButton(
+                onPressed: () {
+                  FocusScope.of(context).unfocus();
+                  context.read<IdentificationCubit>().goToNextPage();
+                },
+                shouldBeActive: true)
           ]),
         )));
   }

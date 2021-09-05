@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../ui/theme/palette.dart';
 
 Container greyContainer({
   required Color color,

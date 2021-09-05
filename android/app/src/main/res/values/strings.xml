@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">matchify</string>
+  <string name="facebook_app_id">556547628803840</string>
+  <string name="fb_login_protocol_scheme">fb556547628803840</string>
+</resources>

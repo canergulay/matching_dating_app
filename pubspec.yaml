@@ -30,8 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_bloc: ^7.1.0
   equatable: ^2.0.3
-  firebase_auth: ^3.0.1
-  firebase_core: ^1.4.0
+
+
   auto_size_text: ^3.0.0-nullsafety.0
   adaptive_dialog: ^1.1.0
   sms_autofill: ^2.0.1  
@@ -43,6 +43,7 @@ dependencies:
   email_validator: ^2.0.1
   dio: ^4.0.0
   pinput: ^1.2.0
+  flutter_facebook_auth: ^3.5.1  
   google_sign_in: ^5.0.7
   staggered_grid_view_flutter: ^0.0.4
 
