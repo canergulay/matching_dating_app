@@ -38,19 +38,23 @@ WhiteContainerWPinkShadow emailVerifyContainer(BuildContext context, bool typed)
         SizedBox().heightSpacer(context, 1),
         Text(EXPLANATION_TEXT),
         SizedBox().heightSpacer(context, 2),
-        Text(SECOND_EXPLANATION),
-        SizedBox().heightSpacer(context, 1),
+        // Text(SECOND_EXPLANATION),
+        // SizedBox().heightSpacer(context, 1),
         facebookSignIn(context),
-        InkWell(
-          onTap: () {
-            context.read<RegisterBloc>().signInViaFacebook();
-          },
-          child: Text(
-            'Google Sign In',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-        ),
+        googleSignIn(context),
       ],
+    ),
+  );
+}
+
+InkWell googleSignIn(BuildContext context) {
+  return InkWell(
+    onTap: () {
+      context.read<RegisterBloc>().signInViaGoogle();
+    },
+    child: Text(
+      'Google Sign In',
+      style: Theme.of(context).textTheme.headline4,
     ),
   );
 }

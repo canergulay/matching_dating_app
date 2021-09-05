@@ -55,26 +55,16 @@ Column columnSupplierWbBUTTON(RegisterState state, BuildContext context, Widget 
         matchifyLogoWithBackButtonWcustomPress(
             context: context,
             onTap: () async {
-              final String message = "You will lose registration process once you leave this page.";
-              final String rUsure = "Are you sure?";
               if (state is RegisterWithEmailVerified) {
                 // IF WE LOGIN WITH A VALID EMAIL / FACEBOOK / GMAIL
-                if (context.read<IdentificationCubit>().pageController.page != 0) {
-                  print('sa');
+                if (context.read<IdentificationCubit>().pageController.page != context.read<IdentificationCubit>().pageController.initialPage) {
                   // IF IT IS NOT THE FIRST PAGE, WE LET THE USER GO BACK IN THE IDENTIFICATION PAGES
                   // WHICH IS NOTHING BUT A SIMPLE PAGEVIEW
                   context.read<IdentificationCubit>().getPrevious();
                 } else {
-                  print('sa2');
-
                   // IF IT IS THE ZEROTH PAGE AND THE USER PRESSES THE BACK BUTTON
                   // WE WILL TAKE THEM THROUGH THE MAIN PAGE AND KILL THE REGISTRATION PROCESS
-
-                  OkCancelResult result = await AdaptiveDialoger.showSimpleOkCancel(
-                    context: context,
-                    title: rUsure,
-                    message: message,
-                  );
+                  OkCancelResult result = await showSureDialog(context: context);
                   if (result == OkCancelResult.ok) {
                     getOutOfHere(context);
                   }
@@ -83,11 +73,8 @@ Column columnSupplierWbBUTTON(RegisterState state, BuildContext context, Widget 
                 getOutOfHere(context);
               } else {
                 // IF WE ARE STILL IN THE MAIL VERIFICATON PROCESS, WE WILL AGAIN KILL THE PROCESS
-                OkCancelResult result = await AdaptiveDialoger.showSimpleOkCancel(
-                  context: context,
-                  title: rUsure,
-                  message: message,
-                );
+                OkCancelResult result = await showSureDialog(context: context);
+
                 if (result == OkCancelResult.ok) {
                   getOutOfHere(context);
                 }
@@ -96,3 +83,11 @@ Column columnSupplierWbBUTTON(RegisterState state, BuildContext context, Widget 
         child
       ],
     );
+
+Future<OkCancelResult> showSureDialog({required BuildContext context}) async {
+  return await AdaptiveDialoger.showSimpleOkCancel(
+    context: context,
+    title: "Are you sure?",
+    message: "You will lose registration process once you leave this page.",
+  );
+}

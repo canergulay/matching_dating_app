@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
 import '../../../../../core/functionality/google_sign_in.dart';
 import '../../../../../core/components/utils/loading_dialoger.dart';
@@ -90,9 +91,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Future<void> signInViaFacebook() async {
     Result<Map<String, dynamic>> facebookLoginResult = await facebookSignIn.signIn();
     facebookLoginResult.when(success: (userCredentials) {
-      identificationCubit.registrationEntity.setName = userCredentials['name'];
-      identificationCubit.registrationEntity.setEmail = userCredentials['email'];
-      emit(RegisterWithEmailVerified());
+      _setCredentialsAndContinue(name: userCredentials['name'], email: userCredentials['email']);
     }, error: (CustomError error) {
       switch (error.errorCode) {
         case 10:
@@ -106,5 +105,29 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         default:
       }
     });
+  }
+
+  Future<void> signInViaGoogle() async {
+    Result<GoogleSignInAccount> info = await googleSignInRepo.signIn();
+    info.when(success: (GoogleSignInAccount credentials) {
+      print(credentials);
+      _setCredentialsAndContinue(name: credentials.displayName ?? '', email: credentials.email);
+    }, error: (CustomError error) {
+      switch (error.errorCode) {
+        case 10:
+          print('null');
+          break;
+        case 20:
+          print('exception');
+          break;
+        default:
+      }
+    });
+  }
+
+  void _setCredentialsAndContinue({required String name, required String email}) {
+    identificationCubit.registrationEntity.setName = name;
+    identificationCubit.registrationEntity.setEmail = email;
+    emit(RegisterWithEmailVerified());
   }
 }

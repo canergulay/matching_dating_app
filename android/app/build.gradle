@@ -22,7 +22,7 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -44,9 +44,9 @@ android {
 
     signingConfigs{
         debug {
-            keyAlias 'androiddebugkey'
+            keyAlias 'debugg'
             keyPassword 'Canerrenac1.'
-            storeFile file('mykey.jks')
+            storeFile file('debugg.jks')
             storePassword 'Canerrenac1.'
         }
     }

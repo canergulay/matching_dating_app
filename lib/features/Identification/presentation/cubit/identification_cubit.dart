@@ -49,8 +49,8 @@ class IdentificationCubit extends Cubit<int> {
 
   void getPrevious() {
     if (state != 0) {
-      pageController.previousPage(duration: Duration(milliseconds: 200), curve: Curves.easeInCubic);
       emit(state - 1);
+      pageController.previousPage(duration: Duration(milliseconds: 200), curve: Curves.easeInCubic);
     }
   }
 /////////////
