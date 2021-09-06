@@ -1,4 +1,4 @@
-# matchify
+# matchango
 
 A modern matching & relationship app with clean architecture & BLoC pattern.
 
