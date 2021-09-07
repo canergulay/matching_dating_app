@@ -44,3 +44,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/debugg.jks
+/android/app/mykey.jks
+/lib/home/
+

@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
 import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
+import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/degree_type_list.dart';
 import '../../functionality/google_sign_in.dart';
 import '../../../features/Identification/data/datasources/interest_datasource.dart';
 import '../../../features/Identification/data/repositories/interest_repositary_impl.dart';
@@ -71,5 +72,6 @@ void registerModule() {
   sl.registerFactory<RegistrationEntity>(() => RegistrationEntity());
   sl.registerFactory<GenderCubit>(() => GenderCubit());
   sl.registerFactory<InterestedInCubit>(() => InterestedInCubit());
-  sl.registerFactory<ProfessionCubit>(() => ProfessionCubit());
+  sl.registerFactory<ProfessionCubit>(() => ProfessionCubit(degreeCubit: sl()));
+  sl.registerFactory<DegreeCubit>(() => DegreeCubit(degreesRepo: DegreesRepo()));
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
 
 Container greyContainer({
-  required Color color,
+  Color color = Palette.TEXTFIELDGREY,
   double radius = 20,
+  Alignment alignment = Alignment.center,
   required Widget child,
   double padding = 0,
   double rightPadding = 0,

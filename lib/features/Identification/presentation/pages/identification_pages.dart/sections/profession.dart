@@ -1,5 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/buttons/grey_button.dart';
+import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
+import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
+import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/degree_type_list.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
@@ -23,12 +29,13 @@ class Profession extends StatelessWidget {
         BlocProvider(
           create: (context) => context.read<IdentificationCubit>().professionCubit,
         ),
+        BlocProvider(create: (context) => context.read<IdentificationCubit>().professionCubit.degreeCubit),
         BlocProvider(
           create: (context) => OnOffCubit(),
         ),
       ],
       child: BlocBuilder<ProfessionCubit, ProfessionType>(
-        builder: (context, state) {
+        builder: (contexta, state) {
           return onboardContainerColumn(context: context, children: [
             onBoardText('Profession?', context),
             Text(
@@ -36,7 +43,9 @@ class Profession extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyText2,
             ),
             SizedBox().heightSpacer(context, 2),
-            buttonsRow(context, state),
+            buttonsRow(contexta, state),
+            SizedBox().heightSpacer(context, 2),
+            extraChoices(contexta, state),
             SizedBox().heightSpacer(context, 2),
             activatableButton(onPressed: () {
               context.read<IdentificationCubit>().goToNextPage();
@@ -67,6 +76,41 @@ class Profession extends StatelessWidget {
                 },
                 child: genderGreyButton(isActive: state == ProfessionType.WORKER ? true : false, text: 'Working', context: context))),
       ],
+    );
+  }
+
+  Widget extraChoices(BuildContext context, ProfessionType professionType) {
+    if (professionType == ProfessionType.NONE) {
+      return Container();
+    } else if (professionType == ProfessionType.STUDENT) {
+      return studentColumn(context);
+    } else {
+      return workingColumn(context);
+    }
+  }
+
+  Column workingColumn(BuildContext context) => Column(
+        children: [],
+      );
+
+  BlocBuilder studentColumn(BuildContext context) {
+    return BlocBuilder<DegreeCubit, DegreeType>(
+      builder: (contexta, state) {
+        return Column(
+          children: [
+            greyContainer(
+                child: Center(
+                    child: DropdownButton<DegreeType>(
+                        hint: Text('selam'),
+                        value: state,
+                        onChanged: (DegreeType? type) {
+                          context.read<DegreeCubit>().onValueChange(type);
+                          context.read<IdentificationCubit>().registrationEntity.studycode = type?.code;
+                        },
+                        items: context.read<DegreeCubit>().degreesRepo.degreeItems(context))))
+          ],
+        );
+      },
     );
   }
 }

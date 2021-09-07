@@ -6,6 +6,11 @@
         "CREATE_ACCOUNT":"Create an account",
         "DO_YOU_HAVE_AN_ACC":"Do you have an account?",
         "SIGN_IN":" Sign In"
-    }
-    
+    },
+
+    "hs":"High School",   
+    "ugrad":"Undergraduate",   
+    "grad":"Graduate",   
+    "doctor":"Doctorate"
+
 }

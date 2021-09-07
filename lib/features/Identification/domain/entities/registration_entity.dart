@@ -3,6 +3,7 @@ import '../../data/models/interests/interests.dart';
 class RegistrationEntity {
   String? email;
   String? name;
+  String? studycode;
   int? birthday;
   List<Interests?>? interests;
 
@@ -16,6 +17,10 @@ class RegistrationEntity {
 
   set setBirthday(int birthday) {
     this.birthday = birthday;
+  }
+
+  set setStudyCode(String studyCode) {
+    this.studycode = studycode;
   }
 
   String get getNameIfNotEmpty => name ?? '';

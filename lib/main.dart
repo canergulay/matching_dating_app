@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/constants/app_constants.dart';
-import 'core/constants/localization_constants.dart';
+import 'core/init/localization/localization_constants.dart';
 import 'core/init/get_them_all/get_it_container.dart';
 import 'core/init/get_them_all/get_it_container.dart' as inject;
+import 'core/init/localization/localization_initial_widget.dart';
 import 'core/init/theme_manager/theme_manager_cubit.dart';
 import 'core/structure/navigation/navigation_manager.dart';
 import 'core/structure/navigation/navigation_router.dart';
@@ -16,15 +17,10 @@ void main() async {
   // await Firebase.initializeApp();
   await EasyLocalization.ensureInitialized();
   await inject.init();
-  runApp(EasyLocalization(
-    supportedLocales: LocalizationConstants.supportedLocales,
-    path: LocalizationConstants.localizationPath,
-    fallbackLocale: LocalizationConstants.fallBackLocale,
-    child: MyApp(),
-  ));
+  runApp(localizationInitializer(Matchify()));
 }
 
-class MyApp extends StatelessWidget {
+class Matchify extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
