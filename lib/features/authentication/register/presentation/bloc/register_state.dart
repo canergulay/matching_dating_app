@@ -11,4 +11,6 @@ class RegisterWithEmailSent extends RegisterState {}
 
 class RegisterWithEmailVerified extends RegisterState {}
 
+class PhotoSelection extends RegisterState {}
+
 class RegisterWithEmailError extends RegisterState {}

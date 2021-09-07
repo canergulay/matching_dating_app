@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
+import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
+import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
@@ -16,30 +18,38 @@ class SportsHobbiesInterests extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return onboardContainerColumn(context: context, children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          onBoardText('Sports', context),
-          greyContainer(
-              radius: 10,
-              padding: context.heightUnit * 1,
-              rightPadding: context.heightUnit * 1,
-              color: Palette.TEXTFIELDGREY,
-              child: Icon(Icons.search))
-        ],
-      ),
-      SizedBox().heightSpacer(context, 1),
-      itemGrid(context, TYPES.SPORTS),
-      SizedBox().heightSpacer(context, 1),
-      onBoardText('Hobbies', context),
-      SizedBox().heightSpacer(context, 1),
-      itemGrid(context, TYPES.HOBBIES),
-      SizedBox().heightSpacer(context, 1),
-      onBoardText('Interest Areas', context),
-      SizedBox().heightSpacer(context, 1),
-      itemGrid(context, TYPES.INTERESTS)
-    ]);
+    return BlocProvider(
+      create: (context) => OnOffCubit(),
+      child: onboardContainerColumn(context: context, children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            onBoardText('Sports', context),
+            greyContainer(
+                radius: 10,
+                padding: context.heightUnit * 1,
+                rightPadding: context.heightUnit * 1,
+                color: Palette.TEXTFIELDGREY,
+                child: Icon(Icons.search))
+          ],
+        ),
+        SizedBox().heightSpacer(context, 1),
+        itemGrid(context, TYPES.SPORTS),
+        SizedBox().heightSpacer(context, 1),
+        onBoardText('Hobbies', context),
+        SizedBox().heightSpacer(context, 1),
+        itemGrid(context, TYPES.HOBBIES),
+        SizedBox().heightSpacer(context, 1),
+        onBoardText('Interest Areas', context),
+        SizedBox().heightSpacer(context, 1),
+        itemGrid(context, TYPES.INTERESTS),
+        activatableButton(
+            onPressed: () {
+              context.read<RegisterBloc>().add(IdentificationAlmostFinished());
+            },
+            shouldBeActive: true),
+      ]),
+    );
   }
 
   Expanded itemGrid(BuildContext context, TYPES type) {

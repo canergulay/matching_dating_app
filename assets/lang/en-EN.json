@@ -11,6 +11,14 @@
     "hs":"High School",   
     "ugrad":"Undergraduate",   
     "grad":"Graduate",   
-    "doctor":"Doctorate"
+    "doctor":"Doctorate",
+    "degree":"Degree",
+    "fostudy":"Field of study",
+
+    "PHOTO_SELECTION":{
+        "addphotos":"Add Photos"
+    }
+
+
 
 }

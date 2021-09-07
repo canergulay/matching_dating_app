@@ -13,9 +13,9 @@ class ProfessionCubit extends Cubit<ProfessionType> {
   }
 }
 
-class DegreeCubit extends Cubit<DegreeType> {
+class DegreeCubit extends Cubit<DegreeType?> {
   final DegreesRepo degreesRepo;
-  DegreeCubit({required this.degreesRepo}) : super(degreesRepo.degreeList[0]);
+  DegreeCubit({required this.degreesRepo}) : super(null);
 
   void onValueChange(DegreeType? type) {
     emit(type ?? DegreeType(code: DegreeCodes.DOCTORATE));

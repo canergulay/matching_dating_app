@@ -48,6 +48,7 @@ class Profession extends StatelessWidget {
             extraChoices(contexta, state),
             SizedBox().heightSpacer(context, 2),
             activatableButton(onPressed: () {
+              FocusScope.of(context).unfocus();
               context.read<IdentificationCubit>().goToNextPage();
             })
           ]);
@@ -94,23 +95,55 @@ class Profession extends StatelessWidget {
       );
 
   BlocBuilder studentColumn(BuildContext context) {
-    return BlocBuilder<DegreeCubit, DegreeType>(
+    return BlocBuilder<DegreeCubit, DegreeType?>(
       builder: (contexta, state) {
         return Column(
-          children: [
-            greyContainer(
-                child: Center(
-                    child: DropdownButton<DegreeType>(
-                        hint: Text('selam'),
-                        value: state,
-                        onChanged: (DegreeType? type) {
-                          context.read<DegreeCubit>().onValueChange(type);
-                          context.read<IdentificationCubit>().registrationEntity.studycode = type?.code;
-                        },
-                        items: context.read<DegreeCubit>().degreesRepo.degreeItems(context))))
-          ],
+          children: [degreeDropdown(context, state: state), nextTextField(context, code: state?.code ?? 'hs')],
         );
       },
     );
+  }
+
+  Container degreeDropdown(
+    BuildContext context, {
+    DegreeType? state,
+  }) {
+    return greyContainer(
+      child: Center(
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<DegreeType>(
+              style: Theme.of(context).textTheme.headline6,
+              hint: Text(
+                'degree'.tr() + '*',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              value: state,
+              onChanged: (DegreeType? type) {
+                context.read<DegreeCubit>().onValueChange(type);
+                context.read<IdentificationCubit>().registrationEntity.studycode = type?.code;
+              },
+              items: context.read<DegreeCubit>().degreesRepo.degreeItems(context)),
+        ),
+      ),
+    );
+  }
+
+  Widget nextTextField(
+    BuildContext context, {
+    required String code,
+  }) {
+    if (code == DegreeCodes.HIGH_SCHOOL) {
+      return Container();
+    } else {
+      return textFieldContainer(
+          context: context,
+          textAlign: TextAlign.left,
+          hintText: 'fostudy'.tr() + '*',
+          focusNode: FocusNode(),
+          textInputType: TextInputType.text,
+          onChanged: (String text) {
+            print(text);
+          });
+    }
   }
 }

@@ -47,6 +47,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield* _sendVerificationCode();
     } else if (event is EmailVerified) {
       yield RegisterWithEmailVerified();
+    } else if (event is IdentificationAlmostFinished) {
+      yield PhotoSelection();
     }
   }
 

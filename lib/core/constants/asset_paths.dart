@@ -11,4 +11,7 @@ class AssetPaths {
 
   static const MAN = 'assets/images/icons/man.png';
   static const WOMAN = 'assets/images/icons/woman.png';
+
+  static const ADDPHOTO = 'assets/images/icons/addphoto.png';
+  static const DELPHOTO = 'assets/images/icons/delphoto.png';
 }

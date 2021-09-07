@@ -6,6 +6,7 @@ import 'package:matchangoo/core/components/utils/get_out_of_here.dart';
 import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
 import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
+import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/sections/photo_selection.dart';
 import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
 import '../../../../../core/init/get_them_all/get_it_container.dart';
 import '../../../../Identification/presentation/pages/identification.dart';
@@ -38,6 +39,8 @@ class RegisterScreen extends StatelessWidget {
                   return columnSupplierWbBUTTON(state, context, emailCodeVerificationCodeEnter(context));
                 } else if (state is RegisterWithEmailVerified) {
                   return columnSupplierWbBUTTON(state, context, Expanded(child: WhiteContainerWPinkShadow(child: Identification())));
+                } else if (state is PhotoSelection) {
+                  return columnSupplierWbBUTTON(state, context, PhotoSelectionScreen());
                 } else {
                   return columnSupplierWbBUTTON(state, context, emailCouldNotBeVerified(context));
                 }
@@ -71,18 +74,24 @@ Column columnSupplierWbBUTTON(RegisterState state, BuildContext context, Widget 
                 }
               } else if (state is RegisterInitial) {
                 getOutOfHere(context);
+              } else if (state is PhotoSelection) {
+                showSureThenQuit(context: context);
               } else {
                 // IF WE ARE STILL IN THE MAIL VERIFICATON PROCESS, WE WILL AGAIN KILL THE PROCESS
-                OkCancelResult result = await showSureDialog(context: context);
-
-                if (result == OkCancelResult.ok) {
-                  getOutOfHere(context);
-                }
+                showSureThenQuit(context: context);
               }
             }),
         child
       ],
     );
+
+Future<void> showSureThenQuit({required BuildContext context}) async {
+  OkCancelResult result = await showSureDialog(context: context);
+
+  if (result == OkCancelResult.ok) {
+    getOutOfHere(context);
+  }
+}
 
 Future<OkCancelResult> showSureDialog({required BuildContext context}) async {
   return await AdaptiveDialoger.showSimpleOkCancel(
