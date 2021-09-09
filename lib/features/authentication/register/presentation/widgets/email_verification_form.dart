@@ -1,9 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/constants/asset_paths.dart';
+import 'package:matchangoo/core/ui/components/headlines.dart';
 import '../../../../../core/components/buttons/grey_textfield.dart';
 
 import '../../../../../core/ui/theme/palette.dart';
+import 'facebook_google_buttons.dart';
 import 'white_containerwpinkshadow.dart';
 
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
@@ -17,55 +20,40 @@ final String TITLE_TEXT2 = "Email ID";
 
 final String EXPLANATION_TEXT = "* We will send you a verification code to pair your e-mail adress within your account.";
 final String SECOND_EXPLANATION = "* You will also have the opportunity to save your account in case you forget the password.";
-WhiteContainerWPinkShadow emailVerifyContainer(BuildContext context, bool typed) {
-  return WhiteContainerWPinkShadow(
+SingleChildScrollView emailVerifyContainer(BuildContext context, bool typed) {
+  return SingleChildScrollView(
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox().heightSpacer(context, 1),
-        titleOne(context),
-        titleTwo(context),
-        textFieldContainerWithPrefix(
-            context: context,
-            textInputType: TextInputType.emailAddress,
-            hintText: 'example@mail.com',
-            onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
+        WhiteContainerWPinkShadow(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            SizedBox().heightSpacer(context, 1),
+            titleOne(context),
+            titleTwo(context),
+            textFieldContainerWithPrefix(
+                context: context,
+                textInputType: TextInputType.emailAddress,
+                hintText: 'example@mail.com',
+                preffixIcon: Icons.mail_outline_outlined,
+                onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
+            textFieldContainerWithPrefix(
+                context: context,
+                textInputType: TextInputType.text,
+                preffixIcon: Icons.lock,
+                hintText: 'Enter your password',
+                obscure: true,
+                onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
+            SizedBox().heightSpacer(context, 2),
+            getAnimatedButton(typed, context, () {
+              context.read<RegisterBloc>().add(EmailVerifyWaiting());
+            }),
+            SizedBox().heightSpacer(context, 1),
+            Text(EXPLANATION_TEXT),
+          ]),
+        ),
+        headLineEight(context, 'or sign in using', fontWeight: FontWeight.normal),
         SizedBox().heightSpacer(context, 2),
-        getAnimatedButton(typed, context, () {
-          context.read<RegisterBloc>().add(EmailVerifyWaiting());
-        }),
-        SizedBox().heightSpacer(context, 1),
-        Text(EXPLANATION_TEXT),
-        SizedBox().heightSpacer(context, 2),
-        // Text(SECOND_EXPLANATION),
-        // SizedBox().heightSpacer(context, 1),
-        facebookSignIn(context),
-        googleSignIn(context),
+        facegoogleButtons(context),
       ],
-    ),
-  );
-}
-
-InkWell googleSignIn(BuildContext context) {
-  return InkWell(
-    onTap: () {
-      context.read<RegisterBloc>().signInViaGoogle();
-    },
-    child: Text(
-      'Google Sign In',
-      style: Theme.of(context).textTheme.headline4,
-    ),
-  );
-}
-
-InkWell facebookSignIn(BuildContext context) {
-  return InkWell(
-    onTap: () {
-      context.read<RegisterBloc>().signInViaFacebook();
-    },
-    child: Text(
-      'Facebook Sign In',
-      style: Theme.of(context).textTheme.headline4,
     ),
   );
 }
@@ -81,5 +69,24 @@ AutoSizeText titleOne(BuildContext context) {
   return AutoSizeText(
     TITLE_TEXT,
     style: Theme.of(context).textTheme.headline4?.copyWith(fontSize: context.widthUnit * 6, color: Palette.BIZIMBLACK, fontWeight: FontWeight.bold),
+  );
+}
+
+Row facegoogleButtons(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      AnimatedFacebookGoogleButton(
+          onTap: () {
+            context.read<RegisterBloc>().signInViaGoogle();
+          },
+          type: ButtonType.GOOGLE),
+      SizedBox().widthSpacer(context, 3),
+      AnimatedFacebookGoogleButton(
+          onTap: () {
+            context.read<RegisterBloc>().signInViaFacebook();
+          },
+          type: ButtonType.FACEBOOK)
+    ],
   );
 }

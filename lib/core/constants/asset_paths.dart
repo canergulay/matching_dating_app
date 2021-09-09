@@ -14,4 +14,7 @@ class AssetPaths {
 
   static const ADDPHOTO = 'assets/images/icons/addphoto.png';
   static const DELPHOTO = 'assets/images/icons/delphoto.png';
+
+  static const FACEBOOK = 'assets/images/icons/facebook.png';
+  static const GOOGLE = 'assets/images/icons/google.png';
 }

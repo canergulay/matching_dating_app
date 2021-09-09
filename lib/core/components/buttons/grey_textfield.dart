@@ -5,14 +5,20 @@ import '../../structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 
 Container textFieldContainerWithPrefix(
-    {required BuildContext context, required String hintText, required TextInputType textInputType, required Function(String) onChanged}) {
+    {required BuildContext context,
+    required String hintText,
+    required TextInputType textInputType,
+    required Function(String) onChanged,
+    required IconData preffixIcon,
+    bool obscure = false}) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       color: Palette.TEXTFIELDGREY,
     ),
-    margin: EdgeInsets.only(top: context.heightUnit * 4),
+    margin: EdgeInsets.only(top: context.heightUnit * 2),
     child: TextField(
+        obscureText: true,
         style:
             Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
         onChanged: onChanged,
@@ -22,7 +28,7 @@ Container textFieldContainerWithPrefix(
           hintText: hintText,
           alignLabelWithHint: false,
           prefixIcon: Icon(
-            Icons.mail_outline_outlined,
+            preffixIcon,
             color: Colors.black45,
           ),
           enabledBorder: OutlineInputBorder(

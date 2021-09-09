@@ -1,24 +1,42 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matchangoo/core/components/utils/image_picker.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
+import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
 
 abstract class PhotoSelectionState {}
 
-class PhotoNotSelected extends PhotoSelectionState {}
+class Photos extends PhotoSelectionState {
+  final List<String> photos;
 
-class PhotoSelected extends PhotoSelectionState {
-  final String photo;
-  PhotoSelected({required this.photo});
+  Photos({required this.photos});
 }
 
 class PhotoSelectionCubit extends Cubit<PhotoSelectionState> {
-  PhotoSelectionCubit() : super(PhotoNotSelected());
+  late OnOffCubit onOffCubit;
+  PhotoSelectionCubit() : super(Photos(photos: [])) {
+    onOffCubit = OnOffCubit();
+  }
+
   Future<void> selectPhoto() async {
     XFile? file = await ImagePickerHelper.instance.pickTheImage();
     if (file != null) {
-      emit(PhotoSelected(photo: file.path));
+      final List<String> photos = (state as Photos).photos;
+      photos.add(file.path);
+      emit(Photos(photos: photos));
+      checkOnOffButton();
     }
   }
+
+  Future<void> deletePhoto(int index) async {
+    List<String> photos = photosInState;
+    photos.removeAt(index);
+    emit(Photos(photos: photos));
+    checkOnOffButton();
+  }
+
+  void checkOnOffButton() {
+    photosInState.length > 0 ? onOffCubit.on() : onOffCubit.off();
+  }
+
+  List<String> get photosInState => (state as Photos).photos;
 }

@@ -76,6 +76,8 @@ flutter:
     - assets/images/icons/future.png
     - assets/images/icons/addphoto.png
     - assets/images/icons/delphoto.png
+    - assets/images/icons/facebook.png
+    - assets/images/icons/google.png
 
   fonts:
     - family: Poppins

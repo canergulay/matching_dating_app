@@ -17,6 +17,12 @@
 
     "PHOTO_SELECTION":{
         "addphotos":"Add Photos"
+    },
+
+    "ARE_YOU_SURE":{
+        "title":"Are you sure?",
+        "photomessage":"This photo will be removed from the photos list.",
+        "backmessage":"You will lose registration process once you leave this page."
     }
 
 

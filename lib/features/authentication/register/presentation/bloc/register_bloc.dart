@@ -49,6 +49,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield RegisterWithEmailVerified();
     } else if (event is IdentificationAlmostFinished) {
       yield PhotoSelection();
+    } else if (event is Completed) {
+      yield IdentificationCompleted();
     }
   }
 

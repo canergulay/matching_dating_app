@@ -7,18 +7,18 @@ void getOutOfHere(BuildContext context) {
   Navigator.of(context).pop();
 }
 
-Future<void> showSureThenQuit({required BuildContext context}) async {
-  OkCancelResult result = await showSureDialog(context: context);
+Future<void> showSureThenQuit({required BuildContext context, required String title, required String message}) async {
+  OkCancelResult result = await showSureDialog(context: context, title: title, message: message);
 
   if (result == OkCancelResult.ok) {
     getOutOfHere(context);
   }
 }
 
-Future<OkCancelResult> showSureDialog({required BuildContext context}) async {
+Future<OkCancelResult> showSureDialog({required BuildContext context, required String title, required String message}) async {
   return await AdaptiveDialoger.showSimpleOkCancel(
     context: context,
-    title: "Are you sure?",
-    message: "You will lose registration process once you leave this page.",
+    title: title,
+    message: message,
   );
 }

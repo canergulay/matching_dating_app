@@ -1,10 +1,12 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
 import 'package:matchangoo/core/components/utils/get_out_of_here.dart';
 import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
 import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
+import 'package:matchangoo/core/ui/components/headlines.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/sections/photo_selection.dart';
 import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
@@ -41,6 +43,9 @@ class RegisterScreen extends StatelessWidget {
                   return columnSupplierWbBUTTON(state, context, Expanded(child: WhiteContainerWPinkShadow(child: Identification())));
                 } else if (state is PhotoSelection) {
                   return columnSupplierWbBUTTON(state, context, PhotoSelectionScreen());
+                } else if (state is IdentificationCompleted) {
+                  print('identification tamam');
+                  return columnSupplierWbBUTTON(state, context, Container(child: headLineEight(context, 'Bitti üyesin artık')));
                 } else {
                   return columnSupplierWbBUTTON(state, context, emailCouldNotBeVerified(context));
                 }
@@ -65,38 +70,17 @@ Column columnSupplierWbBUTTON(RegisterState state, BuildContext context, Widget 
                   // WHICH IS NOTHING BUT A SIMPLE PAGEVIEW
                   context.read<IdentificationCubit>().getPrevious();
                 } else {
-                  // IF IT IS THE ZEROTH PAGE AND THE USER PRESSES THE BACK BUTTON
-                  // WE WILL TAKE THEM THROUGH THE MAIN PAGE AND KILL THE REGISTRATION PROCESS
-                  OkCancelResult result = await showSureDialog(context: context);
-                  if (result == OkCancelResult.ok) {
-                    getOutOfHere(context);
-                  }
+                  showSureThenQuit(context: context, title: 'ARE_YOU_SURE.title'.tr(), message: 'ARE_YOU_SURE.backmessage'.tr());
                 }
               } else if (state is RegisterInitial) {
                 getOutOfHere(context);
               } else if (state is PhotoSelection) {
-                showSureThenQuit(context: context);
+                showSureThenQuit(context: context, title: 'ARE_YOU_SURE.title'.tr(), message: 'ARE_YOU_SURE.backmessage'.tr());
               } else {
                 // IF WE ARE STILL IN THE MAIL VERIFICATON PROCESS, WE WILL AGAIN KILL THE PROCESS
-                showSureThenQuit(context: context);
+                showSureThenQuit(context: context, title: 'ARE_YOU_SURE.title'.tr(), message: 'ARE_YOU_SURE.backmessage'.tr());
               }
             }),
         child
       ],
     );
-
-Future<void> showSureThenQuit({required BuildContext context}) async {
-  OkCancelResult result = await showSureDialog(context: context);
-
-  if (result == OkCancelResult.ok) {
-    getOutOfHere(context);
-  }
-}
-
-Future<OkCancelResult> showSureDialog({required BuildContext context}) async {
-  return await AdaptiveDialoger.showSimpleOkCancel(
-    context: context,
-    title: "Are you sure?",
-    message: "You will lose registration process once you leave this page.",
-  );
-}
