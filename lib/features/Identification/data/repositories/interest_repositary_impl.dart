@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
+import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
+import 'package:matchangoo/features/Identification/data/models/interests/interests.dart';
 import '../../../../core/result_error/errors/custom_error.dart';
 import '../datasources/interest_datasource.dart';
-import '../models/interests/interest_response.dart';
 import '../../../../core/result_error/result_freezed/result.dart';
 import '../../domain/repositories/interest_repositary_contract.dart';
 
@@ -10,9 +10,9 @@ class InterestRepositary implements InterestRepositaryContract {
   InterestRepositary({required this.interestDataSource});
 
   @override
-  Future<Result<InterestResponse>> getInterests() async {
+  Future<Result<List<Interests>>> getInterests({required InterestType type}) async {
     try {
-      InterestResponse interestResponse = await interestDataSource.getInterests();
+      List<Interests> interestResponse = await interestDataSource.getInterests(type: type);
       return Result.success(interestResponse);
     } on CustomError {
       return Result.error(CustomError(errorCode: 500));

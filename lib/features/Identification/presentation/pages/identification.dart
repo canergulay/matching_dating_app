@@ -39,7 +39,7 @@ class _IdentificationState extends State<Identification> {
       builder: (context, state) {
         return Container(
           height: context.heightUnit * 3,
-          padding: EdgeInsets.only(left: context.widthUnit * 1.5, right: context.widthUnit * 1.5),
+          margin: EdgeInsets.all(context.heightUnit * 2),
           child: Row(
             children: [
               statusIcon(0, state),
@@ -122,14 +122,16 @@ class _IdentificationState extends State<Identification> {
   }
 }
 
-PageView identificationPageView(BuildContext context) {
-  return PageView(
-    physics: NeverScrollableScrollPhysics(),
-    reverse: false,
-    controller: context.read<IdentificationCubit>().pageController,
-    onPageChanged: (int page) {
-      //   context.read<IdentificationCubit>().onPageChanged(page);
-    },
-    children: context.read<IdentificationCubit>().identificationRepo.identificationPages(),
+Container identificationPageView(BuildContext context) {
+  return Container(
+    child: PageView(
+      physics: NeverScrollableScrollPhysics(),
+      reverse: false,
+      controller: context.read<IdentificationCubit>().pageController,
+      onPageChanged: (int page) {
+        //   context.read<IdentificationCubit>().onPageChanged(page);
+      },
+      children: context.read<IdentificationCubit>().identificationRepo.identificationPages(),
+    ),
   );
 }

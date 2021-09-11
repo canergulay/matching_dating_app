@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
 import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/interests_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/degree_type_list.dart';
 import '../../functionality/google_sign_in.dart';
 import '../../../features/Identification/data/datasources/interest_datasource.dart';
@@ -56,8 +57,8 @@ void registerSMSVerificationModul() {
 void registerModule() {
   sl.registerFactory<RegisterBloc>(() => RegisterBloc(
       identificationCubit: sl(), facebookSignIn: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl(), googleSignInRepo: sl()));
-  sl.registerFactory<IdentificationCubit>(() => IdentificationCubit(
-      getAllInterests: sl(), professionCubit: sl(), interestedInCubit: sl(), genderCubit: sl(), registrationEntity: sl(), identificationRepo: sl()));
+  sl.registerFactory<IdentificationCubit>(() =>
+      IdentificationCubit(professionCubit: sl(), interestedInCubit: sl(), genderCubit: sl(), registrationEntity: sl(), identificationRepo: sl()));
 
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
@@ -66,12 +67,16 @@ void registerModule() {
   sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
   sl.registerFactory<VerificationEmailDataSource>(() => VerificationEmailDataSource());
   sl.registerFactory<IdentificationRepo>(() => IdentificationRepo());
-  sl.registerFactory<GetAllInterests>(() => GetAllInterests(interestRepositary: sl()));
-  sl.registerFactory<InterestRepositary>(() => InterestRepositary(interestDataSource: sl()));
-  sl.registerFactory<InterestDataSource>(() => InterestDataSource());
+
   sl.registerFactory<RegistrationEntity>(() => RegistrationEntity());
   sl.registerFactory<GenderCubit>(() => GenderCubit());
   sl.registerFactory<InterestedInCubit>(() => InterestedInCubit());
   sl.registerFactory<ProfessionCubit>(() => ProfessionCubit(degreeCubit: sl()));
   sl.registerFactory<DegreeCubit>(() => DegreeCubit(degreesRepo: DegreesRepo()));
+  sl.registerFactory<InterestManagerCubit>(
+      () => InterestManagerCubit(getAllInterests: sl(), languagescubit: sl(), onlinegamescubit: sl(), petscubit: sl(), sportscubit: sl()));
+  sl.registerFactory<GetAllInterests>(() => GetAllInterests(interestRepositary: sl()));
+  sl.registerFactory<InterestRepositary>(() => InterestRepositary(interestDataSource: sl()));
+  sl.registerFactory<InterestDataSource>(() => InterestDataSource());
+  sl.registerFactory<InterestsCubit>(() => InterestsCubit());
 }

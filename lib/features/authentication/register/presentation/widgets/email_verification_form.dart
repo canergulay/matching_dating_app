@@ -16,7 +16,7 @@ import '../bloc/register_bloc.dart';
 import 'activatable_button.dart';
 
 final String TITLE_TEXT = "Please enter your";
-final String TITLE_TEXT2 = "Email ID";
+final String TITLE_TEXT2 = "Email ID & Password";
 
 final String EXPLANATION_TEXT = "* We will send you a verification code to pair your e-mail adress within your account.";
 final String SECOND_EXPLANATION = "* You will also have the opportunity to save your account in case you forget the password.";

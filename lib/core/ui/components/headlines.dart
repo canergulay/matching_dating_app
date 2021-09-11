@@ -30,4 +30,13 @@ Text headLineSeven(BuildContext context, String text, {double size = 5}) => Text
 Text headLineEight(BuildContext context, String text, {double size = 4, FontWeight fontWeight = FontWeight.bold, Color color = Colors.black}) =>
     Text(text,
         textAlign: TextAlign.center,
+        style: Theme.of(context)
+            .textTheme
+            .headline3
+            ?.dynamicText(context: context, size: size)
+            .copyWith(color: color, fontWeight: fontWeight, letterSpacing: 0.6));
+
+Text headLineNine(BuildContext context, String text, {double size = 4, FontWeight fontWeight = FontWeight.bold, Color color = Colors.black}) =>
+    Text(text,
+        textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headline3?.dynamicText(context: context, size: size).copyWith(color: color, fontWeight: fontWeight));

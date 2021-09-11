@@ -10,7 +10,7 @@ Widget getAnimatedButton(bool typed, BuildContext context, VoidCallback onPresse
 Container activeButton(BuildContext context, VoidCallback onPressed) => Container(
       margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
       child: AnimatedButton(
-        title: 'verify',
+        title: 'Sign In',
         onPressed: onPressed,
         titleColor: Colors.white,
         buttonColor: Palette.BUTTONACTIVE,
@@ -21,7 +21,7 @@ Container activeButton(BuildContext context, VoidCallback onPressed) => Containe
 Container passiveButton(BuildContext context) => Container(
       margin: EdgeInsets.only(left: context.widthUnit * 20, right: context.widthUnit * 20),
       child: AnimatedButton(
-        title: 'verify',
+        title: 'Sign In',
         onPressed: () {},
         titleColor: Colors.white,
         buttonColor: Palette.BUTTONINACTIVE,

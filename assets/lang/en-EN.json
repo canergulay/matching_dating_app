@@ -23,8 +23,13 @@
         "title":"Are you sure?",
         "photomessage":"This photo will be removed from the photos list.",
         "backmessage":"You will lose registration process once you leave this page."
+    },
+
+    "INTERESTS":{
+        "sports":"Sports",
+        "onlinegames":"Online Games",
+        "languages":"Languages",
+        "pets":"Pets"
     }
-
-
 
 }
