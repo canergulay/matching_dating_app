@@ -24,6 +24,7 @@ class InterestManagerCubit extends Cubit<InterestType> {
   }
 
   void changeTab(int type) {
+    print('gerldi');
     emit(intToInterestType(type));
     fetchAndEmitInterestsIfNotAlready(intToInterestType(type));
   }

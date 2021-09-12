@@ -48,6 +48,7 @@ dependencies:
   staggered_grid_view_flutter: ^0.0.4
   image_picker: ^0.8.4
 
+
 dev_dependencies:
   change_app_package_name: ^0.1.3
   freezed: ^0.14.2

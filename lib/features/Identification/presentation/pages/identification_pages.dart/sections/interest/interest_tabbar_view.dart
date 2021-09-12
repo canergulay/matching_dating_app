@@ -26,9 +26,8 @@ class _InterestTabbarViewState extends State<InterestTabbarView> with TickerProv
     _tabController = TabController(initialIndex: 0, length: 4, vsync: this);
 
     _tabController.addListener(() {
-      print('değiştik here is the new felan');
-
       context.read<InterestManagerCubit>().changeTab(_tabController.index);
+      print('değiştik here is the new felan');
     });
     super.initState();
   }

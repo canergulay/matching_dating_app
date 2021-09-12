@@ -25,19 +25,17 @@ class InterestGridView extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             } else {
               InterestLoaded _loadedState = (state as InterestLoaded);
-              return StaggeredGridView.countBuilder(
-                  physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-                  mainAxisSpacing: context.widthUnit * 2,
-                  crossAxisSpacing: context.heightUnit * 2,
-                  crossAxisCount: 2,
-                  staggeredTileBuilder: (index) {
-                    return StaggeredTile.count(1, 0.3);
-                  },
-                  scrollDirection: Axis.vertical,
-                  itemCount: _loadedState.interestList.length,
-                  itemBuilder: (context, index) {
-                    return mainContainer(context, name: _loadedState.interestList[index].names?["en_US"] ?? "sasa");
-                  });
+              return Container(
+                margin: EdgeInsets.all(12),
+                child: Wrap(
+                    spacing: 20,
+                    runSpacing: 10,
+                    children: _loadedState.interestList
+                        .map(
+                          (list) => mainContainer(context, name: list.names?["en_US"] ?? ""),
+                        )
+                        .toList()),
+              );
             }
           },
         ),
@@ -71,17 +69,22 @@ BlocProvider mainContainer(BuildContext context, {required String name}) {
               context.read<OnOffCubit>().off();
             }
           },
-          child: greyContainer(
-            padding: 0,
-            rightPadding: 0,
-            color: state ? Palette.BUTTONINACTIVE.withOpacity(0.45) : Palette.GENDERBUTTONINACTIVE,
-            child: Center(
-                child: Text(name,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText1
-                        ?.copyWith(fontWeight: FontWeight.bold, color: state ? Colors.black : Colors.grey.shade500))),
+          child: Container(
+            width: name.length <= 4 ? name.length * 18 : name.length * 12,
+            height: 40,
+            child: greyContainer(
+              padding: 0,
+              rightPadding: 0,
+              borderWidth: 0.15,
+              color: state ? Palette.BUTTONINACTIVE.withOpacity(0.45) : Palette.GENDERBUTTONINACTIVE,
+              child: Center(
+                  child: Text(name,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          ?.copyWith(fontWeight: FontWeight.w500, color: state ? Colors.black : Colors.grey.shade500))),
+            ),
           ),
         );
       },
