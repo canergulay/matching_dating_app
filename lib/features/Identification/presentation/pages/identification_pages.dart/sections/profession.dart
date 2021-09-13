@@ -3,16 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/buttons/grey_button.dart';
 import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/degree_type_list.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
-import '../../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../cubit/gender_cubit.dart';
+
 import '../../../cubit/identification_cubit.dart';
 import '../../../cubit/profession_cubit.dart';
-import '../../identification.dart';
 import '../utils/onboard_text.dart';
 
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';

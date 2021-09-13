@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:matchangoo/core/constants/app_constants.dart';
-import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
 import 'package:matchangoo/features/Identification/data/models/interests/interests.dart';
 

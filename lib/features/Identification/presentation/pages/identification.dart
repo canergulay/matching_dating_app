@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import '../widgets/grey_line.dart';
 import '../widgets/progress_widget.dart';
-import '../../../../core/components/utils/adaptive_dialoger.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/init/get_them_all/get_it_container.dart';
+
 import '../../../../core/structure/utils/extensions/context_extension.dart';
 
 import '../cubit/identification_cubit.dart';
@@ -18,27 +16,40 @@ class Identification extends StatefulWidget {
   _IdentificationState createState() => _IdentificationState();
 }
 
-class _IdentificationState extends State<Identification> {
+class _IdentificationState extends State<Identification> with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+
+  @override
+  void didChangeDependencies() {
+    _animationController =
+        AnimationController(lowerBound: 0, upperBound: context.heightUnit * 3, vsync: this, duration: Duration(milliseconds: 1231));
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        animatedRowTop(context),
-        /*TabBarView(
-          
-          controller: TabController(length: length, vsync: vsync),
-          children: context.read<IdentificationCubit>().identificationRepo.identificationPages(),
-        ),*/
-        Expanded(child: identificationPageView(context)),
-      ],
+    return ListenableProvider<AnimationController>(
+      create: (context) => _animationController,
+      child: AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, child) {
+          return Column(
+            children: [
+              animatedRowTop(context, animatedValue: _animationController.value),
+              identificationPageView(context, animatedValue: _animationController.value),
+            ],
+          );
+        },
+      ),
     );
   }
 
-  BlocBuilder animatedRowTop(BuildContext context) {
+  BlocBuilder animatedRowTop(BuildContext context, {required double animatedValue}) {
     return BlocBuilder<IdentificationCubit, int>(
       builder: (context, state) {
         return Container(
-          height: context.heightUnit * 3,
+          height: context.heightUnit * 3 - animatedValue,
           margin: EdgeInsets.all(context.heightUnit * 2),
           child: Row(
             children: [
@@ -120,10 +131,18 @@ class _IdentificationState extends State<Identification> {
         width: context.read<IdentificationCubit>().containerWidth(context),
         color: UiConfigs.containerColor);
   }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
 }
 
-Container identificationPageView(BuildContext context) {
+Container identificationPageView(BuildContext context, {required double animatedValue}) {
   return Container(
+    height: (context.dynamicHeight / 2) - (animatedValue * 100 / 3 / 2),
     child: PageView(
       physics: NeverScrollableScrollPhysics(),
       reverse: false,

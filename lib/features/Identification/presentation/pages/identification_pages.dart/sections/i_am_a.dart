@@ -10,7 +10,6 @@ import '../utils/onboard_text.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 import '../../../widgets/activatable_button.dart';
 import '../../../widgets/gender_grey_button.dart';
-import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 
 class FirstSection extends StatelessWidget {
   const FirstSection({Key? key}) : super(key: key);

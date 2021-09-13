@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/Identification/data/models/interest_type.dart';

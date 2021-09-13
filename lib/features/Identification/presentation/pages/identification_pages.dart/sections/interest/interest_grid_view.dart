@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/buttons/grey_button.dart';
+import 'package:matchangoo/core/components/utils/localisation_string_returner.dart';
 import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
+import 'package:matchangoo/core/init/app_cubit/app_cubit.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/interests_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/keep_alive.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
 class InterestGridView extends StatelessWidget {
   final InterestType type;
@@ -25,16 +24,23 @@ class InterestGridView extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             } else {
               InterestLoaded _loadedState = (state as InterestLoaded);
-              return Container(
-                margin: EdgeInsets.all(12),
-                child: Wrap(
-                    spacing: 20,
-                    runSpacing: 10,
-                    children: _loadedState.interestList
-                        .map(
-                          (list) => mainContainer(context, name: list.names?["en_US"] ?? ""),
-                        )
-                        .toList()),
+              return Scrollbar(
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                  child: Container(
+                    margin: EdgeInsets.all(12),
+                    child: Wrap(
+                        spacing: 20,
+                        runSpacing: 10,
+                        children: _loadedState.interestList
+                            .map(
+                              (list) => mainContainer(context,
+                                  name: list.names?[LocalisationController.instance.getLanguage(context.read<AppCubit>().state.currentLanguage)] ??
+                                      "en_US"),
+                            )
+                            .toList()),
+                  ),
+                ),
               );
             }
           },

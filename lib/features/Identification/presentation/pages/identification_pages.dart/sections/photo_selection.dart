@@ -6,13 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/buttons/grey_button.dart';
 import 'package:matchangoo/core/components/utils/get_out_of_here.dart';
-import 'package:matchangoo/core/components/utils/image_picker.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
+
 import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
 import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';

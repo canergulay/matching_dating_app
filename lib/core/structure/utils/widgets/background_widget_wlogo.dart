@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../constants/asset_paths.dart';
-import 'logo.dart';
+
 import '../extensions/context_extension.dart';
 
 class BackGroundContainerWithOutLogo extends StatelessWidget {
@@ -15,9 +15,8 @@ class BackGroundContainerWithOutLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: context.dynamicHeight,
-      width: context.width,
       child: child,
-      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AssetPaths.BACKGROUND))),
+      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fitWidth, image: AssetImage(AssetPaths.BACKGROUND))),
     );
   }
 }

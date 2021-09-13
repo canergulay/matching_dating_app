@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../ui/theme/palette.dart';
 import '../../structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 
 Container textFieldContainerWithPrefix(
     {required BuildContext context,

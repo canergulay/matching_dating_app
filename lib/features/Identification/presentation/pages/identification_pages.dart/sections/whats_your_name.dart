@@ -2,11 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../../../../../core/components/buttons/grey_textfield.dart';
 import '../utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
-import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../../../widgets/activatable_button.dart';
@@ -20,8 +18,7 @@ class WhatIsYourName extends StatelessWidget {
     final String explanation = 'Your name will be visible to other users.';
     return BlocProvider(
         create: (context) => OnOffCubit(),
-        child: SingleChildScrollView(
-            child: Builder(
+        child: Builder(
           builder: (context) => onboardContainerColumn(context: context, children: [
             onBoardText(whatIsYourName, context),
             SizedBox().heightSpacer(context, 2),
@@ -56,6 +53,6 @@ class WhatIsYourName extends StatelessWidget {
                 },
                 shouldBeActive: true)
           ]),
-        )));
+        ));
   }
 }

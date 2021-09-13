@@ -47,6 +47,7 @@ dependencies:
   google_sign_in: ^5.0.7
   staggered_grid_view_flutter: ^0.0.4
   image_picker: ^0.8.4
+  provider: ^6.0.0
 
 
 dev_dependencies:

@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
 import '../../../../../core/components/buttons/grey_textfield.dart';
 
@@ -20,41 +19,39 @@ final String TITLE_TEXT2 = "Email ID & Password";
 
 final String EXPLANATION_TEXT = "* We will send you a verification code to pair your e-mail adress within your account.";
 final String SECOND_EXPLANATION = "* You will also have the opportunity to save your account in case you forget the password.";
-SingleChildScrollView emailVerifyContainer(BuildContext context, bool typed) {
-  return SingleChildScrollView(
-    child: Column(
-      children: [
-        WhiteContainerWPinkShadow(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox().heightSpacer(context, 1),
-            titleOne(context),
-            titleTwo(context),
-            textFieldContainerWithPrefix(
-                context: context,
-                textInputType: TextInputType.emailAddress,
-                hintText: 'example@mail.com',
-                preffixIcon: Icons.mail_outline_outlined,
-                onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
-            textFieldContainerWithPrefix(
-                context: context,
-                textInputType: TextInputType.text,
-                preffixIcon: Icons.lock,
-                hintText: 'Enter your password',
-                obscure: true,
-                onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
-            SizedBox().heightSpacer(context, 2),
-            getAnimatedButton(typed, context, () {
-              context.read<RegisterBloc>().add(EmailVerifyWaiting());
-            }),
-            SizedBox().heightSpacer(context, 1),
-            Text(EXPLANATION_TEXT),
-          ]),
-        ),
-        headLineEight(context, 'or sign in using', fontWeight: FontWeight.normal),
-        SizedBox().heightSpacer(context, 2),
-        facegoogleButtons(context),
-      ],
-    ),
+Column emailVerifyContainer(BuildContext context, bool typed) {
+  return Column(
+    children: [
+      WhiteContainerWPinkShadow(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox().heightSpacer(context, 1),
+          titleOne(context),
+          titleTwo(context),
+          textFieldContainerWithPrefix(
+              context: context,
+              textInputType: TextInputType.emailAddress,
+              hintText: 'example@mail.com',
+              preffixIcon: Icons.mail_outline_outlined,
+              onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
+          textFieldContainerWithPrefix(
+              context: context,
+              textInputType: TextInputType.text,
+              preffixIcon: Icons.lock,
+              hintText: 'Enter your password',
+              obscure: true,
+              onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))),
+          SizedBox().heightSpacer(context, 2),
+          getAnimatedButton(typed, context, () {
+            context.read<RegisterBloc>().add(EmailVerifyWaiting());
+          }),
+          SizedBox().heightSpacer(context, 1),
+          Text(EXPLANATION_TEXT),
+        ]),
+      ),
+      headLineEight(context, 'or sign in using', fontWeight: FontWeight.normal),
+      SizedBox().heightSpacer(context, 2),
+      facegoogleButtons(context),
+    ],
   );
 }
 

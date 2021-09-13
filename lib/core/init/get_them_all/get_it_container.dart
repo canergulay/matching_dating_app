@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
 import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
+import 'package:matchangoo/core/init/app_cubit/app_cubit.dart';
+import 'package:matchangoo/core/structure/utils/enums/theme_types.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/interests_cubit.dart';
 import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/degree_type_list.dart';
 import '../../functionality/google_sign_in.dart';
@@ -20,7 +24,7 @@ import '../../../features/authentication/register/domain/usecases/send_verificat
 import '../../../features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../components/utils/adaptive_dialoger.dart';
 import '../geolocation/location_manager.dart';
-import '../theme_manager/theme_manager_cubit.dart';
+
 import '../../ui/theme/theme_controller.dart';
 import '../../../features/authentication/phone_verification/data/datasources/register_remote_datasource.dart';
 import '../../../features/authentication/phone_verification/data/repositories/sms_verify_repositary.dart';
@@ -35,7 +39,6 @@ Future<void> init() async {
 
   //THEME SUBSCRIPTION//
   sl.registerFactory<ThemeController>(() => ThemeController());
-  sl.registerSingleton<ThemeManagerCubit>(ThemeManagerCubit(sl()));
 
   //UTILS
   sl.registerSingleton<AdaptiveDialoger>(AdaptiveDialoger());
@@ -45,6 +48,9 @@ Future<void> init() async {
 
   //REGISTER FEATURE
   registerModule();
+
+  //INIT APP CUBIT
+  appCubitInitialization();
 }
 
 void registerSMSVerificationModul() {
@@ -79,4 +85,13 @@ void registerModule() {
   sl.registerFactory<InterestRepositary>(() => InterestRepositary(interestDataSource: sl()));
   sl.registerFactory<InterestDataSource>(() => InterestDataSource());
   sl.registerFactory<InterestsCubit>(() => InterestsCubit());
+}
+
+void appCubitInitialization() {
+  String defaultLocale = Platform.localeName;
+
+  AppState appInitialState = AppState(currentLanguage: defaultLocale, currentTheme: ThemeType.LIGHT);
+  sl.registerFactory<AppCubit>(() => AppCubit(
+        initialState: appInitialState,
+      ));
 }
