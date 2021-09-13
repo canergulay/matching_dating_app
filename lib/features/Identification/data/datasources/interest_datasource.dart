@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
-import 'package:matchangoo/features/Identification/data/models/interests/interests.dart';
+import '../models/interest_type.dart';
+import '../models/interests/interests.dart';
 
 import '../../../../core/init/network/network_manager.dart';
 import '../../../../core/result_error/errors/custom_error.dart';

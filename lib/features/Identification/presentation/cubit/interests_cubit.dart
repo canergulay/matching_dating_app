@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/result_error/errors/custom_error.dart';
-import 'package:matchangoo/core/result_error/result_freezed/result.dart';
-import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
+import '../../../../core/result_error/errors/custom_error.dart';
+import '../../../../core/result_error/result_freezed/result.dart';
+import '../../data/models/interest_type.dart';
 
-import 'package:matchangoo/features/Identification/data/models/interests/interests.dart';
-import 'package:matchangoo/features/Identification/domain/usecases/get_interests.dart';
+import '../../data/models/interests/interests.dart';
+import '../../domain/usecases/get_interests.dart';
 
 class InterestManagerCubit extends Cubit<InterestType> {
   final GetAllInterests getAllInterests;

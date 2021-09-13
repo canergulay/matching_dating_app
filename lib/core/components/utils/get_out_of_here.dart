@@ -1,6 +1,6 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/components/utils/adaptive_dialoger.dart';
+import 'adaptive_dialoger.dart';
 
 void getOutOfHere(BuildContext context) {
   FocusScope.of(context).unfocus();

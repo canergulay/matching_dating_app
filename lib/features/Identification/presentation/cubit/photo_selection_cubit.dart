@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:matchangoo/core/components/utils/image_picker.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
+import '../../../../core/components/utils/image_picker.dart';
+import '../../../../core/components/utils/on_off_cubit.dart';
 
 abstract class PhotoSelectionState {}
 

@@ -1,6 +1,6 @@
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:matchangoo/core/result_error/errors/custom_error.dart';
-import 'package:matchangoo/core/result_error/result_freezed/result.dart';
+import '../result_error/errors/custom_error.dart';
+import '../result_error/result_freezed/result.dart';
 
 class GoogleSignInRepo {
   final GoogleSignIn _googleSignIn = GoogleSignIn();

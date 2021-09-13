@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/grey_button.dart';
-import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
-import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
+import '../../../../../../core/components/buttons/grey_button.dart';
+import '../../../../../../core/components/buttons/grey_textfield.dart';
+import '../../../../data/models/profession/degree_types.dart';
+import '../../../widgets/onboard_container_column.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 
 import '../../../cubit/identification_cubit.dart';
@@ -33,9 +33,9 @@ class Profession extends StatelessWidget {
       child: BlocBuilder<ProfessionCubit, ProfessionType>(
         builder: (contexta, state) {
           return onboardContainerColumn(context: context, children: [
-            onBoardText('Profession?', context),
+            onBoardText('PROFESSION.PROFESSION'.tr(), context),
             Text(
-              'Your age will be public',
+              'PROFESSION.EXPLANATION'.tr(),
               style: Theme.of(context).textTheme.bodyText2,
             ),
             SizedBox().heightSpacer(context, 2),
@@ -63,7 +63,8 @@ class Profession extends StatelessWidget {
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.STUDENT);
                   context.read<OnOffCubit>().on();
                 },
-                child: genderGreyButton(isActive: state == ProfessionType.STUDENT ? true : false, text: 'Student', context: context))),
+                child:
+                    genderGreyButton(isActive: state == ProfessionType.STUDENT ? true : false, text: 'PROFESSION.STUDENT'.tr(), context: context))),
         SizedBox().widthSpacer(context, 2),
         Expanded(
             child: GestureDetector(
@@ -71,7 +72,7 @@ class Profession extends StatelessWidget {
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.WORKER);
                   context.read<OnOffCubit>().on();
                 },
-                child: genderGreyButton(isActive: state == ProfessionType.WORKER ? true : false, text: 'Working', context: context))),
+                child: genderGreyButton(isActive: state == ProfessionType.WORKER ? true : false, text: 'PROFESSION.WORKING'.tr(), context: context))),
       ],
     );
   }

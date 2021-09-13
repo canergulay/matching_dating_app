@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/ui/theme/palette.dart';
 import '../../../../core/components/buttons/animated_button.dart';
@@ -10,7 +11,7 @@ Widget activatableButton({required VoidCallback onPressed, bool shouldBeActive =
         if (!state && !shouldBeActive) {
           return Center(
               child: AnimatedButton(
-            title: 'next',
+            title: 'NEXT'.tr(),
             onPressed: () {},
             buttonColor: Palette.BUTTONINACTIVE,
             child: Icon(

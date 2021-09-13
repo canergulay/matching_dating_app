@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/init/app_cubit/app_cubit.dart';
+import '../../../../core/init/app_cubit/app_cubit.dart';
 
 import '../../../../core/init/get_them_all/get_it_container.dart';
 

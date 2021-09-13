@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../structure/utils/extensions/context_extension.dart';
 
+import '../../structure/utils/extensions/context_extension.dart';
 import '../../ui/theme/palette.dart';
 
 class AnimatedButton extends StatefulWidget {

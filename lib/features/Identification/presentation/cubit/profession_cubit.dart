@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/repo/degree_type_list.dart';
+import '../../data/models/profession/degree_types.dart';
+import '../pages/identification_pages.dart/repo/degree_type_list.dart';
 
 enum ProfessionType { STUDENT, WORKER, NONE }
 

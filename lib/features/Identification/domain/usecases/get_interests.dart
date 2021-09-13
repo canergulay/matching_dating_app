@@ -1,5 +1,5 @@
-import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
-import 'package:matchangoo/features/Identification/data/models/interests/interests.dart';
+import '../../data/models/interest_type.dart';
+import '../../data/models/interests/interests.dart';
 
 import '../../../../core/result_error/result_freezed/result.dart';
 

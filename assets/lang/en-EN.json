@@ -1,5 +1,6 @@
 {
     "first_string":"just trying",
+    "NEXT":"next",
     
     "MAIN_SCREEN":{
         "TITLE":"'Join {appname} and find your partner on a common criteria!'",
@@ -30,6 +31,52 @@
         "onlinegames":"Online Games",
         "languages":"Languages",
         "pets":"Pets"
+    },
+
+    "EMAIL_VERIFICATION":{
+        "TITLE_TEXT":"Please enter your",
+        "TITLE_TEXT2":"Email ID & Password",
+        "EXPLANATION_TEXT":"We will send you a verification code to pair your e-mail adress within your account.",
+        "ORSIGNIN":"or sign in using",
+        "MAIL_HINT":"example@mail.com",
+        "PASSWORD_HINT":"Enter your password"
+    },
+    
+    "WHAT_IS_YOUR_NAME":{
+        "WIYN":"What is your name ?",
+        "EXPLANATION":"Your name will be visible to other users.",
+        "NAME_HINT":"Enter your full name"
+    },
+
+    "WHAT_IS_YOUR_BIRTHDAY":{
+        "WIYB":"What is your birthday?",
+        "EXPLANATION":"This will be visible to other users , and used for matching purposes.",
+        "DD":"DD",
+        "MM":"MM",
+        "YYYY":"YYYY"
+    },
+
+    "I_AM_A":{
+        "I_AM_A":"IAA",
+        "EXPLANATION":"Your age will be public"
+    },
+
+    "GENDERS":{
+        "MAN":"Man",
+        "WOMAN":"Woman"
+    },
+
+    "INTERESTED_IN":"Interested in ?",
+
+    "PROFESSION":{
+        "PROFESSION":"Profession?",
+        "EXPLANATION":"Your profession will be public",
+        "STUDENT":"Student",
+        "WORKING":"Working"
     }
+    
+
+
+   
 
 }

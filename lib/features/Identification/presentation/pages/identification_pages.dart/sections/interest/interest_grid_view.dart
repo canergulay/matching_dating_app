@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/grey_button.dart';
-import 'package:matchangoo/core/components/utils/localisation_string_returner.dart';
-import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
-import 'package:matchangoo/core/init/app_cubit/app_cubit.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/interests_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/keep_alive.dart';
+import '../../../../../../../core/components/buttons/grey_button.dart';
+import '../../../../../../../core/components/utils/localisation_string_returner.dart';
+import '../../../../../../../core/components/utils/on_off_cubit.dart';
+import '../../../../../../../core/init/app_cubit/app_cubit.dart';
+import '../../../../../../../core/ui/theme/palette.dart';
+import '../../../../../data/models/interest_type.dart';
+import '../../../../cubit/interests_cubit.dart';
+import '../../../../widgets/keep_alive.dart';
 
 class InterestGridView extends StatelessWidget {
   final InterestType type;

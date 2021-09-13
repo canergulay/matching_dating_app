@@ -4,64 +4,76 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/components/buttons/grey_button.dart';
-import 'package:matchangoo/core/components/utils/get_out_of_here.dart';
+import '../../../../../../core/components/buttons/grey_button.dart';
+import '../../../../../../core/components/utils/get_out_of_here.dart';
 
-import 'package:matchangoo/core/constants/asset_paths.dart';
-import 'package:matchangoo/core/ui/components/headlines.dart';
-import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/activatable_button.dart';
-import 'package:matchangoo/features/authentication/register/presentation/bloc/register_bloc.dart';
+import '../../../../../../core/constants/asset_paths.dart';
+import '../../../../../../core/ui/components/headlines.dart';
+import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/structure/utils/extensions/context_extension.dart';
+import '../../../cubit/identification_cubit.dart';
+import '../../../cubit/photo_selection_cubit.dart';
+import '../../../widgets/activatable_button.dart';
+import '../../../../../authentication/register/presentation/bloc/register_bloc.dart';
 
-class PhotoSelectionScreen extends StatelessWidget {
+class PhotoSelectionScreen extends StatefulWidget {
   const PhotoSelectionScreen({Key? key}) : super(key: key);
 
   @override
+  _PhotoSelectionScreenState createState() => _PhotoSelectionScreenState();
+}
+
+class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with SingleTickerProviderStateMixin {
+  @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => PhotoSelectionCubit()),
-          BlocProvider(create: (context) => context.read<PhotoSelectionCubit>().onOffCubit),
-        ],
-        child: BlocBuilder<PhotoSelectionCubit, PhotoSelectionState>(
-          builder: (context, state) {
-            final List<String> photos = (state as Photos).photos;
-            return Column(
-              children: [
-                headLineSeven(context, "PHOTO_SELECTION.addphotos".tr()),
-                SizedBox().heightSpacer(context, 2),
-                Expanded(
-                  child: Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 8),
-                        child: GridView.builder(
-                            itemCount: 9,
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.75),
-                            itemBuilder: (context, i) {
-                              return photoWidget(context, photo: photos.length > i ? photos[i] : null, index: i);
-                            }),
-                      ),
-                      Positioned(
-                          bottom: context.heightUnit * 7,
-                          child: Container(
-                              width: context.width * 0.7,
-                              child: activatableButton(onPressed: () {
-                                context.read<IdentificationCubit>().registrationEntity.setPhotos = photos;
-                                context.read<RegisterBloc>().add(Completed());
-                              }))),
-                    ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => PhotoSelectionCubit()),
+        BlocProvider(create: (context) => context.read<PhotoSelectionCubit>().onOffCubit),
+      ],
+      child: BlocBuilder<PhotoSelectionCubit, PhotoSelectionState>(
+        builder: (context, state) {
+          final List<String> photos = (state as Photos).photos;
+          return Column(
+            children: [
+              headLineSeven(context, "PHOTO_SELECTION.addphotos".tr()),
+              SizedBox().heightSpacer(context, 2),
+              Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 8),
+                    child: TweenAnimationBuilder<double>(
+                      builder: (context, tween, child) {
+                        return Transform.scale(
+                          scale: 0.2 + tween,
+                          child: GridView.builder(
+                              shrinkWrap: true,
+                              itemCount: 9,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.75),
+                              itemBuilder: (context, i) {
+                                return photoWidget(context, photo: photos.length > i ? photos[i] : null, index: i);
+                              }),
+                        );
+                      },
+                      duration: Duration(milliseconds: 531),
+                      tween: Tween<double>(begin: 0, end: 0.8),
+                      curve: Curves.elasticIn,
+                    ),
                   ),
-                )
-              ],
-            );
-          },
-        ),
+                  Positioned(
+                      bottom: context.heightUnit * 0.1,
+                      child: Container(
+                          width: context.width * 0.7,
+                          child: activatableButton(onPressed: () {
+                            context.read<IdentificationCubit>().registrationEntity.setPhotos = photos;
+                            context.read<RegisterBloc>().add(Completed());
+                          }))),
+                ],
+              )
+            ],
+          );
+        },
       ),
     );
   }

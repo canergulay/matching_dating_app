@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/core/ui/components/headlines.dart';
-import 'package:matchangoo/core/ui/theme/palette.dart';
-import 'package:matchangoo/features/Identification/data/models/interest_type.dart';
-import 'package:matchangoo/features/Identification/presentation/cubit/interests_cubit.dart';
-import 'package:matchangoo/features/Identification/presentation/pages/identification_pages.dart/sections/interest/interest_grid_view.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/decorated_tabbar.dart';
+import '../../../../../../../core/ui/components/headlines.dart';
+import '../../../../../../../core/ui/theme/palette.dart';
+import '../../../../../data/models/interest_type.dart';
+import '../../../../cubit/interests_cubit.dart';
+import 'interest_grid_view.dart';
+import '../../../../widgets/decorated_tabbar.dart';
 
 class InterestTabbarView extends StatefulWidget {
   const InterestTabbarView({
@@ -23,11 +23,16 @@ class _InterestTabbarViewState extends State<InterestTabbarView> with TickerProv
   @override
   void initState() {
     _tabController = TabController(initialIndex: 0, length: 4, vsync: this);
+    _tabController.animation?.addListener(() {
+      print(_tabController.animation?.value);
 
-    _tabController.addListener(() {
-      context.read<InterestManagerCubit>().changeTab(_tabController.index);
-      print('değiştik here is the new felan');
+      if (_tabController.indexIsChanging) {
+        print(_tabController.previousIndex);
+        print(_tabController.index);
+        context.read<InterestManagerCubit>().changeTab(_tabController.index);
+      }
     });
+
     super.initState();
   }
 

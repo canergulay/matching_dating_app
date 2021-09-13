@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import '../../../../core/structure/utils/extensions/context_extension.dart';
 
 Container onboardContainerColumn({required BuildContext context, required List<Widget> children}) {
   return Container(

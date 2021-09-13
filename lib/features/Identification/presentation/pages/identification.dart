@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
 import 'package:provider/provider.dart';
 import '../widgets/grey_line.dart';
 import '../widgets/progress_widget.dart';
@@ -21,8 +22,7 @@ class _IdentificationState extends State<Identification> with SingleTickerProvid
 
   @override
   void didChangeDependencies() {
-    _animationController =
-        AnimationController(lowerBound: 0, upperBound: context.heightUnit * 3, vsync: this, duration: Duration(milliseconds: 1231));
+    _animationController = AnimationController(lowerBound: 0, upperBound: context.heightUnit * 3, vsync: this, duration: Duration(milliseconds: 531));
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
@@ -34,11 +34,14 @@ class _IdentificationState extends State<Identification> with SingleTickerProvid
       child: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
-          return Column(
-            children: [
-              animatedRowTop(context, animatedValue: _animationController.value),
-              identificationPageView(context, animatedValue: _animationController.value),
-            ],
+          return WhiteContainerWPinkShadow(
+            extraMarginTop: _animationController.value * 50 / 6,
+            child: Column(
+              children: [
+                animatedRowTop(context, animatedValue: _animationController.value),
+                identificationPageView(context, animatedValue: _animationController.value),
+              ],
+            ),
           );
         },
       ),

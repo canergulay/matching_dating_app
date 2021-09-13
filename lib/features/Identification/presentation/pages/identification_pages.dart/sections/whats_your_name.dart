@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
+import '../../../widgets/onboard_container_column.dart';
 import '../../../../../../core/components/buttons/grey_textfield.dart';
 import '../utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
@@ -14,17 +14,15 @@ class WhatIsYourName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String whatIsYourName = 'What is your name ?';
-    final String explanation = 'Your name will be visible to other users.';
     return BlocProvider(
         create: (context) => OnOffCubit(),
         child: Builder(
           builder: (context) => onboardContainerColumn(context: context, children: [
-            onBoardText(whatIsYourName, context),
+            onBoardText('WHAT_IS_YOUR_NAME.WIYN'.tr(), context),
             SizedBox().heightSpacer(context, 2),
             Text('first_string').tr(),
             Text(
-              explanation,
+              'WHAT_IS_YOUR_NAME.EXPLANATION'.tr(),
               style: Theme.of(context).textTheme.bodyText2?.copyWith(color: Colors.black54),
             ),
             SizedBox().heightSpacer(context, 2),
@@ -35,7 +33,7 @@ class WhatIsYourName extends StatelessWidget {
               focusNode: FocusNode(),
               textAlign: TextAlign.left,
               textInputType: TextInputType.emailAddress,
-              hintText: 'Enter your full name',
+              hintText: 'WHAT_IS_YOUR_NAME.NAME_HINT'.tr(),
               onChanged: (name) {
                 if (name.length > 2) {
                   BlocProvider.of<OnOffCubit>(context).on();

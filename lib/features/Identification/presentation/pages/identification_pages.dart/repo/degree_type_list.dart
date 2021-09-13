@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
+import '../../../../data/models/profession/degree_types.dart';
 
 class DegreesRepo {
   List<DegreeType> degreeList = [

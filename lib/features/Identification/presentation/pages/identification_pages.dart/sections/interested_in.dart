@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
+import '../../../widgets/onboard_container_column.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../../core/constants/asset_paths.dart';
@@ -25,7 +26,7 @@ class SecondSection extends StatelessWidget {
       child: BlocBuilder<InterestedInCubit, InterestedState>(
         builder: (context, state) {
           return onboardContainerColumn(context: context, children: [
-            onBoardText('Interested in?', context),
+            onBoardText('INTERESTED_IN'.tr(), context),
             SizedBox().heightSpacer(context, 3),
             buttonsRow(context, state),
             SizedBox().heightSpacer(context, 3),

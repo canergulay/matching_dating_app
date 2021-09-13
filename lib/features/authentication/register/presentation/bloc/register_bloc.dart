@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
+import '../../../../../core/functionality/facebook_sign_in.dart';
 import '../../../../../core/functionality/google_sign_in.dart';
 import '../../../../../core/components/utils/loading_dialoger.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';

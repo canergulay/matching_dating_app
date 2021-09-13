@@ -4,7 +4,8 @@ import '../../../../../core/ui/theme/palette.dart';
 
 class WhiteContainerWPinkShadow extends StatelessWidget {
   final Widget child;
-  const WhiteContainerWPinkShadow({Key? key, required this.child}) : super(key: key);
+  final double extraMarginTop;
+  const WhiteContainerWPinkShadow({Key? key, required this.child, this.extraMarginTop = 0}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class WhiteContainerWPinkShadow extends StatelessWidget {
           ],
           color: Colors.white,
         ),
-        margin: EdgeInsets.symmetric(vertical: 40, horizontal: context.widthUnit * 8),
+        margin: EdgeInsets.fromLTRB(context.widthUnit * 8, context.heightUnit * 6 + extraMarginTop, context.widthUnit * 8, context.heightUnit * 6),
         child: child);
   }
 }

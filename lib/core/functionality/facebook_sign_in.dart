@@ -1,6 +1,6 @@
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:matchangoo/core/result_error/errors/custom_error.dart';
-import 'package:matchangoo/core/result_error/result_freezed/result.dart';
+import '../result_error/errors/custom_error.dart';
+import '../result_error/result_freezed/result.dart';
 
 class FacebookSignIn {
   Future<Result<Map<String, dynamic>>> signIn() async {

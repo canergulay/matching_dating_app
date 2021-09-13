@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:matchangoo/features/Identification/presentation/widgets/onboard_container_column.dart';
+import '../../../widgets/onboard_container_column.dart';
 import '../../../../../../core/components/buttons/grey_textfield.dart';
 import '../utils/focusnode_supplier.dart';
 import '../utils/onboard_text.dart';
@@ -15,8 +16,8 @@ class WhenIsYourBirthday extends StatelessWidget {
   final FocusNoder focusNoder;
   const WhenIsYourBirthday({Key? key, required this.focusNoder}) : super(key: key);
 
-  static const WhatIsYourBD = "What is your Birthday ?";
-  static const explanation = "This will be visible to other users , and used for matching purposes.";
+  static const WhastIsYourBD = "What is your Birthday ?";
+  static const explsanation = "This will be visible to other users , and used for matching purposes.";
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,10 @@ class WhenIsYourBirthday extends StatelessWidget {
       child: SingleChildScrollView(child: Builder(
         builder: (context) {
           return onboardContainerColumn(context: context, children: [
-            onBoardText(WhatIsYourBD, context),
+            onBoardText('WHAT_IS_YOUR_BIRTHDAY.WIYB'.tr(), context),
             SizedBox().heightSpacer(context, 2),
             Text(
-              explanation,
+              'WHAT_IS_YOUR_BIRTHDAY.EXPLANATION'.tr(),
               style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.black45),
             ),
             SizedBox().heightSpacer(context, 2),
@@ -49,17 +50,17 @@ class WhenIsYourBirthday extends StatelessWidget {
       children: [
         Expanded(
           flex: 1,
-          child: ourTextField(context, 0, 'DD'),
+          child: ourTextField(context, 0, 'WHAT_IS_YOUR_BIRTHDAY.DD'.tr()),
         ),
         SizedBox().widthSpacer(context, 2),
         Expanded(
           flex: 1,
-          child: ourTextField(context, 1, 'MM'),
+          child: ourTextField(context, 1, 'WHAT_IS_YOUR_BIRTHDAY.MM'.tr()),
         ),
         SizedBox().widthSpacer(context, 2),
         Expanded(
           flex: 2,
-          child: ourTextField(context, 2, 'YYYY'),
+          child: ourTextField(context, 2, 'WHAT_IS_YOUR_BIRTHDAY.YYYY'.tr()),
         ),
       ],
     );
