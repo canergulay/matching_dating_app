@@ -24,13 +24,7 @@ class _InterestTabbarViewState extends State<InterestTabbarView> with TickerProv
   void initState() {
     _tabController = TabController(initialIndex: 0, length: 4, vsync: this);
     _tabController.animation?.addListener(() {
-      print(_tabController.animation?.value);
-
-      if (_tabController.indexIsChanging) {
-        print(_tabController.previousIndex);
-        print(_tabController.index);
-        context.read<InterestManagerCubit>().changeTab(_tabController.index);
-      }
+      context.read<InterestManagerCubit>().changeTab(_tabController.index);
     });
 
     super.initState();

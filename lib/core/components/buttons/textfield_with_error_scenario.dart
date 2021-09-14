@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/appetizers/customtypes/bool_returnerW_text_parameter.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
-
-// A CUSTOM TYPE WHERE WE WILL CONTROL TO SHOW ERRONEUS SCENARIO
-typedef bool BoolReturnerWithTextParameter(String text);
 
 class TextFieldContainerWController extends StatefulWidget {
   final bool autoFocus;
   final String hintText;
-  final FocusNode focusNode;
+
   final TextEditingController controller;
   final int maxLength;
   final TextAlign textAlign;
@@ -20,7 +18,6 @@ class TextFieldContainerWController extends StatefulWidget {
       {Key? key,
       this.autoFocus = false,
       required this.hintText,
-      required this.focusNode,
       required this.controller,
       this.maxLength = 999999,
       this.textAlign = TextAlign.center,
@@ -75,7 +72,6 @@ class _TextFieldContainerWControllerState extends State<TextFieldContainerWContr
           buildCounter: (_, {required currentLength, maxLength, required isFocused}) => null,
           maxLength: widget.maxLength,
           textAlign: widget.textAlign,
-          focusNode: widget.focusNode,
           controller: widget.controller,
           style: Theme.of(context)
               .textTheme

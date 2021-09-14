@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/appetizers/textfield_rules/field_of_study_pass_rule.dart';
+import 'package:matchangoo/core/components/buttons/textfield_with_error_scenario.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/components/buttons/grey_textfield.dart';
 import '../../../../data/models/profession/degree_types.dart';
@@ -15,8 +17,24 @@ import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dar
 import '../../../widgets/activatable_button.dart';
 import '../../../widgets/gender_grey_button.dart';
 
-class Profession extends StatelessWidget {
+class Profession extends StatefulWidget {
   const Profession({Key? key}) : super(key: key);
+
+  @override
+  State<Profession> createState() => _ProfessionState();
+}
+
+class _ProfessionState extends State<Profession> {
+  late final TextEditingController _fosController;
+  late final TextEditingController _jobController;
+
+  @override
+  void initState() {
+    _fosController = TextEditingController();
+    _jobController = TextEditingController();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +79,6 @@ class Profession extends StatelessWidget {
             child: GestureDetector(
                 onTap: () {
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.STUDENT);
-                  context.read<OnOffCubit>().on();
                 },
                 child:
                     genderGreyButton(isActive: state == ProfessionType.STUDENT ? true : false, text: 'PROFESSION.STUDENT'.tr(), context: context))),
@@ -70,7 +87,6 @@ class Profession extends StatelessWidget {
             child: GestureDetector(
                 onTap: () {
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.WORKER);
-                  context.read<OnOffCubit>().on();
                 },
                 child: genderGreyButton(isActive: state == ProfessionType.WORKER ? true : false, text: 'PROFESSION.WORKING'.tr(), context: context))),
       ],
@@ -87,10 +103,6 @@ class Profession extends StatelessWidget {
     }
   }
 
-  Column workingColumn(BuildContext context) => Column(
-        children: [],
-      );
-
   BlocBuilder studentColumn(BuildContext context) {
     return BlocBuilder<DegreeCubit, DegreeType?>(
       builder: (contexta, state) {
@@ -100,6 +112,24 @@ class Profession extends StatelessWidget {
       },
     );
   }
+
+  Column workingColumn(BuildContext context) => Column(
+        children: [
+          TextFieldContainerWController(
+              errorRule: jobPASS,
+              controller: _jobController,
+              textAlign: TextAlign.left,
+              hintText: 'occupation'.tr() + '*',
+              textInputType: TextInputType.text,
+              onChanged: (String text) {
+                if (jobPASS(text)) {
+                  context.read<OnOffCubit>().on();
+                } else {
+                  context.read<OnOffCubit>().off();
+                }
+              })
+        ],
+      );
 
   Container degreeDropdown(
     BuildContext context, {
@@ -132,15 +162,27 @@ class Profession extends StatelessWidget {
     if (code == DegreeCodes.HIGH_SCHOOL) {
       return Container();
     } else {
-      return textFieldContainer(
-          context: context,
+      return TextFieldContainerWController(
+          errorRule: fosPASS,
+          controller: _fosController,
           textAlign: TextAlign.left,
           hintText: 'fostudy'.tr() + '*',
-          focusNode: FocusNode(),
           textInputType: TextInputType.text,
           onChanged: (String text) {
-            print(text);
+            if (fosPASS(text)) {
+              context.read<OnOffCubit>().on();
+            } else {
+              context.read<OnOffCubit>().off();
+            }
           });
     }
+  }
+
+  @override
+  void dispose() {
+    _fosController.dispose();
+    _jobController.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 }

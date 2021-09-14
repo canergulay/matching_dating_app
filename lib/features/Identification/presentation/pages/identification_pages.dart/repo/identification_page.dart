@@ -14,10 +14,7 @@ class IdentificationRepo {
   List<Widget> identificationPages() {
     return [
       KeepAlivePage(child: WhatIsYourName()),
-      KeepAlivePage(
-          child: WhenIsYourBirthday(
-        focusNoder: FocusNoder(),
-      )),
+      KeepAlivePage(child: WhenIsYourBirthday()),
       KeepAlivePage(child: FirstSection()),
       KeepAlivePage(child: SecondSection()),
       KeepAlivePage(child: Profession()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/identification_cubit.dart';
 import '../../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../../core/components/utils/localisation_string_returner.dart';
 import '../../../../../../../core/components/utils/on_off_cubit.dart';
@@ -35,6 +36,7 @@ class InterestGridView extends StatelessWidget {
                         children: _loadedState.interestList
                             .map(
                               (list) => mainContainer(context,
+                                  interestId: list.id ?? 'nullid',
                                   name: list.names?[LocalisationController.instance.getLanguage(context.read<AppCubit>().state.currentLanguage)] ??
                                       "en_US"),
                             )
@@ -62,15 +64,27 @@ double tileGetter(String name) {
   }
 }
 
-BlocProvider mainContainer(BuildContext context, {required String name}) {
+BlocProvider mainContainer(BuildContext context, {required String name, required String interestId}) {
   return BlocProvider<OnOffCubit>(
-    create: (context) => OnOffCubit(),
+    create: (contexta) => OnOffCubit(),
     child: BlocBuilder<OnOffCubit, bool>(
-      builder: (context, state) {
+      builder: (contexta, state) {
         return GestureDetector(
           onTap: () {
             if (!state) {
+              contexta.read<OnOffCubit>().on();
+              context.read<IdentificationCubit>().registrationEntity.addInterestIfDoesNotExist(interestId);
+              //THIS IS THE CUBIT OF THIS PAGE.
+              // BE CAREFUL, THEY ARE DIFFERENT.
+            } else {
+              contexta.read<OnOffCubit>().off();
+              context.read<IdentificationCubit>().registrationEntity.deleteInterest(interestId);
+            }
+
+            if (context.read<IdentificationCubit>().registrationEntity.getIfInterestsAreNotEmpty) {
+              // IN ORDER TO PASS THIS PAGE, WE SHOULD HAVE AT LEAST ONE INTEREST.
               context.read<OnOffCubit>().on();
+              //THIS IS THE CUBIT OFF ACTIVATABLE BUTTON
             } else {
               context.read<OnOffCubit>().off();
             }

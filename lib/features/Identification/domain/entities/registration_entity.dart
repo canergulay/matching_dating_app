@@ -6,7 +6,7 @@ class RegistrationEntity {
   String? studycode;
   List<String?>? photos;
   int? birthday;
-  List<Interests?>? interests;
+  List<String?>? interests = [];
 
   set setName(String? name) {
     this.name = name;
@@ -28,6 +28,21 @@ class RegistrationEntity {
     this.photos = photos;
   }
 
+  void addInterestIfDoesNotExist(String interestId) {
+    print('yeah');
+    if (!(interests?.contains(interestId) ?? false)) {
+      print('yeah2');
+
+      interests?.add(interestId);
+      print(interests);
+    } else {
+      print('yeah3');
+    }
+  }
+
+  void deleteInterest(String interestId) => interests?.remove(interestId);
+
   String get getNameIfNotEmpty => name ?? '';
   String get getEmailIfNotEmpty => email ?? '';
+  bool get getIfInterestsAreNotEmpty => interests?.isNotEmpty ?? false;
 }
