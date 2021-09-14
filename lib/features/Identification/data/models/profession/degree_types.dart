@@ -10,4 +10,5 @@ class DegreeCodes {
   static const String UNDERGRADUATE = "ugrad";
   static const String GRADUATE = "grad";
   static const String DOCTORATE = "doctor";
+  static const String WORKING = "working";
 }

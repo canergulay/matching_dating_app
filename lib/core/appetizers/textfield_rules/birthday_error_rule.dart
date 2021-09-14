@@ -15,18 +15,24 @@ bool shouldGoNextField(int field, String value) {
 }
 
 bool kontrolForFirst(String value) {
-  print('evet geçebiliriz');
-  return int.parse(value) <= 31 && value.length > 1;
+  if (value.length > 0) {
+    return int.parse(value) <= 31 && value.length > 1;
+  }
+  return false;
 }
 
 bool kontrolForSecond(String value) {
-  print('evet geçebiliriz2');
-
-  return int.parse(value) <= 12 && value.length > 1;
+  if (value.length > 0) {
+    return int.parse(value) <= 12 && value.length > 1;
+  }
+  return false;
 }
 
 bool kontrolForThird(String value) {
-  return int.parse(value) < 2010 && int.parse(value) > 1910;
+  if (value.length > 0) {
+    return int.parse(value) < 2010 && int.parse(value) > 1910;
+  }
+  return false;
 }
 
 List<BoolReturnerWithTextParameter> boolReturnes = [kontrolForFirst, kontrolForSecond, kontrolForThird];

@@ -87,6 +87,7 @@ class _ProfessionState extends State<Profession> {
             child: GestureDetector(
                 onTap: () {
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.WORKER);
+                  context.read<IdentificationCubit>().registrationEntity.setStudyCode = 'working';
                 },
                 child: genderGreyButton(isActive: state == ProfessionType.WORKER ? true : false, text: 'PROFESSION.WORKING'.tr(), context: context))),
       ],
@@ -124,6 +125,7 @@ class _ProfessionState extends State<Profession> {
               onChanged: (String text) {
                 if (jobPASS(text)) {
                   context.read<OnOffCubit>().on();
+                  context.read<IdentificationCubit>().registrationEntity.setFieldOfStudy = text;
                 } else {
                   context.read<OnOffCubit>().off();
                 }
@@ -171,6 +173,7 @@ class _ProfessionState extends State<Profession> {
           onChanged: (String text) {
             if (fosPASS(text)) {
               context.read<OnOffCubit>().on();
+              context.read<IdentificationCubit>().registrationEntity.setFieldOfStudy = text;
             } else {
               context.read<OnOffCubit>().off();
             }

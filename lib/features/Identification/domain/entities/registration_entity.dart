@@ -1,12 +1,20 @@
+import 'package:matchangoo/features/Identification/data/models/interested_in_type.dart';
+import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/gender_cubit.dart';
+
 import '../../data/models/interests/interests.dart';
 
 class RegistrationEntity {
-  String? email;
-  String? name;
-  String? studycode;
-  List<String?>? photos;
-  int? birthday;
-  List<String?>? interests = [];
+  late String? email;
+  late String? name;
+  late String? studycode;
+  late String? fieldOfStudy;
+  late GenderType? genderType;
+  late List<String?>? photos;
+  late String? birthday;
+  late List<InterestedType>? interestedIns;
+  late List<String?>? interests = [];
+  late DegreeType? degreeType;
 
   set setName(String? name) {
     this.name = name;
@@ -16,28 +24,39 @@ class RegistrationEntity {
     this.email = email;
   }
 
-  set setBirthday(int? birthday) {
-    this.birthday = birthday;
+  void setBirthday(String dd, String mm, String yyyy) {
+    this.birthday = dd + mm + yyyy;
   }
 
   set setStudyCode(String? studyCode) {
     this.studycode = studycode;
   }
 
+  set setFieldOfStudy(String? fieldOfStudy) {
+    this.fieldOfStudy = fieldOfStudy;
+  }
+
+  set setGenderType(GenderType? genderType) {
+    this.genderType = genderType;
+  }
+
+  set setDegreeType(DegreeType degreeType) {
+    this.degreeType = degreeType;
+  }
+
   set setPhotos(List<String?>? photos) {
     this.photos = photos;
   }
 
-  void addInterestIfDoesNotExist(String interestId) {
-    print('yeah');
-    if (!(interests?.contains(interestId) ?? false)) {
-      print('yeah2');
+  set setInterestedIns(List<InterestedType> interestedIns) {
+    this.interestedIns = interestedIns;
+  }
 
+  void addInterestIfDoesNotExist(String interestId) {
+    if (!(interests?.contains(interestId) ?? false)) {
       interests?.add(interestId);
       print(interests);
-    } else {
-      print('yeah3');
-    }
+    } else {}
   }
 
   void deleteInterest(String interestId) => interests?.remove(interestId);

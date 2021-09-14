@@ -35,6 +35,7 @@ class FirstSection extends StatelessWidget {
             buttonsRow(context, state),
             SizedBox().heightSpacer(context, 2),
             activatableButton(onPressed: () {
+              context.read<IdentificationCubit>().registrationEntity.setGenderType = state;
               context.read<IdentificationCubit>().goToNextPage();
             })
           ]);

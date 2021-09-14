@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/Identification/data/models/interested_in_type.dart';
 import '../../../widgets/onboard_container_column.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
@@ -30,7 +31,10 @@ class SecondSection extends StatelessWidget {
             SizedBox().heightSpacer(context, 3),
             buttonsRow(context, state),
             SizedBox().heightSpacer(context, 3),
-            activatableButton(onPressed: () => context.read<IdentificationCubit>().goToNextPage())
+            activatableButton(onPressed: () {
+              context.read<IdentificationCubit>().goToNextPage();
+              context.read<IdentificationCubit>().registrationEntity.setInterestedIns = (state as InterestedChoosen).genders;
+            })
           ]);
         },
       ),
@@ -55,8 +59,6 @@ class SecondSection extends StatelessWidget {
           } else {
             context.read<OnOffCubit>().off();
           }
-
-          print('bastın');
         },
         child: Stack(
           children: [

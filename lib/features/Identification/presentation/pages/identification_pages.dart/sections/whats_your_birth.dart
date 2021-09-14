@@ -50,6 +50,7 @@ class _WhenIsYourBirthdayState extends State<WhenIsYourBirthday> {
               SizedBox().heightSpacer(context, 2),
               activatableButton(onPressed: () {
                 FocusScope.of(context).unfocus();
+                context.read<IdentificationCubit>().registrationEntity.setBirthday(controllerOne.text, controllerTwo.text, controllerThree.text);
                 context.read<IdentificationCubit>().goToNextPage();
               })
             ]);

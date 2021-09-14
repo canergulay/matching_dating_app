@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-enum InterestedType { WOMAN, MAN, NONE }
+import 'package:matchangoo/features/Identification/data/models/interested_in_type.dart';
 
 class InterestedInCubit extends Cubit<InterestedState> {
   InterestedInCubit() : super(InterestedChoosen(genders: [InterestedType.NONE]));
@@ -17,7 +16,6 @@ class InterestedInCubit extends Cubit<InterestedState> {
     } else {
       interests.add(gender);
     }
-    print(interests);
     emit(InterestedChoosen(genders: interests));
 
     return interests.length > 1;
