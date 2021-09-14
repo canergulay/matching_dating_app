@@ -8,27 +8,37 @@ import 'package:flutter/material.dart';
 
 Widget activatableButton({required VoidCallback onPressed, bool shouldBeActive = false}) => BlocBuilder<OnOffCubit, bool>(
       builder: (context, state) {
-        if (!state && !shouldBeActive) {
-          return Center(
-              child: AnimatedButton(
-            title: 'NEXT'.tr(),
-            onPressed: () {},
-            buttonColor: Palette.BUTTONINACTIVE,
-            child: Icon(
-              Icons.navigate_next,
-              color: Colors.white,
-            ),
-          ));
+        if (shouldBeActive && state) {
+          return activeButton(onPressed);
+        } else if (!state) {
+          return inActiveButton();
         } else {
-          return AnimatedButton(
-            title: 'next',
-            onPressed: onPressed,
-            buttonColor: Palette.MPINK,
-            child: Icon(
-              Icons.navigate_next,
-              color: Colors.white,
-            ),
-          );
+          return activeButton(onPressed);
         }
       },
     );
+
+AnimatedButton activeButton(VoidCallback onPressed) {
+  return AnimatedButton(
+    title: 'next',
+    onPressed: onPressed,
+    buttonColor: Palette.MPINK,
+    child: Icon(
+      Icons.navigate_next,
+      color: Colors.white,
+    ),
+  );
+}
+
+Center inActiveButton() {
+  return Center(
+      child: AnimatedButton(
+    title: 'NEXT'.tr(),
+    onPressed: () {},
+    buttonColor: Palette.BUTTONINACTIVE,
+    child: Icon(
+      Icons.navigate_next,
+      color: Colors.white,
+    ),
+  ));
+}

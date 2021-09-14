@@ -17,7 +17,7 @@ Container textFieldContainerWithPrefix(
     ),
     margin: EdgeInsets.only(top: context.heightUnit * 2),
     child: TextField(
-        obscureText: true,
+        obscureText: obscure,
         style:
             Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
         onChanged: onChanged,

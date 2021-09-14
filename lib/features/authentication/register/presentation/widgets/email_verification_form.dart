@@ -26,6 +26,7 @@ class EmailVerifyContainer extends StatelessWidget {
     return Column(
       children: [
         WhiteContainerWPinkShadow(
+          padding: context.heightUnit * 3,
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SizedBox().heightSpacer(context, 1),
             titleOne(context),
