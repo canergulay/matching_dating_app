@@ -1,16 +1,8 @@
-# matchangoo
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# matchify
+-- A comprehensive matching & friendship & dating app written in Flutter with Node.JS backend.
+-- Clean architecture with BLoC & GetIt 
+# Features to be added
+- user system empowered with google & facebook sign in sdk
+- a unique, strong matching algorithm
+- multi language support
+- customisable filter to utilise matching algorithm
