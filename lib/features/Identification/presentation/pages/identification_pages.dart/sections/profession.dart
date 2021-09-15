@@ -13,7 +13,7 @@ import '../../../cubit/identification_cubit.dart';
 import '../../../cubit/profession_cubit.dart';
 import '../utils/onboard_text.dart';
 
-import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../../../widgets/activatable_button.dart';
 import '../../../widgets/gender_grey_button.dart';
 
@@ -56,11 +56,11 @@ class _ProfessionState extends State<Profession> {
               'PROFESSION.EXPLANATION'.tr(),
               style: Theme.of(context).textTheme.bodyText2,
             ),
-            SizedBox().heightSpacer(context, 2),
+            const SizedBox().heightSpacer(context, 2),
             buttonsRow(contexta, state),
-            SizedBox().heightSpacer(context, 2),
+            const SizedBox().heightSpacer(context, 2),
             extraChoices(contexta, state),
-            SizedBox().heightSpacer(context, 2),
+            const SizedBox().heightSpacer(context, 2),
             activatableButton(onPressed: () {
               FocusScope.of(context).unfocus();
               context.read<IdentificationCubit>().goToNextPage();
@@ -78,18 +78,19 @@ class _ProfessionState extends State<Profession> {
         Expanded(
             child: GestureDetector(
                 onTap: () {
+                  context.read<OnOffCubit>().off();
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.STUDENT);
                 },
-                child:
-                    genderGreyButton(isActive: state == ProfessionType.STUDENT ? true : false, text: 'PROFESSION.STUDENT'.tr(), context: context))),
-        SizedBox().widthSpacer(context, 2),
+                child: genderGreyButton(isActive: state == ProfessionType.STUDENT, text: 'PROFESSION.STUDENT'.tr(), context: context))),
+        const SizedBox().widthSpacer(context, 2),
         Expanded(
             child: GestureDetector(
                 onTap: () {
+                  context.read<OnOffCubit>().off();
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.WORKER);
                   context.read<IdentificationCubit>().registrationEntity.setStudyCode = 'working';
                 },
-                child: genderGreyButton(isActive: state == ProfessionType.WORKER ? true : false, text: 'PROFESSION.WORKING'.tr(), context: context))),
+                child: genderGreyButton(isActive: state == ProfessionType.WORKER, text: 'PROFESSION.WORKING'.tr(), context: context))),
       ],
     );
   }
@@ -148,6 +149,10 @@ class _ProfessionState extends State<Profession> {
               ),
               value: state,
               onChanged: (DegreeType? type) {
+                if (type?.code == DegreeCodes.HIGH_SCHOOL) {
+                  context.read<OnOffCubit>().on();
+                }
+
                 context.read<DegreeCubit>().onValueChange(type);
                 context.read<IdentificationCubit>().registrationEntity.studycode = type?.code;
               },

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +45,50 @@ class RegisterScreen extends StatelessWidget {
                 } else if (state is PhotoSelection) {
                   return columnSupplierWbBUTTON(state, context, PhotoSelectionScreen());
                 } else if (state is IdentificationCompleted) {
-                  return columnSupplierWbBUTTON(state, context, Container(child: headLineEight(context, 'Bitti üyesin artık')));
+                  return columnSupplierWbBUTTON(
+                      state,
+                      context,
+                      SingleChildScrollView(
+                        child: Container(
+                            child: Column(
+                          children: [
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.name ?? 'no name'),
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.email ?? 'no mail'),
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.studycode ?? 'no studycode'),
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.fieldOfStudy ?? 'no fos'),
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.genderType.toString()),
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.birthday ?? 'nobd'),
+                            Column(
+                              children: context
+                                      .read<IdentificationCubit>()
+                                      .registrationEntity
+                                      .interestedIns
+                                      ?.map((e) => headLineEight(context, e.toString()))
+                                      .toList() ??
+                                  [],
+                            ),
+                            Column(
+                              children: context
+                                      .read<IdentificationCubit>()
+                                      .registrationEntity
+                                      .interests
+                                      ?.map((e) => headLineEight(context, e.toString()))
+                                      .toList() ??
+                                  [],
+                            ),
+                            headLineEight(context, 'Bitti üyesin artık'),
+                            Column(
+                              children: context
+                                      .read<IdentificationCubit>()
+                                      .registrationEntity
+                                      .photos
+                                      ?.map((path) => Image.file(File(path ?? '')))
+                                      .toList() ??
+                                  [],
+                            )
+                          ],
+                        )),
+                      ));
                 } else {
                   return columnSupplierWbBUTTON(state, context, emailCouldNotBeVerified(context));
                 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/components/buttons/grey_button.dart';
 import '../../../../core/constants/asset_paths.dart';
 import '../../../../core/ui/theme/palette.dart';
-import '../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../../../../core/structure/utils/extensions/context_extension.dart';
 
 Container genderGreyButton({required String text, required bool isActive, required BuildContext context}) => greyContainer(

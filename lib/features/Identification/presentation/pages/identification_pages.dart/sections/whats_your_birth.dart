@@ -7,7 +7,7 @@ import 'package:matchangoo/core/components/buttons/textfield_with_error_scenario
 import '../../../widgets/onboard_container_column.dart';
 import '../utils/onboard_text.dart';
 import '../../../../../../core/components/utils/on_off_cubit.dart';
-import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../../../widgets/activatable_button.dart';
 

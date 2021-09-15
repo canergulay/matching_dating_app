@@ -14,7 +14,6 @@ class RegistrationEntity {
   late String? birthday;
   late List<InterestedType>? interestedIns;
   late List<String?>? interests = [];
-  late DegreeType? degreeType;
 
   set setName(String? name) {
     this.name = name;
@@ -38,10 +37,6 @@ class RegistrationEntity {
 
   set setGenderType(GenderType? genderType) {
     this.genderType = genderType;
-  }
-
-  set setDegreeType(DegreeType degreeType) {
-    this.degreeType = degreeType;
   }
 
   set setPhotos(List<String?>? photos) {

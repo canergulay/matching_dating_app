@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../constants/asset_paths.dart';
-import '../extensions/sizedBox_extension.dart';
+import '../extensions/sizedbox_extension.dart';
 import '../extensions/textstyle_extension.dart';
 import '../../../ui/theme/palette.dart';
 import '../extensions/context_extension.dart';

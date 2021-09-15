@@ -74,7 +74,17 @@
         "EXPLANATION":"Your profession will be public",
         "STUDENT":"Student",
         "WORKING":"Working"
+    },
+
+    "ERROR":{
+        "TITLES":{
+            "ONE":"Oopps... Unexpected Error!"
+        },
+        "MESSAGES":{
+            "ONE":"It seems we have an unexpected error for now, please try later on."
+        }
     }
+
     
 
 

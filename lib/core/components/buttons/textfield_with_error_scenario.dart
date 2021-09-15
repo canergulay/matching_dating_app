@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/appetizers/customtypes/bool_returnerW_text_parameter.dart';
+import 'package:matchangoo/core/appetizers/customtypes/bool_returner_w_text_parameter.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 
@@ -85,11 +85,11 @@ class _TextFieldContainerWControllerState extends State<TextFieldContainerWContr
             alignLabelWithHint: false,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: Colors.black38, width: 0.5),
+              borderSide: const BorderSide(color: Colors.black38, width: 0.5),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
-              borderSide: BorderSide(color: Colors.black38, width: 0.5),
+              borderSide: const BorderSide(color: Colors.black38, width: 0.5),
             ),
           )),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/constants/asset_paths.dart';
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../../../../../core/ui/components/headlines.dart';
 
 enum ButtonType { FACEBOOK, GOOGLE }

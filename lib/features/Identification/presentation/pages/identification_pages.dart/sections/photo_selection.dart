@@ -9,7 +9,7 @@ import '../../../../../../core/components/utils/get_out_of_here.dart';
 
 import '../../../../../../core/constants/asset_paths.dart';
 import '../../../../../../core/ui/components/headlines.dart';
-import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../../../../../../core/structure/utils/extensions/context_extension.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../../../cubit/photo_selection_cubit.dart';

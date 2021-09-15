@@ -11,7 +11,7 @@ import 'facebook_google_buttons.dart';
 import 'white_containerwpinkshadow.dart';
 
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 
 import '../bloc/register_bloc.dart';
 import 'activatable_button.dart';

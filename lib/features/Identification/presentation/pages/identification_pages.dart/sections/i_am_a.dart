@@ -8,7 +8,7 @@ import '../../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../cubit/gender_cubit.dart';
 import '../../../cubit/identification_cubit.dart';
 import '../utils/onboard_text.dart';
-import '../../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../../../widgets/activatable_button.dart';
 import '../../../widgets/gender_grey_button.dart';
 

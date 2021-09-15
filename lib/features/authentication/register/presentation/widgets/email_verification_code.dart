@@ -5,7 +5,7 @@ import 'white_containerwpinkshadow.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import '../../../../../core/components/utils/on_off_cubit.dart';
 import '../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../../../core/structure/utils/extensions/sizedBox_extension.dart';
+import '../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
 import '../bloc/register_bloc.dart';
 import 'activatable_button.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';

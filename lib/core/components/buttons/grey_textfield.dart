@@ -32,11 +32,11 @@ Container textFieldContainerWithPrefix(
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
+            borderSide: const BorderSide(color: Colors.black38, width: 0.5),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
+            borderSide: const BorderSide(color: Colors.black38, width: 0.5),
           ),
         )),
   );
@@ -74,11 +74,11 @@ Container textFieldContainer(
           alignLabelWithHint: false,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
+            borderSide: const BorderSide(color: Colors.black38, width: 0.5),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
+            borderSide: const BorderSide(color: Colors.black38, width: 0.5),
           ),
         )),
   );
@@ -118,11 +118,11 @@ Container textFieldContainerWController(
           alignLabelWithHint: false,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
+            borderSide: const BorderSide(color: Colors.black38, width: 0.5),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color: Colors.black38, width: 0.5),
+            borderSide: const BorderSide(color: Colors.black38, width: 0.5),
           ),
         )),
   );

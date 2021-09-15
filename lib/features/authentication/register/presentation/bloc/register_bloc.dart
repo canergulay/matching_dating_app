@@ -3,9 +3,9 @@ import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
 import '../../../../../core/functionality/facebook_sign_in.dart';
 import '../../../../../core/functionality/google_sign_in.dart';
-import '../../../../../core/components/utils/loading_dialoger.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';
 import '../../../../../core/result_error/result_freezed/result.dart';
 
@@ -13,7 +13,6 @@ import '../../../../Identification/presentation/cubit/identification_cubit.dart'
 import '../../domain/entities/verification_control.dart';
 import '../../domain/usecases/check_verification_code.dart';
 import '../../domain/usecases/send_verification_email.dart';
-import 'package:meta/meta.dart';
 part 'register_event.dart';
 part 'register_state.dart';
 
@@ -38,10 +37,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     RegisterEvent event,
   ) async* {
     if (event is EmailAdressTyped) {
-      bool isEmail = EmailValidator.validate(event.emailAdressChanged);
+      final bool isEmail = EmailValidator.validate(event.emailAdressChanged);
       if (isEmail) {
         emailAdress = event.emailAdressChanged;
-        yield (RegisterEmailAdressTyped());
+        yield RegisterEmailAdressTyped();
       }
     } else if (event is EmailVerifyWaiting) {
       yield* _sendVerificationCode();
@@ -55,26 +54,24 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Stream<RegisterState> _sendVerificationCode() async* {
-    Result<bool> sonuc = await sendVerificationEmail(emailAdress);
+    final Result<bool> sonuc = await sendVerificationEmail(emailAdress);
 
     yield sonuc.when(success: (bool result) {
       if (result) {
         return RegisterWithEmailSent();
       } else {
-        print(result);
         return RegisterWithEmailError();
       }
     }, error: (CustomError error) {
-      print(error.message);
       return RegisterWithEmailError();
     });
   }
 
-  void verifyCodeAndMail(BuildContext context) async {
-    VerificationControl verificationCredentials = VerificationControl(verificationCode: verificationCode, verificationEmail: emailAdress);
+  Future<void> verifyCodeAndMail(BuildContext context) async {
+    final VerificationControl verificationCredentials = VerificationControl(verificationCode: verificationCode, verificationEmail: emailAdress);
     ProgressIndicator.instance.showLoadingIndicator(context);
-    Result<bool> verificationResult = await checkVerificationEmail(verificationCredentials);
-    await Future.delayed(Duration(seconds: 2), () {
+    final Result<bool> verificationResult = await checkVerificationEmail(verificationCredentials);
+    await Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pop();
     });
     verificationResult.when(success: (success) {
@@ -93,18 +90,16 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Future<void> signInViaFacebook() async {
-    Result<Map<String, dynamic>> facebookLoginResult = await facebookSignIn.signIn();
-    facebookLoginResult.when(success: (userCredentials) {
+    final Result<Map<String, dynamic>> facebookLoginResult = await facebookSignIn.signIn();
+    facebookLoginResult.when(success: (Map<String, dynamic> userCredentials) {
       _setCredentialsAndContinue(name: userCredentials['name'], email: userCredentials['email']);
     }, error: (CustomError error) {
       switch (error.errorCode) {
         case 10:
-          print('no credentials');
           //TODO : ADD DIALOG : UNEXPECTED ERROR,
           break;
         case 20:
           //TODO : ADD DIALOG : COULDN'T LOGIN
-          print('cant login');
           break;
         default:
       }
@@ -112,17 +107,14 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Future<void> signInViaGoogle() async {
-    Result<GoogleSignInAccount> info = await googleSignInRepo.signIn();
+    final Result<GoogleSignInAccount> info = await googleSignInRepo.signIn();
     info.when(success: (GoogleSignInAccount credentials) {
-      print(credentials);
       _setCredentialsAndContinue(name: credentials.displayName ?? '', email: credentials.email);
     }, error: (CustomError error) {
       switch (error.errorCode) {
         case 10:
-          print('null');
           break;
         case 20:
-          print('exception');
           break;
         default:
       }

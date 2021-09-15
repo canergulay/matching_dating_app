@@ -33,9 +33,9 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      reverseDuration: Duration(milliseconds: 150),
+      reverseDuration: const Duration(milliseconds: 150),
       vsync: this,
-      duration: Duration(milliseconds: 25),
+      duration: const Duration(milliseconds: 25),
       lowerBound: 3,
       upperBound: 6,
     );
@@ -73,13 +73,13 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                     color: Colors.pink.withOpacity(0.3),
                     spreadRadius: 5,
                     blurRadius: 10,
-                    offset: Offset(3, 3),
+                    offset: const Offset(3, 3),
                   ),
                   BoxShadow(
                     color: Palette.MPINK.withOpacity(0.3),
                     spreadRadius: 1,
                     blurRadius: 1,
-                    offset: Offset(-1, 0),
+                    offset: const Offset(-1, 0),
                   )
                 ]),
                 width: double.infinity,
