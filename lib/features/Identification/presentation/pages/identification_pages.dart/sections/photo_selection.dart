@@ -37,7 +37,7 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
           return Column(
             children: [
               headLineSeven(context, "PHOTO_SELECTION.addphotos".tr()),
-              SizedBox().heightSpacer(context, 2),
+              const SizedBox().heightSpacer(context, 2),
               Stack(
                 alignment: AlignmentDirectional.center,
                 children: [

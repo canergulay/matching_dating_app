@@ -35,21 +35,19 @@ class RegisterScreen extends StatelessWidget {
                 if (state is RegisterInitial) {
                   // return SingleChildScrollView(child: columnSupplierWbBUTTON(state, context, WhiteContainerWPinkShadow(child: Identification())));
 
-                  return columnSupplierWbBUTTON(state, context, EmailVerifyContainer(false));
-                } else if (state is RegisterEmailAdressTyped) {
-                  return columnSupplierWbBUTTON(state, context, EmailVerifyContainer(true));
+                  return columnSupplierWbBUTTON(state, context, const EmailVerifyContainer());
                 } else if (state is RegisterWithEmailSent) {
                   return columnSupplierWbBUTTON(state, context, emailCodeVerificationCodeEnter(context));
                 } else if (state is RegisterWithEmailVerified) {
                   return SingleChildScrollView(child: columnSupplierWbBUTTON(state, context, Identification()));
                 } else if (state is PhotoSelection) {
-                  return columnSupplierWbBUTTON(state, context, PhotoSelectionScreen());
+                  return columnSupplierWbBUTTON(state, context, const PhotoSelectionScreen());
                 } else if (state is IdentificationCompleted) {
                   return columnSupplierWbBUTTON(
                       state,
                       context,
                       SingleChildScrollView(
-                        child: Container(
+                        child: SizedBox(
                             child: Column(
                           children: [
                             headLineEight(context, context.read<IdentificationCubit>().registrationEntity.name ?? 'no name'),

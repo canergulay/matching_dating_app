@@ -4,32 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:matchangoo/core/appetizers/enums.dart/dialog_type_enum.dart';
 import 'package:matchangoo/core/components/dialogs/error_dialog.dart';
 import 'package:matchangoo/core/components/dialogs/show_dialog.dart';
-import '../../../../../core/constants/app_constants.dart';
-import '../../../../../core/constants/asset_paths.dart';
-import '../../../../../core/structure/utils/widgets/background_widget_wlogo.dart';
-import '../../../../../core/structure/utils/widgets/logo.dart';
-import '../../../../../core/ui/components/headlines.dart';
-import '../../../../../core/ui/theme/palette.dart';
-import '../../../../../core/components/buttons/animated_button.dart';
-import '../../../../../core/structure/utils/extensions/context_extension.dart';
-import '../../../../../core/structure/navigation/navigation_manager.dart';
-import '../../../../../core/structure/utils/extensions/sizedbox_extension.dart';
+import 'core/constants/app_constants.dart';
+import 'core/constants/asset_paths.dart';
+import 'core/structure/utils/widgets/background_widget_wlogo.dart';
+import 'core/structure/utils/widgets/logo.dart';
+import 'core/ui/components/headlines.dart';
+import 'core/ui/theme/palette.dart';
+import 'core/components/buttons/animated_button.dart';
+import 'core/structure/utils/extensions/context_extension.dart';
+import 'core/structure/navigation/navigation_manager.dart';
+import 'core/structure/utils/extensions/sizedbox_extension.dart';
 
-class LoginMain extends StatelessWidget {
-  const LoginMain({Key? key}) : super(key: key);
+class Landing extends StatelessWidget {
+  const Landing({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackGroundContainerWithOutLogo(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             matchifyLogo(context),
             firstSectionMethod(context),
-            SizedBox().heightSpacer(context, 2),
+            const SizedBox().heightSpacer(context, 2),
             secondShit(context),
-            SizedBox().heightSpacer(context, 7),
+            const SizedBox().heightSpacer(context, 7),
           ],
         ),
       ),
@@ -83,6 +82,7 @@ RichText doYouHaveAnAccount(BuildContext context) => RichText(
           style: Theme.of(context).textTheme.headline6?.copyWith(color: Palette.MBLUE),
           recognizer: TapGestureRecognizer()
             ..onTap = () {
-              showCustomInfoAlertDialog(context, title: 'ERROR.TITLES.ONE'.tr(), message: 'ERROR.MESSAGES.ONE'.tr(), dialogType: DialogType.info);
+              NavigationManager.instance.navigateToPage(path: '/login', arguments: 'nothing');
+              //showCustomInfoAlertDialog(context, title: 'ERROR.TITLES.ONE'.tr(), message: 'ERROR.MESSAGES.ONE'.tr(), dialogType: DialogType.info);
             }),
     ]));

@@ -30,19 +30,16 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       required this.checkVerificationEmail})
       : super(RegisterInitial());
   late String emailAdress;
+  late String password;
   late String verificationCode;
 
   @override
   Stream<RegisterState> mapEventToState(
     RegisterEvent event,
   ) async* {
-    if (event is EmailAdressTyped) {
-      final bool isEmail = EmailValidator.validate(event.emailAdressChanged);
-      if (isEmail) {
-        emailAdress = event.emailAdressChanged;
-        yield RegisterEmailAdressTyped();
-      }
-    } else if (event is EmailVerifyWaiting) {
+    if (event is EmailVerifyWaiting) {
+      emailAdress = event.mail;
+      password = event.password;
       yield* _sendVerificationCode();
     } else if (event is EmailVerified) {
       yield RegisterWithEmailVerified();

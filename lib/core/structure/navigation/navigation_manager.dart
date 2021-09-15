@@ -2,13 +2,13 @@ import 'package:flutter/widgets.dart';
 import 'INavigationContract.dart';
 
 class DenemeSingleton {
-  static DenemeSingleton _instace = DenemeSingleton._init();
+  static final DenemeSingleton _instace = DenemeSingleton._init();
   static DenemeSingleton get instance => _instace;
   DenemeSingleton._init();
 }
 
 class NavigationManager implements NavigationContract {
-  static NavigationManager _instace = NavigationManager._init();
+  static final NavigationManager _instace = NavigationManager._init();
   static NavigationManager get instance => _instace;
   NavigationManager._init();
 

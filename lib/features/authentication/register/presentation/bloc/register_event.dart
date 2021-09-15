@@ -3,12 +3,11 @@ part of 'register_bloc.dart';
 @immutable
 abstract class RegisterEvent {}
 
-class EmailAdressTyped extends RegisterEvent {
-  final String emailAdressChanged;
-  EmailAdressTyped({required this.emailAdressChanged});
+class EmailVerifyWaiting extends RegisterEvent {
+  final String mail;
+  final String password;
+  EmailVerifyWaiting({required this.mail, required this.password});
 }
-
-class EmailVerifyWaiting extends RegisterEvent {}
 
 class EmailVerified extends RegisterEvent {}
 

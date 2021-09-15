@@ -83,6 +83,10 @@
         "MESSAGES":{
             "ONE":"It seems we have an unexpected error for now, please try later on."
         }
+    },
+
+    "LOGIN":{
+        "FP":"Forget password?"
     }
 
     

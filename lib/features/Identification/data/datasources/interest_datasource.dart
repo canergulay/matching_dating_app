@@ -1,10 +1,9 @@
 import 'dart:io';
 
-import '../models/interest_type.dart';
-import '../models/interests/interests.dart';
-
 import '../../../../core/init/network/network_manager.dart';
 import '../../../../core/result_error/errors/custom_error.dart';
+import '../models/interest_type.dart';
+import '../models/interests/interests.dart';
 
 abstract class InterestDataSourceContract {
   Future<List<Interests>> getInterests({required InterestType type});

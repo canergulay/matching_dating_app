@@ -21,14 +21,14 @@ bool kontrolForFirst(String value) {
 }
 
 bool kontrolForSecond(String value) {
-  if (value.isEmpty) {
+  if (value.isNotEmpty) {
     return int.parse(value) <= 12 && value.length > 1;
   }
   return false;
 }
 
 bool kontrolForThird(String value) {
-  if (value.isEmpty) {
+  if (value.isNotEmpty) {
     return int.parse(value) < 2010 && int.parse(value) > 1910;
   }
   return false;
