@@ -37,11 +37,11 @@ class EmailPasswordErrorCubit extends Cubit<EmailPasswordErrorState> {
 
   String? passwordWarningMessage(ControlStatus status) {
     if (status == ControlStatus.empty) {
-      return "ERROR.EMAIL.EMPTY".tr();
+      return "ERROR.PASSWORD.EMPTY".tr();
     } else if (status == ControlStatus.long) {
-      return "ERROR.EMAIL.LONG".tr();
+      return "ERROR.PASSWORD.LONG".tr();
     } else if (status == ControlStatus.short) {
-      return "ERROR.EMAIL.SHORT".tr();
+      return "ERROR.PASSWORD.SHORT".tr();
     }
   }
 }

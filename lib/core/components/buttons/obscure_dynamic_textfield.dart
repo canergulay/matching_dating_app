@@ -5,8 +5,10 @@ class ObscureDynamicTextfield extends StatefulWidget {
   final Function(String) onChanged;
   final TextInputType textInputType;
   final String hintText;
+  final bool erroneus;
   final IconData preffixIcon;
-  const ObscureDynamicTextfield({Key? key, required this.onChanged, required this.textInputType, required this.hintText, required this.preffixIcon})
+  const ObscureDynamicTextfield(
+      {Key? key, this.erroneus = false, required this.onChanged, required this.textInputType, required this.hintText, required this.preffixIcon})
       : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class _ObsecureDynamicTextfieldState extends State<ObscureDynamicTextfield> {
             context: context,
             obscure: isObscure,
             hintText: widget.hintText,
+            erroneus: widget.erroneus,
             textInputType: widget.textInputType,
             onChanged: widget.onChanged,
             preffixIcon: widget.preffixIcon),

@@ -33,9 +33,9 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      reverseDuration: const Duration(milliseconds: 150),
+      reverseDuration: const Duration(milliseconds: 50),
       vsync: this,
-      duration: const Duration(milliseconds: 25),
+      duration: const Duration(milliseconds: 20),
       lowerBound: 3,
       upperBound: 6,
     );
@@ -108,16 +108,16 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
 
   void _onLongPressEnd(LongPressEndDetails details) => _animationController.reverse();
 
-  void _onButtonTapController() {
-    widget.onPressed();
+  void _onButtonTapController() async {
     switch (_animationController.status) {
       case AnimationStatus.completed:
-        _animationController.reverse();
+        await _animationController.reverse();
         break;
       case AnimationStatus.dismissed:
-        _animationController.forward().then((value) => _animationController.reverse());
+        await _animationController.forward().then((value) => _animationController.reverse());
         break;
       default:
     }
+    widget.onPressed();
   }
 }

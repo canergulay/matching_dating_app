@@ -6,9 +6,11 @@ import 'package:matchangoo/core/appetizers/textfield_rules/email_password_rule.d
 import 'package:matchangoo/core/components/buttons/grey_textfield.dart';
 import 'package:matchangoo/core/components/buttons/obscure_dynamic_textfield.dart';
 import 'package:matchangoo/core/components/texts/auto_size_titles.dart';
+import 'package:matchangoo/core/components/utils/email_pass_error_cubit.dart';
 import 'package:matchangoo/core/components/utils/on_off_cubit.dart';
 import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
 import 'package:matchangoo/core/ui/components/headlines.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/authentication/register/presentation/widgets/activatable_button.dart';
 import 'package:matchangoo/features/authentication/register/presentation/widgets/white_containerwpinkshadow.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
@@ -36,55 +38,70 @@ class _AuthContainerState extends State<AuthContainer> {
           providers: [
             BlocProvider(
               create: (context) => OnOffCubit(),
+            ),
+            BlocProvider(
+              create: (context) => EmailPasswordErrorCubit(),
             )
           ],
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const SizedBox().heightSpacer(context, 1),
-            sampleTitle(
-              context,
-              title: 'EMAIL_VERIFICATION.TITLE_TEXT'.tr(),
-            ),
-            sampleTitle(
-              context,
-              title: 'EMAIL_VERIFICATION.TITLE_TEXT2'.tr(),
-            ),
-            textFieldContainerWithPrefix(
-              context: context,
-              textInputAction: TextInputAction.next,
-              textInputType: TextInputType.emailAddress,
-              hintText: 'EMAIL_VERIFICATION.MAIL_HINT'.tr(),
-              preffixIcon: Icons.mail_outline_outlined,
-              onChanged: (text) {
-                mail = text;
-                if (emailPassController(email: mail, password: password)) {
-                  openButton();
-                } else {
-                  closeButton();
-                }
-              },
-            ),
-            ObscureDynamicTextfield(
-              textInputType: TextInputType.text,
-              preffixIcon: Icons.lock,
-              hintText: 'EMAIL_VERIFICATION.PASSWORD_HINT'.tr(),
-              onChanged: (text) {
-                password = text;
-                if (emailPassController(email: mail, password: password)) {
-                  openButton();
-                } else {
-                  closeButton();
-                }
-              },
-              //onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))
-            ),
-            forgetPassOrSizedBox(context, type: widget.authType),
-            const SizedBox().heightSpacer(context, 2),
-            getAnimatedButton(isButtonOpen, context, onPressedActive: () {
-              widget.buttonPressed(mail, password);
-            }, onPressedInActive: () {}),
-            const SizedBox().heightSpacer(context, 1),
-            Text(widget.explanation),
-          ]),
+          child: BlocBuilder<EmailPasswordErrorCubit, EmailPasswordErrorState>(
+            builder: (context, state) {
+              return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                const SizedBox().heightSpacer(context, 1),
+                sampleTitle(
+                  context,
+                  title: 'EMAIL_VERIFICATION.TITLE_TEXT'.tr(),
+                ),
+                sampleTitle(
+                  context,
+                  title: 'EMAIL_VERIFICATION.TITLE_TEXT2'.tr(),
+                ),
+                textFieldContainerWithPrefix(
+                  context: context,
+                  erroneus: state.isEmailErroneus,
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.emailAddress,
+                  hintText: 'EMAIL_VERIFICATION.MAIL_HINT'.tr(),
+                  preffixIcon: Icons.mail_outline_outlined,
+                  onChanged: (text) {
+                    mail = text;
+                    if (emailPassController(email: mail, password: password)) {
+                      openButton();
+                    } else {
+                      closeButton();
+                    }
+                  },
+                ),
+                errorMessageIfErroneus(context, isErronneus: state.isEmailErroneus, message: state.emailWarning),
+                ObscureDynamicTextfield(
+                  textInputType: TextInputType.text,
+                  preffixIcon: Icons.lock,
+                  erroneus: state.isPasswordErroneus,
+                  hintText: 'EMAIL_VERIFICATION.PASSWORD_HINT'.tr(),
+                  onChanged: (text) {
+                    password = text;
+                    if (emailPassController(email: mail, password: password)) {
+                      openButton();
+                    } else {
+                      closeButton();
+                    }
+                  },
+                  //onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))
+                ),
+                errorMessageIfErroneus(context, isErronneus: state.isPasswordErroneus, message: state.passwordWarning),
+                forgetPassOrSizedBox(context, type: widget.authType),
+                const SizedBox().heightSpacer(context, 2),
+                getAnimatedButton(isButtonOpen, context, onPressedActive: () {
+                  context.read<EmailPasswordErrorCubit>().checkErrorStatus(mail, password);
+
+                  widget.buttonPressed(mail, password);
+                }, onPressedInActive: () {
+                  context.read<EmailPasswordErrorCubit>().checkErrorStatus(mail, password);
+                }),
+                const SizedBox().heightSpacer(context, 1),
+                Text(widget.explanation),
+              ]);
+            },
+          ),
         ));
   }
 
@@ -110,6 +127,21 @@ Widget forgetPassOrSizedBox(BuildContext context, {required AuthType type}) {
         children: [
           headLineEight(context, 'LOGIN.FP'.tr()),
         ],
+      ),
+    );
+  } else {
+    return const SizedBox();
+  }
+}
+
+Widget errorMessageIfErroneus(BuildContext context, {required bool isErronneus, String? message}) {
+  if (isErronneus) {
+    return Padding(
+      padding: EdgeInsets.only(top: context.heightUnit),
+      child: Text(
+        message ?? '',
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Palette.buttonRed),
       ),
     );
   } else {

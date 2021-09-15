@@ -9,12 +9,13 @@ Container textFieldContainerWithPrefix(
     required TextInputType textInputType,
     TextInputAction textInputAction = TextInputAction.done,
     required Function(String) onChanged,
+    bool erroneus = false,
     required IconData preffixIcon,
     bool obscure = false}) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
-      color: Palette.TEXTFIELDGREY,
+      color: erroneus ? Palette.buttonRed.withOpacity(0.25) : Palette.TEXTFIELDGREY,
     ),
     margin: EdgeInsets.only(top: context.heightUnit * 2),
     child: TextField(

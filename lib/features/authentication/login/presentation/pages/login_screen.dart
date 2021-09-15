@@ -41,6 +41,7 @@ class LoginScreen extends StatelessWidget {
         headLineEight(context, 'EMAIL_VERIFICATION.ORLOGIN'.tr(), fontWeight: FontWeight.normal),
         const SizedBox().heightSpacer(context, 2),
         facegoogleButtons(context, facebookOnTap: () {}, googleOnTap: () {}),
+        const SizedBox().heightSpacer(context, 2),
       ],
     );
   }

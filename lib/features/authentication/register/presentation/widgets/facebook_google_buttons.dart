@@ -22,10 +22,10 @@ class _AnimatedFacebookGoogleButtonState extends State<AnimatedFacebookGoogleBut
   void initState() {
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(
-        milliseconds: 500,
+      duration: const Duration(
+        milliseconds: 250,
       ),
-      lowerBound: 0.0,
+      lowerBound: 1,
       upperBound: 5,
     );
     super.initState();
@@ -58,13 +58,16 @@ class _AnimatedFacebookGoogleButtonState extends State<AnimatedFacebookGoogleBut
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      widget.type == ButtonType.FACEBOOK ? AssetPaths.FACEBOOK : AssetPaths.GOOGLE,
-                      scale: 2,
+                    Transform.scale(
+                      scale: 1 / _animationController.value,
+                      child: Image.asset(
+                        widget.type == ButtonType.FACEBOOK ? AssetPaths.FACEBOOK : AssetPaths.GOOGLE,
+                        scale: 2,
+                      ),
                     ),
-                    SizedBox().widthSpacer(context, 3),
+                    const SizedBox().widthSpacer(context, 3),
                     headLineEight(context, widget.type == ButtonType.FACEBOOK ? "Facebook" : "Google",
-                        color: Colors.white, fontWeight: FontWeight.w500)
+                        size: 2 + 2 / _animationController.value, color: Colors.white, fontWeight: FontWeight.w500)
                   ],
                 ),
               );

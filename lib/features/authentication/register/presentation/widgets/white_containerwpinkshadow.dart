@@ -19,7 +19,7 @@ class WhiteContainerWPinkShadow extends StatelessWidget {
               color: Palette.MPINK.withOpacity(0.2),
               spreadRadius: 2,
               blurRadius: 25,
-              offset: Offset(3, 3),
+              offset: const Offset(3, 3),
             )
           ],
           color: Colors.white,
