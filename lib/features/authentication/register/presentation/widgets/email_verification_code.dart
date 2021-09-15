@@ -30,7 +30,7 @@ Container emailCodeVerificationCodeEnter(BuildContext contextOld) => Container(
                       ),
                       SizedBox().heightSpacer(context, 1),
                       Text(
-                        contextOld.read<RegisterBloc>().emailAdress,
+                        contextOld.read<RegisterBloc>().identificationCubit.registrationEntity.email ?? '',
                         style: Theme.of(context).textTheme.headline6,
                       ),
                       SizedBox().heightSpacer(context, 2),
@@ -60,9 +60,9 @@ Container emailCodeVerificationCodeEnter(BuildContext contextOld) => Container(
                       SizedBox().heightSpacer(context, 2),
                       BlocBuilder<OnOffCubit, bool>(
                         builder: (contexta, state) {
-                          return getAnimatedButton(state, context, () {
+                          return getAnimatedButton(state, context, onPressedActive: () {
                             BlocProvider.of<RegisterBloc>(contextOld).verifyCodeAndMail(context);
-                          });
+                          }, onPressedInActive: () {});
                         },
                       ),
                     ],

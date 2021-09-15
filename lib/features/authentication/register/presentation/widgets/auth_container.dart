@@ -32,8 +32,12 @@ class _AuthContainerState extends State<AuthContainer> {
   Widget build(BuildContext context) {
     return WhiteContainerWPinkShadow(
         padding: context.heightUnit * 3,
-        child: BlocProvider(
-          create: (context) => OnOffCubit(),
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => OnOffCubit(),
+            )
+          ],
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const SizedBox().heightSpacer(context, 1),
             sampleTitle(
@@ -46,6 +50,7 @@ class _AuthContainerState extends State<AuthContainer> {
             ),
             textFieldContainerWithPrefix(
               context: context,
+              textInputAction: TextInputAction.next,
               textInputType: TextInputType.emailAddress,
               hintText: 'EMAIL_VERIFICATION.MAIL_HINT'.tr(),
               preffixIcon: Icons.mail_outline_outlined,
@@ -74,13 +79,9 @@ class _AuthContainerState extends State<AuthContainer> {
             ),
             forgetPassOrSizedBox(context, type: widget.authType),
             const SizedBox().heightSpacer(context, 2),
-            getAnimatedButton(
-              isButtonOpen,
-              context,
-              () {
-                widget.buttonPressed(mail, password);
-              },
-            ),
+            getAnimatedButton(isButtonOpen, context, onPressedActive: () {
+              widget.buttonPressed(mail, password);
+            }, onPressedInActive: () {}),
             const SizedBox().heightSpacer(context, 1),
             Text(widget.explanation),
           ]),

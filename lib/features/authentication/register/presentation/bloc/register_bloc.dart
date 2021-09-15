@@ -4,6 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
+import 'package:matchangoo/features/Identification/domain/entities/registration_entity.dart';
 import '../../../../../core/functionality/facebook_sign_in.dart';
 import '../../../../../core/functionality/google_sign_in.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';
@@ -29,8 +30,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       required this.facebookSignIn,
       required this.checkVerificationEmail})
       : super(RegisterInitial());
-  late String emailAdress;
-  late String password;
+
   late String verificationCode;
 
   @override
@@ -38,9 +38,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     RegisterEvent event,
   ) async* {
     if (event is EmailVerifyWaiting) {
-      emailAdress = event.mail;
-      password = event.password;
-      yield* _sendVerificationCode();
+      identificationCubit.registrationEntity.setEmail = event.mail;
+      identificationCubit.registrationEntity.setPassword = event.password;
+      yield* _sendVerificationCode(event.mail);
     } else if (event is EmailVerified) {
       yield RegisterWithEmailVerified();
     } else if (event is IdentificationAlmostFinished) {
@@ -50,7 +50,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     }
   }
 
-  Stream<RegisterState> _sendVerificationCode() async* {
+  Stream<RegisterState> _sendVerificationCode(String emailAdress) async* {
     final Result<bool> sonuc = await sendVerificationEmail(emailAdress);
 
     yield sonuc.when(success: (bool result) {
@@ -65,7 +65,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Future<void> verifyCodeAndMail(BuildContext context) async {
-    final VerificationControl verificationCredentials = VerificationControl(verificationCode: verificationCode, verificationEmail: emailAdress);
+    final VerificationControl verificationCredentials =
+        VerificationControl(verificationCode: verificationCode, verificationEmail: identificationCubit.registrationEntity.email ?? 'null');
     ProgressIndicator.instance.showLoadingIndicator(context);
     final Result<bool> verificationResult = await checkVerificationEmail(verificationCredentials);
     await Future.delayed(const Duration(seconds: 2), () {

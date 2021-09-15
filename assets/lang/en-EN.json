@@ -39,6 +39,7 @@
         "TITLE_TEXT2":"Email ID & Password",
         "EXPLANATION_TEXT":"We will send you a verification code to pair your e-mail adress within your account.",
         "ORSIGNIN":"or sign in using",
+        "ORLOGIN":"or login using",
         "MAIL_HINT":"example@mail.com",
         "PASSWORD_HINT":"Enter your password"
     },
@@ -82,8 +83,20 @@
         },
         "MESSAGES":{
             "ONE":"It seems we have an unexpected error for now, please try later on."
+        },
+        "EMAIL":{
+            "EMPTY":"Please enter an email adress!",
+            "NOTVALID":"Please enter a valid email adress!"
+        },
+        "PASSWORD":{
+            "EMPTY":"Please enter a password!",
+            "SHORT":"Your password is too short!",
+            "LONG":"Your password is too long!"
         }
+        
     },
+
+    
 
     "LOGIN":{
         "FP":"Forget password?"

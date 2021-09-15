@@ -8,6 +8,7 @@ class RegistrationEntity {
   late String? email;
   late String? name;
   late String? studycode;
+  late String? password;
   late String? fieldOfStudy;
   late GenderType? genderType;
   late List<String?>? photos;
@@ -21,6 +22,10 @@ class RegistrationEntity {
 
   set setEmail(String? email) {
     this.email = email;
+  }
+
+  set setPassword(String? password) {
+    this.password = password;
   }
 
   void setBirthday(String dd, String mm, String yyyy) {

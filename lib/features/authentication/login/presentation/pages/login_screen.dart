@@ -19,15 +19,17 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BackGroundContainerWithOutLogo(
-      child: Column(
-        children: [
-          matchifyLogoWithBackButtonWcustomPress(
-              context: context,
-              onTap: () {
-                Navigator.of(context).pop();
-              }),
-          loginBody(context),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            matchifyLogoWithBackButtonWcustomPress(
+                context: context,
+                onTap: () {
+                  Navigator.of(context).pop();
+                }),
+            loginBody(context),
+          ],
+        ),
       ),
     ));
   }
@@ -36,7 +38,7 @@ class LoginScreen extends StatelessWidget {
     return Column(
       children: [
         AuthContainer(authType: AuthType.login, buttonPressed: (email, password) {}, explanation: ''),
-        headLineEight(context, 'EMAIL_VERIFICATION.ORSIGNIN'.tr(), fontWeight: FontWeight.normal),
+        headLineEight(context, 'EMAIL_VERIFICATION.ORLOGIN'.tr(), fontWeight: FontWeight.normal),
         const SizedBox().heightSpacer(context, 2),
         facegoogleButtons(context, facebookOnTap: () {}, googleOnTap: () {}),
       ],

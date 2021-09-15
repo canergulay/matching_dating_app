@@ -7,6 +7,7 @@ Container textFieldContainerWithPrefix(
     {required BuildContext context,
     required String hintText,
     required TextInputType textInputType,
+    TextInputAction textInputAction = TextInputAction.done,
     required Function(String) onChanged,
     required IconData preffixIcon,
     bool obscure = false}) {
@@ -18,6 +19,7 @@ Container textFieldContainerWithPrefix(
     margin: EdgeInsets.only(top: context.heightUnit * 2),
     child: TextField(
         obscureText: obscure,
+        textInputAction: textInputAction,
         style:
             Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
         onChanged: onChanged,
