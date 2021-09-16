@@ -14,7 +14,6 @@ class BackGroundContainerWithOutLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.dynamicHeight + 50,
       decoration: const BoxDecoration(image: DecorationImage(fit: BoxFit.fill, image: AssetImage(AssetPaths.BACKGROUND))),
       child: child,
     );

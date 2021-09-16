@@ -5,7 +5,7 @@ bool emailPassController({required String email, required String password}) {
 }
 
 bool passWordValidator(String password) {
-  return password.length > 3 && password.length < 20;
+  return password.length >= 3 && password.length <= 20;
 }
 
 ControlStatus passwordControl({required String password}) {

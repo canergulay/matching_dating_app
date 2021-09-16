@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/components/buttons/animator_button.dart';
 import '../../../constants/asset_paths.dart';
 import '../extensions/sizedbox_extension.dart';
 import '../extensions/textstyle_extension.dart';
@@ -21,9 +22,9 @@ Row matchifyLogoWithBackButtonWcustomPress({required BuildContext context, requi
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        InkWell(
-          onTap: onTap,
-          child: Image.asset(
+        AnimatorButton(
+          onPressed: onTap,
+          childToBeAnimated: Image.asset(
             AssetPaths.BACKBUTTON,
             width: context.heightUnit * 6,
             height: context.heightUnit * 6,

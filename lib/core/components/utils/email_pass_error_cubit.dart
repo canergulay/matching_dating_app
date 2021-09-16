@@ -11,9 +11,12 @@ class EmailPasswordErrorState {
 }
 
 class EmailPasswordErrorCubit extends Cubit<EmailPasswordErrorState> {
+  late String email = '';
+  late String password = '';
+
   EmailPasswordErrorCubit() : super(EmailPasswordErrorState(isEmailErroneus: false, isPasswordErroneus: false));
 
-  void checkErrorStatus(String email, String password) {
+  void checkErrorStatus() {
     final ControlStatus emailControlStatus = emailControl(email: email);
     final ControlStatus passwordControlStatus = passwordControl(password: password);
 
@@ -44,4 +47,6 @@ class EmailPasswordErrorCubit extends Cubit<EmailPasswordErrorState> {
       return "ERROR.PASSWORD.SHORT".tr();
     }
   }
+
+  bool isButtonOpen() => !state.isEmailErroneus && !state.isPasswordErroneus && email.isNotEmpty && password.isNotEmpty;
 }

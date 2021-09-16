@@ -26,10 +26,6 @@ class AuthContainer extends StatefulWidget {
 }
 
 class _AuthContainerState extends State<AuthContainer> {
-  bool isButtonOpen = false;
-  String mail = '';
-  String password = '';
-
   @override
   Widget build(BuildContext context) {
     return WhiteContainerWPinkShadow(
@@ -63,12 +59,8 @@ class _AuthContainerState extends State<AuthContainer> {
                   hintText: 'EMAIL_VERIFICATION.MAIL_HINT'.tr(),
                   preffixIcon: Icons.mail_outline_outlined,
                   onChanged: (text) {
-                    mail = text;
-                    if (emailPassController(email: mail, password: password)) {
-                      openButton();
-                    } else {
-                      closeButton();
-                    }
+                    context.read<EmailPasswordErrorCubit>().email = text;
+                    context.read<EmailPasswordErrorCubit>().checkErrorStatus();
                   },
                 ),
                 errorMessageIfErroneus(context, isErronneus: state.isEmailErroneus, message: state.emailWarning),
@@ -78,24 +70,20 @@ class _AuthContainerState extends State<AuthContainer> {
                   erroneus: state.isPasswordErroneus,
                   hintText: 'EMAIL_VERIFICATION.PASSWORD_HINT'.tr(),
                   onChanged: (text) {
-                    password = text;
-                    if (emailPassController(email: mail, password: password)) {
-                      openButton();
-                    } else {
-                      closeButton();
-                    }
+                    context.read<EmailPasswordErrorCubit>().password = text;
+                    context.read<EmailPasswordErrorCubit>().checkErrorStatus();
                   },
                   //onChanged: (text) => context.read<RegisterBloc>().add(EmailAdressTyped(emailAdressChanged: text))
                 ),
                 errorMessageIfErroneus(context, isErronneus: state.isPasswordErroneus, message: state.passwordWarning),
                 forgetPassOrSizedBox(context, type: widget.authType),
                 const SizedBox().heightSpacer(context, 2),
-                getAnimatedButton(isButtonOpen, context, onPressedActive: () {
-                  context.read<EmailPasswordErrorCubit>().checkErrorStatus(mail, password);
+                getAnimatedButton(context.read<EmailPasswordErrorCubit>().isButtonOpen(), context, onPressedActive: () {
+                  context.read<EmailPasswordErrorCubit>().checkErrorStatus();
 
-                  widget.buttonPressed(mail, password);
+                  widget.buttonPressed(context.read<EmailPasswordErrorCubit>().email, context.read<EmailPasswordErrorCubit>().password);
                 }, onPressedInActive: () {
-                  context.read<EmailPasswordErrorCubit>().checkErrorStatus(mail, password);
+                  context.read<EmailPasswordErrorCubit>().checkErrorStatus();
                 }),
                 const SizedBox().heightSpacer(context, 1),
                 Text(widget.explanation),
@@ -103,18 +91,6 @@ class _AuthContainerState extends State<AuthContainer> {
             },
           ),
         ));
-  }
-
-  void openButton() {
-    setState(() {
-      isButtonOpen = true;
-    });
-  }
-
-  void closeButton() {
-    setState(() {
-      isButtonOpen = false;
-    });
   }
 }
 

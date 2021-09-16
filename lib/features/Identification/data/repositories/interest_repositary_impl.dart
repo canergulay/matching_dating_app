@@ -18,6 +18,7 @@ class InterestRepositary implements InterestRepositaryContract {
       return Result.error(CustomError(errorCode: 500));
     } catch (e) {
       print(e);
+
       return Result.error(CustomError());
     }
   }

@@ -18,20 +18,21 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: BackGroundContainerWithOutLogo(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            matchifyLogoWithBackButtonWcustomPress(
-                context: context,
-                onTap: () {
-                  Navigator.of(context).pop();
-                }),
-            loginBody(context),
-          ],
-        ),
-      ),
-    ));
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                matchifyLogoWithBackButtonWcustomPress(
+                    context: context,
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    }),
+                loginBody(context),
+              ],
+            ),
+          ),
+        ));
   }
 
   Column loginBody(BuildContext context) {
