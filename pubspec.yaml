@@ -80,6 +80,10 @@ flutter:
     - assets/images/icons/delphoto.png
     - assets/images/icons/facebook.png
     - assets/images/icons/google.png
+    - assets/images/icons/info.png
+    - assets/images/icons/bad.png
+    - assets/images/icons/good.png
+    - assets/images/icons/exit.png
 
   fonts:
     - family: Poppins
