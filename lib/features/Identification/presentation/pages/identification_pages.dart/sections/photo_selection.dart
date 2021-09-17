@@ -4,6 +4,8 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/buttons/animator_button.dart';
+import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/components/utils/get_out_of_here.dart';
 
@@ -28,7 +30,7 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => PhotoSelectionCubit()),
+        BlocProvider(create: (context) => sl.get<PhotoSelectionCubit>()),
         BlocProvider(create: (context) => context.read<PhotoSelectionCubit>().onOffCubit),
       ],
       child: BlocBuilder<PhotoSelectionCubit, PhotoSelectionState>(
@@ -81,21 +83,21 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
 
 Widget photoWidget(BuildContext context, {required int index, String? photo}) {
   if (photo == null) {
-    return GestureDetector(
-      onTap: () => context.read<PhotoSelectionCubit>().selectPhoto(),
-      child: greyContainer(
+    return greyContainer(
         color: Color(0xFFEBEFF0),
         borderWidth: 0,
         borderStyle: BorderStyle.none,
         bottomMargin: context.heightUnit * 2,
         leftMargin: context.widthUnit * 2,
         rightMargin: context.widthUnit * 2,
-        child: Image.asset(
-          AssetPaths.ADDPHOTO,
-          scale: 3,
-        ),
-      ),
-    );
+        child: AnimatorButton(
+            childToBeAnimated: Image.asset(
+              AssetPaths.ADDPHOTO,
+              scale: 3,
+            ),
+            onPressed: () {
+              context.read<PhotoSelectionCubit>().selectPhoto();
+            }));
   } else {
     return Container(
       margin: EdgeInsets.fromLTRB(context.widthUnit * 2, 0, context.widthUnit * 2, context.heightUnit * 2),

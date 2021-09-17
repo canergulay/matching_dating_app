@@ -88,10 +88,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(widget.title,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline5
-                            ?.copyWith(color: widget.titleColor, fontSize: context.heightUnit * 3 - _animationController.value)),
+                        style: Theme.of(context).textTheme.headline5?.copyWith(color: widget.titleColor, fontSize: 23 - _animationController.value)),
                     widget.child ?? Container()
                   ],
                 )),

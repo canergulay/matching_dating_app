@@ -21,12 +21,11 @@ Container textFieldContainerWithPrefix(
     child: TextField(
         obscureText: obscure,
         textInputAction: textInputAction,
-        style:
-            Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
+        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.2, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
         onChanged: onChanged,
         keyboardType: textInputType,
         decoration: InputDecoration(
-          hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: context.widthUnit * 3.99999),
+          hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 16),
           hintText: hintText,
           alignLabelWithHint: false,
           prefixIcon: Icon(
@@ -67,12 +66,11 @@ Container textFieldContainer(
         maxLength: maxLength,
         textAlign: textAlign,
         focusNode: focusNode,
-        style:
-            Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: context.widthUnit * 4, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
+        style: Theme.of(context).textTheme.bodyText1?.copyWith(fontSize: 16.2, color: Palette.BIZIMBLACK, fontWeight: FontWeight.w500),
         onChanged: onChanged,
         keyboardType: textInputType,
         decoration: InputDecoration(
-          hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: context.widthUnit * 3.99999),
+          hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 16),
           hintText: hintText,
           alignLabelWithHint: false,
           enabledBorder: OutlineInputBorder(

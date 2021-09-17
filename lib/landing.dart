@@ -63,8 +63,8 @@ Expanded secondShit(BuildContext context) {
             title: 'MAIN_SCREEN.CREATE_ACCOUNT'.tr(),
             buttonColor: const Color(0xFFFD69B7),
             onPressed: () {
-              ToastShower.instance.showMyToast(context, GeneralToast(type: ToastType.info));
-              //NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
+              // ToastShower.instance.showMyToast(context, GeneralToast(type: ToastType.bad));
+              NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
             },
           ),
         ),
@@ -80,10 +80,10 @@ Expanded secondShit(BuildContext context) {
 TextStyle doYouTextStyle() => const TextStyle();
 
 RichText doYouHaveAnAccount(BuildContext context) => RichText(
-        text: TextSpan(text: 'MAIN_SCREEN.DO_YOU_HAVE_AN_ACC'.tr(), style: Theme.of(context).textTheme.headline6, children: [
+        text: TextSpan(text: 'MAIN_SCREEN.DO_YOU_HAVE_AN_ACC'.tr(), style: Theme.of(context).textTheme.headline6?.copyWith(fontSize: 18), children: [
       TextSpan(
           text: 'MAIN_SCREEN.SIGN_IN'.tr(),
-          style: Theme.of(context).textTheme.headline6?.copyWith(color: Palette.MBLUE),
+          style: Theme.of(context).textTheme.headline6?.copyWith(color: Palette.MBLUE, fontSize: 19),
           recognizer: TapGestureRecognizer()
             ..onTap = () {
               NavigationManager.instance.navigateToPage(path: '/login', arguments: 'nothing');

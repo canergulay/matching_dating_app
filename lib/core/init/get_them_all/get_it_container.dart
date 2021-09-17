@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:get_it/get_it.dart';
 import 'package:location/location.dart';
+import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
+import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
+import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
 import '../../functionality/facebook_sign_in.dart';
 import '../app_cubit/app_cubit.dart';
 import '../../structure/utils/enums/theme_types.dart';
@@ -73,7 +76,9 @@ void registerModule() {
   sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
   sl.registerFactory<VerificationEmailDataSource>(() => VerificationEmailDataSource());
   sl.registerFactory<IdentificationRepo>(() => IdentificationRepo());
-
+  sl.registerFactory<PhotoSelectionCubit>(() => PhotoSelectionCubit(sl()));
+  sl.registerFactory<UploadUserImageRepositary>(() => UploadUserImageRepositary(uploadImageDS: sl()));
+  sl.registerFactory<UploadImageDS>(() => UploadImageDS());
   sl.registerFactory<RegistrationEntity>(() => RegistrationEntity());
   sl.registerFactory<GenderCubit>(() => GenderCubit());
   sl.registerFactory<InterestedInCubit>(() => InterestedInCubit());

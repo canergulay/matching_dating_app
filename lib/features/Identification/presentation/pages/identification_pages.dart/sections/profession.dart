@@ -86,6 +86,7 @@ class _ProfessionState extends State<Profession> {
         Expanded(
             child: GestureDetector(
                 onTap: () {
+                  print(1);
                   context.read<OnOffCubit>().off();
                   context.read<ProfessionCubit>().changeProfession(ProfessionType.WORKER);
                   context.read<IdentificationCubit>().registrationEntity.setStudyCode = 'working';

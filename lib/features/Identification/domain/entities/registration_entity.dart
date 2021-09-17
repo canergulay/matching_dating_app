@@ -33,7 +33,7 @@ class RegistrationEntity {
   }
 
   set setStudyCode(String? studyCode) {
-    this.studycode = studycode;
+    this.studycode = studyCode;
   }
 
   set setFieldOfStudy(String? fieldOfStudy) {

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:matchangoo/core/appetizers/enums.dart/toast_type_enum.dart';
 import 'package:matchangoo/core/components/buttons/animator_button.dart';
 import 'package:matchangoo/core/constants/asset_paths.dart';
@@ -51,32 +53,40 @@ Container toastBody(BuildContext context, {required ToastType type}) {
           topRight: Radius.circular(8),
           bottomRight: Radius.circular(8),
         )),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const SizedBox().widthSpacer(context, 3),
-        Image.asset(
-          toastIconGetter(type),
-          scale: 6,
-        ),
-        const SizedBox().widthSpacer(context, 3),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              headLineEight(context, 'Başarılı', fontWeight: FontWeight.w400),
-              Text("Tebrikler , başarılı bir şekilde kayıt oldunuz"),
-            ],
+    child: GestureDetector(
+      onTap: () {
+        print('sasa 12 asas 12');
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox().widthSpacer(context, 3),
+          Image.asset(
+            toastIconGetter(type),
+            scale: 6,
           ),
-        ),
-        IconButton(
-            onPressed: () {
-              print('sa');
-              Navigator.of(context).pop('dialog');
-            },
-            icon: Icon(Icons.ac_unit_outlined))
-      ],
+          const SizedBox().widthSpacer(context, 3),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                headLineEight(context, 'Başarılı', fontWeight: FontWeight.w400),
+                Text("Tebrikler , başarılı bir şekildeşekilde kayıt oldunuz"),
+              ],
+            ),
+          ),
+          AnimatorButton(
+              childToBeAnimated: Text(
+                'X',
+                style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold, color: toastBarColorGetter(type)),
+              ),
+              onPressed: () {
+                ToastManager().dismissAll(showAnim: true);
+              }),
+          SizedBox().widthSpacer(context, 3)
+        ],
+      ),
     ),
   );
 }

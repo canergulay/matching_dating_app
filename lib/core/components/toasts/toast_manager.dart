@@ -13,8 +13,10 @@ class ToastShower {
         animation: StyledToastAnimation.slideFromTop,
         reverseAnimation: StyledToastAnimation.slideFromTop,
         position: StyledToastPosition.top,
+        isIgnoring: false,
+        reverseCurve: Curves.decelerate,
         duration: Duration(minutes: 151),
-        curve: Curves.easeIn,
+        curve: Curves.decelerate,
         alignment: Alignment.topCenter);
   }
 }
