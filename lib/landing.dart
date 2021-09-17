@@ -2,8 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:matchangoo/core/appetizers/enums.dart/dialog_type_enum.dart';
+import 'package:matchangoo/core/appetizers/enums.dart/toast_type_enum.dart';
 import 'package:matchangoo/core/components/dialogs/error_dialog.dart';
 import 'package:matchangoo/core/components/dialogs/show_dialog.dart';
+import 'package:matchangoo/core/components/toasts/toast_manager.dart';
+import 'package:matchangoo/core/components/toasts/toast_widgets.dart/general_toast.dart';
 import 'core/constants/app_constants.dart';
 import 'core/constants/asset_paths.dart';
 import 'core/structure/utils/widgets/background_widget_wlogo.dart';
@@ -60,7 +63,8 @@ Expanded secondShit(BuildContext context) {
             title: 'MAIN_SCREEN.CREATE_ACCOUNT'.tr(),
             buttonColor: const Color(0xFFFD69B7),
             onPressed: () {
-              NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
+              ToastShower.instance.showMyToast(context, GeneralToast(type: ToastType.info));
+              //NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
             },
           ),
         ),

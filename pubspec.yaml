@@ -48,6 +48,7 @@ dependencies:
   staggered_grid_view_flutter: ^0.0.4
   image_picker: ^0.8.4
   provider: ^6.0.0
+  flutter_styled_toast: ^2.0.0
 
 
 dev_dependencies:

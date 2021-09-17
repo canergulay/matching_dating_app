@@ -13,4 +13,13 @@ class Palette {
 
   static const GENDERBUTTONACTIVE = Color(0xFFE7F3);
   static const GENDERBUTTONINACTIVE = Color(0xFFF7FBFE);
+
+  static const TOASTGREENLIGHT = Color(0xFFc5f7dd);
+  static const TOASTGREENDARK = Color(0xFF3bc279);
+
+  static const TOASTREDLIGHT = Color(0xFFffd0cb);
+  static const TOASTREDDARK = Color(0xFFe8594e);
+
+  static const TOASTBLUELIGHT = Color(0xFFcce3ff);
+  static const TOASTBLUEDARK = Color(0xFF3e85e3);
 }

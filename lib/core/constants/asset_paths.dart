@@ -17,4 +17,9 @@ class AssetPaths {
 
   static const FACEBOOK = 'assets/images/icons/facebook.png';
   static const GOOGLE = 'assets/images/icons/google.png';
+
+  static const GOOD = 'assets/images/icons/good.png';
+  static const BAD = 'assets/images/icons/bad.png';
+  static const INFO = 'assets/images/icons/info.png';
+  static const EXIT = 'assets/images/icons/exit.png';
 }
