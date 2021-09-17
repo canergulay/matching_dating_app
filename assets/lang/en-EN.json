@@ -82,7 +82,8 @@
             "ONE":"Oopps... Unexpected Error!"
         },
         "MESSAGES":{
-            "ONE":"It seems we have an unexpected error for now, please try later on."
+            "ONE":"It seems we have an unexpected error for now, please try later on.",
+            "TWO":"It seemd we have an unexpected error for now, please try again."
         },
         "EMAIL":{
             "EMPTY":"Please enter an email adress!",

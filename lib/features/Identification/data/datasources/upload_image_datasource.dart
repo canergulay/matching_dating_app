@@ -11,7 +11,9 @@ class UploadImageDS {
       "image": await MultipartFile.fromFile(imagePath, filename: 'myimage'),
     });
     final response = await NetworkManager.instance.dio.post('/imageupload', data: formData);
+    print(response.data);
     if (response.statusCode == HttpStatus.ok && response.data['status'] == 'success') {
+      print(response.data);
       return Result.success(response.data['image']);
     } else {
       throw CustomError();

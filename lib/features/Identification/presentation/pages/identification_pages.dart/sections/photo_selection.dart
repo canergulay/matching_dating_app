@@ -35,7 +35,8 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
       ],
       child: BlocBuilder<PhotoSelectionCubit, PhotoSelectionState>(
         builder: (context, state) {
-          final List<String> photos = (state as Photos).photos;
+          final List<String> photos = (state as Photos).images;
+          final List<String> imageURL = (state as Photos).imageURL;
           return Column(
             children: [
               headLineSeven(context, "PHOTO_SELECTION.addphotos".tr()),
@@ -54,7 +55,8 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
                               itemCount: 9,
                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.75),
                               itemBuilder: (context, i) {
-                                return photoWidget(context, photo: photos.length > i ? photos[i] : null, index: i);
+                                return photoWidget(context,
+                                    imageURL: imageURL.length > i ? imageURL[i] : null, photo: photos.length > i ? photos[i] : null, index: i);
                               }),
                         );
                       },
@@ -81,7 +83,7 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
   }
 }
 
-Widget photoWidget(BuildContext context, {required int index, String? photo}) {
+Widget photoWidget(BuildContext context, {required int index, String? photo, String? imageURL}) {
   if (photo == null) {
     return greyContainer(
         color: Color(0xFFEBEFF0),
@@ -96,7 +98,7 @@ Widget photoWidget(BuildContext context, {required int index, String? photo}) {
               scale: 3,
             ),
             onPressed: () {
-              context.read<PhotoSelectionCubit>().selectPhoto();
+              context.read<PhotoSelectionCubit>().selectPhoto(context);
             }));
   } else {
     return Container(
@@ -109,20 +111,22 @@ Widget photoWidget(BuildContext context, {required int index, String? photo}) {
               File(photo),
             ),
           ),
+          Center(
+            child: imageURL == 'loading' ? CircularProgressIndicator() : SizedBox(),
+          ),
           Positioned(
-            child: GestureDetector(
-              onTap: () async {
-                OkCancelResult sure =
-                    await showSureDialog(context: context, title: 'ARE_YOU_SURE.title'.tr(), message: 'ARE_YOU_SURE.photomessage'.tr());
-                if (sure == OkCancelResult.ok) {
-                  context.read<PhotoSelectionCubit>().deletePhoto(index);
-                }
-              },
-              child: Image.asset(
-                AssetPaths.DELPHOTO,
-                scale: 2,
-              ),
-            ),
+            child: AnimatorButton(
+                childToBeAnimated: Image.asset(
+                  AssetPaths.DELPHOTO,
+                  scale: 2,
+                ),
+                onPressed: () async {
+                  OkCancelResult sure =
+                      await showSureDialog(context: context, title: 'ARE_YOU_SURE.title'.tr(), message: 'ARE_YOU_SURE.photomessage'.tr());
+                  if (sure == OkCancelResult.ok) {
+                    context.read<PhotoSelectionCubit>().deletePhoto(index);
+                  }
+                }),
             right: context.heightUnit,
             top: context.heightUnit,
           )

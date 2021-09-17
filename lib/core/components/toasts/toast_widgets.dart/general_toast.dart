@@ -11,7 +11,9 @@ import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.da
 
 class GeneralToast extends StatelessWidget {
   final ToastType type;
-  const GeneralToast({required this.type, Key? key}) : super(key: key);
+  final String title;
+  final String message;
+  const GeneralToast({required this.title, required this.message, required this.type, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class GeneralToast extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             leftBar(context, type: type),
-            toastBody(context, type: type),
+            toastBody(context, type: type, title: title, message: message),
           ],
         ),
       ),
@@ -43,7 +45,12 @@ class GeneralToast extends StatelessWidget {
   }
 }
 
-Container toastBody(BuildContext context, {required ToastType type}) {
+Container toastBody(
+  BuildContext context, {
+  required ToastType type,
+  required String title,
+  required String message,
+}) {
   return Container(
     width: 370,
     height: context.heightUnit * 8,
@@ -53,40 +60,35 @@ Container toastBody(BuildContext context, {required ToastType type}) {
           topRight: Radius.circular(8),
           bottomRight: Radius.circular(8),
         )),
-    child: GestureDetector(
-      onTap: () {
-        print('sasa 12 asas 12');
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const SizedBox().widthSpacer(context, 3),
-          Image.asset(
-            toastIconGetter(type),
-            scale: 6,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        const SizedBox().widthSpacer(context, 3),
+        Image.asset(
+          toastIconGetter(type),
+          scale: 6,
+        ),
+        const SizedBox().widthSpacer(context, 3),
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              headLineEight(context, title, fontWeight: FontWeight.w400),
+              Text(message),
+            ],
           ),
-          const SizedBox().widthSpacer(context, 3),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                headLineEight(context, 'Başarılı', fontWeight: FontWeight.w400),
-                Text("Tebrikler , başarılı bir şekildeşekilde kayıt oldunuz"),
-              ],
+        ),
+        AnimatorButton(
+            childToBeAnimated: Text(
+              'X',
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold, color: toastBarColorGetter(type)),
             ),
-          ),
-          AnimatorButton(
-              childToBeAnimated: Text(
-                'X',
-                style: Theme.of(context).textTheme.bodyText1?.copyWith(fontWeight: FontWeight.bold, color: toastBarColorGetter(type)),
-              ),
-              onPressed: () {
-                ToastManager().dismissAll(showAnim: true);
-              }),
-          SizedBox().widthSpacer(context, 3)
-        ],
-      ),
+            onPressed: () {
+              ToastManager().dismissAll(showAnim: true);
+            }),
+        SizedBox().widthSpacer(context, 3)
+      ],
     ),
   );
 }
