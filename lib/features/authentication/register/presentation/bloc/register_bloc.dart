@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
 import 'package:matchangoo/features/Identification/domain/entities/registration_entity.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/register.dart';
 import '../../../../../core/functionality/facebook_sign_in.dart';
 import '../../../../../core/functionality/google_sign_in.dart';
 import '../../../../../core/result_error/errors/custom_error.dart';
@@ -23,11 +24,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   SendVerificationEmail sendVerificationEmail;
   CheckVerificationEmail checkVerificationEmail;
   FacebookSignIn facebookSignIn;
+  Register register;
   RegisterBloc(
       {required this.googleSignInRepo,
       required this.identificationCubit,
       required this.sendVerificationEmail,
       required this.facebookSignIn,
+      required this.register,
       required this.checkVerificationEmail})
       : super(RegisterInitial());
 
@@ -45,7 +48,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield RegisterWithEmailVerified();
     } else if (event is IdentificationAlmostFinished) {
       yield PhotoSelection();
-    } else if (event is Completed) {
+    } else if (event is CompleteRegistration) {
       yield IdentificationCompleted();
     }
   }

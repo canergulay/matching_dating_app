@@ -13,4 +13,4 @@ class EmailVerified extends RegisterEvent {}
 
 class IdentificationAlmostFinished extends RegisterEvent {}
 
-class Completed extends RegisterEvent {}
+class CompleteRegistration extends RegisterEvent {}

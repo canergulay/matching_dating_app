@@ -78,14 +78,17 @@ BlocProvider mainContainer(BuildContext context, {required String name, required
               // BE CAREFUL, THEY ARE DIFFERENT.
             } else {
               contexta.read<OnOffCubit>().off();
+              print('deleted');
               context.read<IdentificationCubit>().registrationEntity.deleteInterest(interestId);
             }
 
             if (context.read<IdentificationCubit>().registrationEntity.getIfInterestsAreNotEmpty) {
+              print('bastık');
               // IN ORDER TO PASS THIS PAGE, WE SHOULD HAVE AT LEAST ONE INTEREST.
               context.read<OnOffCubit>().on();
               //THIS IS THE CUBIT OFF ACTIVATABLE BUTTON
             } else {
+              print('bastık2');
               context.read<OnOffCubit>().off();
             }
           },

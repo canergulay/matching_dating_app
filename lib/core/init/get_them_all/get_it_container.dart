@@ -5,6 +5,9 @@ import 'package:location/location.dart';
 import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
+import 'package:matchangoo/features/authentication/register/data/datasources/registration_datasource.dart';
+import 'package:matchangoo/features/authentication/register/data/repositories/registration_repositary.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/register.dart';
 import '../../functionality/facebook_sign_in.dart';
 import '../app_cubit/app_cubit.dart';
 import '../../structure/utils/enums/theme_types.dart';
@@ -65,10 +68,17 @@ void registerSMSVerificationModul() {
 
 void registerModule() {
   sl.registerFactory<RegisterBloc>(() => RegisterBloc(
-      identificationCubit: sl(), facebookSignIn: sl(), sendVerificationEmail: sl(), checkVerificationEmail: sl(), googleSignInRepo: sl()));
+      register: sl(),
+      identificationCubit: sl(),
+      facebookSignIn: sl(),
+      sendVerificationEmail: sl(),
+      checkVerificationEmail: sl(),
+      googleSignInRepo: sl()));
   sl.registerFactory<IdentificationCubit>(() =>
       IdentificationCubit(professionCubit: sl(), interestedInCubit: sl(), genderCubit: sl(), registrationEntity: sl(), identificationRepo: sl()));
-
+  sl.registerFactory<Register>(() => Register(registrationRepositary: sl()));
+  sl.registerFactory<RegistrationRepositary>(() => RegistrationRepositary(dataSource: sl()));
+  sl.registerFactory<RegistrationDataSource>(() => RegistrationDataSource());
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo());

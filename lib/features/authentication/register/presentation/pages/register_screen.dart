@@ -55,17 +55,15 @@ class RegisterScreen extends StatelessWidget {
                             headLineEight(context, context.read<IdentificationCubit>().registrationEntity.password ?? 'no pass'),
                             headLineEight(context, context.read<IdentificationCubit>().registrationEntity.studycode ?? 'no studycode'),
                             headLineEight(context, context.read<IdentificationCubit>().registrationEntity.fieldOfStudy ?? 'no fos'),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.genderType.toString()),
+                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.getGenderType()),
                             headLineEight(context, context.read<IdentificationCubit>().registrationEntity.birthday ?? 'nobd'),
                             Column(
-                              children: context
-                                      .read<IdentificationCubit>()
-                                      .registrationEntity
-                                      .interestedIns
-                                      ?.map((e) => headLineEight(context, e.toString()))
-                                      .toList() ??
-                                  [],
-                            ),
+                                children: context
+                                    .read<IdentificationCubit>()
+                                    .registrationEntity
+                                    .getInterestedTypes()
+                                    .map((e) => headLineEight(context, e.toString()))
+                                    .toList()),
                             Column(
                               children: context
                                       .read<IdentificationCubit>()

@@ -1,9 +1,11 @@
 import 'package:matchangoo/features/Identification/data/models/interested_in_type.dart';
-import 'package:matchangoo/features/Identification/data/models/profession/degree_types.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/gender_cubit.dart';
 
-import '../../data/models/interests/interests.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'registration_entity.g.dart';
+
+@JsonSerializable()
 class RegistrationEntity {
   late String? name;
   late String? email;
@@ -16,6 +18,22 @@ class RegistrationEntity {
   late String? birthday;
   late List<InterestedType>? interestedIns;
   late List<String?>? interests = [];
+
+  RegistrationEntity(
+      {this.birthday,
+      this.email,
+      this.fieldOfStudy,
+      this.genderType,
+      this.interestedIns,
+      this.interests,
+      this.name,
+      this.password,
+      this.photoURLS,
+      this.photos,
+      this.studycode});
+
+  factory RegistrationEntity.fromJson(Map<String, dynamic> json) => _$RegistrationEntityFromJson(json);
+  Map<String, dynamic> toJson() => _$RegistrationEntityToJson(this);
 
   set setName(String? name) {
     this.name = name;
@@ -59,19 +77,34 @@ class RegistrationEntity {
 
   void addInterestIfDoesNotExist(String interestId) {
     if (!(interests?.contains(interestId) ?? false)) {
-      interests?.add(interestId);
+      if (interests == null) {
+        interests = [];
+      }
+      interests!.add(interestId);
       print(interests);
     } else {}
   }
 
   void deleteInterest(String interestId) => interests?.remove(interestId);
 
-  String genderTypeConverter(GenderType type) {
-    if (type == GenderType.MAN) {
+  String getGenderType() {
+    if (genderType == GenderType.MAN) {
       return 'male';
     } else {
       return 'female';
     }
+  }
+
+  List<String> getInterestedTypes() {
+    List<String> listToBeReturned = [];
+    if (interestedIns?.contains(InterestedType.MAN) ?? false) {
+      listToBeReturned.add('male');
+    }
+    if (interestedIns?.contains(InterestedType.WOMAN) ?? false) {
+      listToBeReturned.add('female');
+    }
+
+    return listToBeReturned;
   }
 
   String get getNameIfNotEmpty => name ?? '';
