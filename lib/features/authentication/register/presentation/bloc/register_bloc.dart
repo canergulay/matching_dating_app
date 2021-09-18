@@ -90,7 +90,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Future<void> signInViaFacebook() async {
     final Result<Map<String, dynamic>> facebookLoginResult = await facebookSignIn.signIn();
     facebookLoginResult.when(success: (Map<String, dynamic> userCredentials) {
-      _setCredentialsAndContinue(name: userCredentials['name'], email: userCredentials['email']);
+      _setCredentialsAndContinue(name: userCredentials['name'], email: userCredentials['email'], password: 'facebook');
     }, error: (CustomError error) {
       switch (error.errorCode) {
         case 10:
@@ -107,7 +107,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Future<void> signInViaGoogle() async {
     final Result<GoogleSignInAccount> info = await googleSignInRepo.signIn();
     info.when(success: (GoogleSignInAccount credentials) {
-      _setCredentialsAndContinue(name: credentials.displayName ?? '', email: credentials.email);
+      _setCredentialsAndContinue(name: credentials.displayName ?? '', email: credentials.email, password: 'google');
     }, error: (CustomError error) {
       switch (error.errorCode) {
         case 10:
@@ -119,9 +119,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     });
   }
 
-  void _setCredentialsAndContinue({required String name, required String email}) {
+  void _setCredentialsAndContinue({required String name, required String email, required String password}) {
     identificationCubit.registrationEntity.setName = name;
     identificationCubit.registrationEntity.setEmail = email;
+    identificationCubit.registrationEntity.setPassword = password;
     emit(RegisterWithEmailVerified());
   }
 }

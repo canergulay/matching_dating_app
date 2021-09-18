@@ -32,6 +32,7 @@ class SecondSection extends StatelessWidget {
             buttonsRow(context, state),
             SizedBox().heightSpacer(context, 3),
             activatableButton(onPressed: () {
+              context.read<InterestedInCubit>().deleteNone();
               context.read<IdentificationCubit>().goToNextPage();
               context.read<IdentificationCubit>().registrationEntity.setInterestedIns = (state as InterestedChoosen).genders;
             })

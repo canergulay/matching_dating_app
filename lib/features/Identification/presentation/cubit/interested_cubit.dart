@@ -20,6 +20,12 @@ class InterestedInCubit extends Cubit<InterestedState> {
 
     return interests.length > 1;
   }
+
+  void deleteNone() {
+    List<InterestedType> interests = (state as InterestedChoosen).genders;
+    interests.remove(InterestedType.NONE);
+    emit(InterestedChoosen(genders: interests));
+  }
 }
 
 abstract class InterestedState {}

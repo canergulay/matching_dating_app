@@ -71,6 +71,7 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
                           width: context.width * 0.7,
                           child: activatableButton(onPressed: () {
                             context.read<IdentificationCubit>().registrationEntity.setPhotos = photos;
+                            context.read<IdentificationCubit>().registrationEntity.setPhotoURLS = imageURL;
                             context.read<RegisterBloc>().add(Completed());
                           }))),
                 ],

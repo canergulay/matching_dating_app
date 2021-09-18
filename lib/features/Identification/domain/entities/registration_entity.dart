@@ -5,13 +5,14 @@ import 'package:matchangoo/features/Identification/presentation/cubit/gender_cub
 import '../../data/models/interests/interests.dart';
 
 class RegistrationEntity {
-  late String? email;
   late String? name;
-  late String? studycode;
+  late String? email;
   late String? password;
+  late String? studycode;
   late String? fieldOfStudy;
   late GenderType? genderType;
   late List<String?>? photos;
+  late List<String?>? photoURLS;
   late String? birthday;
   late List<InterestedType>? interestedIns;
   late List<String?>? interests = [];
@@ -48,6 +49,10 @@ class RegistrationEntity {
     this.photos = photos;
   }
 
+  set setPhotoURLS(List<String?>? photoURLS) {
+    this.photoURLS = photoURLS;
+  }
+
   set setInterestedIns(List<InterestedType> interestedIns) {
     this.interestedIns = interestedIns;
   }
@@ -60,6 +65,14 @@ class RegistrationEntity {
   }
 
   void deleteInterest(String interestId) => interests?.remove(interestId);
+
+  String genderTypeConverter(GenderType type) {
+    if (type == GenderType.MAN) {
+      return 'male';
+    } else {
+      return 'female';
+    }
+  }
 
   String get getNameIfNotEmpty => name ?? '';
   String get getEmailIfNotEmpty => email ?? '';
