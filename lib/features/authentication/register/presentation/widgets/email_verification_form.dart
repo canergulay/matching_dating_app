@@ -38,7 +38,8 @@ class EmailVerifyContainer extends StatelessWidget {
         headLineEight(context, 'EMAIL_VERIFICATION.ORSIGNIN'.tr(), fontWeight: FontWeight.normal),
         const SizedBox().heightSpacer(context, 2),
         facegoogleButtons(context,
-            facebookOnTap: () => context.read<RegisterBloc>().signInViaFacebook(), googleOnTap: () => context.read<RegisterBloc>().signInViaGoogle()),
+            facebookOnTap: () => context.read<RegisterBloc>().signInViaFacebook(context),
+            googleOnTap: () => context.read<RegisterBloc>().signInViaGoogle(context)),
       ],
     );
   }

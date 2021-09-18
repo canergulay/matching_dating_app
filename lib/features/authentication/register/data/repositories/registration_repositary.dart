@@ -16,6 +16,7 @@ class RegistrationRepositary implements RegistrationRepositaryContract {
       if (userModel != null) {
         return Result.success(userModel);
       } else {
+        print(userModel);
         return Result.error(CustomError(errorCode: 12));
       }
     } on AlreadyRegistered {
@@ -23,6 +24,7 @@ class RegistrationRepositary implements RegistrationRepositaryContract {
     } on ServerException {
       return Result.error(CustomError(errorCode: 10));
     } catch (e) {
+      print(e);
       return Result.error(CustomError(errorCode: 12));
     }
   }

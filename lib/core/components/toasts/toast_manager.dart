@@ -1,6 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:matchangoo/core/components/toasts/toast_widgets.dart/general_toast.dart';
 
 class ToastShower {
   static ToastShower _instace = ToastShower._init();
@@ -20,6 +21,8 @@ class ToastShower {
         alignment: Alignment.topCenter);
   }
 }
+
+
 
  /*   // Custom Toast Position
   fToast.showToast(

@@ -16,18 +16,16 @@ class InterestDataSource implements InterestDataSourceContract {
     final response = await NetworkManager.instance.dio.post('/interests', data: {'type': backendtype});
     if (response.statusCode == HttpStatus.ok) {
       if (response.data is List) {
-        print('error burda 0');
         print(response.data);
         final List<Interests> interests = (response.data as List).map((e) => Interests.fromJson(e)).toList();
         return interests;
       } else {
-        print('error burda 1');
-
+        print(response.data);
         throw CustomError(errorCode: 404, message: 'List is empty!');
       }
       // return InterestResponse.fromJson(response.data);
     } else {
-      print('error burda 2');
+      print(response.data);
       throw CustomError(errorCode: response.statusCode ?? 500);
     }
   }

@@ -79,11 +79,13 @@
 
     "ERROR":{
         "TITLES":{
-            "ONE":"Oopps... Unexpected Error!"
+            "ONE":"Oopps... Unexpected Error!",
+            "ALREADYREGISTERED":"Already Registered!"
         },
         "MESSAGES":{
             "ONE":"It seems we have an unexpected error for now, please try later on.",
-            "TWO":"It seemd we have an unexpected error for now, please try again."
+            "TWO":"It seemd we have an unexpected error for now, please try again.",
+            "ALREADYREGISTERED":"You can try to login your account."
         },
         "EMAIL":{
             "EMPTY":"Please enter an email adress!",

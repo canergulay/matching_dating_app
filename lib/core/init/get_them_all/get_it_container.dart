@@ -5,8 +5,11 @@ import 'package:location/location.dart';
 import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
+import 'package:matchangoo/features/authentication/register/data/datasources/check_if_already_registrated_ds.dart';
 import 'package:matchangoo/features/authentication/register/data/datasources/registration_datasource.dart';
+import 'package:matchangoo/features/authentication/register/data/repositories/check_if_already_registrated_repositary.dart';
 import 'package:matchangoo/features/authentication/register/data/repositories/registration_repositary.dart';
+import 'package:matchangoo/features/authentication/register/domain/usecases/check_if_already_registrated.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/register.dart';
 import '../../functionality/facebook_sign_in.dart';
 import '../app_cubit/app_cubit.dart';
@@ -72,6 +75,7 @@ void registerModule() {
       identificationCubit: sl(),
       facebookSignIn: sl(),
       sendVerificationEmail: sl(),
+      checkIfAlreadyRegistered: sl(),
       checkVerificationEmail: sl(),
       googleSignInRepo: sl()));
   sl.registerFactory<IdentificationCubit>(() =>
@@ -81,6 +85,9 @@ void registerModule() {
   sl.registerFactory<RegistrationDataSource>(() => RegistrationDataSource());
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
+  sl.registerFactory<CheckIfAlreadyRegistered>(() => CheckIfAlreadyRegistered(checkIfAlreadyRegistratedRepo: sl()));
+  sl.registerFactory<CheckIfAlreadyRegistratedRepo>(() => CheckIfAlreadyRegistratedRepo(checkIfAlreadyRegisteredDS: sl()));
+  sl.registerFactory<CheckIfAlreadyRegisteredDS>(() => CheckIfAlreadyRegisteredDS());
   sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo());
   sl.registerLazySingleton<FacebookSignIn>(() => FacebookSignIn());
   sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
