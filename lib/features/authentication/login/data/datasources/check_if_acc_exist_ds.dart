@@ -10,8 +10,6 @@ class CheckIfAccountExistDataSource {
       var status = response.data['status'];
       if (status == true) {
         var user = response.data['user'];
-        print(user);
-
         return UserModel.fromJson(user);
       } else if (status == false) {
         throw NoAccount();

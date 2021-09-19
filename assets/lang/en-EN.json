@@ -82,7 +82,9 @@
             "ONE":"Oopps... Unexpected Error!",
             "ALREADYREGISTERED":"Already Registered!",
             "NOACC":"No Account Found!",
-            "WRONGPASS":"Password Incorrect!"
+            "WRONGPASS":"Password Incorrect!",
+            "SESSION":"Session Expired!"
+
 
         },
         "MESSAGES":{
@@ -91,7 +93,8 @@
             "ALREADYREGISTERED":"You can try to login your account.",
             "NOACC":"There is not an account with that email adress.",
             "WRONGPASS":"Your password is not correct, please try again.",
-            "GOOGLE":"You could not sign in successfully via Google , please try again."
+            "GOOGLE":"You could not sign in successfully via Google , please try again.",
+            "SESSION":"Please login your account again."
 
         },
         "EMAIL":{

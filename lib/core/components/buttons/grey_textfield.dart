@@ -27,6 +27,7 @@ Container textFieldContainerWithPrefix(
         decoration: InputDecoration(
           hintStyle: Theme.of(context).textTheme.bodyText2?.copyWith(fontSize: 16),
           hintText: hintText,
+          contentPadding: const EdgeInsets.all(4),
           alignLabelWithHint: false,
           prefixIcon: Icon(
             preffixIcon,

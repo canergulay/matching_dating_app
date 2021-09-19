@@ -5,11 +5,15 @@ import 'package:location/location.dart';
 import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
+import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/check_if_acc_exist_ds.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/login_datasource.dart';
+import 'package:matchangoo/features/authentication/login/data/datasources/user_repositary_datasource.dart';
 import 'package:matchangoo/features/authentication/login/data/repositories/check_if_acc_exist_repo_implementation.dart';
 import 'package:matchangoo/features/authentication/login/data/repositories/login_repositary_implementation.dart';
+import 'package:matchangoo/features/authentication/login/data/repositories/user_repositary_implementation.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
+import 'package:matchangoo/features/authentication/login/domain/usecases/get_usermodel.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/login.dart';
 import 'package:matchangoo/features/authentication/login/presentation/bloc/login_bloc.dart';
 import 'package:matchangoo/features/authentication/register/data/datasources/check_if_already_registrated_ds.dart';
@@ -68,8 +72,18 @@ Future<void> init() async {
   //LOGIN FEATURE
   loginModule();
 
+  //AUTHENTICATION FEATURE
+  authenTicationModule();
+
   //INIT APP CUBIT
   appCubitInitialization();
+}
+
+void authenTicationModule() {
+  sl.registerFactory<AuthenticationBloc>(() => AuthenticationBloc(getUserByToken: sl()));
+  sl.registerFactory<GetUserByToken>(() => GetUserByToken(userRepositary: sl()));
+  sl.registerFactory<UserRepositary>(() => UserRepositary(userRepositaryDataSource: sl()));
+  sl.registerFactory<UserDataSource>(() => UserDataSource());
 }
 
 void registerSMSVerificationModul() {

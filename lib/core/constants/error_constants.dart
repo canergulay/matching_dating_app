@@ -6,4 +6,5 @@ class ErrorConstants {
   final int serverException = 11;
   final int wrongPassword = 12;
   final int notAnAccount = 13;
+  final int tokenIsNotValid = 14;
 }

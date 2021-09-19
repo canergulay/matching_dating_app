@@ -24,9 +24,9 @@ class NavigationRouter {
         return normalNavigate(const Landing());
       case NavigationConstants.HOMESCREEN:
         if (args.arguments is String) {
-          return normalNavigate(HomeScreen(arguements: args.arguments as String));
+          return normalNavigate(HomeScreen());
         } else {
-          return normalNavigate(const HomeScreen(arguements: 'args.arguments qq'));
+          return normalNavigate(const HomeScreen());
         }
       case NavigationConstants.IDENTIFICATION:
         return sizeRoute(Identification(), args);

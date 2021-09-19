@@ -40,6 +40,7 @@ class EmailVerifyContainer extends StatelessWidget {
         facegoogleButtons(context,
             facebookOnTap: () => context.read<RegisterBloc>().signInViaFacebook(context),
             googleOnTap: () => context.read<RegisterBloc>().signInViaGoogle(context)),
+        const SizedBox().heightSpacer(context, 5),
       ],
     );
   }

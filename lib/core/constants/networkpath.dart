@@ -5,4 +5,5 @@ class NetworkPath {
   static const String CHECKIFREGISTRATED = "/checkregistration";
   static const String LOGIN = "/login";
   static const String CHECKIACCEXIST = "/checkaccount";
+  static const String GETUSERBYTOKEN = "/getuser";
 }
