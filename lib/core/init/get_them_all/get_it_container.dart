@@ -5,6 +5,10 @@ import 'package:location/location.dart';
 import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
+import 'package:matchangoo/features/authentication/login/data/datasources/login_datasource.dart';
+import 'package:matchangoo/features/authentication/login/data/repositories/login_repositary_implementation.dart';
+import 'package:matchangoo/features/authentication/login/domain/usecases/login.dart';
+import 'package:matchangoo/features/authentication/login/presentation/bloc/login_bloc.dart';
 import 'package:matchangoo/features/authentication/register/data/datasources/check_if_already_registrated_ds.dart';
 import 'package:matchangoo/features/authentication/register/data/datasources/registration_datasource.dart';
 import 'package:matchangoo/features/authentication/register/data/repositories/check_if_already_registrated_repositary.dart';
@@ -58,6 +62,9 @@ Future<void> init() async {
   //REGISTER FEATURE
   registerModule();
 
+  //LOGIN FEATURE
+  loginModule();
+
   //INIT APP CUBIT
   appCubitInitialization();
 }
@@ -107,6 +114,13 @@ void registerModule() {
   sl.registerFactory<InterestRepositary>(() => InterestRepositary(interestDataSource: sl()));
   sl.registerFactory<InterestDataSource>(() => InterestDataSource());
   sl.registerFactory<InterestsCubit>(() => InterestsCubit());
+}
+
+void loginModule() {
+  sl.registerFactory<LoginBloc>(() => LoginBloc(login: sl()));
+  sl.registerFactory<Login>(() => Login(loginRepositary: sl()));
+  sl.registerFactory<LoginRepositary>(() => LoginRepositary(loginDataSource: sl()));
+  sl.registerFactory<LoginDataSource>(() => LoginDataSource());
 }
 
 void appCubitInitialization() {

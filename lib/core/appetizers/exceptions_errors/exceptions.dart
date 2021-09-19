@@ -1,3 +1,7 @@
+class NoAccount implements Exception {}
+
+class WrongPassword implements Exception {}
+
 class CantRegister implements Exception {}
 
 class AlreadyRegistered implements Exception {}
