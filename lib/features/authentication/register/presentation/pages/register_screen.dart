@@ -44,6 +44,7 @@ class RegisterScreen extends StatelessWidget {
                   return columnSupplierWbBUTTON(state, context, const PhotoSelectionScreen());
                 } else if (state is IdentificationCompleted) {
                   return columnSupplierWbBUTTON(
+                      //THIS IS JUST A DUMMY PAGE, WONT TAKE PLACE IN PRODUCTION,
                       state,
                       context,
                       SingleChildScrollView(
