@@ -15,9 +15,10 @@ class CheckIfAlreadyRegisteredDS implements CheckIfAlreadyRegistratedDScontract 
     final response = await NetworkManager.instance.dio.post(NetworkPath.CHECKIFREGISTRATED, data: {'email': email});
     if (response.statusCode == HttpStatus.ok) {
       final status = response.data['status'];
-      if (status == 'notregistered') {
+      print(response.data);
+      if (status == false) {
         return false;
-      } else if (status == 'registered') {
+      } else if (status == true) {
         return true;
       } else {
         throw UnexpectedException();

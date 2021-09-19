@@ -33,7 +33,7 @@ class EmailVerifyContainer extends StatelessWidget {
             explanation: '* ${'EMAIL_VERIFICATION.EXPLANATION_TEXT'.tr()}',
             authType: AuthType.register,
             buttonPressed: (mail, password) {
-              context.read<RegisterBloc>().add(EmailVerifyWaiting(mail: mail, password: password));
+              context.read<RegisterBloc>().add(EmailVerifyWaiting(context: context, mail: mail, password: password));
             }),
         headLineEight(context, 'EMAIL_VERIFICATION.ORSIGNIN'.tr(), fontWeight: FontWeight.normal),
         const SizedBox().heightSpacer(context, 2),

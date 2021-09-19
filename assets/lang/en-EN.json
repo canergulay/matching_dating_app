@@ -90,8 +90,8 @@
             "TWO":"It seemd we have an unexpected error for now, please try again.",
             "ALREADYREGISTERED":"You can try to login your account.",
             "NOACC":"There is not an account with that email adress.",
-            "WRONGPASS":"Your password is not correct, please try again."
-
+            "WRONGPASS":"Your password is not correct, please try again.",
+            "GOOGLE":"You could not sign in successfully via Google , please try again."
 
         },
         "EMAIL":{

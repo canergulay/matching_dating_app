@@ -49,7 +49,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     if (event is EmailVerifyWaiting) {
       identificationCubit.registrationEntity.setEmail = event.mail;
       identificationCubit.registrationEntity.setPassword = event.password;
-      yield* _sendVerificationCode(event.mail);
+      yield* _checkAndSendVerificationMail(event.context, event.mail);
     } else if (event is EmailVerified) {
       yield RegisterWithEmailVerified();
     } else if (event is IdentificationAlmostFinished) {
@@ -57,9 +57,26 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     } else if (event is CompleteRegistration) {}
   }
 
-  Stream<RegisterState> _sendVerificationCode(String emailAdress) async* {
-    final Result<bool> sonuc = await sendVerificationEmail(emailAdress);
+  Stream<RegisterState> _checkAndSendVerificationMail(BuildContext context, String emailAdress) async* {
+    print('sasasa1');
+    final Result<bool> isAlreadyRegistered = await checkIfAlreadyRegistered(emailAdress);
+    print('sasasa2');
+    yield* isAlreadyRegistered.when(success: (bool alreadyRegistered) async* {
+      print('sasasa3');
 
+      print(alreadyRegistered);
+      if (!alreadyRegistered) {
+        yield* _sendVerificationMail(emailAdress);
+      } else {
+        showErrorToast(context, title: 'ERROR.TITLES.ALREADYREGISTERED'.tr(), message: 'ERROR.MESSAGES.ALREADYREGISTERED'.tr());
+      }
+    }, error: (CustomError error) async* {
+      showGeneralErrorToast(context);
+    });
+  }
+
+  Stream<RegisterState> _sendVerificationMail(String emailAdress) async* {
+    final Result<bool> sonuc = await sendVerificationEmail(emailAdress);
     yield sonuc.when(success: (bool result) {
       if (result) {
         return RegisterWithEmailSent();

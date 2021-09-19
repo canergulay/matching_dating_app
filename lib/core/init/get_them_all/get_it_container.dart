@@ -9,6 +9,7 @@ import 'package:matchangoo/features/authentication/login/data/datasources/check_
 import 'package:matchangoo/features/authentication/login/data/datasources/login_datasource.dart';
 import 'package:matchangoo/features/authentication/login/data/repositories/check_if_acc_exist_repo_implementation.dart';
 import 'package:matchangoo/features/authentication/login/data/repositories/login_repositary_implementation.dart';
+import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/login.dart';
 import 'package:matchangoo/features/authentication/login/presentation/bloc/login_bloc.dart';
 import 'package:matchangoo/features/authentication/register/data/datasources/check_if_already_registrated_ds.dart';
@@ -121,6 +122,8 @@ void registerModule() {
 void loginModule() {
   sl.registerFactory<LoginBloc>(() => LoginBloc(login: sl(), facebookSignIn: sl(), googleSignInRepo: sl()));
   sl.registerFactory<Login>(() => Login(loginRepositary: sl()));
+  sl.registerFactory<CheckIfAccountExist>(() => CheckIfAccountExist(checkIfAccounExistRepositary: sl()));
+
   sl.registerFactory<CheckIfAccounExistRepositary>(() => CheckIfAccounExistRepositary(checkIfAccountExistDataSource: sl()));
   sl.registerFactory<CheckIfAccountExistDataSource>(() => CheckIfAccountExistDataSource());
 

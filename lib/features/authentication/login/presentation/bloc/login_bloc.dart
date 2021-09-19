@@ -43,4 +43,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       }
     });
   }
+
+  Future<void> loginViaGoogle(BuildContext context) async {
+    await googleSignInRepo.loginViaGoogle(context, onLoginSuccessful: (UserModel user) {
+      print(user);
+    });
+  }
 }

@@ -52,6 +52,7 @@ class FacebookSignIn {
           showErrorToast(context, title: 'ERROR.TITLES.ALREADYREGISTERED'.tr(), message: 'ERROR.MESSAGES.ALREADYREGISTERED'.tr());
         }
       }, error: (CustomError error) {
+        print('error burda');
         showGeneralErrorToast(context);
       });
     }, error: (CustomError error) {

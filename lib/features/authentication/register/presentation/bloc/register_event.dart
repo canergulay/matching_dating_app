@@ -6,7 +6,8 @@ abstract class RegisterEvent {}
 class EmailVerifyWaiting extends RegisterEvent {
   final String mail;
   final String password;
-  EmailVerifyWaiting({required this.mail, required this.password});
+  final BuildContext context;
+  EmailVerifyWaiting({required this.mail, required this.context, required this.password});
 }
 
 class EmailVerified extends RegisterEvent {}

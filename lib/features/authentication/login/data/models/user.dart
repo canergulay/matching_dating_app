@@ -1,3 +1,5 @@
 class UserModel {
-  final String userName = ' el dumi';
+  late String? username;
+  late String? email;
+  late List<String?>? photos;
 }
