@@ -20,6 +20,8 @@ class GoogleSignInRepo {
       print(1);
 
       GoogleSignInAccount? result = await _googleSignIn.signIn();
+      print(15);
+
       if (result != null) {
         print(2);
 

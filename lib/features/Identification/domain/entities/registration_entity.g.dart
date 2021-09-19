@@ -12,17 +12,25 @@ RegistrationEntity _$RegistrationEntityFromJson(Map<String, dynamic> json) {
     email: json['email'] as String?,
     fieldOfStudy: json['fieldOfStudy'] as String?,
     genderType: _$enumDecodeNullable(_$GenderTypeEnumMap, json['genderType']),
-    interestedIns: (json['interestedIns'] as List<dynamic>?)?.map((e) => _$enumDecode(_$InterestedTypeEnumMap, e)).toList(),
-    interests: (json['interests'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+    interestedIns: (json['interestedIns'] as List<dynamic>?)
+        ?.map((e) => _$enumDecode(_$InterestedTypeEnumMap, e))
+        .toList(),
+    interests: (json['interests'] as List<dynamic>?)
+        ?.map((e) => e as String?)
+        .toList(),
     name: json['name'] as String?,
     password: json['password'] as String?,
-    photoURLS: (json['photoURLS'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-    photos: (json['photos'] as List<dynamic>?)?.map((e) => e as String?).toList(),
+    photoURLS: (json['photoURLS'] as List<dynamic>?)
+        ?.map((e) => e as String?)
+        .toList(),
+    photos:
+        (json['photos'] as List<dynamic>?)?.map((e) => e as String?).toList(),
     studycode: json['studycode'] as String?,
   );
 }
 
-Map<String, dynamic> _$RegistrationEntityToJson(RegistrationEntity instance) => <String, dynamic>{
+Map<String, dynamic> _$RegistrationEntityToJson(RegistrationEntity instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
       'password': instance.password,
@@ -32,7 +40,9 @@ Map<String, dynamic> _$RegistrationEntityToJson(RegistrationEntity instance) => 
       'photos': instance.photos,
       'photoURLS': instance.photoURLS,
       'birthday': instance.birthday,
-      'interestedIns': instance.interestedIns?.map((e) => _$InterestedTypeEnumMap[e]).toList(),
+      'interestedIns': instance.interestedIns
+          ?.map((e) => _$InterestedTypeEnumMap[e])
+          .toList(),
       'interests': instance.interests,
     };
 

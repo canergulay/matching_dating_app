@@ -17,8 +17,9 @@ class LoginDataSource implements LoginDataSourceContract {
     final response = await NetworkManager.instance.dio.post(NetworkPath.LOGIN, data: {'email': email, 'password': password});
     if (response.statusCode == HttpStatus.ok) {
       if (response.data['status'] == ErrorConstants.shared.verified) {
-        final UserModel userResponse = response.data['user'];
-        return userResponse;
+        final userResponse = response.data['user'];
+        print(userResponse);
+        return UserModel.fromJson(userResponse);
       } else if (response.data['status'] == ErrorConstants.shared.wrongPassword) {
         throw WrongPassword();
       } else if (response.data['status'] == ErrorConstants.shared.notAnAccount) {

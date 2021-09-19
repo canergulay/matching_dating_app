@@ -12,7 +12,7 @@ class RegistrationDataSource {
     if (response.statusCode == HttpStatus.ok) {
       if (response.data['status'] == "success") {
         if (response.data['user'] != null) {
-          return UserModel();
+          return UserModel.fromJson(response.data['user']);
         } else {
           throw CantRegister();
         }

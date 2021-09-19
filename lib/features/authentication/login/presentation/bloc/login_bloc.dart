@@ -46,7 +46,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Future<void> loginViaGoogle(BuildContext context) async {
     await googleSignInRepo.loginViaGoogle(context, onLoginSuccessful: (UserModel user) {
-      print(user);
+      print('başarılı');
+      print(user.birthday);
+      //TODO: BURADAN AUTH BLOCA USER OBJESINI GONDERIP LOGIN ETMIS OLACAGIZ.
+    });
+  }
+
+  Future<void> loginViaFacebook(BuildContext context) async {
+    await facebookSignIn.loginViaFacebook(context, onLoginSuccessfull: (UserModel user) {
+      print('başarılı');
+      print(user.birthday);
+      //TODO: BURADAN AUTH BLOCA USER OBJESINI GONDERIP LOGIN ETMIS OLACAGIZ.
     });
   }
 }

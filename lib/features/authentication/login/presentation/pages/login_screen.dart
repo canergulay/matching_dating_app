@@ -57,7 +57,9 @@ class LoginBody extends StatelessWidget {
             explanation: ''),
         headLineEight(context, 'EMAIL_VERIFICATION.ORLOGIN'.tr(), fontWeight: FontWeight.normal),
         const SizedBox().heightSpacer(context, 2),
-        facegoogleButtons(context, googleOnTap: () => context.read<LoginBloc>().loginViaGoogle(context), facebookOnTap: () {}),
+        facegoogleButtons(context,
+            googleOnTap: () => context.read<LoginBloc>().loginViaGoogle(context),
+            facebookOnTap: () => context.read<LoginBloc>().loginViaFacebook(context)),
         const SizedBox().heightSpacer(context, 2),
       ],
     );

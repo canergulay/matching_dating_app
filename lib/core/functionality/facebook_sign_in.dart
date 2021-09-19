@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
+import 'package:matchangoo/core/constants/error_constants.dart';
+import 'package:matchangoo/features/authentication/login/data/models/user.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/check_if_already_registrated.dart';
 import '../result_error/errors/custom_error.dart';
@@ -55,6 +57,27 @@ class FacebookSignIn {
         print('error burda');
         showGeneralErrorToast(context);
       });
+    }, error: (CustomError error) {
+      showGeneralErrorToast(context);
+    });
+  }
+
+  Future<void> loginViaFacebook(
+    BuildContext context, {
+    required Function(UserModel) onLoginSuccessfull,
+  }) async {
+    final Result<Map<String, dynamic>> facebookLoginResult = await signIn();
+    facebookLoginResult.when(success: (Map<String, dynamic> userCredentials) async {
+      final Result<UserModel> ifAlreadyRegistered = await checkIfAccountExist(email: userCredentials['email']);
+      ifAlreadyRegistered.when(
+          success: onLoginSuccessfull,
+          error: (CustomError error) {
+            if (error.errorCode == ErrorConstants.shared.notAnAccount) {
+              showErrorToast(context, title: 'ERROR.TITLES.NOACC'.tr(), message: 'ERROR.MESSAGES.NOACC'.tr());
+            } else {
+              showGeneralErrorToast(context);
+            }
+          });
     }, error: (CustomError error) {
       showGeneralErrorToast(context);
     });
