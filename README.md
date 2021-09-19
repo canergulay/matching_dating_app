@@ -1,9 +1,9 @@
 # matchify
--- A comprehensive matching & friendship & dating app written in Flutter with Node.JS backend.
--- Clean architecture with BLoC & GetIt 
+- A comprehensive matching & friendship & dating app written in Flutter with Node.JS backend.
+- Clean architecture with BLoC & GetIt 
 # Features added
--- Sign In / Login via Email & Google & Facebook
--- A comprehensive identification process that asks personal datas to user
+- Sign In / Login via Email & Google & Facebook
+- A comprehensive identification process that asks personal datas to user
 # Features to be added
 - user system empowered with google & facebook sign in sdk
 - a unique, strong matching algorithm
