@@ -85,11 +85,11 @@ void registerModule() {
   sl.registerFactory<RegistrationDataSource>(() => RegistrationDataSource());
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
+  sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo(checkIfAlreadyRegistered: sl()));
+  sl.registerLazySingleton<FacebookSignIn>(() => FacebookSignIn(checkIfAlreadyRegistered: sl()));
   sl.registerFactory<CheckIfAlreadyRegistered>(() => CheckIfAlreadyRegistered(checkIfAlreadyRegistratedRepo: sl()));
   sl.registerFactory<CheckIfAlreadyRegistratedRepo>(() => CheckIfAlreadyRegistratedRepo(checkIfAlreadyRegisteredDS: sl()));
   sl.registerFactory<CheckIfAlreadyRegisteredDS>(() => CheckIfAlreadyRegisteredDS());
-  sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo());
-  sl.registerLazySingleton<FacebookSignIn>(() => FacebookSignIn());
   sl.registerFactory<VerificationEmailRepositary>(() => VerificationEmailRepositary(verificationEmailDataSource: sl()));
   sl.registerFactory<VerificationEmailDataSource>(() => VerificationEmailDataSource());
   sl.registerFactory<IdentificationRepo>(() => IdentificationRepo());

@@ -98,38 +98,14 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   //METHODS OUTSIDE OF THIS CLASS AND INJECT THEM FROM THE CONSTRUCTOR AS AN USECASE.
 
   Future<void> signInViaFacebook(BuildContext context) async {
-    final Result<Map<String, dynamic>> facebookLoginResult = await facebookSignIn.signIn();
-    facebookLoginResult.when(success: (Map<String, dynamic> userCredentials) async {
-      final Result<bool> ifAlreadyRegistered = await checkIfAlreadyRegistered(userCredentials['email']);
-      ifAlreadyRegistered.when(success: (bool registered) {
-        if (!registered) {
-          _setCredentialsAndContinue(name: userCredentials['name'], email: userCredentials['email'], password: AppConstants.RVIAFB);
-        } else {
-          showErrorToast(context, title: 'ERROR.TITLES.ALREADYREGISTERED'.tr(), message: 'ERROR.MESSAGES.ALREADYREGISTERED'.tr());
-        }
-      }, error: (CustomError error) {
-        showGeneralErrorToast(context);
-      });
-    }, error: (CustomError error) {
-      showGeneralErrorToast(context);
+    await facebookSignIn.signInViaFacebook(context, notRegistered: (name, email) {
+      _setCredentialsAndContinue(name: name, email: email, password: AppConstants.RVIAFB);
     });
   }
 
   Future<void> signInViaGoogle(BuildContext context) async {
-    final Result<GoogleSignInAccount> info = await googleSignInRepo.signIn();
-    info.when(success: (GoogleSignInAccount credentials) async {
-      final Result<bool> ifAlreadyRegistered = await checkIfAlreadyRegistered(credentials.email);
-      ifAlreadyRegistered.when(success: (bool registered) {
-        if (!registered) {
-          _setCredentialsAndContinue(name: credentials.displayName ?? '', email: credentials.email, password: AppConstants.RVIAGOOGLE);
-        } else {
-          showErrorToast(context, title: 'ERROR.TITLES.ALREADYREGISTERED'.tr(), message: 'ERROR.MESSAGES.ALREADYREGISTERED'.tr());
-        }
-      }, error: (CustomError error) {
-        showGeneralErrorToast(context);
-      });
-    }, error: (CustomError error) {
-      showGeneralErrorToast(context);
+    await googleSignInRepo.signInViaGoogle(context, notRegistered: (name, mail) {
+      _setCredentialsAndContinue(name: name, email: mail, password: AppConstants.RVIAGOOGLE);
     });
   }
 
