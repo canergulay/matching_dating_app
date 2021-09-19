@@ -2,13 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
+import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/check_if_already_registrated.dart';
 import '../result_error/errors/custom_error.dart';
 import '../result_error/result_freezed/result.dart';
 
 class GoogleSignInRepo {
   final CheckIfAlreadyRegistered checkIfAlreadyRegistered;
-  GoogleSignInRepo({required this.checkIfAlreadyRegistered});
+  final CheckIfAccountExist checkIfAccountExist;
+  GoogleSignInRepo({required this.checkIfAlreadyRegistered, required this.checkIfAccountExist});
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Future<Result<GoogleSignInAccount>> signIn() async {

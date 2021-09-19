@@ -5,17 +5,23 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
 import 'package:matchangoo/core/constants/error_constants.dart';
+import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
+import 'package:matchangoo/core/functionality/google_sign_in.dart';
 import 'package:matchangoo/core/result_error/errors/custom_error.dart';
 import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 import 'package:matchangoo/features/authentication/login/data/models/user.dart';
+import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/login.dart';
 import 'package:meta/meta.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  final GoogleSignInRepo googleSignInRepo;
+  final FacebookSignIn facebookSignIn;
   final Login login;
-  LoginBloc({required this.login}) : super(LoginInitial());
+
+  LoginBloc({required this.login, required this.facebookSignIn, required this.googleSignInRepo}) : super(LoginInitial());
   @override
   Stream<LoginState> mapEventToState(
     LoginEvent event,

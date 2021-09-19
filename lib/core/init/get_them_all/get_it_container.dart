@@ -5,7 +5,9 @@ import 'package:location/location.dart';
 import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
+import 'package:matchangoo/features/authentication/login/data/datasources/check_if_acc_exist_ds.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/login_datasource.dart';
+import 'package:matchangoo/features/authentication/login/data/repositories/check_if_acc_exist_repo_implementation.dart';
 import 'package:matchangoo/features/authentication/login/data/repositories/login_repositary_implementation.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/login.dart';
 import 'package:matchangoo/features/authentication/login/presentation/bloc/login_bloc.dart';
@@ -92,8 +94,8 @@ void registerModule() {
   sl.registerFactory<RegistrationDataSource>(() => RegistrationDataSource());
   sl.registerFactory<SendVerificationEmail>(() => SendVerificationEmail(verificationEmailRepositary: sl()));
   sl.registerFactory<CheckVerificationEmail>(() => CheckVerificationEmail(verificationEmailRepositary: sl()));
-  sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo(checkIfAlreadyRegistered: sl()));
-  sl.registerLazySingleton<FacebookSignIn>(() => FacebookSignIn(checkIfAlreadyRegistered: sl()));
+  sl.registerFactory<GoogleSignInRepo>(() => GoogleSignInRepo(checkIfAlreadyRegistered: sl(), checkIfAccountExist: sl()));
+  sl.registerLazySingleton<FacebookSignIn>(() => FacebookSignIn(checkIfAlreadyRegistered: sl(), checkIfAccountExist: sl()));
   sl.registerFactory<CheckIfAlreadyRegistered>(() => CheckIfAlreadyRegistered(checkIfAlreadyRegistratedRepo: sl()));
   sl.registerFactory<CheckIfAlreadyRegistratedRepo>(() => CheckIfAlreadyRegistratedRepo(checkIfAlreadyRegisteredDS: sl()));
   sl.registerFactory<CheckIfAlreadyRegisteredDS>(() => CheckIfAlreadyRegisteredDS());
@@ -117,8 +119,11 @@ void registerModule() {
 }
 
 void loginModule() {
-  sl.registerFactory<LoginBloc>(() => LoginBloc(login: sl()));
+  sl.registerFactory<LoginBloc>(() => LoginBloc(login: sl(), facebookSignIn: sl(), googleSignInRepo: sl()));
   sl.registerFactory<Login>(() => Login(loginRepositary: sl()));
+  sl.registerFactory<CheckIfAccounExistRepositary>(() => CheckIfAccounExistRepositary(checkIfAccountExistDataSource: sl()));
+  sl.registerFactory<CheckIfAccountExistDataSource>(() => CheckIfAccountExistDataSource());
+
   sl.registerFactory<LoginRepositary>(() => LoginRepositary(loginDataSource: sl()));
   sl.registerFactory<LoginDataSource>(() => LoginDataSource());
 }

@@ -2,13 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
+import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/check_if_already_registrated.dart';
 import '../result_error/errors/custom_error.dart';
 import '../result_error/result_freezed/result.dart';
 
 class FacebookSignIn {
   final CheckIfAlreadyRegistered checkIfAlreadyRegistered;
-  FacebookSignIn({required this.checkIfAlreadyRegistered});
+  final CheckIfAccountExist checkIfAccountExist;
+
+  FacebookSignIn({required this.checkIfAlreadyRegistered, required this.checkIfAccountExist});
 
   Future<Result<Map<String, dynamic>>> signIn() async {
     try {

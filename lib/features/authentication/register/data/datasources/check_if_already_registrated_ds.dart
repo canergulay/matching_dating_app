@@ -14,10 +14,10 @@ class CheckIfAlreadyRegisteredDS implements CheckIfAlreadyRegistratedDScontract 
   Future<bool> checkIfAlreadyRegistratedDS(String email) async {
     final response = await NetworkManager.instance.dio.post(NetworkPath.CHECKIFREGISTRATED, data: {'email': email});
     if (response.statusCode == HttpStatus.ok) {
-      print(response.data['status']);
-      if (response.data['status'] == 'notregistered') {
+      final status = response.data['status'];
+      if (status == 'notregistered') {
         return false;
-      } else if (response.data['status'] == 'registered') {
+      } else if (status == 'registered') {
         return true;
       } else {
         throw UnexpectedException();
