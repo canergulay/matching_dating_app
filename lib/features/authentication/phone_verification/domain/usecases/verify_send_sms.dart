@@ -2,6 +2,9 @@ import '../../data/models/verify_response_config.dart';
 import '../../data/repositories/sms_verify_repositary.dart';
 
 class SendVerificationSMS {
+  // We will put it aside since the sms services charge too much and
+  // it is not sensible to start off with sms-verification, unaffordable.
+  // We will activate as we make some profit from the initial relases.
   final SMSVerifyRepositary smsVerifyRepositary;
   SendVerificationSMS({required this.smsVerifyRepositary});
 
