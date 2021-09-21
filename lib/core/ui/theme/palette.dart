@@ -22,4 +22,6 @@ class Palette {
 
   static const TOASTBLUELIGHT = Color(0xFFcce3ff);
   static const TOASTBLUEDARK = Color(0xFF3e85e3);
+
+  static const APP_BLACK = Color(0xFF1a1a1a);
 }

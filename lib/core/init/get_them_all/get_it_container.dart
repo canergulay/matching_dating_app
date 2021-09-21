@@ -80,7 +80,7 @@ Future<void> init() async {
 }
 
 void authenTicationModule() {
-  sl.registerFactory<AuthenticationBloc>(() => AuthenticationBloc(getUserByToken: sl()));
+  sl.registerLazySingleton<AuthenticationBloc>(() => AuthenticationBloc(getUserByToken: sl()));
   sl.registerFactory<GetUserByToken>(() => GetUserByToken(userRepositary: sl()));
   sl.registerFactory<UserRepositary>(() => UserRepositary(userRepositaryDataSource: sl()));
   sl.registerFactory<UserDataSource>(() => UserDataSource());

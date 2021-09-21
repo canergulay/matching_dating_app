@@ -38,3 +38,8 @@ extension SizeUnitExtension on BuildContext {
   double get heightUnit => dynamicHeight / 100;
   double get widthUnit => dynamicWidth / 100;
 }
+
+extension LimitedSizeUnitExtension on BuildContext {
+  double get limitedheightUnit => dynamicHeight / 100 < 10 ? dynamicHeight / 100 : 10;
+  double get limitedwidthUnit => dynamicWidth / 100 < 10 ? dynamicHeight / 100 : 10;
+}

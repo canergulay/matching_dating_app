@@ -7,8 +7,10 @@ import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
 import 'package:matchangoo/core/constants/error_constants.dart';
 import 'package:matchangoo/core/functionality/facebook_sign_in.dart';
 import 'package:matchangoo/core/functionality/google_sign_in.dart';
+import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/result_error/errors/custom_error.dart';
 import 'package:matchangoo/core/result_error/result_freezed/result.dart';
+import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/login/data/models/user.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/check_if_acc_exist.dart';
 import 'package:matchangoo/features/authentication/login/domain/usecases/login.dart';
@@ -48,6 +50,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     await googleSignInRepo.loginViaGoogle(context, onLoginSuccessful: (UserModel user) {
       print('başarılı');
       print(user.birthday);
+      final AuthenticationBloc authenticationBloc = sl.get<AuthenticationBloc>();
+      authenticationBloc.add(Authenticate(user: user));
       //TODO: BURADAN AUTH BLOCA USER OBJESINI GONDERIP LOGIN ETMIS OLACAGIZ.
     });
   }
