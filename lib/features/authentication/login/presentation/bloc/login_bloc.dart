@@ -51,6 +51,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       print('başarılı');
       print(user.birthday);
       final AuthenticationBloc authenticationBloc = sl.get<AuthenticationBloc>();
+      Navigator.of(context).pop();
       authenticationBloc.add(Authenticate(user: user));
       //TODO: BURADAN AUTH BLOCA USER OBJESINI GONDERIP LOGIN ETMIS OLACAGIZ.
     });
@@ -60,7 +61,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     await facebookSignIn.loginViaFacebook(context, onLoginSuccessfull: (UserModel user) {
       print('başarılı');
       print(user.birthday);
-      //TODO: BURADAN AUTH BLOCA USER OBJESINI GONDERIP LOGIN ETMIS OLACAGIZ.
+      final AuthenticationBloc authenticationBloc = sl.get<AuthenticationBloc>();
+      Navigator.of(context).pop();
+      authenticationBloc.add(Authenticate(user: user));
     });
   }
 }
