@@ -78,12 +78,12 @@ class SecondSection extends StatelessWidget {
 Image selectedIcon(List<InterestedType> interests, InterestedType myType) {
   if (interests.contains(myType)) {
     return Image.asset(
-      AssetPaths.STATUS_PREVIOUS,
+      AssetPaths.shared.STATUS_PREVIOUS,
       scale: 2,
     );
   } else {
     return Image.asset(
-      AssetPaths.STATUS_FUTURE,
+      AssetPaths.shared.STATUS_FUTURE,
       scale: 2,
     );
   }
@@ -91,8 +91,8 @@ Image selectedIcon(List<InterestedType> interests, InterestedType myType) {
 
 Image myIcon(InterestedType myType) {
   if (myType == InterestedType.MAN) {
-    return Image.asset(AssetPaths.MAN);
+    return Image.asset(AssetPaths.shared.MAN);
   } else {
-    return Image.asset(AssetPaths.WOMAN);
+    return Image.asset(AssetPaths.shared.WOMAN);
   }
 }

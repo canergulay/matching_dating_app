@@ -10,9 +10,14 @@ class MatchingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(context.limitedwidthUnit * 3, 0, context.limitedwidthUnit * 3, context.limitedwidthUnit * 3),
+      margin: EdgeInsets.fromLTRB(context.limitedwidthUnit * 3, 0, context.limitedwidthUnit * 3, 0),
       child: Column(
-        children: [const Icon(Icons.ac_unit), const Expanded(child: UsersStacked()), const SizedBox().heightSpacer(context, 1)],
+        children: [
+          const Icon(Icons.ac_unit),
+          const SizedBox().heightSpacer(context, 1),
+          const Expanded(child: UsersStacked()),
+          const SizedBox().heightSpacer(context, 5)
+        ],
       ),
     );
   }

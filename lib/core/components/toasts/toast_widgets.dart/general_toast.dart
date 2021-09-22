@@ -37,7 +37,7 @@ class GeneralToast extends StatelessWidget {
       height: context.heightUnit * 8,
       decoration: BoxDecoration(
           color: toastBarColorGetter(type),
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(8),
             bottomLeft: Radius.circular(8),
           )),
@@ -96,13 +96,13 @@ Container toastBody(
 String toastIconGetter(ToastType type) {
   switch (type) {
     case ToastType.good:
-      return AssetPaths.GOOD;
+      return AssetPaths.shared.GOOD;
     case ToastType.bad:
-      return AssetPaths.BAD;
+      return AssetPaths.shared.BAD;
     case ToastType.info:
-      return AssetPaths.INFO;
+      return AssetPaths.shared.INFO;
     default:
-      return AssetPaths.INFO;
+      return AssetPaths.shared.INFO;
   }
 }
 

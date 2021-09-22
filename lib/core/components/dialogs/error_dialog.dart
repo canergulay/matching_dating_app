@@ -27,7 +27,7 @@ Stack dialogChild(BuildContext context, String title, String message, DialogType
         right: 13,
         top: 13,
         child: SmallAnimatedIcon(
-          assetPath: AssetPaths.DELPHOTO,
+          assetPath: AssetPaths.shared.DELPHOTO,
           onTap: () {
             Navigator.of(context).pop();
           },
@@ -66,10 +66,10 @@ Image dialogIcon(DialogType type) {
 
 String imagePath(DialogType type) {
   if (type == DialogType.success) {
-    return AssetPaths.STATUS_PREVIOUS;
+    return AssetPaths.shared.STATUS_PREVIOUS;
   } else if (type == DialogType.info) {
-    return AssetPaths.STATUS_FUTURE;
+    return AssetPaths.shared.STATUS_FUTURE;
   } else {
-    return AssetPaths.STATUS_CURRENT;
+    return AssetPaths.shared.STATUS_CURRENT;
   }
 }

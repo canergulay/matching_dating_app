@@ -12,20 +12,29 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(_borderRadius), color: Colors.white, boxShadow: const [BoxShadow(spreadRadius: 0.5)]),
-      margin: EdgeInsets.all(20 * position),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(_borderRadius), color: Colors.white, boxShadow: [
+        BoxShadow(
+          color: const Color(0xFF000000).withAlpha(11),
+          blurRadius: 6.0,
+          spreadRadius: 5.0,
+          offset: const Offset(
+            0.0,
+            3.0,
+          ),
+        ),
+      ]),
+      margin: EdgeInsets.all(position),
       child: Column(
         children: [
           Expanded(
-            flex: 10,
+            flex: 13,
             child: UserPhoto(
               userImage: userImage,
-              containerRadius: 30,
+              containerRadius: _borderRadius,
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

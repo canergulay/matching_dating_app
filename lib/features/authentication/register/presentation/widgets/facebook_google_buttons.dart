@@ -61,7 +61,7 @@ class _AnimatedFacebookGoogleButtonState extends State<AnimatedFacebookGoogleBut
                     Transform.scale(
                       scale: 1 / _animationController.value,
                       child: Image.asset(
-                        widget.type == ButtonType.FACEBOOK ? AssetPaths.FACEBOOK : AssetPaths.GOOGLE,
+                        widget.type == ButtonType.FACEBOOK ? AssetPaths.shared.FACEBOOK : AssetPaths.shared.GOOGLE,
                         scale: 2,
                       ),
                     ),

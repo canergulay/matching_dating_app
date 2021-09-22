@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class UserPhoto extends StatelessWidget {
   final double containerRadius;
-  static const double _margin = 16;
+  static const double _margin = 22;
 
   const UserPhoto({Key? key, required this.userImage, required this.containerRadius}) : super(key: key);
 
@@ -11,12 +11,13 @@ class UserPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(containerRadius)),
-        margin: const EdgeInsets.all(_margin),
-        alignment: Alignment.topCenter,
-        child: Image.network(
-          userImage,
-          fit: BoxFit.fitHeight,
-        ));
+      padding: const EdgeInsets.symmetric(vertical: _margin, horizontal: _margin - 2),
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(containerRadius),
+          child: Image.network(
+            userImage,
+            fit: BoxFit.fill,
+          )),
+    );
   }
 }

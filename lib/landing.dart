@@ -42,7 +42,7 @@ class Landing extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: context.widthUnit * 9),
-        child: Image.asset(AssetPaths.MAINVECTOR),
+        child: Image.asset(AssetPaths.shared.MAINVECTOR),
       ),
     );
   }

@@ -16,18 +16,17 @@ Column matchifyLogo(BuildContext context) => Column(
     );
 
 Image logo() => Image.asset(
-      AssetPaths.LOGO,
+      AssetPaths.shared.LOGO,
       scale: 5,
     );
 
 Row matchifyLogoWithBackButtonWcustomPress({required BuildContext context, required VoidCallback onTap}) => Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         AnimatorButton(
           onPressed: onTap,
           childToBeAnimated: Image.asset(
-            AssetPaths.BACKBUTTON,
+            AssetPaths.shared.BACKBUTTON,
             width: context.heightUnit * 6,
             height: context.heightUnit * 6,
           ),
@@ -36,7 +35,7 @@ Row matchifyLogoWithBackButtonWcustomPress({required BuildContext context, requi
           children: [
             const SizedBox().heightSpacer(context, 8),
             Image.asset(
-              AssetPaths.LOGO,
+              AssetPaths.shared.LOGO,
               scale: 2,
             ),
             const SizedBox().heightSpacer(context, 1),
@@ -59,7 +58,7 @@ Row matchifyLogoWithBackButton(BuildContext context) => Row(
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            AssetPaths.BACKBUTTON,
+            AssetPaths.shared.BACKBUTTON,
             width: context.heightUnit * 6,
             height: context.heightUnit * 6,
           ),
@@ -68,7 +67,7 @@ Row matchifyLogoWithBackButton(BuildContext context) => Row(
           children: [
             const SizedBox().heightSpacer(context, 8),
             Image.asset(
-              AssetPaths.LOGO,
+              AssetPaths.shared.LOGO,
               scale: 2,
             ),
             const SizedBox().heightSpacer(context, 1),

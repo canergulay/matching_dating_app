@@ -95,7 +95,7 @@ Widget photoWidget(BuildContext context, {required int index, String? photo, Str
         rightMargin: context.widthUnit * 2,
         child: AnimatorButton(
             childToBeAnimated: Image.asset(
-              AssetPaths.ADDPHOTO,
+              AssetPaths.shared.ADDPHOTO,
               scale: 3,
             ),
             onPressed: () {
@@ -116,9 +116,11 @@ Widget photoWidget(BuildContext context, {required int index, String? photo, Str
             child: imageURL == 'loading' ? CircularProgressIndicator() : SizedBox(),
           ),
           Positioned(
+            right: context.heightUnit,
+            top: context.heightUnit,
             child: AnimatorButton(
                 childToBeAnimated: Image.asset(
-                  AssetPaths.DELPHOTO,
+                  AssetPaths.shared.DELPHOTO,
                   scale: 2,
                 ),
                 onPressed: () async {
@@ -128,8 +130,6 @@ Widget photoWidget(BuildContext context, {required int index, String? photo, Str
                     context.read<PhotoSelectionCubit>().deletePhoto(index);
                   }
                 }),
-            right: context.heightUnit,
-            top: context.heightUnit,
           )
         ],
       ),

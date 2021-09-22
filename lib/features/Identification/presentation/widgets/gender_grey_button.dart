@@ -11,10 +11,10 @@ Container genderGreyButton({required String text, required bool isActive, requir
     child: Row(
       children: [
         Image.asset(
-          isActive ? AssetPaths.STATUS_PREVIOUS : AssetPaths.STATUS_FUTURE,
+          isActive ? AssetPaths.shared.STATUS_PREVIOUS : AssetPaths.shared.STATUS_FUTURE,
           scale: 2,
         ),
-        SizedBox().widthSpacer(context, 2),
+        const SizedBox().widthSpacer(context, 2),
         ourText(text, context, isActive)
       ],
     ),

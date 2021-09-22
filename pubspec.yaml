@@ -68,24 +68,10 @@ dev_dependencies:
 flutter:
   assets:
     - assets/lang/   
-    - assets/images/icons/man.png
-    - assets/images/icons/woman.png
-    - assets/images/icons/google_sign_in.png
-    - assets/images/uicomponents/backbutton.png
-    - assets/images/uicomponents/background.jpg
-    - assets/images/uicomponents/mlogo.png
-    - assets/images/uicomponents/mvector.png
-    - assets/images/icons/previous.png
-    - assets/images/icons/current.png
-    - assets/images/icons/future.png
-    - assets/images/icons/addphoto.png
-    - assets/images/icons/delphoto.png
-    - assets/images/icons/facebook.png
-    - assets/images/icons/google.png
-    - assets/images/icons/info.png
-    - assets/images/icons/bad.png
-    - assets/images/icons/good.png
-    - assets/images/icons/exit.png
+    - assets/images/uicomponents/
+    - assets/images/icons/
+    - assets/images/icons/homepage/
+
 
   fonts:
     - family: Poppins
