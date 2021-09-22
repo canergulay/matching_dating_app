@@ -4,7 +4,9 @@ import 'package:matchangoo/features/authenticated/home/presentation/bloc/bottom_
 import 'package:matchangoo/features/authenticated/home/presentation/widgets/bottom_navigation_bar/bottom_navigation_item.dart';
 
 class BottomBarItems extends StatelessWidget {
-  const BottomBarItems({Key? key}) : super(key: key);
+  const BottomBarItems({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

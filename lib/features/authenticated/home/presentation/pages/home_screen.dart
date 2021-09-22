@@ -4,6 +4,7 @@ import 'package:matchangoo/features/authenticated/home/presentation/bloc/bottom_
 import 'package:matchangoo/features/authenticated/home/presentation/widgets/appBar/custom_app_bar.dart';
 import 'package:matchangoo/features/authenticated/home/presentation/widgets/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import 'package:matchangoo/features/authenticated/home/presentation/widgets/home_screens.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/pages/matching_stack_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,7 +23,11 @@ class HomeScreen extends StatelessWidget {
             contextHeight: context.limitedheightUnit,
           ),
           bottomNavigationBar: const CustomBottomNavigationBar(),
-          body: const MatchingScreen()),
+          body: BlocBuilder<BottomNavBarCubit, int>(
+            builder: (context, state) {
+              return screens[state];
+            },
+          )),
     );
   }
 }

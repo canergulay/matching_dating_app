@@ -9,6 +9,7 @@ Widget bottomNavigationBarItem(int index, BuildContext context, {required int my
       onPressed: () {
         context.read<BottomNavBarCubit>().changePage(myIndex);
       },
+      upperBound: 0.3,
       childToBeAnimated: Image.asset(
         getNavbarIcon(myIndex),
         color: index == myIndex ? Palette.bottomBarItemWhite : Palette.bottomBarItemGrey,

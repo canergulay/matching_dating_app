@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/widgets/buttons/chat_button.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/user_photo.dart';
+
+import 'buttons/dislike_button.dart';
+import 'buttons/like_button.dart';
 
 class UserCard extends StatelessWidget {
   static const double _borderRadius = 16;
@@ -27,22 +31,20 @@ class UserCard extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 13,
+            flex: 21,
             child: UserPhoto(
               userImage: userImage,
               containerRadius: _borderRadius,
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // TODO: buttons
-                IconButton(onPressed: () {}, icon: const Icon(Icons.ac_unit)),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.ac_unit)),
-
-                IconButton(onPressed: () {}, icon: const Icon(Icons.ac_unit)),
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                DislikeButton(),
+                LikeButton(),
+                ChatButton(),
               ],
             ),
           ),

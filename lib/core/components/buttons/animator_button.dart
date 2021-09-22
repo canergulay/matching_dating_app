@@ -6,7 +6,9 @@ class AnimatorButton extends StatefulWidget {
   final Widget childToBeAnimated;
   final VoidCallback onPressed;
   final bool isOnPressedBeforeAnimation;
-  const AnimatorButton({Key? key, required this.childToBeAnimated, required this.onPressed, this.isOnPressedBeforeAnimation = false})
+  final double upperBound;
+  const AnimatorButton(
+      {Key? key, this.upperBound = 1, required this.childToBeAnimated, required this.onPressed, this.isOnPressedBeforeAnimation = false})
       : super(key: key);
 
   @override
@@ -17,8 +19,8 @@ class _AnimatorButtonState extends State<AnimatorButton> with SingleTickerProvid
   late final AnimationController _animationController;
   @override
   void initState() {
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 100), reverseDuration: const Duration(milliseconds: 100));
+    _animationController = AnimationController(
+        vsync: this, upperBound: widget.upperBound, duration: const Duration(milliseconds: 100), reverseDuration: const Duration(milliseconds: 100));
     super.initState();
   }
 

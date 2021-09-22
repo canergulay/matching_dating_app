@@ -29,4 +29,5 @@ class Palette {
 
   static const bottomBarItemGrey = Color(0xFF686868);
   static const bottomBarItemWhite = Colors.white;
+  static const likeBlue = Color(0xFF467be3);
 }
