@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/features/matching/presentation/widgets/user_photo.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/widgets/user_photo.dart';
 
 class UserCard extends StatelessWidget {
   static const double _borderRadius = 16;

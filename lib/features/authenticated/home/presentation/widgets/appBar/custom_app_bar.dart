@@ -2,10 +2,11 @@ import 'package:matchangoo/core/structure/utils/extensions/context_extension.dar
 
 import 'package:flutter/material.dart';
 import 'package:matchangoo/core/structure/utils/widgets/logo.dart';
-import 'package:matchangoo/features/home/presentation/widgets/appBar/drawer_button.dart';
-import 'package:matchangoo/features/home/presentation/widgets/appBar/notification_button.dart';
+import 'package:matchangoo/features/authenticated/home/presentation/widgets/appBar/drawer_button.dart';
+
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
+import 'package:matchangoo/features/authenticated/home/presentation/widgets/appBar/notification_button.dart';
 
 class CustomAppBar extends PreferredSize {
   final double contextHeight;

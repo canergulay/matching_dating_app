@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
+import 'package:matchangoo/features/authenticated/home/presentation/widgets/bottom_navigation_bar/items.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   static const double _radiusValue = 30;
@@ -10,9 +11,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          color: Palette.APP_BLACK, borderRadius: BorderRadius.only(topLeft: Radius.circular(_radiusValue), topRight: Radius.circular(_radiusValue))),
-      height: context.limitedheightUnit * 10,
-    );
+        height: context.limitedheightUnit * 10,
+        decoration: const BoxDecoration(
+            color: Palette.APP_BLACK,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(_radiusValue), topRight: Radius.circular(_radiusValue))),
+        child: const BottomBarItems());
   }
 }

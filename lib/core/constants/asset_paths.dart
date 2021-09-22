@@ -33,5 +33,5 @@ class AssetPaths {
   final String match = "assets/images/icons/homepage/match.png";
   final String search = "assets/images/icons/homepage/search.png";
   final String settings = "assets/images/icons/homepage/settings.png";
-  final String users = "assets/images/icons/homepage/users.png";
+  final String user = "assets/images/icons/homepage/user.png";
 }

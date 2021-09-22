@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/features/matching/presentation/widgets/user_card.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/widgets/user_card.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class UsersStacked extends StatelessWidget {

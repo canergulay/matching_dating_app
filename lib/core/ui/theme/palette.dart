@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class Palette {
   static const buttonRed = Color(0xFFF96669);
   static const softPink = Color(0xFFF7DFE7);
@@ -24,4 +26,7 @@ class Palette {
   static const TOASTBLUEDARK = Color(0xFF3e85e3);
 
   static const APP_BLACK = Color(0xFF1a1a1a);
+
+  static const bottomBarItemGrey = Color(0xFF686868);
+  static const bottomBarItemWhite = Colors.white;
 }

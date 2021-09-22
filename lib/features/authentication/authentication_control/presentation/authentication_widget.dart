@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/structure/utils/widgets/background_widget_wlogo.dart';
+import 'package:matchangoo/features/authenticated/home/presentation/pages/home_screen.dart';
 import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/authentication_control/presentation/authentication_loading.dart';
-import 'package:matchangoo/features/home/presentation/pages/home_screen.dart';
 import 'package:matchangoo/landing.dart';
 
 class AuthenticationWidget extends StatelessWidget {
@@ -17,11 +17,11 @@ class AuthenticationWidget extends StatelessWidget {
       child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationLoading) {
-            return AuthenticationLoadingWidget();
+            return const AuthenticationLoadingWidget();
           } else if (state is AuthenticationNotAuthenticated) {
-            return Landing();
+            return const Landing();
           } else {
-            return HomeScreen();
+            return const HomeScreen();
           }
         },
       ),

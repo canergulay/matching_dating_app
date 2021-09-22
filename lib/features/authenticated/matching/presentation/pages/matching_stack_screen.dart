@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:matchangoo/features/matching/presentation/widgets/user_card.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/widgets/users_stacked.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/core/structure/utils/extensions/sizedBox_extension.dart';
-import 'package:matchangoo/features/matching/presentation/widgets/users_stacked.dart';
 
 class MatchingScreen extends StatelessWidget {
   const MatchingScreen({Key? key}) : super(key: key);

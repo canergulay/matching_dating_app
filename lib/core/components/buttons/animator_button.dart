@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 class AnimatorButton extends StatefulWidget {
   final Widget childToBeAnimated;
   final VoidCallback onPressed;
-  const AnimatorButton({Key? key, required this.childToBeAnimated, required this.onPressed}) : super(key: key);
+  final bool isOnPressedBeforeAnimation;
+  const AnimatorButton({Key? key, required this.childToBeAnimated, required this.onPressed, this.isOnPressedBeforeAnimation = false})
+      : super(key: key);
 
   @override
   _AnimatorButtonState createState() => _AnimatorButtonState();
@@ -27,8 +29,13 @@ class _AnimatorButtonState extends State<AnimatorButton> with SingleTickerProvid
         builder: (context, animation) {
           return GestureDetector(
             onTap: () async {
-              await _animationController.forward().then((value) => _animationController.reverse());
-              widget.onPressed();
+              if (widget.isOnPressedBeforeAnimation) {
+                widget.onPressed();
+                await _animationController.forward().then((value) => _animationController.reverse());
+              } else {
+                await _animationController.forward().then((value) => _animationController.reverse());
+                widget.onPressed();
+              }
             },
             child: Transform.scale(
               scale: 1 - _animationController.value,
