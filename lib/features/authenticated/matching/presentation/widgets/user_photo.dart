@@ -10,14 +10,19 @@ class UserPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: _margin, horizontal: _margin - 2),
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(containerRadius),
-          child: Image.network(
-            userImage,
-            fit: BoxFit.fill,
-          )),
+    return GestureDetector(
+      onTap: () {
+        print('clicked');
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: _margin, horizontal: _margin - 2),
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(containerRadius),
+            child: Image.network(
+              userImage,
+              fit: BoxFit.scaleDown,
+            )),
+      ),
     );
   }
 }

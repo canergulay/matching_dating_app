@@ -10,10 +10,14 @@ Widget bottomNavigationBarItem(int index, BuildContext context, {required int my
         context.read<BottomNavBarCubit>().changePage(myIndex);
       },
       upperBound: 0.3,
-      childToBeAnimated: Image.asset(
-        getNavbarIcon(myIndex),
-        color: index == myIndex ? Palette.bottomBarItemWhite : Palette.bottomBarItemGrey,
-        scale: 2.31,
+      childToBeAnimated: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25), boxShadow: [BoxShadow(color: getColor(index, myIndex), blurRadius: 5, spreadRadius: 0.5)]),
+        child: Image.asset(
+          getNavbarIcon(myIndex),
+          color: index == myIndex ? Palette.bottomBarItemWhite : Palette.bottomBarItemGrey,
+          scale: 2.31,
+        ),
       ),
       isOnPressedBeforeAnimation: true,
     );
@@ -32,3 +36,5 @@ String getNavbarIcon(int index) {
       return AssetPaths.shared.match;
   }
 }
+
+Color getColor(int index, int myIndex) => index == myIndex ? Colors.white.withOpacity(0.0025) : Colors.transparent;

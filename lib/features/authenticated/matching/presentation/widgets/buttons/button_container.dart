@@ -3,10 +3,10 @@ import 'package:matchangoo/core/components/buttons/animator_button.dart';
 import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 
-AnimatorButton buttonContainer(BuildContext context, {required Color color, required String iconImage}) {
+AnimatorButton buttonContainer(BuildContext context, {required Color color, required String iconImage, required VoidCallback onPressed}) {
   return AnimatorButton(
     upperBound: 0.3,
-    onPressed: () {},
+    onPressed: onPressed,
     childToBeAnimated: Container(
       padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 7, vertical: context.heightUnit * 1.4),
       decoration: BoxDecoration(

@@ -8,6 +8,6 @@ class ChatButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buttonContainer(context, color: Palette.likeBlue, iconImage: AssetPaths.shared.chat);
+    return buttonContainer(context, color: Palette.likeBlue, onPressed: () {}, iconImage: AssetPaths.shared.chat);
   }
 }

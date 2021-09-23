@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/components/buttons/animator_button.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/buttons/chat_button.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/user_photo.dart';
-
+import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import 'buttons/dislike_button.dart';
 import 'buttons/like_button.dart';
 
@@ -10,20 +11,24 @@ class UserCard extends StatelessWidget {
   final Color color;
   final String userImage;
   final double position;
-  const UserCard({Key? key, required this.color, required this.userImage, required this.position}) : super(key: key);
+  final VoidCallback goLeft;
+  final VoidCallback goRight;
+  const UserCard({Key? key, required this.color, required this.goLeft, required this.goRight, required this.userImage, required this.position})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      height: context.dynamicHeight * 0.70,
+      width: context.dynamicWidth * 0.90,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(_borderRadius), color: Colors.white, boxShadow: [
         BoxShadow(
-          color: const Color(0xFF000000).withAlpha(11),
-          blurRadius: 6.0,
-          spreadRadius: 5.0,
+          color: Colors.black12.withOpacity(0.05),
+          blurRadius: 10.0,
+          spreadRadius: 4,
           offset: const Offset(
             0.0,
-            3.0,
+            5.0,
           ),
         ),
       ]),
@@ -31,7 +36,7 @@ class UserCard extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            flex: 21,
+            flex: 22,
             child: UserPhoto(
               userImage: userImage,
               containerRadius: _borderRadius,
@@ -41,10 +46,14 @@ class UserCard extends StatelessWidget {
             flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                DislikeButton(),
-                LikeButton(),
-                ChatButton(),
+              children: [
+                DislikeButton(
+                  goLeft: goLeft,
+                ),
+                LikeButton(
+                  goRight: goRight,
+                ),
+                const ChatButton(),
               ],
             ),
           ),

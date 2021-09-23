@@ -12,9 +12,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: context.limitedheightUnit * 10,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
+            boxShadow: [BoxShadow(color: Colors.black.withAlpha(100), offset: const Offset(0, -5), blurRadius: 14, spreadRadius: 1)],
             color: Palette.APP_BLACK,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(_radiusValue), topRight: Radius.circular(_radiusValue))),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(_radiusValue), topRight: Radius.circular(_radiusValue))),
         child: const BottomBarItems());
   }
 }
