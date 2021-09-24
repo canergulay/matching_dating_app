@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/bloc/animation_helper_cubit.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_bloc.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/animated_user_card.dart';
 //import 'package:vector_math/vector_math_64.dart' as vector;

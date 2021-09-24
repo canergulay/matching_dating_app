@@ -1,8 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/components/utils/animation_helper_cubit.dart';
 import 'package:matchangoo/features/authenticated/matching/configuration/swipe_direction_enum.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/bloc/animation_helper_cubit.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_bloc.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/user_card.dart';
+import 'package:provider/provider.dart';
 
 class AnimatedUserCard extends StatefulWidget {
   final String userImage;
@@ -18,9 +22,9 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
   late final AnimationController _helperAnimationController;
   late final double _dragLimit;
   late final double _halfOfScreen;
-  double swipeLogger = 0;
   double _dY = 0;
   bool _isLeft = false;
+  double _rotateValue = 0;
 
   @override
   void initState() {
@@ -39,7 +43,7 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
 
   void _goToZero() {
     _dY = 0;
-    _animationController.animateBack(0, curve: Curves.bounceOut, duration: const Duration(seconds: 1));
+    _animationController.animateBack(0, curve: Curves.bounceOut, duration: const Duration(seconds: 3));
   }
 
   void _goToLeft(double offSet) {
@@ -72,58 +76,74 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-        animation: _animationController,
-        builder: (context, anim) {
-          return Stack(
-            clipBehavior: Clip.none,
-            children: [
-              secondUser(),
-              Positioned(
-                top: _dY - (_isLeft ? -_animationController.value : _animationController.value),
-                left: _animationController.value,
-                child: Transform.rotate(
-                  angle: _animationController.value / 1500,
+    return BlocProvider<HelperAnimatorCubit>(
+      create: (context) => HelperAnimatorCubit(),
+      child: AnimatedBuilder(
+          animation: _animationController,
+          builder: (context, anim) {
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+                secondUser(),
+                Positioned(
+                  top: _dY - (_isLeft ? -_animationController.value : _animationController.value),
+                  left: _animationController.value,
                   child: Draggable(
                     onDraggableCanceled: (V, o) {
-                      print('cancel yedik');
+                      _onDragEnd(o, context);
+                      print('cancel');
                     },
-                    onDragUpdate: _onDragUpdate,
-                    onDragEnd: _onDragEnd,
+                    onDragUpdate: (details) {
+                      _onDragUpdate(details, context);
+                    },
+                    onDragEnd: (details) {
+                      print('sasa');
+                    },
                     childWhenDragging: const SizedBox(),
-                    feedback: Transform.rotate(
-                      angle: _animationController.value,
-                      child: userCardChild(),
-                    ),
+                    feedback: BlocProvider.value(value: context.read<HelperAnimatorCubit>(), child: userCardChild()),
                     child: userCardChild(),
                   ),
                 ),
-              ),
-            ],
-          );
-        });
+              ],
+            );
+          }),
+    );
   }
 
-  void _onDragEnd(details) {
-    _animationController.value = details.offset.dx;
-    if (details.offset.dx < 0) {
-      if (details.offset.dx < -_dragLimit) {
-        _goToLeft(details.offset.dy);
+  void _onDragEnd(Offset offset, BuildContext contexti) {
+    print('felan');
+    print('cancel2');
+
+    // print(contexti.read<HelperAnimatorCubit>().state);
+
+    // print(contexti.read<HelperAnimatorCubit>().state);
+
+    if (offset.dx < 0) {
+      if (offset.dx < -_dragLimit) {
+        _animationController.value = offset.dx;
+        _goToLeft(offset.dy);
       } else {
         _goToZero();
+        contexti.read<HelperAnimatorCubit>().reverse();
       }
     } else {
-      if (details.offset.dx > _dragLimit) {
-        _goToRight(details.offset.dy);
+      if (offset.dx > _dragLimit) {
+        _animationController.value = offset.dx;
+        _goToRight(offset.dy);
       } else {
         _goToZero();
+        contexti.read<HelperAnimatorCubit>().reverse();
       }
     }
   }
 
-  void _onDragUpdate(DragUpdateDetails details) {
-    print(details.primaryDelta);
-    _helperAnimationController.forward();
+  void _onDragUpdate(DragUpdateDetails details, BuildContext contexti) {
+    contexti.read<HelperAnimatorCubit>().update(details.delta.dx / 1000);
+    _helperAnimationController.value = _helperAnimationController.value + details.delta.dx / 500;
+  }
+
+  void _onDragCancel(BuildContext contexti) {
+    print('cancelyedik');
   }
 
   @override
@@ -142,7 +162,7 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
             child: UserCard(
               position: 0,
               value: _animationController.value,
-              isFirstCard: widget.isFirstCard,
+              isFirstCard: false,
               goLeft: () => _goToLeft(0),
               goRight: () => _goToRight(0),
               userImage: widget.userImage,
@@ -156,7 +176,7 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
     return UserCard(
       position: 0,
       value: _animationController.value,
-      isFirstCard: widget.isFirstCard,
+      isFirstCard: true,
       goLeft: () => _goToLeft(0),
       goRight: () => _goToRight(0),
       userImage: widget.userImage,

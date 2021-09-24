@@ -12,6 +12,7 @@ import 'core/init/get_them_all/get_it_container.dart' as inject;
 import 'core/init/localization/localization_initial_widget.dart';
 import 'core/structure/navigation/navigation_manager.dart';
 import 'core/structure/navigation/navigation_router.dart';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
