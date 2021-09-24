@@ -1,9 +1,9 @@
 class NetworkPath {
-  var shared = NetworkPath();
-  static const String SENDMAIL = "/auth/sendmail";
-  static const String REGISTER = "/register";
-  static const String CHECKIFREGISTRATED = "/checkregistration";
-  static const String LOGIN = "/login";
-  static const String CHECKIACCEXIST = "/checkaccount";
-  static const String GETUSERBYTOKEN = "/getuser";
+  static var shared = NetworkPath();
+  final String SENDMAIL = "/auth/sendmail";
+  final String REGISTER = "/register";
+  final String CHECKIFREGISTRATED = "/checkregistration";
+  final String LOGIN = "/login";
+  final String CHECKIACCEXIST = "/checkaccount";
+  final String GETUSERBYTOKEN = "/getuser";
 }

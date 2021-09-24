@@ -14,7 +14,7 @@ abstract class LoginDataSourceContract {
 class LoginDataSource implements LoginDataSourceContract {
   @override
   Future<UserModel> loginService({required String email, required String password}) async {
-    final response = await NetworkManager.instance.dio.post(NetworkPath.LOGIN, data: {'email': email, 'password': password});
+    final response = await NetworkManager.instance.dio.post(NetworkPath.shared.LOGIN, data: {'email': email, 'password': password});
     if (response.statusCode == HttpStatus.ok) {
       if (response.data['status'] == ErrorConstants.shared.verified) {
         final userResponse = response.data['user'];

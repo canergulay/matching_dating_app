@@ -14,7 +14,7 @@ class CustomAlertDialog extends Dialog {
   final DialogType dialogType;
   CustomAlertDialog(this.context, {double elevation = 24, required this.dialogType, required this.title, required this.message})
       : super(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignConstant.borderRadiusHigh)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignConstant.shared.borderRadiusHigh)),
             elevation: elevation,
             child: dialogChild(context, title, message, dialogType),
             insetPadding: const EdgeInsets.all(20));

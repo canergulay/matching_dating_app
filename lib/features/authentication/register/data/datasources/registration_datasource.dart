@@ -8,7 +8,7 @@ import 'package:matchangoo/features/authentication/login/data/models/user.dart';
 
 class RegistrationDataSource {
   Future<UserModel?> registration(RegistrationEntity registrationEntity) async {
-    final response = await NetworkManager.instance.dio.post(NetworkPath.REGISTER, data: registrationEntity.toJson());
+    final response = await NetworkManager.instance.dio.post(NetworkPath.shared.REGISTER, data: registrationEntity.toJson());
     if (response.statusCode == HttpStatus.ok) {
       if (response.data['status'] == "success") {
         if (response.data['user'] != null) {

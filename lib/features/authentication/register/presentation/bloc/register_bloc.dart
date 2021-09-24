@@ -116,13 +116,13 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   Future<void> signInViaFacebook(BuildContext context) async {
     await facebookSignIn.signInViaFacebook(context, notRegistered: (name, email) {
-      _setCredentialsAndContinue(name: name, email: email, password: AppConstants.RVIAFB);
+      _setCredentialsAndContinue(name: name, email: email, password: AppConstants.shared.RVIAFB);
     });
   }
 
   Future<void> signInViaGoogle(BuildContext context) async {
     await googleSignInRepo.signInViaGoogle(context, notRegistered: (name, mail) {
-      _setCredentialsAndContinue(name: name, email: mail, password: AppConstants.RVIAGOOGLE);
+      _setCredentialsAndContinue(name: name, email: mail, password: AppConstants.shared.RVIAGOOGLE);
     });
   }
 

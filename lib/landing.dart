@@ -54,7 +54,7 @@ Expanded secondShit(BuildContext context) {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 6, vertical: context.heightUnit * 1.5),
-          child: headLineThree(context, 'MAIN_SCREEN.TITLE'.tr(namedArgs: {'appname': AppConstants.APP_NAME})),
+          child: headLineThree(context, 'MAIN_SCREEN.TITLE'.tr(namedArgs: {'appname': AppConstants.shared.APP_NAME})),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 5, vertical: context.heightUnit * 1.5),

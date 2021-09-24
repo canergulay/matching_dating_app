@@ -12,7 +12,7 @@ abstract class CheckIfAlreadyRegistratedDScontract {
 class CheckIfAlreadyRegisteredDS implements CheckIfAlreadyRegistratedDScontract {
   @override
   Future<bool> checkIfAlreadyRegistratedDS(String email) async {
-    final response = await NetworkManager.instance.dio.post(NetworkPath.CHECKIFREGISTRATED, data: {'email': email});
+    final response = await NetworkManager.instance.dio.post(NetworkPath.shared.CHECKIFREGISTRATED, data: {'email': email});
     if (response.statusCode == HttpStatus.ok) {
       final status = response.data['status'];
       print(response.data);

@@ -12,7 +12,7 @@ class NetworkManager {
       headers: {
         'Content-Type': 'application/json',
       },
-      baseUrl: AppConstants.BASE_URL,
+      baseUrl: AppConstants.shared.BASE_URL,
       connectTimeout: 5000,
       receiveTimeout: 5000,
     );

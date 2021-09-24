@@ -5,7 +5,7 @@ import '../../../../core/ui/theme/palette.dart';
 
 class GenderButton extends StatefulWidget {
   final String image;
-  GenderButton({Key? key, required this.image}) : super(key: key);
+  const GenderButton({Key? key, required this.image}) : super(key: key);
 
   @override
   _GenderButtonState createState() => _GenderButtonState();
@@ -25,7 +25,7 @@ class _GenderButtonState extends State<GenderButton> {
         height: context.widthUnit * 25,
         padding: EdgeInsets.all(context.widthUnit * 3),
         decoration: BoxDecoration(
-            color: isClicked ? Palette.softPink : Colors.transparent, borderRadius: BorderRadius.circular(DesignConstant.borderRadiuslow)),
+            color: isClicked ? Palette.softPink : Colors.transparent, borderRadius: BorderRadius.circular(DesignConstant.shared.borderRadiuslow)),
         child: Image.asset(
           widget.image,
         ),

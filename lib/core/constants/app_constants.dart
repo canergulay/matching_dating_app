@@ -1,12 +1,12 @@
 class AppConstants {
   static var shared = AppConstants();
 
-  static const APP_NAME = "matchify";
-  static const DIALOGTITLE = "About You";
-  static const DIALOGMESSAGE = "We will ask you to give us some info about you, which we can use in order to match you with other people.";
+  final String APP_NAME = "matchify";
+  final String DIALOGTITLE = "About You";
+  final String DIALOGMESSAGE = "We will ask you to give us some info about you, which we can use in order to match you with other people.";
 
-  static const BASE_URL = "http://192.168.1.198:3000";
+  final String BASE_URL = "http://192.168.1.201:3000";
 
-  static const RVIAGOOGLE = "g";
-  static const RVIAFB = "f";
+  final String RVIAGOOGLE = "g";
+  final String RVIAFB = "f";
 }

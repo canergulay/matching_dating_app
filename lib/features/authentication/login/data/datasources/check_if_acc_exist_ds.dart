@@ -5,7 +5,7 @@ import 'package:matchangoo/features/authentication/login/data/models/user.dart';
 
 class CheckIfAccountExistDataSource {
   Future<UserModel> checkIfAccountExist({required String email}) async {
-    final response = await NetworkManager.instance.dio.post(NetworkPath.CHECKIACCEXIST, data: {'email': email});
+    final response = await NetworkManager.instance.dio.post(NetworkPath.shared.CHECKIACCEXIST, data: {'email': email});
     if (response.statusCode == 200) {
       var status = response.data['status'];
       if (status == true) {

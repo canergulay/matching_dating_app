@@ -1,4 +1,5 @@
 class DesignConstant {
-  static const double borderRadiusHigh = 15;
-  static const double borderRadiuslow = 10;
+  static var shared = DesignConstant();
+  final double borderRadiusHigh = 15;
+  final double borderRadiuslow = 10;
 }

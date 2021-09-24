@@ -37,7 +37,7 @@ class Matchify extends StatelessWidget {
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             home: const AuthenticationWidget(),
-            title: AppConstants.APP_NAME,
+            title: AppConstants.shared.APP_NAME,
             navigatorKey: NavigationManager.instance.navigatorKey,
             onGenerateRoute: NavigationRouter.instance.generateRoute,
           );
