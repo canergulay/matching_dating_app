@@ -6,24 +6,39 @@ import 'package:matchangoo/core/structure/utils/extensions/context_extension.dar
 import 'buttons/dislike_button.dart';
 import 'buttons/like_button.dart';
 
-class UserCard extends StatelessWidget {
+class UserCard extends StatefulWidget {
   static const double _borderRadius = 16;
   final Color color;
+  final bool isFirstCard;
   final String userImage;
   final double position;
+  final double value;
   final VoidCallback goLeft;
   final VoidCallback goRight;
-  const UserCard({Key? key, required this.color, required this.goLeft, required this.goRight, required this.userImage, required this.position})
+  const UserCard(
+      {Key? key,
+      required this.color,
+      required this.isFirstCard,
+      required this.goLeft,
+      required this.value,
+      required this.goRight,
+      required this.userImage,
+      required this.position})
       : super(key: key);
 
+  @override
+  State<UserCard> createState() => _UserCardState();
+}
+
+class _UserCardState extends State<UserCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: context.dynamicHeight * 0.70,
       width: context.dynamicWidth * 0.90,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(_borderRadius), color: Colors.white, boxShadow: [
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(UserCard._borderRadius), color: Colors.white, boxShadow: [
         BoxShadow(
-          color: Colors.black12.withOpacity(0.05),
+          color: widget.isFirstCard ? Colors.black12.withOpacity(0.1) : Colors.transparent,
           blurRadius: 10.0,
           spreadRadius: 4,
           offset: const Offset(
@@ -32,14 +47,14 @@ class UserCard extends StatelessWidget {
           ),
         ),
       ]),
-      margin: EdgeInsets.all(position),
+      margin: EdgeInsets.all(widget.position),
       child: Column(
         children: [
           Expanded(
             flex: 22,
             child: UserPhoto(
-              userImage: userImage,
-              containerRadius: _borderRadius,
+              userImage: widget.userImage,
+              containerRadius: UserCard._borderRadius,
             ),
           ),
           Expanded(
@@ -48,10 +63,10 @@ class UserCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 DislikeButton(
-                  goLeft: goLeft,
+                  goLeft: widget.goLeft,
                 ),
                 LikeButton(
-                  goRight: goRight,
+                  goRight: widget.goRight,
                 ),
                 const ChatButton(),
               ],

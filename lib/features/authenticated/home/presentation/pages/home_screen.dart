@@ -5,6 +5,7 @@ import 'package:matchangoo/features/authenticated/home/presentation/widgets/appB
 import 'package:matchangoo/features/authenticated/home/presentation/widgets/bottom_navigation_bar/bottom_navigation_bar.dart';
 import 'package:matchangoo/core/structure/utils/extensions/context_extension.dart';
 import 'package:matchangoo/features/authenticated/home/presentation/widgets/home_screens.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_bloc.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/pages/matching_stack_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => BottomNavBarCubit()),
+        BlocProvider(create: (context) => MatchingBloc()),
       ],
       child: Scaffold(
           appBar: CustomAppBar(

@@ -14,7 +14,7 @@ class MatchingScreen extends StatelessWidget {
         children: [
           const Icon(Icons.ac_unit),
           const SizedBox().heightSpacer(context, 1),
-          const Expanded(child: UsersStacked()),
+          Expanded(child: UsersStacked()),
           const SizedBox().heightSpacer(context, 5)
         ],
       ),
