@@ -113,6 +113,12 @@
 
     "LOGIN":{
         "FP":"Forget password?"
+    },
+
+    "HOMEPAGE":{
+        "NEARBY":"Nearby",
+        "YOURCOUNTRY":"Country",
+        "GLOBAL":"Global"
     }
 
     

@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:matchangoo/core/components/buttons/grey_button.dart';
 import 'package:matchangoo/core/components/widgets/button_container.dart';
+import 'package:matchangoo/core/ui/theme/palette.dart';
 
 //takes an widget as a child and turns that into an animated button with animated builder & transform.scale
 
-class AnimatorButtonGreyContainer extends StatefulWidget {
+class AnimatorButtonWithContainer extends StatefulWidget {
   final Widget childToBeAnimated;
   final VoidCallback onPressed;
   final bool isOnPressedBeforeAnimation;
   final double upperBound;
-  const AnimatorButtonGreyContainer(
-      {Key? key, this.upperBound = 1, required this.childToBeAnimated, required this.onPressed, this.isOnPressedBeforeAnimation = false})
+  final Color containerColor;
+  final double margin;
+  final double padding;
+  const AnimatorButtonWithContainer(
+      {Key? key,
+      this.upperBound = 1,
+      required this.childToBeAnimated,
+      this.containerColor = Palette.TEXTFIELDGREY,
+      required this.onPressed,
+      this.margin = 0,
+      this.padding = 15,
+      this.isOnPressedBeforeAnimation = false})
       : super(key: key);
 
   @override
   _AnimatorButtonGreyContainerState createState() => _AnimatorButtonGreyContainerState();
 }
 
-class _AnimatorButtonGreyContainerState extends State<AnimatorButtonGreyContainer> with SingleTickerProviderStateMixin {
+class _AnimatorButtonGreyContainerState extends State<AnimatorButtonWithContainer> with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   @override
   void initState() {
@@ -43,6 +54,9 @@ class _AnimatorButtonGreyContainerState extends State<AnimatorButtonGreyContaine
             },
             child: buttonContainer(
               context,
+              color: widget.containerColor,
+              margin: widget.margin,
+              padding: widget.padding,
               child: Transform.scale(
                 scale: 1 - _animationController.value,
                 child: widget.childToBeAnimated,

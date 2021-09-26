@@ -9,7 +9,7 @@ class DrawerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatorButtonGreyContainer(
+    return AnimatorButtonWithContainer(
         upperBound: 0.3,
         childToBeAnimated: Image.asset(
           AssetPaths.shared.drawer,

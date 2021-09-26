@@ -34,4 +34,14 @@ class AssetPaths {
   final String search = "assets/images/icons/homepage/search.png";
   final String settings = "assets/images/icons/homepage/settings.png";
   final String user = "assets/images/icons/homepage/user.png";
+
+  final String back = "assets/images/icons/lasticons/back.png";
+  final String dislike = "assets/images/icons/lasticons/dislike.png";
+  final String education = "assets/images/icons/lasticons/education.png";
+  final String getlocation = "assets/images/icons/lasticons/getlocation.png";
+  final String globally = "assets/images/icons/lasticons/globally.png";
+  final String location1 = "assets/images/icons/lasticons/location1.png";
+  final String location2 = "assets/images/icons/lasticons/location2.png";
+  final String location3 = "assets/images/icons/lasticons/location3.png";
+  final String scope = "assets/images/icons/lasticons/scope.png";
 }

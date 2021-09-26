@@ -71,6 +71,7 @@ flutter:
     - assets/images/uicomponents/
     - assets/images/icons/
     - assets/images/icons/homepage/
+    - assets/images/icons/lasticons/
 
 
   fonts:
