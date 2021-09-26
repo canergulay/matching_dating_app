@@ -21,9 +21,12 @@ class UsersStacked extends StatelessWidget {
         } else {
           final List<String> matchingList = (state as MatchingLoaded).matchingList;
 
-          return AnimatedUserCard(
-            userImage: matchingList[matchingList.length - 1],
-            isFirstCard: isFirstCard(lengthOfList: matchingList.length, myIndex: matchingList.length),
+          return BlocProvider(
+            create: (context) => HelperAnimatorCubit(),
+            child: AnimatedUserCard(
+              userImage: matchingList[matchingList.length - 1],
+              isFirstCard: isFirstCard(lengthOfList: matchingList.length, myIndex: matchingList.length),
+            ),
           );
         }
       },

@@ -37,18 +37,15 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
     );
 
     _helperAnimationController = AnimationController(vsync: this, duration: Duration(milliseconds: 345), lowerBound: 0.75, upperBound: 0.95);
-
     super.initState();
   }
 
-  void _goToZero() {
-    _dY = 0;
-    _animationController.animateBack(0, curve: Curves.bounceOut, duration: const Duration(seconds: 3));
-  }
+  void _goToZero() {}
 
   void _goToLeft(double offSet) {
     _dY = offSet;
     _isLeft = true;
+
     _animationController.animateBack(_animationController.lowerBound, curve: Curves.easeInOutCirc, duration: const Duration(milliseconds: 450));
     context.read<MatchingBloc>().add(MatchingSwiped(swipeDirection: SwipeDirection.left));
   }
@@ -57,14 +54,6 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
     _dY = offSet;
     _animationController.animateBack(_animationController.upperBound, curve: Curves.easeInOutCirc, duration: const Duration(milliseconds: 450));
     context.read<MatchingBloc>().add(MatchingSwiped(swipeDirection: SwipeDirection.right));
-  }
-
-  void _biggerSecondCard() {
-    _helperAnimationController.value = _helperAnimationController.value + 0.001;
-  }
-
-  void _lowerSecondCard() {
-    _helperAnimationController.value = _helperAnimationController.value - 0.001;
   }
 
   @override
@@ -91,17 +80,14 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
                   child: Draggable(
                     onDraggableCanceled: (V, o) {
                       _onDragEnd(o, context);
-                      print('cancel');
                     },
                     onDragUpdate: (details) {
                       _onDragUpdate(details, context);
                     },
-                    onDragEnd: (details) {
-                      print('sasa');
-                    },
+                    onDragEnd: (details) {},
                     childWhenDragging: const SizedBox(),
-                    feedback: BlocProvider.value(value: context.read<HelperAnimatorCubit>(), child: userCardChild()),
-                    child: userCardChild(),
+                    feedback: BlocProvider.value(value: context.read<HelperAnimatorCubit>(), child: userCardChild(true, widget.userImage)),
+                    child: userCardChild(true, widget.userImage),
                   ),
                 ),
               ],
@@ -111,13 +97,6 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
   }
 
   void _onDragEnd(Offset offset, BuildContext contexti) {
-    print('felan');
-    print('cancel2');
-
-    // print(contexti.read<HelperAnimatorCubit>().state);
-
-    // print(contexti.read<HelperAnimatorCubit>().state);
-
     if (offset.dx < 0) {
       if (offset.dx < -_dragLimit) {
         _animationController.value = offset.dx;
@@ -139,7 +118,6 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
 
   void _onDragUpdate(DragUpdateDetails details, BuildContext contexti) {
     contexti.read<HelperAnimatorCubit>().update(details.delta.dx / 1000);
-    _helperAnimationController.value = _helperAnimationController.value + details.delta.dx / 500;
   }
 
   void _onDragCancel(BuildContext contexti) {
@@ -159,24 +137,16 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
         builder: (context, anim) {
           return Transform.scale(
             scale: _helperAnimationController.value,
-            child: UserCard(
-              position: 0,
-              value: _animationController.value,
-              isFirstCard: false,
-              goLeft: () => _goToLeft(0),
-              goRight: () => _goToRight(0),
-              userImage: widget.userImage,
-              color: Colors.green,
-            ),
+            child: userCardChild(false, widget.userImage),
           );
         });
   }
 
-  UserCard userCardChild() {
+  UserCard userCardChild(bool isFirstCard, String userImage) {
     return UserCard(
       position: 0,
       value: _animationController.value,
-      isFirstCard: true,
+      isFirstCard: isFirstCard,
       goLeft: () => _goToLeft(0),
       goRight: () => _goToRight(0),
       userImage: widget.userImage,

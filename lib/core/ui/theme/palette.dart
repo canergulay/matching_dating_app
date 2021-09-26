@@ -32,4 +32,7 @@ class Palette {
   static const likeBlue = Color(0xFF467be3);
   static const homePageTabGrey = Color(0xFFF7FBFE);
   static const homePageTabBlue = Color(0xFF31b4f8);
+
+  static const errorRed = Color(0xFFff0033);
+  static const successGreen = Colors.green;
 }
