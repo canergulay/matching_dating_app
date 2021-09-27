@@ -7,21 +7,28 @@ class NetworkManager {
   static NetworkManager get instance => _instace;
 
   late Dio dio;
-  late Tokens tokens;
+  late Tokens? tokens;
 
   setTokens(Tokens tokens) {
     this.tokens = tokens;
+    _initDioWithBase(tokens.access);
   }
 
   NetworkManager._init() {
-    BaseOptions dioBaseOptions = BaseOptions(
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    _initDioWithBase(null);
+  }
+
+  BaseOptions dioCustomBaseOptions(String? accessToken) {
+    return BaseOptions(
+      headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer ${accessToken}'},
       baseUrl: AppConstants.shared.BASE_URL,
       connectTimeout: 5000,
       receiveTimeout: 5000,
     );
+  }
+
+  void _initDioWithBase(String? accessToken) {
+    BaseOptions dioBaseOptions = dioCustomBaseOptions(accessToken);
     dio = Dio(dioBaseOptions);
   }
 }

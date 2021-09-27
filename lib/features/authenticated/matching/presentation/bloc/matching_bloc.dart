@@ -8,6 +8,7 @@ import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/result_error/errors/custom_error.dart';
 import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 import 'package:matchangoo/features/authenticated/matching/configuration/swipe_direction_enum.dart';
+import 'package:matchangoo/features/authenticated/matching/domain/usecases/load_missing_location.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/dummy_user_list.dart';
 import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:meta/meta.dart';
@@ -15,8 +16,8 @@ part 'matching_event.dart';
 part 'matching_state.dart';
 
 class MatchingBloc extends Bloc<MatchingEvent, MatchingState> {
-  final BuildContext homeContext;
-  MatchingBloc(this.homeContext) : super(MatchingInitial());
+  final LoadMissingLocation loadMissingLocation;
+  MatchingBloc({required this.loadMissingLocation}) : super(MatchingInitial());
 
   @override
   Stream<MatchingState> mapEventToState(
@@ -48,10 +49,9 @@ class MatchingBloc extends Bloc<MatchingEvent, MatchingState> {
     if (locationResult != null) {
       locationResult.when(success: (Location location) {
         (sl.get<AuthenticationBloc>().state as AuthenticationAuthenticated).user?.setLocation(location);
-        // TODO : LOAD MISSING LOCATION WITH USERID TOKEN INFO.
+        loadMissingLocation(location);
         _fetchInitialCards();
       }, error: (CustomError error) {
-        print('error geldi');
         showGetLocationDialog(context);
       });
     } else {

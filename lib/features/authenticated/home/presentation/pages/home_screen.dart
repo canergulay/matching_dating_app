@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/buttons/animator_button_with_buton_container.dart';
 import 'package:matchangoo/core/constants/asset_paths.dart';
+import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/authenticated/home/presentation/bloc/bottom_navbar_cubit.dart';
 import 'package:matchangoo/features/authenticated/home/presentation/bloc/tabbar_cubit.dart';
@@ -25,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => BottomNavBarCubit()),
         BlocProvider(create: (context) => TabbarCubit()),
-        BlocProvider(create: (context) => MatchingBloc(context)),
+        BlocProvider(create: (context) => sl.get<MatchingBloc>())
       ],
       child: Scaffold(
           bottomNavigationBar: const CustomBottomNavigationBar(),

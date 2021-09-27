@@ -4,5 +4,5 @@ import 'package:matchangoo/features/authenticated/matching/data/repositories/loa
 class LoadMissingLocation {
   final LoadMissingLocationRepositary loadMissingLocationRepositary;
   LoadMissingLocation({required this.loadMissingLocationRepositary});
-  Future<void> call(Location location, String userid) async => await loadMissingLocationRepositary.loadMissing(location, userid);
+  Future<void> call(Location location) async => await loadMissingLocationRepositary.loadMissing(location);
 }

@@ -5,8 +5,9 @@ import 'package:matchangoo/core/constants/networkpath.dart';
 import 'package:matchangoo/core/init/network/network_manager.dart';
 
 class LoadMissingLocationDataSource {
-  Future<void> loadMissingLocation(Location location, String userid) async {
-    final response = await NetworkManager.instance.dio.post(NetworkPath.shared.LOADLOCATION);
+  Future<void> loadMissingLocation(Location location) async {
+    final locationData = location.toJson();
+    final response = await NetworkManager.instance.dio.post(NetworkPath.shared.LOADLOCATION, data: locationData);
     if (response.statusCode != 200) {
       throw UnexpectedException();
     }

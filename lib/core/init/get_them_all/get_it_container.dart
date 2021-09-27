@@ -7,6 +7,10 @@ import 'package:matchangoo/features/Identification/data/repositories/get_locatio
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
 import 'package:matchangoo/features/Identification/domain/usecases/get_location.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
+import 'package:matchangoo/features/authenticated/matching/data/datasources/load_missing_location_datasource.dart';
+import 'package:matchangoo/features/authenticated/matching/data/repositories/load_missing_location.dart';
+import 'package:matchangoo/features/authenticated/matching/domain/usecases/load_missing_location.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_bloc.dart';
 import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/check_if_acc_exist_ds.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/login_datasource.dart';
@@ -73,6 +77,8 @@ Future<void> init() async {
 
   //INIT APP CUBIT
   _appCubitInitialization();
+
+  _matchingmodule();
 }
 
 void _authenTicationModule() {
@@ -159,4 +165,11 @@ void _locationInitializations() {
   sl.registerFactory<GetLocation>(() => GetLocation(getLocationRepositary: sl()));
   sl.registerFactory<GetLocationRepositary>(() => GetLocationRepositary(getLocationDataProvider: sl()));
   sl.registerFactory<GetLocationDataProvider>(() => GetLocationDataProvider());
+}
+
+void _matchingmodule() {
+  sl.registerFactory<MatchingBloc>(() => MatchingBloc(loadMissingLocation: sl()));
+  sl.registerFactory<LoadMissingLocation>(() => LoadMissingLocation(loadMissingLocationRepositary: sl()));
+  sl.registerFactory<LoadMissingLocationRepositary>(() => LoadMissingLocationRepositary(loadMissingLocationDataSource: sl()));
+  sl.registerFactory<LoadMissingLocationDataSource>(() => LoadMissingLocationDataSource());
 }

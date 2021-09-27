@@ -6,9 +6,9 @@ class LoadMissingLocationRepositary implements LoadMissingLocationRepoContract {
   final LoadMissingLocationDataSource loadMissingLocationDataSource;
   LoadMissingLocationRepositary({required this.loadMissingLocationDataSource});
   @override
-  Future<void> loadMissing(Location location, String userid) async {
+  Future<void> loadMissing(Location location) async {
     try {
-      await loadMissingLocationDataSource.loadMissingLocation(location, userid);
+      await loadMissingLocationDataSource.loadMissingLocation(location);
     } catch (e) {
       // FOR NOW WE WILL NOT DO ANYTHING TO RESOLVE.
     }
