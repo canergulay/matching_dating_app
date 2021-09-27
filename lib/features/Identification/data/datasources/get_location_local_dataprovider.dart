@@ -8,7 +8,7 @@ class GetLocationDataProvider {
     if (permission == LocationPermission.always || permission == LocationPermission.whileInUse) {
       print(permission);
       final Position position = await _geolocatorPlatform.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-      return Location(lat: position.latitude, long: position.longitude);
+      return Location(coordinates: [position.latitude, position.longitude]);
     } else {
       throw Exception();
     }

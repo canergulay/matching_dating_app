@@ -27,6 +27,18 @@ Stack dialogChild(BuildContext context, String title, String message, DialogType
   ]);
 }
 
+SmallAnimatedIcon xCloseButton(
+  BuildContext context,
+) {
+  return SmallAnimatedIcon(
+    assetPath: AssetPaths.shared.DELPHOTO,
+    onTap: () {
+      Navigator.of(context).pop();
+    },
+    scale: 1.7,
+  );
+}
+
 Column contentsColumn(BuildContext context, String title, String message, DialogType dialogType) {
   return Column(
     mainAxisSize: MainAxisSize.min,

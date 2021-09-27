@@ -42,60 +42,6 @@ class RegisterScreen extends StatelessWidget {
                   return SingleChildScrollView(child: columnSupplierWbBUTTON(state, context, Identification()));
                 } else if (state is PhotoSelection) {
                   return columnSupplierWbBUTTON(state, context, const PhotoSelectionScreen());
-                } else if (state is IdentificationCompleted) {
-                  return columnSupplierWbBUTTON(
-                      //THIS IS JUST A DUMMY PAGE, WONT TAKE PLACE IN PRODUCTION,
-                      state,
-                      context,
-                      SingleChildScrollView(
-                        child: SizedBox(
-                            child: Column(
-                          children: [
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.name ?? 'no name'),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.email ?? 'no mail'),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.password ?? 'no pass'),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.studycode ?? 'no studycode'),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.fieldOfStudy ?? 'no fos'),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.getGenderType()),
-                            headLineEight(context, context.read<IdentificationCubit>().registrationEntity.birthday ?? 'nobd'),
-                            Column(
-                                children: context
-                                    .read<IdentificationCubit>()
-                                    .registrationEntity
-                                    .getInterestedTypes()
-                                    .map((e) => headLineEight(context, e.toString()))
-                                    .toList()),
-                            Column(
-                              children: context
-                                      .read<IdentificationCubit>()
-                                      .registrationEntity
-                                      .interests
-                                      ?.map((e) => headLineEight(context, e.toString()))
-                                      .toList() ??
-                                  [],
-                            ),
-                            headLineEight(context, 'Bitti üyesin artık'),
-                            Column(
-                              children: context
-                                      .read<IdentificationCubit>()
-                                      .registrationEntity
-                                      .photoURLS
-                                      ?.map((e) => headLineEight(context, e.toString()))
-                                      .toList() ??
-                                  [],
-                            ),
-                            Column(
-                              children: context
-                                      .read<IdentificationCubit>()
-                                      .registrationEntity
-                                      .photos
-                                      ?.map((path) => Image.file(File(path ?? '')))
-                                      .toList() ??
-                                  [],
-                            )
-                          ],
-                        )),
-                      ));
                 } else {
                   return columnSupplierWbBUTTON(state, context, emailCouldNotBeVerified(context));
                 }

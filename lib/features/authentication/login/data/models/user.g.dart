@@ -17,12 +17,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
     json['studycode'] as int?,
     json['usermail'] as String?,
     json['username'] as String?,
-  );
+  )..location = Location.fromJson(json['location'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'username': instance.username,
       'usermail': instance.usermail,
+      'location': instance.location,
       'photos': instance.photos,
       'interestedin': instance.interestedin,
       'interests': instance.interests,

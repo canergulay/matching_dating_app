@@ -4,8 +4,12 @@ import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:matchangoo/core/appetizers/global_models/location.dart';
 import 'package:matchangoo/core/components/buttons/animator_button.dart';
+import 'package:matchangoo/core/components/dialogs/show_dialog_methods/show_location_dialog.dart';
 import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
+import 'package:matchangoo/core/result_error/errors/custom_error.dart';
+import 'package:matchangoo/core/result_error/result_freezed/result.dart';
 import '../../../../../../core/components/buttons/grey_button.dart';
 import '../../../../../../core/components/utils/get_out_of_here.dart';
 
@@ -69,10 +73,18 @@ class _PhotoSelectionScreenState extends State<PhotoSelectionScreen> with Single
                       bottom: context.heightUnit * 0.1,
                       child: Container(
                           width: context.width * 0.7,
-                          child: activatableButton(onPressed: () {
+                          child: activatableButton(onPressed: () async {
+                            Result<Location>? locationResult = await showGetLocationDialog(context);
+                            locationResult?.when(success: (Location location) {
+                              context.read<IdentificationCubit>().registrationEntity.setLocation = location;
+                            }, error: (CustomError error) {
+                              print('errror');
+                            });
+                            context.read<IdentificationCubit>().registrationEntity.setLocation = Location(coordinates: []);
+
                             context.read<IdentificationCubit>().registrationEntity.setPhotos = photos;
                             context.read<IdentificationCubit>().registrationEntity.setPhotoURLS = imageURL;
-                            context.read<RegisterBloc>().completeRegistration();
+                            context.read<RegisterBloc>().completeRegistration(context);
                           }))),
                 ],
               )

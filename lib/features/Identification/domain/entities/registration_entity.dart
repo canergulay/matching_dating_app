@@ -57,6 +57,10 @@ class RegistrationEntity {
     this.studycode = studyCode;
   }
 
+  set setLocation(Location location) {
+    this.location = location;
+  }
+
   set setFieldOfStudy(String? fieldOfStudy) {
     this.fieldOfStudy = fieldOfStudy;
   }

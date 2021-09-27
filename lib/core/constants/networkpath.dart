@@ -6,4 +6,5 @@ class NetworkPath {
   final String LOGIN = "/login";
   final String CHECKIACCEXIST = "/checkaccount";
   final String GETUSERBYTOKEN = "/getuser";
+  final String LOADLOCATION = "/loadlocation";
 }

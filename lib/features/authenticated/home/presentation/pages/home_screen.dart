@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => BottomNavBarCubit()),
         BlocProvider(create: (context) => TabbarCubit()),
-        BlocProvider(create: (context) => MatchingBloc()),
+        BlocProvider(create: (context) => MatchingBloc(context)),
       ],
       child: Scaffold(
           bottomNavigationBar: const CustomBottomNavigationBar(),

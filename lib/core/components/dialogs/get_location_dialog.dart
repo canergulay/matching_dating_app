@@ -47,8 +47,20 @@ Stack locationDialogChild(BuildContext context) {
           ],
         ),
       ),
-      Positioned(right: 13, top: 13, child: xCloseButton(context)),
+      // Positioned(right: 13, top: 13, child: xCloseButton(context)),
     ],
+  );
+}
+
+SmallAnimatedIcon xCloseButton(
+  BuildContext context,
+) {
+  return SmallAnimatedIcon(
+    assetPath: AssetPaths.shared.DELPHOTO,
+    onTap: () {
+      Navigator.of(context).pop();
+    },
+    scale: 1.7,
   );
 }
 
@@ -61,8 +73,7 @@ Container enableLocationButton(BuildContext context) {
         final GetLocation getLocation = sl.get<GetLocation>();
         Result<Location> locationResult = await getLocation();
         locationResult.when(success: (Location location) {
-          print(location.lat);
-          print(location.long);
+          Navigator.of(context).pop(Result.success(location));
         }, error: (CustomError err) {
           print('error');
         });

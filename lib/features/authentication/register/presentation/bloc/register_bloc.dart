@@ -7,7 +7,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
 import 'package:matchangoo/core/components/utils/loading_dialoger.dart';
 import 'package:matchangoo/core/constants/app_constants.dart';
+import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/features/Identification/domain/entities/registration_entity.dart';
+import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/login/data/models/user.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/check_if_already_registrated.dart';
 import 'package:matchangoo/features/authentication/register/domain/usecases/register.dart';
@@ -133,11 +135,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emit(RegisterWithEmailVerified());
   }
 
-  Future<void> completeRegistration() async {
+  Future<void> completeRegistration(BuildContext context) async {
     final Result<UserModel> registrationResult = await register(identificationCubit.registrationEntity);
     registrationResult.when(success: (UserModel user) {
-      print('başarılı');
-      emit(IdentificationCompleted());
+      Navigator.of(context).pop();
+      sl.get<AuthenticationBloc>().add(Authenticate(user: user)); // emit(IdentificationCompleted());
     }, error: (CustomError error) {
       print('başarısız');
       print(error.errorCode);

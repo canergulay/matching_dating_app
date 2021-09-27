@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/appetizers/global_models/location.dart';
 import 'package:matchangoo/core/constants/asset_paths.dart';
 
 class SmallAnimatedIcon extends StatefulWidget {
@@ -51,16 +52,4 @@ class _SmallAnimatedIconState extends State<SmallAnimatedIcon> with SingleTicker
     // TODO: implement dispose
     super.dispose();
   }
-}
-
-SmallAnimatedIcon xCloseButton(
-  BuildContext context,
-) {
-  return SmallAnimatedIcon(
-    assetPath: AssetPaths.shared.DELPHOTO,
-    onTap: () {
-      Navigator.of(context).pop('result is bu!');
-    },
-    scale: 1.7,
-  );
 }

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:matchangoo/core/appetizers/global_models/location.dart';
 
 part 'user.g.dart';
 
@@ -6,6 +7,7 @@ part 'user.g.dart';
 class UserModel {
   late String? username;
   late String? usermail;
+  late Location location;
   late List<String?>? photos;
   late List<int>? interestedin;
   late List<int>? interests;
@@ -15,6 +17,12 @@ class UserModel {
   late int? birthday;
   UserModel(this.birthday, this.fos, this.gender, this.interestedin, this.interests, this.photos, this.studycode, this.usermail, this.username);
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  setLocation(Location location) {
+    this.location = location;
+  }
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return _$UserModelFromJson(json);
+  }
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }
