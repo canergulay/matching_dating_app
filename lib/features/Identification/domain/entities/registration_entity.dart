@@ -1,3 +1,4 @@
+import 'package:matchangoo/core/appetizers/global_models/location.dart';
 import 'package:matchangoo/features/Identification/data/models/interested_in_type.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/gender_cubit.dart';
 
@@ -15,6 +16,7 @@ class RegistrationEntity {
   late GenderType? genderType;
   late List<String?>? photos;
   late List<String?>? photoURLS;
+  late Location? location;
   late String? birthday;
   late List<InterestedType>? interestedIns;
   late List<String?>? interests = [];

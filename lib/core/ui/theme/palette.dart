@@ -35,4 +35,6 @@ class Palette {
 
   static const errorRed = Color(0xFFff0033);
   static const successGreen = Colors.green;
+
+  static const enableDialogBlue = Color(0xFF31B4F8);
 }

@@ -1,12 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:matchangoo/core/appetizers/enums.dart/dialog_type_enum.dart';
-import 'package:matchangoo/core/appetizers/enums.dart/toast_type_enum.dart';
-import 'package:matchangoo/core/components/dialogs/error_dialog.dart';
-import 'package:matchangoo/core/components/dialogs/show_dialog.dart';
-import 'package:matchangoo/core/components/toasts/toast_manager.dart';
-import 'package:matchangoo/core/components/toasts/toast_widgets.dart/general_toast.dart';
+
+import 'core/components/dialogs/show_dialog_methods/show_location_dialog.dart';
 import 'core/constants/app_constants.dart';
 import 'core/constants/asset_paths.dart';
 import 'core/structure/utils/widgets/background_widget_wlogo.dart';
@@ -59,11 +55,10 @@ Expanded secondShit(BuildContext context) {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: context.widthUnit * 5, vertical: context.heightUnit * 1.5),
           child: AnimatedButton(
-            buttonRadius: 15,
+            buttonRadius: 25,
             title: 'MAIN_SCREEN.CREATE_ACCOUNT'.tr(),
             buttonColor: const Color(0xFFFD69B7),
-            onPressed: () {
-              // ToastShower.instance.showMyToast(context, GeneralToast(type: ToastType.bad));
+            onPressed: () async {
               NavigationManager.instance.navigateToPage(path: '/register', arguments: 'nothing');
             },
           ),

@@ -23,16 +23,7 @@ class CustomAlertDialog extends Dialog {
 Stack dialogChild(BuildContext context, String title, String message, DialogType dialogType) {
   return Stack(alignment: Alignment.center, children: [
     contentsColumn(context, title, message, dialogType),
-    Positioned(
-        right: 13,
-        top: 13,
-        child: SmallAnimatedIcon(
-          assetPath: AssetPaths.shared.DELPHOTO,
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          scale: 1.7,
-        )),
+    Positioned(right: 13, top: 13, child: xCloseButton(context)),
   ]);
 }
 

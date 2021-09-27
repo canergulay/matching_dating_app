@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../structure/utils/extensions/context_extension.dart';
@@ -8,6 +9,8 @@ class AnimatedButton extends StatefulWidget {
   final VoidCallback onPressed;
   final Color titleColor;
   final Color buttonColor;
+  final Color shadowColor;
+  final double shadowOpacity;
   final double buttonRadius;
   final Widget? child;
 
@@ -15,6 +18,8 @@ class AnimatedButton extends StatefulWidget {
       {Key? key,
       required this.title,
       required this.onPressed,
+      this.shadowOpacity = 0.3,
+      this.shadowColor = Colors.pink,
       this.titleColor = Colors.white,
       this.buttonColor = Palette.buttonRed,
       this.buttonRadius = 30,
@@ -70,7 +75,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                     left: 2 + _animationController.value * _animationMultiplier),
                 decoration: BoxDecoration(color: widget.buttonColor, borderRadius: BorderRadius.circular(widget.buttonRadius), boxShadow: [
                   BoxShadow(
-                    color: Colors.pink.withOpacity(0.3),
+                    color: widget.shadowColor.withOpacity(widget.shadowOpacity),
                     spreadRadius: 5,
                     blurRadius: 10,
                     offset: const Offset(3, 3),
@@ -82,16 +87,13 @@ class _AnimatedButtonState extends State<AnimatedButton> with SingleTickerProvid
                     offset: const Offset(-1, 0),
                   )
                 ]),
-                width: double.infinity,
-                child: Center(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(widget.title,
-                        style: Theme.of(context).textTheme.headline5?.copyWith(color: widget.titleColor, fontSize: 23 - _animationController.value)),
-                    widget.child ?? Container()
-                  ],
-                )),
+                child: Container(
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  child: AutoSizeText(widget.title,
+                      maxLines: 1,
+                      style: Theme.of(context).textTheme.headline5?.copyWith(color: widget.titleColor, fontSize: 23 - _animationController.value)),
+                ),
               );
             }),
       ),

@@ -26,7 +26,9 @@ RegistrationEntity _$RegistrationEntityFromJson(Map<String, dynamic> json) {
     photos:
         (json['photos'] as List<dynamic>?)?.map((e) => e as String?).toList(),
     studycode: json['studycode'] as String?,
-  );
+  )..location = json['location'] == null
+      ? null
+      : Location.fromJson(json['location'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$RegistrationEntityToJson(RegistrationEntity instance) =>
@@ -39,6 +41,7 @@ Map<String, dynamic> _$RegistrationEntityToJson(RegistrationEntity instance) =>
       'genderType': _$GenderTypeEnumMap[instance.genderType],
       'photos': instance.photos,
       'photoURLS': instance.photoURLS,
+      'location': instance.location,
       'birthday': instance.birthday,
       'interestedIns': instance.interestedIns
           ?.map((e) => _$InterestedTypeEnumMap[e])

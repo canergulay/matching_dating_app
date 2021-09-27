@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/constants/asset_paths.dart';
 
 class SmallAnimatedIcon extends StatefulWidget {
   final String assetPath;
   final double scale;
   final VoidCallback onTap;
+
   const SmallAnimatedIcon({
     Key? key,
     required this.assetPath,
@@ -20,7 +22,7 @@ class _SmallAnimatedIconState extends State<SmallAnimatedIcon> with SingleTicker
 
   @override
   void initState() {
-    _animationController = AnimationController(lowerBound: 1, upperBound: 1.2, vsync: this, duration: const Duration(milliseconds: 200));
+    _animationController = AnimationController(lowerBound: 1, upperBound: 2, vsync: this, duration: const Duration(milliseconds: 200));
     super.initState();
   }
 
@@ -49,4 +51,16 @@ class _SmallAnimatedIconState extends State<SmallAnimatedIcon> with SingleTicker
     // TODO: implement dispose
     super.dispose();
   }
+}
+
+SmallAnimatedIcon xCloseButton(
+  BuildContext context,
+) {
+  return SmallAnimatedIcon(
+    assetPath: AssetPaths.shared.DELPHOTO,
+    onTap: () {
+      Navigator.of(context).pop('result is bu!');
+    },
+    scale: 1.7,
+  );
 }

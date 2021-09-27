@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:get_it/get_it.dart';
-import 'package:location/location.dart';
+import 'package:matchangoo/features/Identification/data/datasources/get_location_local_dataprovider.dart';
 import 'package:matchangoo/features/Identification/data/datasources/upload_image_datasource.dart';
+import 'package:matchangoo/features/Identification/data/repositories/get_location_repositary_impl.dart';
 import 'package:matchangoo/features/Identification/data/repositories/upload_image_impl.dart';
+import 'package:matchangoo/features/Identification/domain/usecases/get_location.dart';
 import 'package:matchangoo/features/Identification/presentation/cubit/photo_selection_cubit.dart';
 import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/check_if_acc_exist_ds.dart';
@@ -43,7 +45,6 @@ import '../../../features/authentication/register/domain/usecases/check_verifica
 import '../../../features/authentication/register/domain/usecases/send_verification_email.dart';
 import '../../../features/authentication/register/presentation/bloc/register_bloc.dart';
 import '../../components/utils/adaptive_dialoger.dart';
-import '../geolocation/location_manager.dart';
 
 import '../../ui/theme/theme_controller.dart';
 import '../../../features/authentication/phone_verification/data/datasources/register_remote_datasource.dart';
@@ -53,47 +54,47 @@ import '../../../features/authentication/phone_verification/domain/usecases/veri
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  //GENERAL INJECTIONS
-  sl.registerFactory(() => LocationManager(location: sl()));
-  sl.registerFactory(() => Location());
-
+  //LOCATION INJECTIONS
+  _locationInitializations();
   //THEME SUBSCRIPTION//
-  sl.registerFactory<ThemeController>(() => ThemeController());
-
-  //UTILS
-  sl.registerSingleton<AdaptiveDialoger>(AdaptiveDialoger());
+  _themeAndUtilModule();
 
   //SENDSMSDEPENDENCIES
-  registerSMSVerificationModul();
+  _registerSMSVerificationModul();
 
   //REGISTER FEATURE
-  registerModule();
+  _registerModule();
 
   //LOGIN FEATURE
-  loginModule();
+  _loginModule();
 
   //AUTHENTICATION FEATURE
-  authenTicationModule();
+  _authenTicationModule();
 
   //INIT APP CUBIT
-  appCubitInitialization();
+  _appCubitInitialization();
 }
 
-void authenTicationModule() {
+void _authenTicationModule() {
   sl.registerLazySingleton<AuthenticationBloc>(() => AuthenticationBloc(getUserByToken: sl()));
   sl.registerFactory<GetUserByToken>(() => GetUserByToken(userRepositary: sl()));
   sl.registerFactory<UserRepositary>(() => UserRepositary(userRepositaryDataSource: sl()));
   sl.registerFactory<UserDataSource>(() => UserDataSource());
 }
 
-void registerSMSVerificationModul() {
+void _themeAndUtilModule() {
+  sl.registerFactory<ThemeController>(() => ThemeController());
+  sl.registerSingleton<AdaptiveDialoger>(AdaptiveDialoger());
+}
+
+void _registerSMSVerificationModul() {
   sl.registerFactory<SendVerificationSMS>(() => SendVerificationSMS(smsVerifyRepositary: sl()));
   sl.registerFactory<VerifySMSCode>(() => VerifySMSCode(smsVerifyRepositary: sl()));
   sl.registerFactory<SMSVerifyRepositary>(() => SMSVerifyRepositary(smsVerifyRemoteDataSource: sl()));
   sl.registerFactory<SMSVerifyRemoteDataSource>(() => SMSVerifyRemoteDataSource());
 }
 
-void registerModule() {
+void _registerModule() {
   sl.registerFactory<RegisterBloc>(() => RegisterBloc(
       register: sl(),
       identificationCubit: sl(),
@@ -133,7 +134,7 @@ void registerModule() {
   sl.registerFactory<InterestsCubit>(() => InterestsCubit());
 }
 
-void loginModule() {
+void _loginModule() {
   sl.registerFactory<LoginBloc>(() => LoginBloc(login: sl(), facebookSignIn: sl(), googleSignInRepo: sl()));
   sl.registerFactory<Login>(() => Login(loginRepositary: sl()));
   sl.registerFactory<CheckIfAccountExist>(() => CheckIfAccountExist(checkIfAccounExistRepositary: sl()));
@@ -145,11 +146,17 @@ void loginModule() {
   sl.registerFactory<LoginDataSource>(() => LoginDataSource());
 }
 
-void appCubitInitialization() {
+void _appCubitInitialization() {
   String defaultLocale = Platform.localeName;
 
   AppState appInitialState = AppState(currentLanguage: defaultLocale, currentTheme: ThemeType.LIGHT);
   sl.registerFactory<AppCubit>(() => AppCubit(
         initialState: appInitialState,
       ));
+}
+
+void _locationInitializations() {
+  sl.registerFactory<GetLocation>(() => GetLocation(getLocationRepositary: sl()));
+  sl.registerFactory<GetLocationRepositary>(() => GetLocationRepositary(getLocationDataProvider: sl()));
+  sl.registerFactory<GetLocationDataProvider>(() => GetLocationDataProvider());
 }
