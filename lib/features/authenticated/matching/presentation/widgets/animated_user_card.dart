@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/utils/animation_helper_cubit.dart';
+import 'package:matchangoo/core/init/network/network_manager.dart';
 import 'package:matchangoo/features/authenticated/matching/configuration/swipe_direction_enum.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/animation_helper_cubit.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_bloc.dart';

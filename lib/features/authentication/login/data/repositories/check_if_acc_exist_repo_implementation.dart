@@ -14,6 +14,7 @@ class CheckIfAccounExistRepositary implements CheckIfAccountExistRepositaryContr
   Future<Result<UserModel>> checkIfAccountExist({required String email}) async {
     try {
       final UserModel user = await checkIfAccountExistDataSource.checkIfAccountExist(email: email);
+
       return Result.success(user);
     } on NoAccount {
       return Result.error(CustomError(errorCode: ErrorConstants.shared.notAnAccount));

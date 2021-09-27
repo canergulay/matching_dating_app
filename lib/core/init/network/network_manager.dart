@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:matchangoo/core/appetizers/global_models/tokens.dart';
 import '../../constants/app_constants.dart';
 
 class NetworkManager {
@@ -6,6 +7,11 @@ class NetworkManager {
   static NetworkManager get instance => _instace;
 
   late Dio dio;
+  late Tokens tokens;
+
+  setTokens(Tokens tokens) {
+    this.tokens = tokens;
+  }
 
   NetworkManager._init() {
     BaseOptions dioBaseOptions = BaseOptions(
