@@ -9,7 +9,7 @@ part of 'interests.dart';
 Interests _$InterestsFromJson(Map<String, dynamic> json) {
   return Interests(
     id: json['_id'] as String?,
-    interest: json['interest'] as String?,
+    index: json['index'] as int?,
     names: (json['names'] as Map<String, dynamic>?)?.map(
       (k, e) => MapEntry(k, e as String),
     ),
@@ -19,5 +19,5 @@ Interests _$InterestsFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$InterestsToJson(Interests instance) => <String, dynamic>{
       '_id': instance.id,
       'names': instance.names,
-      'interest': instance.interest,
+      'index': instance.index,
     };

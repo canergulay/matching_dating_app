@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matchangoo/core/constants/asset_paths.dart';
 
 class UserPhoto extends StatelessWidget {
   final double containerRadius;
@@ -6,23 +7,21 @@ class UserPhoto extends StatelessWidget {
 
   const UserPhoto({Key? key, required this.userImage, required this.containerRadius}) : super(key: key);
 
-  final String userImage;
+  final String? userImage;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('clicked');
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: _margin, horizontal: _margin - 2),
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(containerRadius),
-            child: Image.network(
-              userImage,
-              fit: BoxFit.scaleDown,
-            )),
-      ),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: _margin, horizontal: _margin - 2),
+      child: ClipRRect(borderRadius: BorderRadius.circular(containerRadius), child: imageGetter(userImage)),
     );
+  }
+}
+
+Image imageGetter(String? userPhoto) {
+  if (userPhoto != null) {
+    return Image.network(userPhoto);
+  } else {
+    return Image.asset(AssetPaths.shared.disLikeBadge);
   }
 }

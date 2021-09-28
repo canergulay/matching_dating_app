@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/buttons/animator_button.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
+import 'package:matchangoo/features/authenticated/matching/data/models/user.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/animation_helper_cubit.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/buttons/chat_button.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/widgets/user_photo.dart';
@@ -13,11 +14,11 @@ class UserCard extends StatelessWidget {
   static const double _borderRadius = 16;
   final Color color;
   final bool isFirstCard;
-  final String userImage;
   final double position;
   final double value;
   final VoidCallback goLeft;
   final VoidCallback goRight;
+  final User user;
 
   const UserCard(
       {Key? key,
@@ -26,7 +27,7 @@ class UserCard extends StatelessWidget {
       required this.goLeft,
       required this.value,
       required this.goRight,
-      required this.userImage,
+      required this.user,
       required this.position})
       : super(key: key);
   @override
@@ -111,7 +112,7 @@ class UserCard extends StatelessWidget {
     return Expanded(
       flex: 22,
       child: UserPhoto(
-        userImage: userImage,
+        userImage: user.pictures?[0],
         containerRadius: UserCard._borderRadius,
       ),
     );

@@ -9,6 +9,10 @@ class HelperAnimatorCubit extends Cubit<double> {
     emit(state + value);
   }
 
+  void zeroize() {
+    emit(0);
+  }
+
   void finish() {
     for (int i = 0; i < 20; i++) {
       print(state + i / 1000);

@@ -6,6 +6,6 @@ abstract class MatchingState {}
 class MatchingInitial extends MatchingState {}
 
 class MatchingLoaded extends MatchingState {
-  final List<String> matchingList;
+  final List<User> matchingList;
   MatchingLoaded({required this.matchingList});
 }

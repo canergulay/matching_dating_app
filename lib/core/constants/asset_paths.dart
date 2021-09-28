@@ -44,4 +44,7 @@ class AssetPaths {
   final String location2 = "assets/images/icons/lasticons/location2.png";
   final String location3 = "assets/images/icons/lasticons/location3.png";
   final String scope = "assets/images/icons/lasticons/scope.png";
+
+  final String likeBadge = 'assets/images/icons/likebadge.png';
+  final String disLikeBadge = 'assets/images/icons/dislikebadge.png';
 }

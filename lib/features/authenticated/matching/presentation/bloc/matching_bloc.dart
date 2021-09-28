@@ -7,17 +7,22 @@ import 'package:matchangoo/core/components/toasts/toasts_onhand.dart';
 import 'package:matchangoo/core/init/get_them_all/get_it_container.dart';
 import 'package:matchangoo/core/result_error/errors/custom_error.dart';
 import 'package:matchangoo/core/result_error/result_freezed/result.dart';
+import 'package:matchangoo/features/Identification/data/models/interests/interests.dart';
 import 'package:matchangoo/features/authenticated/matching/configuration/swipe_direction_enum.dart';
+import 'package:matchangoo/features/authenticated/matching/data/models/user.dart';
 import 'package:matchangoo/features/authenticated/matching/domain/usecases/load_missing_location.dart';
-import 'package:matchangoo/features/authenticated/matching/presentation/widgets/dummy_user_list.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_users_cubit.dart';
 import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:meta/meta.dart';
+
+import 'dummies_to_be_deleted/a_few_dummy_data.dart';
 part 'matching_event.dart';
 part 'matching_state.dart';
 
 class MatchingBloc extends Bloc<MatchingEvent, MatchingState> {
   final LoadMissingLocation loadMissingLocation;
-  MatchingBloc({required this.loadMissingLocation}) : super(MatchingInitial());
+  final CandidateUsersCubit candidateUsersCubit;
+  MatchingBloc({required this.loadMissingLocation, required this.candidateUsersCubit}) : super(MatchingInitial());
 
   @override
   Stream<MatchingState> mapEventToState(
@@ -25,13 +30,13 @@ class MatchingBloc extends Bloc<MatchingEvent, MatchingState> {
   ) async* {
     if (event is MatchingSwiped) {
       final SwipeDirection swipeDirection = event.swipeDirection;
-      swiped(swipeDirection);
+      yield* _swiped(swipeDirection);
     }
   }
 
   Future<void> _fetchInitialCards() async {
     await Future.delayed(Duration(seconds: 2));
-    emit(MatchingLoaded(matchingList: dummyUserList));
+    emit(MatchingLoaded(matchingList: usersToMatch));
   }
 
   void checkIfWeGotTheLocation(BuildContext context) {
@@ -61,13 +66,16 @@ class MatchingBloc extends Bloc<MatchingEvent, MatchingState> {
     }
   }
 
-  Future<void> swiped(SwipeDirection direction) async {
-    await Future.delayed(Duration(seconds: 1));
-    discardForemostCard();
-    print("Direction is " + direction.toString());
+  Stream<MatchingState> _swiped(SwipeDirection direction) async* {
+    yield* _discardForemostCard();
   }
 
-  void discardForemostCard() {
-    emit(MatchingLoaded(matchingList: List.of((state as MatchingLoaded).matchingList)..removeLast()));
+  Stream<MatchingState> _discardForemostCard() async* {
+    print((state as MatchingLoaded).matchingList.length);
+    final List<User> users = (state as MatchingLoaded).matchingList;
+    users.removeAt(0);
+
+    yield MatchingLoaded(matchingList: users);
+    print((state as MatchingLoaded).matchingList.length);
   }
 }

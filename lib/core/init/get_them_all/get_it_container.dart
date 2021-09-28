@@ -11,6 +11,7 @@ import 'package:matchangoo/features/authenticated/matching/data/datasources/load
 import 'package:matchangoo/features/authenticated/matching/data/repositories/load_missing_location.dart';
 import 'package:matchangoo/features/authenticated/matching/domain/usecases/load_missing_location.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_bloc.dart';
+import 'package:matchangoo/features/authenticated/matching/presentation/bloc/matching_users_cubit.dart';
 import 'package:matchangoo/features/authentication/authentication_control/bloc/authentication_bloc.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/check_if_acc_exist_ds.dart';
 import 'package:matchangoo/features/authentication/login/data/datasources/login_datasource.dart';
@@ -168,7 +169,8 @@ void _locationInitializations() {
 }
 
 void _matchingmodule() {
-  sl.registerFactory<MatchingBloc>(() => MatchingBloc(loadMissingLocation: sl()));
+  sl.registerLazySingleton<MatchingBloc>(() => MatchingBloc(loadMissingLocation: sl(), candidateUsersCubit: sl()));
+  sl.registerFactory<CandidateUsersCubit>(() => CandidateUsersCubit());
   sl.registerFactory<LoadMissingLocation>(() => LoadMissingLocation(loadMissingLocationRepositary: sl()));
   sl.registerFactory<LoadMissingLocationRepositary>(() => LoadMissingLocationRepositary(loadMissingLocationDataSource: sl()));
   sl.registerFactory<LoadMissingLocationDataSource>(() => LoadMissingLocationDataSource());
