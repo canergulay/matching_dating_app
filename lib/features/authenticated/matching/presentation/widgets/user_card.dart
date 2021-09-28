@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:matchangoo/core/components/buttons/animator_button.dart';
+import 'package:matchangoo/core/constants/asset_paths.dart';
 import 'package:matchangoo/core/ui/theme/palette.dart';
 import 'package:matchangoo/features/authenticated/matching/data/models/user.dart';
 import 'package:matchangoo/features/authenticated/matching/presentation/bloc/animation_helper_cubit.dart';
@@ -55,6 +56,7 @@ class UserCard extends StatelessWidget {
       decoration: BoxDecoration(color: colorGetter(state * 1.5), borderRadius: BorderRadius.circular(UserCard._borderRadius)),
       height: state.abs() > 0 ? context.dynamicHeight * 0.70 : 0,
       width: context.dynamicWidth * 0.90,
+      child: Center(),
     );
   }
 

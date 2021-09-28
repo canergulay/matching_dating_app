@@ -38,7 +38,7 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
       value: 0,
       upperBound: 500,
     );
-    _helperAnimationController = AnimationController(vsync: this, duration: Duration(milliseconds: 345), lowerBound: 0.75, upperBound: 1);
+    _helperAnimationController = AnimationController(vsync: this, duration: Duration(milliseconds: 345), lowerBound: 0.75, upperBound: 1.0);
     super.initState();
   }
 
@@ -47,15 +47,13 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
   void _goToLeft(double offSet) async {
     _dY = offSet;
     _isLeft = true;
-    _helperAnimationController.forward();
-    await _animationController.animateBack(_animationController.lowerBound, curve: Curves.easeInOutCirc, duration: const Duration(milliseconds: 450));
-    context.read<HelperAnimatorCubit>().zeroize();
-
-    context.read<MatchingBloc>().add(MatchingSwiped(swipeDirection: SwipeDirection.left));
+    _helperAnimationController.value = 1;
+    await _animationController.animateTo(_animationController.lowerBound, curve: Curves.easeInOutCirc, duration: const Duration(milliseconds: 450));
     _animationController.value = 0;
+    context.read<HelperAnimatorCubit>().zeroize();
     _dY = 0;
+    context.read<MatchingBloc>().add(MatchingSwiped(swipeDirection: SwipeDirection.left));
     _isLeft = false;
-    _helperAnimationController.value = 0;
   }
 
   void _goToRight(double offSet) async {
@@ -63,13 +61,10 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
     _helperAnimationController.forward();
     await _animationController.animateTo(_animationController.upperBound, curve: Curves.easeInOutCirc, duration: const Duration(milliseconds: 450));
     context.read<HelperAnimatorCubit>().zeroize();
-
-    context.read<MatchingBloc>().add(MatchingSwiped(swipeDirection: SwipeDirection.right));
     _animationController.value = 0;
     _dY = 0;
+    context.read<MatchingBloc>().add(MatchingSwiped(swipeDirection: SwipeDirection.right));
     _isLeft = false;
-
-    _helperAnimationController.value = 0;
   }
 
   @override
@@ -82,36 +77,33 @@ class _AnimatedUserCardState extends State<AnimatedUserCard> with TickerProvider
   @override
   Widget build(BuildContext context) {
     print('HERE IS THE BUILD!');
-    return BlocProvider<HelperAnimatorCubit>(
-      create: (context) => HelperAnimatorCubit(),
-      child: AnimatedBuilder(
-          animation: _animationController,
-          builder: (context, anim) {
-            return Stack(
-              clipBehavior: Clip.none,
-              children: [
-                secondUser(),
-                Positioned(
-                  top: _dY - (_isLeft ? -_animationController.value : _animationController.value),
-                  left: _animationController.value,
-                  child: Draggable(
-                    key: UniqueKey(),
-                    onDraggableCanceled: (V, o) {
-                      _onDragCanceled(o, context);
-                    },
-                    onDragUpdate: (details) {
-                      _onDragUpdate(details, context);
-                    },
-                    onDragEnd: (details) {},
-                    childWhenDragging: const SizedBox(),
-                    feedback: BlocProvider.value(value: context.read<HelperAnimatorCubit>(), child: userCardChild(true, widget.user)),
-                    child: userCardChild(true, widget.user),
-                  ),
+    return AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, anim) {
+          return Stack(
+            clipBehavior: Clip.none,
+            children: [
+              secondUser(),
+              Positioned(
+                top: _dY - (_isLeft ? -_animationController.value : _animationController.value),
+                left: _animationController.value,
+                child: Draggable(
+                  key: UniqueKey(),
+                  onDraggableCanceled: (V, o) {
+                    _onDragCanceled(o, context);
+                  },
+                  onDragUpdate: (details) {
+                    _onDragUpdate(details, context);
+                  },
+                  onDragEnd: (details) {},
+                  childWhenDragging: const SizedBox(),
+                  feedback: BlocProvider.value(value: context.read<HelperAnimatorCubit>(), child: userCardChild(true, widget.user)),
+                  child: userCardChild(true, widget.user),
                 ),
-              ],
-            );
-          }),
-    );
+              ),
+            ],
+          );
+        });
   }
 
   void _onDragCanceled(Offset offset, BuildContext contexti) {

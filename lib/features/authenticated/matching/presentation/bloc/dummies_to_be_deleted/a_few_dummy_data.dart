@@ -177,4 +177,152 @@ List<User> usersToMatch = [
       profession: 'Working',
       fieldofstudy: 'Lawyer',
       userName: 'Deneme User3'),
+  User(
+      age: 22,
+      awayfrom: 1,
+      interests: dummyInterests2,
+      pictures: [
+        "https://images.unsplash.com/photo-1503983469989-e2cbfd3bfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80",
+        "https://images.unsplash.com/flagged/photo-1564485377544-ce65ce5187df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Economics',
+      userName: 'Deneme User1'),
+  User(
+      age: 21,
+      awayfrom: 2.4,
+      interests: dummyInterests1,
+      pictures: [
+        "https://images.unsplash.com/photo-1578616070222-50c4de9d5ade?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=413&q=80",
+        "https://images.unsplash.com/photo-1607630451142-f7a0d4595600?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=415&q=80",
+        "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Computer Engineering',
+      userName: 'Deneme User2'),
+  User(
+      age: 23,
+      awayfrom: 5,
+      interests: dummyInterests3,
+      pictures: [
+        "https://images.unsplash.com/photo-1441123694162-e54a981ceba5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1591473692209-9ea30de4c8ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1615332327357-ce22631750a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+            "https://images.unsplash.com/photo-1548445474-e4886e0ea461?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Working',
+      fieldofstudy: 'Lawyer',
+      userName: 'Deneme User3'),
+  User(
+      age: 22,
+      awayfrom: 1,
+      interests: dummyInterests2,
+      pictures: [
+        "https://images.unsplash.com/photo-1503983469989-e2cbfd3bfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80",
+        "https://images.unsplash.com/flagged/photo-1564485377544-ce65ce5187df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Economics',
+      userName: 'Deneme User1'),
+  User(
+      age: 21,
+      awayfrom: 2.4,
+      interests: dummyInterests1,
+      pictures: [
+        "https://images.unsplash.com/photo-1578616070222-50c4de9d5ade?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=413&q=80",
+        "https://images.unsplash.com/photo-1607630451142-f7a0d4595600?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=415&q=80",
+        "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Computer Engineering',
+      userName: 'Deneme User2'),
+  User(
+      age: 23,
+      awayfrom: 5,
+      interests: dummyInterests3,
+      pictures: [
+        "https://images.unsplash.com/photo-1441123694162-e54a981ceba5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1591473692209-9ea30de4c8ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1615332327357-ce22631750a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+            "https://images.unsplash.com/photo-1548445474-e4886e0ea461?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Working',
+      fieldofstudy: 'Lawyer',
+      userName: 'Deneme User3'),
+  User(
+      age: 22,
+      awayfrom: 1,
+      interests: dummyInterests2,
+      pictures: [
+        "https://images.unsplash.com/photo-1503983469989-e2cbfd3bfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80",
+        "https://images.unsplash.com/flagged/photo-1564485377544-ce65ce5187df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Economics',
+      userName: 'Deneme User1'),
+  User(
+      age: 21,
+      awayfrom: 2.4,
+      interests: dummyInterests1,
+      pictures: [
+        "https://images.unsplash.com/photo-1578616070222-50c4de9d5ade?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=413&q=80",
+        "https://images.unsplash.com/photo-1607630451142-f7a0d4595600?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=415&q=80",
+        "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Computer Engineering',
+      userName: 'Deneme User2'),
+  User(
+      age: 23,
+      awayfrom: 5,
+      interests: dummyInterests3,
+      pictures: [
+        "https://images.unsplash.com/photo-1441123694162-e54a981ceba5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1591473692209-9ea30de4c8ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1615332327357-ce22631750a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+            "https://images.unsplash.com/photo-1548445474-e4886e0ea461?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Working',
+      fieldofstudy: 'Lawyer',
+      userName: 'Deneme User3'),
+  User(
+      age: 22,
+      awayfrom: 1,
+      interests: dummyInterests2,
+      pictures: [
+        "https://images.unsplash.com/photo-1503983469989-e2cbfd3bfeae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=396&q=80",
+        "https://images.unsplash.com/flagged/photo-1564485377544-ce65ce5187df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Economics',
+      userName: 'Deneme User1'),
+  User(
+      age: 21,
+      awayfrom: 2.4,
+      interests: dummyInterests1,
+      pictures: [
+        "https://images.unsplash.com/photo-1578616070222-50c4de9d5ade?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=413&q=80",
+        "https://images.unsplash.com/photo-1607630451142-f7a0d4595600?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=415&q=80",
+        "https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Student',
+      fieldofstudy: 'Computer Engineering',
+      userName: 'Deneme User2'),
+  User(
+      age: 23,
+      awayfrom: 5,
+      interests: dummyInterests3,
+      pictures: [
+        "https://images.unsplash.com/photo-1441123694162-e54a981ceba5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1591473692209-9ea30de4c8ab?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+        "https://images.unsplash.com/photo-1615332327357-ce22631750a6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+            "https://images.unsplash.com/photo-1548445474-e4886e0ea461?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      ],
+      profession: 'Working',
+      fieldofstudy: 'Lawyer',
+      userName: 'Deneme User3'),
 ];

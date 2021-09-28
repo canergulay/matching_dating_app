@@ -10,7 +10,9 @@ class HelperAnimatorCubit extends Cubit<double> {
   }
 
   void zeroize() {
+    print(state.toString() + 'işte state');
     emit(0);
+    print(state.toString() + 'işte state');
   }
 
   void finish() {
